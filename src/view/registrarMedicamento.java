@@ -1,6 +1,6 @@
 /*
  * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * ¿To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package view;
@@ -16,6 +16,8 @@ public class registrarMedicamento extends javax.swing.JFrame {
      */
     public registrarMedicamento() {
         initComponents();
+        this.setSize(545,350);
+        this.setResizable(false);
     }
 
     /**
@@ -29,18 +31,17 @@ public class registrarMedicamento extends javax.swing.JFrame {
 
         jButton2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        label1 = new java.awt.Label();
-        jButton1 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        boton_Volver_RegistroMed = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        textField1 = new java.awt.TextField();
-        textField2 = new java.awt.TextField();
-        textField3 = new java.awt.TextField();
+        label_imagen = new javax.swing.JLabel();
+        label_Concentracion = new javax.swing.JLabel();
+        label_NombreMed = new javax.swing.JLabel();
+        field_Compuesto = new java.awt.TextField();
+        field_NombreMed = new java.awt.TextField();
+        label_Compuesto = new javax.swing.JLabel();
+        field_Concentracion = new java.awt.TextField();
+        title_medicamento = new javax.swing.JLabel();
+        boton_Siguiente_RegistroMed = new javax.swing.JButton();
 
         jButton2.setBackground(new java.awt.Color(235, 235, 235));
         jButton2.setFont(new java.awt.Font("David Libre", 0, 11)); // NOI18N
@@ -50,101 +51,79 @@ public class registrarMedicamento extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(159, 211, 241));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        label1.setFont(new java.awt.Font("Lucida Console", 0, 24)); // NOI18N
-        label1.setText("Registro de Medicamento");
-
-        jButton1.setBackground(new java.awt.Color(235, 235, 235));
-        jButton1.setFont(new java.awt.Font("DejaVu Sans", 0, 14)); // NOI18N
-        jButton1.setText("Volver");
-        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jButton4.setBackground(new java.awt.Color(235, 235, 235));
-        jButton4.setFont(new java.awt.Font("DejaVu Sans", 0, 14)); // NOI18N
-        jButton4.setText("Aceptar");
-        jButton4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        boton_Volver_RegistroMed.setBackground(new java.awt.Color(235, 235, 235));
+        boton_Volver_RegistroMed.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
+        boton_Volver_RegistroMed.setText("Volver");
+        boton_Volver_RegistroMed.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_Volver_RegistroMed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                boton_Volver_RegistroMedActionPerformed(evt);
             }
         });
+        jPanel1.add(boton_Volver_RegistroMed, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, 80, 27));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/flo 1.png"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 154, 146));
+        label_imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/flo 1.png"))); // NOI18N
+        jPanel2.add(label_imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, 154, 110));
 
-        jLabel2.setFont(new java.awt.Font("Carlito", 0, 18)); // NOI18N
-        jLabel2.setText("Concentración:");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
+        label_Concentracion.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        label_Concentracion.setText("Concentración:");
+        jPanel2.add(label_Concentracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Carlito", 0, 18)); // NOI18N
-        jLabel3.setText("Nombre:");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
+        label_NombreMed.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        label_NombreMed.setText("Nombre del medicamento: ");
+        jPanel2.add(label_NombreMed, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Carlito", 0, 18)); // NOI18N
-        jLabel4.setText("Nombre:");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
+        field_Compuesto.setBackground(new java.awt.Color(235, 235, 235));
+        field_Compuesto.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        jPanel2.add(field_Compuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 180, -1));
 
-        jLabel5.setFont(new java.awt.Font("Carlito", 0, 18)); // NOI18N
-        jLabel5.setText("Compuesto:");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
+        field_NombreMed.setBackground(new java.awt.Color(235, 235, 235));
+        field_NombreMed.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        jPanel2.add(field_NombreMed, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 180, -1));
 
-        textField1.setBackground(new java.awt.Color(235, 235, 235));
-        textField1.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
-        jPanel2.add(textField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 180, -1));
+        label_Compuesto.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        label_Compuesto.setText("Compuesto:");
+        jPanel2.add(label_Compuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
-        textField2.setBackground(new java.awt.Color(235, 235, 235));
-        textField2.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
-        jPanel2.add(textField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 180, -1));
+        field_Concentracion.setBackground(new java.awt.Color(235, 235, 235));
+        field_Concentracion.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        jPanel2.add(field_Concentracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 180, -1));
 
-        textField3.setBackground(new java.awt.Color(235, 235, 235));
-        textField3.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
-        jPanel2.add(textField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 180, -1));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 470, 200));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(99, 99, 99)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(161, 161, 161))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(108, 108, 108))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 38, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
+        title_medicamento.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
+        title_medicamento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title_medicamento.setText("Registro de medicamentos");
+        jPanel1.add(title_medicamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 470, 40));
+
+        boton_Siguiente_RegistroMed.setBackground(new java.awt.Color(235, 235, 235));
+        boton_Siguiente_RegistroMed.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
+        boton_Siguiente_RegistroMed.setText("Aceptar");
+        boton_Siguiente_RegistroMed.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_Siguiente_RegistroMed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_Siguiente_RegistroMedActionPerformed(evt);
+            }
+        });
+        jPanel1.add(boton_Siguiente_RegistroMed, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 80, 27));
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void boton_Volver_RegistroMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_RegistroMedActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_boton_Volver_RegistroMedActionPerformed
+
+    private void boton_Siguiente_RegistroMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Siguiente_RegistroMedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_Siguiente_RegistroMedActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,19 +161,18 @@ public class registrarMedicamento extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton boton_Siguiente_RegistroMed;
+    private javax.swing.JButton boton_Volver_RegistroMed;
+    private java.awt.TextField field_Compuesto;
+    private java.awt.TextField field_Concentracion;
+    private java.awt.TextField field_NombreMed;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private java.awt.Label label1;
-    private java.awt.TextField textField1;
-    private java.awt.TextField textField2;
-    private java.awt.TextField textField3;
+    private javax.swing.JLabel label_Compuesto;
+    private javax.swing.JLabel label_Concentracion;
+    private javax.swing.JLabel label_NombreMed;
+    private javax.swing.JLabel label_imagen;
+    private javax.swing.JLabel title_medicamento;
     // End of variables declaration//GEN-END:variables
 }

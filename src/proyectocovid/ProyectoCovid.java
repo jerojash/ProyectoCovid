@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package proyectocovid;
-
+import javax.swing.JFrame;
+import view.registrarVariante;
 /**
  *
  * @author Ricardo Fanghella
@@ -15,7 +16,9 @@ public class ProyectoCovid {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        registrarVariante ventana = new registrarVariante();
+        ventana.setVisible(true);
+        ventana.setLocationRelativeTo(null);
     }
     
 }
