@@ -62,7 +62,7 @@ public class registrarMedicamento extends javax.swing.JFrame {
                 boton_Volver_RegistroMedActionPerformed(evt);
             }
         });
-        jPanel1.add(boton_Volver_RegistroMed, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, 80, 27));
+        jPanel1.add(boton_Volver_RegistroMed, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 80, 27));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
