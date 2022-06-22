@@ -92,7 +92,7 @@ public class registrarMedicamento extends javax.swing.JFrame {
 
         field_Concentracion.setBackground(new java.awt.Color(235, 235, 235));
         field_Concentracion.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jPanel2.add(field_Concentracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 180, -1));
+        jPanel2.add(field_Concentracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 180, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 470, 200));
 
