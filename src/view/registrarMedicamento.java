@@ -110,7 +110,7 @@ public class registrarMedicamento extends javax.swing.JFrame {
                 boton_Siguiente_RegistroMedActionPerformed(evt);
             }
         });
-        jPanel1.add(boton_Siguiente_RegistroMed, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 80, 27));
+        jPanel1.add(boton_Siguiente_RegistroMed, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, 80, 27));
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
