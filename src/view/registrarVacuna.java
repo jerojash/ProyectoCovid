@@ -226,7 +226,7 @@ public class registrarVacuna extends javax.swing.JFrame {
 
         boton_Siguiente_RegistroVacuna.setBackground(new java.awt.Color(235, 235, 235));
         boton_Siguiente_RegistroVacuna.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
-        boton_Siguiente_RegistroVacuna.setText("Siguiente");
+        boton_Siguiente_RegistroVacuna.setText("Aceptar");
         boton_Siguiente_RegistroVacuna.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         boton_Siguiente_RegistroVacuna.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
