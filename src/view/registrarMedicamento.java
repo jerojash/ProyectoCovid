@@ -80,7 +80,7 @@ public class registrarMedicamento extends javax.swing.JFrame {
 
         field_Compuesto.setBackground(new java.awt.Color(235, 235, 235));
         field_Compuesto.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jPanel2.add(field_Compuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 180, -1));
+        jPanel2.add(field_Compuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 180, -1));
 
         field_NombreMed.setBackground(new java.awt.Color(235, 235, 235));
         field_NombreMed.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
