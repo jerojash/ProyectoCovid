@@ -44,11 +44,11 @@ public class registrarCentroSalud extends javax.swing.JFrame {
         label_Municipio = new javax.swing.JLabel();
         label_MedicoE = new javax.swing.JLabel();
         label_Estado = new javax.swing.JLabel();
-        desplegable_Estado = new javax.swing.JComboBox<>();
-        desplegable_Pais = new javax.swing.JComboBox<>();
-        desplegable_TipoCentro = new javax.swing.JComboBox<>();
-        desplegable_Municipio = new javax.swing.JComboBox<>();
-        desplegable_MedicoE = new javax.swing.JComboBox<>();
+        desplegable_Estado = new javax.swing.JComboBox<String>();
+        desplegable_Pais = new javax.swing.JComboBox<String>();
+        desplegable_TipoCentro = new javax.swing.JComboBox<String>();
+        desplegable_Municipio = new javax.swing.JComboBox<String>();
+        desplegable_MedicoE = new javax.swing.JComboBox<String>();
         title_CentroSalud = new javax.swing.JLabel();
 
         jButton2.setBackground(new java.awt.Color(235, 235, 235));
@@ -126,12 +126,12 @@ public class registrarCentroSalud extends javax.swing.JFrame {
         jPanel2.add(label_Estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
 
         desplegable_Estado.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        desplegable_Estado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         desplegable_Estado.setPreferredSize(new java.awt.Dimension(56, 24));
         jPanel2.add(desplegable_Estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 180, -1));
 
         desplegable_Pais.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Pais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        desplegable_Pais.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         desplegable_Pais.setPreferredSize(new java.awt.Dimension(56, 24));
         desplegable_Pais.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,17 +141,17 @@ public class registrarCentroSalud extends javax.swing.JFrame {
         jPanel2.add(desplegable_Pais, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 180, -1));
 
         desplegable_TipoCentro.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_TipoCentro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vacunación", "Hospitalización" }));
+        desplegable_TipoCentro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Vacunación", "Hospitalización" }));
         desplegable_TipoCentro.setPreferredSize(new java.awt.Dimension(56, 24));
         jPanel2.add(desplegable_TipoCentro, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 180, -1));
 
         desplegable_Municipio.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Municipio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        desplegable_Municipio.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         desplegable_Municipio.setPreferredSize(new java.awt.Dimension(56, 24));
         jPanel2.add(desplegable_Municipio, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 180, -1));
 
         desplegable_MedicoE.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_MedicoE.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        desplegable_MedicoE.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         desplegable_MedicoE.setPreferredSize(new java.awt.Dimension(56, 24));
         jPanel2.add(desplegable_MedicoE, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 180, -1));
 

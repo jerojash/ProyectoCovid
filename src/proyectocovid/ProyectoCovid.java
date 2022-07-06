@@ -30,22 +30,22 @@ public class ProyectoCovid {
         conexion.disconnect();
         
         registrarPersonaContagiada ventana = new registrarPersonaContagiada();
-        ventana.setVisible(false);
+        ventana.setVisible(true);
         ventana.setLocationRelativeTo(null);
         registrarVacuna ventana1 = new registrarVacuna();
-        ventana1.setVisible(false);
+        ventana1.setVisible(true);
         ventana1.setLocationRelativeTo(null);
         registrarPersonaVacunada ventana2 = new registrarPersonaVacunada();
-        ventana2.setVisible(false);
+        ventana2.setVisible(true);
         ventana2.setLocationRelativeTo(null);
         registrarPersonalSalud ventana3 = new registrarPersonalSalud();
-        ventana3.setVisible(false);
+        ventana3.setVisible(true);
         ventana3.setLocationRelativeTo(null);
         registrarTratamiento ventana4 = new registrarTratamiento();
-        ventana4.setVisible(false);
+        ventana4.setVisible(true);
         ventana4.setLocationRelativeTo(null);
         registrarTratamientoPaciente ventana5 = new registrarTratamientoPaciente();
-        ventana5.setVisible(false);
+        ventana5.setVisible(true);
         ventana5.setLocationRelativeTo(null);
     }
     
