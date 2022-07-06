@@ -5,19 +5,28 @@
  */
 package view;
 
+import Clases.Buscador;
+import SQL.Extraer;
+import java.util.ArrayList;
+
 /**
  *
  * @author Ricardo Fanghella
  */
 public class registrarPersona extends javax.swing.JFrame {
 
-    /**
-     * Creates new form registrarMedicamento
-     */
+    Extraer dataSQL = new Extraer();
+    
     public registrarPersona() {
         initComponents();
         this.setSize(594, 580);
         this.setResizable(false);
+        ArrayList<String> listas = dataSQL.nombEnfermedad(dataSQL.Enfermedad());
+        for (int i=0;i<listas.size();i++)
+        desplegable_Enfermedad.addItem(listas.get(i));
+        listas = dataSQL.nombPais(dataSQL.Pais());
+        for (int i=0;i<listas.size();i++)
+        desplegable_Pais1.addItem(listas.get(i));
     }
 
     /**
@@ -44,10 +53,10 @@ public class registrarPersona extends javax.swing.JFrame {
         label_Ntelefono = new javax.swing.JLabel();
         label_AltoRiesgo = new javax.swing.JLabel();
         label_Estado = new javax.swing.JLabel();
-        desplegable_Enfermedad = new javax.swing.JComboBox<>();
-        desplegable_Nacionalidad = new javax.swing.JComboBox<>();
-        desplegable_AltoRiesgo = new javax.swing.JComboBox<>();
-        desplegable_Sexo = new javax.swing.JComboBox<>();
+        desplegable_Enfermedad = new javax.swing.JComboBox<String>();
+        desplegable_Nacionalidad = new javax.swing.JComboBox<String>();
+        desplegable_AltoRiesgo = new javax.swing.JComboBox<String>();
+        desplegable_Sexo = new javax.swing.JComboBox<String>();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         field_Numero_Doc1 = new java.awt.TextField();
         label_Nacionalidad = new javax.swing.JLabel();
@@ -55,12 +64,12 @@ public class registrarPersona extends javax.swing.JFrame {
         label_Enfermedad = new javax.swing.JLabel();
         field_Direccion = new java.awt.TextField();
         label_Sexo = new javax.swing.JLabel();
-        desplegable_Pais1 = new javax.swing.JComboBox<>();
+        desplegable_Pais1 = new javax.swing.JComboBox<String>();
         label_Ocupacion3 = new javax.swing.JLabel();
         field_Ocupacion = new java.awt.TextField();
         label_Direccion = new javax.swing.JLabel();
         field_NTelefono = new java.awt.TextField();
-        desplegable_Estado1 = new javax.swing.JComboBox<>();
+        desplegable_Estado1 = new javax.swing.JComboBox<String>();
         boton_Enfermedad = new javax.swing.JButton();
         title_persona = new javax.swing.JLabel();
         boton_Volver_RegistroDP2 = new javax.swing.JButton();
@@ -133,17 +142,21 @@ public class registrarPersona extends javax.swing.JFrame {
         jPanel2.add(label_Estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, -1, -1));
 
         desplegable_Enfermedad.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Enfermedad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         desplegable_Enfermedad.setPreferredSize(new java.awt.Dimension(56, 24));
+        desplegable_Enfermedad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                desplegable_EnfermedadActionPerformed(evt);
+            }
+        });
         jPanel2.add(desplegable_Enfermedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 370, 160, -1));
 
         desplegable_Nacionalidad.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Nacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "V", "E" }));
+        desplegable_Nacionalidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "V", "E" }));
         desplegable_Nacionalidad.setPreferredSize(new java.awt.Dimension(56, 24));
-        jPanel2.add(desplegable_Nacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 40, -1));
+        jPanel2.add(desplegable_Nacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 50, -1));
 
         desplegable_AltoRiesgo.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_AltoRiesgo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Si", "No" }));
+        desplegable_AltoRiesgo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Si", "No" }));
         desplegable_AltoRiesgo.setPreferredSize(new java.awt.Dimension(56, 24));
         desplegable_AltoRiesgo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,7 +166,7 @@ public class registrarPersona extends javax.swing.JFrame {
         jPanel2.add(desplegable_AltoRiesgo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 160, -1));
 
         desplegable_Sexo.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "F", "M", "N/A" }));
+        desplegable_Sexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "F", "M", "N/A" }));
         desplegable_Sexo.setPreferredSize(new java.awt.Dimension(56, 24));
         jPanel2.add(desplegable_Sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 70, -1));
         jPanel2.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 180, -1));
@@ -183,7 +196,6 @@ public class registrarPersona extends javax.swing.JFrame {
         jPanel2.add(label_Sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
 
         desplegable_Pais1.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Pais1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         desplegable_Pais1.setPreferredSize(new java.awt.Dimension(56, 24));
         desplegable_Pais1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -209,7 +221,6 @@ public class registrarPersona extends javax.swing.JFrame {
         jPanel2.add(field_NTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, 180, -1));
 
         desplegable_Estado1.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Estado1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         desplegable_Estado1.setPreferredSize(new java.awt.Dimension(56, 24));
         jPanel2.add(desplegable_Estado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, 160, -1));
 
@@ -260,12 +271,20 @@ public class registrarPersona extends javax.swing.JFrame {
     }//GEN-LAST:event_desplegable_AltoRiesgoActionPerformed
 
     private void desplegable_Pais1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desplegable_Pais1ActionPerformed
-        // TODO add your handling code here:
+        String codpais = desplegable_Pais1.getSelectedItem().toString();
+        Buscador busc = new Buscador();
+        ArrayList<String> listas = dataSQL.nombEstado(dataSQL.Estado(busc.codPais(codpais)));
+        for (int i=0;i<listas.size();i++)
+        desplegable_Estado1.addItem(listas.get(i));
     }//GEN-LAST:event_desplegable_Pais1ActionPerformed
 
     private void boton_Volver_RegistroDP2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_RegistroDP2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_boton_Volver_RegistroDP2ActionPerformed
+
+    private void desplegable_EnfermedadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desplegable_EnfermedadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_desplegable_EnfermedadActionPerformed
 
     /**
      * @param args the command line arguments
