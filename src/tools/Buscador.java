@@ -1,6 +1,7 @@
 
-package Clases;
+package tools;
 
+import Clases.Pais;
 import SQL.Extraer;
 import java.util.ArrayList;
 
@@ -13,6 +14,7 @@ public class Buscador {
         while((cod.equals(""))&&(i<listPais.size())){
             if (nombpais.equals(listPais.get(i).getNombpais()))
                 cod = listPais.get(i).getCod_pais().toString();
+            i++;
         }     
         return cod;
     }

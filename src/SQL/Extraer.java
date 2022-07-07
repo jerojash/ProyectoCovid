@@ -69,7 +69,6 @@ public class Extraer {
         Statement st;
         ArrayList<Estado> Estados = new ArrayList<Estado>();
         ConexionSQL con = new ConexionSQL();
-
         try {
             st = con.connected().createStatement();
             ResultSet rs = st.executeQuery("select * from estado_provincia where codpais='"+codPais+"'");

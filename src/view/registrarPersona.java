@@ -5,9 +5,15 @@
  */
 package view;
 
-import Clases.Buscador;
+import tools.Buscador;
+import Clases.Estado;
 import SQL.Extraer;
 import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import static javax.swing.JOptionPane.WARNING_MESSAGE;
+import tools.Verificador;
 
 /**
  *
@@ -27,6 +33,8 @@ public class registrarPersona extends javax.swing.JFrame {
         listas = dataSQL.nombPais(dataSQL.Pais());
         for (int i=0;i<listas.size();i++)
         desplegable_Pais1.addItem(listas.get(i));
+        jDateChooser1.getDateEditor().setEnabled(false);
+        jDateChooser1.getJCalendar().setMaxSelectableDate(new Date());
     }
 
     /**
@@ -42,6 +50,7 @@ public class registrarPersona extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         boton_Siguiente_RegistroDP1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
         label_Pais = new javax.swing.JLabel();
         label_nombre_Per = new javax.swing.JLabel();
@@ -57,7 +66,6 @@ public class registrarPersona extends javax.swing.JFrame {
         desplegable_Nacionalidad = new javax.swing.JComboBox<String>();
         desplegable_AltoRiesgo = new javax.swing.JComboBox<String>();
         desplegable_Sexo = new javax.swing.JComboBox<String>();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         field_Numero_Doc1 = new java.awt.TextField();
         label_Nacionalidad = new javax.swing.JLabel();
         field_Nacionalidad = new java.awt.TextField();
@@ -97,8 +105,9 @@ public class registrarPersona extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 180, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/flo 1.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flo 1.png"))); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, 154, 110));
 
         label_Pais.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
@@ -123,7 +132,12 @@ public class registrarPersona extends javax.swing.JFrame {
 
         field_Apellido_Persona.setBackground(new java.awt.Color(235, 235, 235));
         field_Apellido_Persona.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jPanel2.add(field_Apellido_Persona, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 130, -1));
+        field_Apellido_Persona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field_Apellido_PersonaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(field_Apellido_Persona, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 130, -1));
 
         label_Fecha_Nac.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         label_Fecha_Nac.setText("Fecha de Nacimiento: ");
@@ -169,7 +183,6 @@ public class registrarPersona extends javax.swing.JFrame {
         desplegable_Sexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "F", "M", "N/A" }));
         desplegable_Sexo.setPreferredSize(new java.awt.Dimension(56, 24));
         jPanel2.add(desplegable_Sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 70, -1));
-        jPanel2.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 180, -1));
 
         field_Numero_Doc1.setBackground(new java.awt.Color(235, 235, 235));
         field_Numero_Doc1.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
@@ -263,7 +276,16 @@ public class registrarPersona extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_EnfermedadActionPerformed
 
     private void boton_Siguiente_RegistroDP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Siguiente_RegistroDP1ActionPerformed
-        // TODO add your handling code here:
+        Verificador veri = new Verificador();
+        if((veri.dataNB(field_Nombre_Persona))&&(veri.dataNB(field_Apellido_Persona))&&(veri.dataNB(field_Numero_Doc1))&&(veri.dataNB(field_Nacionalidad))&&(veri.dataNB(field_Ocupacion))&&(veri.dataNB(field_NTelefono))&&(veri.dataNB(field_Direccion))){
+            /*if (veri.fechaV(jDateChooser1)){
+                System.out.println("fecha valida");
+            }else{
+                System.out.println("fecha no valida");
+            }*/
+        }else{
+            JOptionPane.showMessageDialog(null, "Se encuentran casillas sin rellenar","Error",ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_boton_Siguiente_RegistroDP1ActionPerformed
 
     private void desplegable_AltoRiesgoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desplegable_AltoRiesgoActionPerformed
@@ -271,6 +293,7 @@ public class registrarPersona extends javax.swing.JFrame {
     }//GEN-LAST:event_desplegable_AltoRiesgoActionPerformed
 
     private void desplegable_Pais1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desplegable_Pais1ActionPerformed
+        desplegable_Estado1.removeAllItems();
         String codpais = desplegable_Pais1.getSelectedItem().toString();
         Buscador busc = new Buscador();
         ArrayList<String> listas = dataSQL.nombEstado(dataSQL.Estado(busc.codPais(codpais)));
@@ -285,6 +308,10 @@ public class registrarPersona extends javax.swing.JFrame {
     private void desplegable_EnfermedadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desplegable_EnfermedadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_desplegable_EnfermedadActionPerformed
+
+    private void field_Apellido_PersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_Apellido_PersonaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field_Apellido_PersonaActionPerformed
 
     /**
      * @param args the command line arguments
