@@ -35,6 +35,7 @@ public class registrarPersona extends javax.swing.JFrame {
         desplegable_Pais1.addItem(listas.get(i));
         jDateChooser1.getDateEditor().setEnabled(false);
         jDateChooser1.getJCalendar().setMaxSelectableDate(new Date());
+        jDateChooser1.setDate(new Date(System.currentTimeMillis()));
     }
 
     /**
@@ -50,7 +51,6 @@ public class registrarPersona extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         boton_Siguiente_RegistroDP1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
         label_Pais = new javax.swing.JLabel();
         label_nombre_Per = new javax.swing.JLabel();
@@ -81,6 +81,7 @@ public class registrarPersona extends javax.swing.JFrame {
         boton_Enfermedad = new javax.swing.JButton();
         title_persona = new javax.swing.JLabel();
         boton_Volver_RegistroDP2 = new javax.swing.JButton();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         jButton2.setBackground(new java.awt.Color(235, 235, 235));
         jButton2.setFont(new java.awt.Font("David Libre", 0, 11)); // NOI18N
@@ -105,7 +106,6 @@ public class registrarPersona extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel2.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 180, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flo 1.png"))); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, 154, 110));
@@ -265,6 +265,7 @@ public class registrarPersona extends javax.swing.JFrame {
             }
         });
         jPanel1.add(boton_Volver_RegistroDP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 500, 80, 27));
+        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, 180, -1));
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -278,11 +279,7 @@ public class registrarPersona extends javax.swing.JFrame {
     private void boton_Siguiente_RegistroDP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Siguiente_RegistroDP1ActionPerformed
         Verificador veri = new Verificador();
         if((veri.dataNB(field_Nombre_Persona))&&(veri.dataNB(field_Apellido_Persona))&&(veri.dataNB(field_Numero_Doc1))&&(veri.dataNB(field_Nacionalidad))&&(veri.dataNB(field_Ocupacion))&&(veri.dataNB(field_NTelefono))&&(veri.dataNB(field_Direccion))){
-            /*if (veri.fechaV(jDateChooser1)){
-                System.out.println("fecha valida");
-            }else{
-                System.out.println("fecha no valida");
-            }*/
+            
         }else{
             JOptionPane.showMessageDialog(null, "Se encuentran casillas sin rellenar","Error",ERROR_MESSAGE);
         }
