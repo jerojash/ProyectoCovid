@@ -1,8 +1,12 @@
 
 package tools;
 
+import Clases.Estado;
 import Clases.Pais;
+import SQL.ConexionSQL;
 import SQL.Extraer;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 public class Buscador {
@@ -17,5 +21,24 @@ public class Buscador {
             i++;
         }     
         return cod;
+    }
+    
+    public String codEstado(String codPais, String nombEs){
+        Statement st;
+        String codEstado = "";
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from estado_provincia where codpais='"+codPais+"'");
+            while (rs.next()) {
+                if (rs.getString(2).equals(nombEs))
+                    codEstado = rs.getString(1);
+            }
+            con.disconnect();
+            return codEstado;
+        } catch (Exception e) {
+            con.disconnect();
+            return null;
+        }
     }
 }
