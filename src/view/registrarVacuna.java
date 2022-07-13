@@ -16,7 +16,7 @@ public class registrarVacuna extends javax.swing.JFrame {
      */
     public registrarVacuna() {
         initComponents();
-        this.setSize(545, 560);
+        this.setSize(545, 480);
         this.setResizable(false);
     }
 
@@ -50,15 +50,12 @@ public class registrarVacuna extends javax.swing.JFrame {
         label_Lote = new javax.swing.JLabel();
         field_Lote = new java.awt.TextField();
         field_PorcentajeEficaz = new java.awt.TextField();
-        boton_VerVariantes = new javax.swing.JButton();
         field_CantDosis = new java.awt.TextField();
         jLabel2 = new javax.swing.JLabel();
         boton_AnadirVariante = new javax.swing.JButton();
-        desplegable_Efectos = new javax.swing.JComboBox<>();
-        boton_AnadirEfecto = new javax.swing.JButton();
-        boton_VerEfectos = new javax.swing.JButton();
-        title_Vacuna = new javax.swing.JLabel();
         boton_Siguiente_RegistroVacuna = new javax.swing.JButton();
+        title_Vacuna = new javax.swing.JLabel();
+        boton_Siguiente_RegistroVacuna1 = new javax.swing.JButton();
 
         jButton2.setBackground(new java.awt.Color(235, 235, 235));
         jButton2.setFont(new java.awt.Font("David Libre", 0, 11)); // NOI18N
@@ -79,13 +76,13 @@ public class registrarVacuna extends javax.swing.JFrame {
                 boton_Volver_VacunaActionPerformed(evt);
             }
         });
-        jPanel1.add(boton_Volver_Vacuna, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 480, 80, 27));
+        jPanel1.add(boton_Volver_Vacuna, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 400, 80, 27));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/flo 1.png"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 310, 120, 100));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flo 1.png"))); // NOI18N
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, 120, 100));
 
         label_Pais.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         label_Pais.setText("País: ");
@@ -117,7 +114,7 @@ public class registrarVacuna extends javax.swing.JFrame {
 
         label_Eficaz.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         label_Eficaz.setText("Es eficaz contra: ");
-        jPanel2.add(label_Eficaz, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
+        jPanel2.add(label_Eficaz, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
 
         desplegable_TipoVac.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         desplegable_TipoVac.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ARNm", "Vector Viral", "De tipo Subunidades proteicas" }));
@@ -137,7 +134,7 @@ public class registrarVacuna extends javax.swing.JFrame {
         desplegable_Variantes.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         desplegable_Variantes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         desplegable_Variantes.setPreferredSize(new java.awt.Dimension(56, 24));
-        jPanel2.add(desplegable_Variantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 290, 180, -1));
+        jPanel2.add(desplegable_Variantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 180, -1));
 
         label_Efectos.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         label_Efectos.setText("Efectos secundarios:");
@@ -145,7 +142,7 @@ public class registrarVacuna extends javax.swing.JFrame {
 
         label_PorcentajeEficaz.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         label_PorcentajeEficaz.setText("Porcentaje de eficacia: ");
-        jPanel2.add(label_PorcentajeEficaz, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
+        jPanel2.add(label_PorcentajeEficaz, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
 
         label_Lote.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         label_Lote.setText("Lote:");
@@ -157,83 +154,56 @@ public class registrarVacuna extends javax.swing.JFrame {
 
         field_PorcentajeEficaz.setBackground(new java.awt.Color(235, 235, 235));
         field_PorcentajeEficaz.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jPanel2.add(field_PorcentajeEficaz, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, 60, -1));
-
-        boton_VerVariantes.setBackground(new java.awt.Color(235, 235, 235));
-        boton_VerVariantes.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
-        boton_VerVariantes.setText("Ver variantes");
-        boton_VerVariantes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        boton_VerVariantes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_VerVariantesActionPerformed(evt);
-            }
-        });
-        jPanel2.add(boton_VerVariantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 120, 20));
+        field_PorcentajeEficaz.setPreferredSize(new java.awt.Dimension(8, 25));
+        jPanel2.add(field_PorcentajeEficaz, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, 60, -1));
 
         field_CantDosis.setBackground(new java.awt.Color(235, 235, 235));
         field_CantDosis.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         jPanel2.add(field_CantDosis, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, 60, -1));
 
         jLabel2.setText("%");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 330, -1, 20));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, -1, 20));
 
         boton_AnadirVariante.setBackground(new java.awt.Color(235, 235, 235));
         boton_AnadirVariante.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
         boton_AnadirVariante.setText("Añadir");
         boton_AnadirVariante.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        boton_AnadirVariante.setPreferredSize(new java.awt.Dimension(45, 24));
+        boton_AnadirVariante.setPreferredSize(new java.awt.Dimension(45, 25));
         boton_AnadirVariante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_AnadirVarianteActionPerformed(evt);
             }
         });
-        jPanel2.add(boton_AnadirVariante, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, 60, 20));
-
-        desplegable_Efectos.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Efectos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        desplegable_Efectos.setPreferredSize(new java.awt.Dimension(56, 24));
-        jPanel2.add(desplegable_Efectos, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 180, -1));
-
-        boton_AnadirEfecto.setBackground(new java.awt.Color(235, 235, 235));
-        boton_AnadirEfecto.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
-        boton_AnadirEfecto.setText("Añadir");
-        boton_AnadirEfecto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        boton_AnadirEfecto.setPreferredSize(new java.awt.Dimension(45, 24));
-        boton_AnadirEfecto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_AnadirEfectoActionPerformed(evt);
-            }
-        });
-        jPanel2.add(boton_AnadirEfecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, 60, 20));
-
-        boton_VerEfectos.setBackground(new java.awt.Color(235, 235, 235));
-        boton_VerEfectos.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
-        boton_VerEfectos.setText("Ver efectos");
-        boton_VerEfectos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        boton_VerEfectos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_VerEfectosActionPerformed(evt);
-            }
-        });
-        jPanel2.add(boton_VerEfectos, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 120, 20));
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 470, 410));
-
-        title_Vacuna.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
-        title_Vacuna.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        title_Vacuna.setText("Registro de Vacuna");
-        jPanel1.add(title_Vacuna, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 470, 40));
+        jPanel2.add(boton_AnadirVariante, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, 70, -1));
 
         boton_Siguiente_RegistroVacuna.setBackground(new java.awt.Color(235, 235, 235));
         boton_Siguiente_RegistroVacuna.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
-        boton_Siguiente_RegistroVacuna.setText("Aceptar");
+        boton_Siguiente_RegistroVacuna.setText("Agregar efectos");
         boton_Siguiente_RegistroVacuna.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         boton_Siguiente_RegistroVacuna.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_Siguiente_RegistroVacunaActionPerformed(evt);
             }
         });
-        jPanel1.add(boton_Siguiente_RegistroVacuna, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 480, 80, 27));
+        jPanel2.add(boton_Siguiente_RegistroVacuna, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 130, 25));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 470, 330));
+
+        title_Vacuna.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
+        title_Vacuna.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title_Vacuna.setText("Registro de Vacuna");
+        jPanel1.add(title_Vacuna, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 470, 40));
+
+        boton_Siguiente_RegistroVacuna1.setBackground(new java.awt.Color(235, 235, 235));
+        boton_Siguiente_RegistroVacuna1.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
+        boton_Siguiente_RegistroVacuna1.setText("Aceptar");
+        boton_Siguiente_RegistroVacuna1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_Siguiente_RegistroVacuna1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_Siguiente_RegistroVacuna1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(boton_Siguiente_RegistroVacuna1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 400, 80, 27));
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -243,10 +213,6 @@ public class registrarVacuna extends javax.swing.JFrame {
     private void boton_Volver_VacunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_VacunaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_boton_Volver_VacunaActionPerformed
-
-    private void boton_VerVariantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_VerVariantesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boton_VerVariantesActionPerformed
 
     private void desplegable_PaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desplegable_PaisActionPerformed
         // TODO add your handling code here:
@@ -260,13 +226,9 @@ public class registrarVacuna extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_boton_AnadirVarianteActionPerformed
 
-    private void boton_AnadirEfectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_AnadirEfectoActionPerformed
+    private void boton_Siguiente_RegistroVacuna1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Siguiente_RegistroVacuna1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_boton_AnadirEfectoActionPerformed
-
-    private void boton_VerEfectosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_VerEfectosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boton_VerEfectosActionPerformed
+    }//GEN-LAST:event_boton_Siguiente_RegistroVacuna1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -319,13 +281,10 @@ public class registrarVacuna extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton boton_AnadirEfecto;
     private javax.swing.JButton boton_AnadirVariante;
     private javax.swing.JButton boton_Siguiente_RegistroVacuna;
-    private javax.swing.JButton boton_VerEfectos;
-    private javax.swing.JButton boton_VerVariantes;
+    private javax.swing.JButton boton_Siguiente_RegistroVacuna1;
     private javax.swing.JButton boton_Volver_Vacuna;
-    private javax.swing.JComboBox<String> desplegable_Efectos;
     private javax.swing.JComboBox<String> desplegable_Pais;
     private javax.swing.JComboBox<String> desplegable_TipoVac;
     private javax.swing.JComboBox<String> desplegable_Variantes;

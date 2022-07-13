@@ -43,7 +43,6 @@ public class registrarVariante extends javax.swing.JFrame {
         label_Fecha_Origen = new javax.swing.JLabel();
         label_Sintomas = new javax.swing.JLabel();
         desplegable_calendar = new com.toedter.calendar.JDateChooser();
-        desplegable_Sintomas = new javax.swing.JComboBox<>();
         desplegable_PaisOrigen = new javax.swing.JComboBox<>();
         desplegable_Clasificacion = new javax.swing.JComboBox<>();
         boton_VerSintomas = new javax.swing.JButton();
@@ -69,13 +68,13 @@ public class registrarVariante extends javax.swing.JFrame {
                 boton_Volver_VarianteActionPerformed(evt);
             }
         });
-        jPanel1.add(boton_Volver_Variante, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 400, 80, 27));
+        jPanel1.add(boton_Volver_Variante, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, 80, 27));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/flo 1.png"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 154, 110));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flo 1.png"))); // NOI18N
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 150, 154, 110));
 
         label_Clasificacion.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         label_Clasificacion.setText("Clasificación: ");
@@ -112,11 +111,6 @@ public class registrarVariante extends javax.swing.JFrame {
         desplegable_calendar.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         jPanel2.add(desplegable_calendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 180, 20));
 
-        desplegable_Sintomas.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Sintomas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        desplegable_Sintomas.setPreferredSize(new java.awt.Dimension(56, 24));
-        jPanel2.add(desplegable_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 180, -1));
-
         desplegable_PaisOrigen.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         desplegable_PaisOrigen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "V", "E" }));
         desplegable_PaisOrigen.setPreferredSize(new java.awt.Dimension(56, 24));
@@ -134,16 +128,16 @@ public class registrarVariante extends javax.swing.JFrame {
 
         boton_VerSintomas.setBackground(new java.awt.Color(235, 235, 235));
         boton_VerSintomas.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
-        boton_VerSintomas.setText("Ver síntomas");
+        boton_VerSintomas.setText("Agregar sintomas");
         boton_VerSintomas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         boton_VerSintomas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_VerSintomasActionPerformed(evt);
             }
         });
-        jPanel2.add(boton_VerSintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 90, 27));
+        jPanel2.add(boton_VerSintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 130, 27));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 470, 330));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 470, -1));
 
         title_RegistroVariante.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
         title_RegistroVariante.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -159,7 +153,7 @@ public class registrarVariante extends javax.swing.JFrame {
                 boton_Siguiente_VarianteActionPerformed(evt);
             }
         });
-        jPanel1.add(boton_Siguiente_Variante, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 400, 80, 27));
+        jPanel1.add(boton_Siguiente_Variante, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, 80, 27));
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -230,7 +224,6 @@ public class registrarVariante extends javax.swing.JFrame {
     private javax.swing.JButton boton_Volver_Variante;
     private javax.swing.JComboBox<String> desplegable_Clasificacion;
     private javax.swing.JComboBox<String> desplegable_PaisOrigen;
-    private javax.swing.JComboBox<String> desplegable_Sintomas;
     private com.toedter.calendar.JDateChooser desplegable_calendar;
     private java.awt.TextField field_Linaje;
     private java.awt.TextField field_Nombre_Persona;

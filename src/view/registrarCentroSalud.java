@@ -41,14 +41,14 @@ public class registrarCentroSalud extends javax.swing.JFrame {
         label_direccionCentro = new javax.swing.JLabel();
         label_TipoCentro = new javax.swing.JLabel();
         field_direccionCentro = new java.awt.TextField();
-        label_Municipio = new javax.swing.JLabel();
         label_MedicoE = new javax.swing.JLabel();
         label_Estado = new javax.swing.JLabel();
-        desplegable_Estado = new javax.swing.JComboBox<String>();
-        desplegable_Pais = new javax.swing.JComboBox<String>();
-        desplegable_TipoCentro = new javax.swing.JComboBox<String>();
-        desplegable_Municipio = new javax.swing.JComboBox<String>();
-        desplegable_MedicoE = new javax.swing.JComboBox<String>();
+        desplegable_Estado = new javax.swing.JComboBox<>();
+        desplegable_Pais = new javax.swing.JComboBox<>();
+        desplegable_TipoCentro = new javax.swing.JComboBox<>();
+        desplegable_MedicoE = new javax.swing.JComboBox<>();
+        label_Fecha_Origen = new javax.swing.JLabel();
+        desplegable_calendar = new com.toedter.calendar.JDateChooser();
         title_CentroSalud = new javax.swing.JLabel();
 
         jButton2.setBackground(new java.awt.Color(235, 235, 235));
@@ -86,8 +86,8 @@ public class registrarCentroSalud extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/flo 1.png"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 154, 110));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flo 1.png"))); // NOI18N
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 154, 110));
 
         label_Pais.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         label_Pais.setText("País: ");
@@ -113,25 +113,21 @@ public class registrarCentroSalud extends javax.swing.JFrame {
         field_direccionCentro.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         jPanel2.add(field_direccionCentro, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 310, -1));
 
-        label_Municipio.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
-        label_Municipio.setText("Municipio:");
-        jPanel2.add(label_Municipio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
-
         label_MedicoE.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         label_MedicoE.setText("Médico encargado: ");
-        jPanel2.add(label_MedicoE, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
+        jPanel2.add(label_MedicoE, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
         label_Estado.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         label_Estado.setText("Estado: ");
         jPanel2.add(label_Estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
 
         desplegable_Estado.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Estado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        desplegable_Estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         desplegable_Estado.setPreferredSize(new java.awt.Dimension(56, 24));
         jPanel2.add(desplegable_Estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 180, -1));
 
         desplegable_Pais.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Pais.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        desplegable_Pais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         desplegable_Pais.setPreferredSize(new java.awt.Dimension(56, 24));
         desplegable_Pais.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,19 +137,21 @@ public class registrarCentroSalud extends javax.swing.JFrame {
         jPanel2.add(desplegable_Pais, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 180, -1));
 
         desplegable_TipoCentro.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_TipoCentro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Vacunación", "Hospitalización" }));
+        desplegable_TipoCentro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vacunación", "Hospitalización" }));
         desplegable_TipoCentro.setPreferredSize(new java.awt.Dimension(56, 24));
         jPanel2.add(desplegable_TipoCentro, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 180, -1));
 
-        desplegable_Municipio.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Municipio.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        desplegable_Municipio.setPreferredSize(new java.awt.Dimension(56, 24));
-        jPanel2.add(desplegable_Municipio, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 180, -1));
-
         desplegable_MedicoE.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_MedicoE.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        desplegable_MedicoE.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         desplegable_MedicoE.setPreferredSize(new java.awt.Dimension(56, 24));
-        jPanel2.add(desplegable_MedicoE, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 180, -1));
+        jPanel2.add(desplegable_MedicoE, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 180, -1));
+
+        label_Fecha_Origen.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        label_Fecha_Origen.setText("Fecha de Encargo: ");
+        jPanel2.add(label_Fecha_Origen, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
+
+        desplegable_calendar.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        jPanel2.add(desplegable_calendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 180, 20));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 470, 310));
 
@@ -226,9 +224,9 @@ public class registrarCentroSalud extends javax.swing.JFrame {
     private javax.swing.JButton boton_Volver_RegistroCentro;
     private javax.swing.JComboBox<String> desplegable_Estado;
     private javax.swing.JComboBox<String> desplegable_MedicoE;
-    private javax.swing.JComboBox<String> desplegable_Municipio;
     private javax.swing.JComboBox<String> desplegable_Pais;
     private javax.swing.JComboBox<String> desplegable_TipoCentro;
+    private com.toedter.calendar.JDateChooser desplegable_calendar;
     private java.awt.TextField field_direccionCentro;
     private java.awt.TextField field_nombreCentro;
     private javax.swing.JButton jButton2;
@@ -236,8 +234,8 @@ public class registrarCentroSalud extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel label_Estado;
+    private javax.swing.JLabel label_Fecha_Origen;
     private javax.swing.JLabel label_MedicoE;
-    private javax.swing.JLabel label_Municipio;
     private javax.swing.JLabel label_Pais;
     private javax.swing.JLabel label_TipoCentro;
     private javax.swing.JLabel label_direccionCentro;

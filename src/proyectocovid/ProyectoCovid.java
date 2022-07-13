@@ -12,7 +12,7 @@ import view.registrarVacuna;
 import view.registrarPersonaVacunada;
 import view.registrarTratamiento;
 import view.registrarTratamientoPaciente;
-import view.registrarPersonalSalud;
+
 /**
  *
  * @author Ricardo Fanghella
@@ -38,9 +38,6 @@ public class ProyectoCovid {
         registrarPersonaVacunada ventana2 = new registrarPersonaVacunada();
         ventana2.setVisible(true);
         ventana2.setLocationRelativeTo(null);
-        registrarPersonalSalud ventana3 = new registrarPersonalSalud();
-        ventana3.setVisible(true);
-        ventana3.setLocationRelativeTo(null);
         registrarTratamiento ventana4 = new registrarTratamiento();
         ventana4.setVisible(true);
         ventana4.setLocationRelativeTo(null);

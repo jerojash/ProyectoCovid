@@ -16,7 +16,7 @@ public class registrarPersonaVacunada extends javax.swing.JFrame {
      */
     public registrarPersonaVacunada() {
         initComponents();
-        this.setSize(545,369);
+        this.setSize(545, 395);
         this.setResizable(false);
     }
 
@@ -40,11 +40,13 @@ public class registrarPersonaVacunada extends javax.swing.JFrame {
         field_Numero_Dosis = new java.awt.TextField();
         label_Numero_Dosis = new javax.swing.JLabel();
         label_Fecha_Vacunacion = new javax.swing.JLabel();
-        label_PersonalSalud = new javax.swing.JLabel();
         desplegable_calendar = new com.toedter.calendar.JDateChooser();
         desplegable_PersonalSalud = new javax.swing.JComboBox<>();
-        desplegable_VacApli = new javax.swing.JComboBox<>();
+        desplegable_Doc = new javax.swing.JComboBox<>();
         desplegable_CentroApli = new javax.swing.JComboBox<>();
+        label_Doc = new javax.swing.JLabel();
+        label_PersonalSalud = new javax.swing.JLabel();
+        desplegable_VacApli1 = new javax.swing.JComboBox<>();
         title_persona = new javax.swing.JLabel();
 
         jButton2.setBackground(new java.awt.Color(235, 235, 235));
@@ -66,7 +68,7 @@ public class registrarPersonaVacunada extends javax.swing.JFrame {
                 boton_Siguiente_RegistroDPVActionPerformed(evt);
             }
         });
-        jPanel1.add(boton_Siguiente_RegistroDPV, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, 80, 27));
+        jPanel1.add(boton_Siguiente_RegistroDPV, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, 80, 27));
 
         boton_Volver_RegistroDPV.setBackground(new java.awt.Color(235, 235, 235));
         boton_Volver_RegistroDPV.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
@@ -77,40 +79,36 @@ public class registrarPersonaVacunada extends javax.swing.JFrame {
                 boton_Volver_RegistroDPVActionPerformed(evt);
             }
         });
-        jPanel1.add(boton_Volver_RegistroDPV, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, 80, 27));
+        jPanel1.add(boton_Volver_RegistroDPV, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 320, 80, 27));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/flo 1.png"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 154, 110));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flo 1.png"))); // NOI18N
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, 154, 110));
 
         label_CentroSalud.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         label_CentroSalud.setText("Centro de salud:");
-        jPanel2.add(label_CentroSalud, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
+        jPanel2.add(label_CentroSalud, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
         label_nombre_VacApli.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         label_nombre_VacApli.setText("Nombre de la vacuna aplicada:");
-        jPanel2.add(label_nombre_VacApli, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        jPanel2.add(label_nombre_VacApli, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
 
         field_Numero_Dosis.setBackground(new java.awt.Color(235, 235, 235));
         field_Numero_Dosis.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
-        jPanel2.add(field_Numero_Dosis, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 180, -1));
+        jPanel2.add(field_Numero_Dosis, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 180, -1));
 
         label_Numero_Dosis.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         label_Numero_Dosis.setText("N° de dosis: ");
-        jPanel2.add(label_Numero_Dosis, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+        jPanel2.add(label_Numero_Dosis, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
 
         label_Fecha_Vacunacion.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         label_Fecha_Vacunacion.setText("Fecha de vacunación: ");
-        jPanel2.add(label_Fecha_Vacunacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
-
-        label_PersonalSalud.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
-        label_PersonalSalud.setText("Personal de salud:");
-        jPanel2.add(label_PersonalSalud, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+        jPanel2.add(label_Fecha_Vacunacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
         desplegable_calendar.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jPanel2.add(desplegable_calendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 180, 20));
+        jPanel2.add(desplegable_calendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 180, 20));
 
         desplegable_PersonalSalud.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         desplegable_PersonalSalud.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -120,23 +118,36 @@ public class registrarPersonaVacunada extends javax.swing.JFrame {
                 desplegable_PersonalSaludActionPerformed(evt);
             }
         });
-        jPanel2.add(desplegable_PersonalSalud, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 180, -1));
+        jPanel2.add(desplegable_PersonalSalud, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 180, -1));
 
-        desplegable_VacApli.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_VacApli.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        desplegable_VacApli.setPreferredSize(new java.awt.Dimension(56, 24));
-        jPanel2.add(desplegable_VacApli, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 180, -1));
+        desplegable_Doc.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        desplegable_Doc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        desplegable_Doc.setPreferredSize(new java.awt.Dimension(56, 24));
+        jPanel2.add(desplegable_Doc, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 180, -1));
 
         desplegable_CentroApli.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         desplegable_CentroApli.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         desplegable_CentroApli.setPreferredSize(new java.awt.Dimension(56, 24));
-        jPanel2.add(desplegable_CentroApli, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 180, -1));
+        jPanel2.add(desplegable_CentroApli, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 180, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 470, 220));
+        label_Doc.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        label_Doc.setText("Documento de identidad:");
+        jPanel2.add(label_Doc, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        label_PersonalSalud.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        label_PersonalSalud.setText("Personal de salud:");
+        jPanel2.add(label_PersonalSalud, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
+
+        desplegable_VacApli1.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        desplegable_VacApli1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        desplegable_VacApli1.setPreferredSize(new java.awt.Dimension(56, 24));
+        jPanel2.add(desplegable_VacApli1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, 180, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 470, 250));
 
         title_persona.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
         title_persona.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        title_persona.setText("Registro de datos personales");
+        title_persona.setText("Registro de vacunaciones");
         jPanel1.add(title_persona, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 470, 40));
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -202,8 +213,9 @@ public class registrarPersonaVacunada extends javax.swing.JFrame {
     private javax.swing.JButton boton_Siguiente_RegistroDPV;
     private javax.swing.JButton boton_Volver_RegistroDPV;
     private javax.swing.JComboBox<String> desplegable_CentroApli;
+    private javax.swing.JComboBox<String> desplegable_Doc;
     private javax.swing.JComboBox<String> desplegable_PersonalSalud;
-    private javax.swing.JComboBox<String> desplegable_VacApli;
+    private javax.swing.JComboBox<String> desplegable_VacApli1;
     private com.toedter.calendar.JDateChooser desplegable_calendar;
     private java.awt.TextField field_Numero_Dosis;
     private javax.swing.JButton jButton2;
@@ -211,6 +223,7 @@ public class registrarPersonaVacunada extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel label_CentroSalud;
+    private javax.swing.JLabel label_Doc;
     private javax.swing.JLabel label_Fecha_Vacunacion;
     private javax.swing.JLabel label_Numero_Dosis;
     private javax.swing.JLabel label_PersonalSalud;

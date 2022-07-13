@@ -16,7 +16,7 @@ public class registrarTratamiento extends javax.swing.JFrame {
      */
     public registrarTratamiento() {
         initComponents();
-        this.setSize(545,499);
+        this.setSize(545, 499);
         this.setResizable(false);
     }
 
@@ -73,8 +73,8 @@ public class registrarTratamiento extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        label_imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/flo 1.png"))); // NOI18N
-        jPanel2.add(label_imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 250, 154, 110));
+        label_imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flo 1.png"))); // NOI18N
+        jPanel2.add(label_imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 154, 110));
 
         label_Medicamentos.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         label_Medicamentos.setText("Medicamentos:");

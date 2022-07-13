@@ -16,7 +16,7 @@ public class registrarMedicamento extends javax.swing.JFrame {
      */
     public registrarMedicamento() {
         initComponents();
-        this.setSize(545,350);
+        this.setSize(571, 319);
         this.setResizable(false);
     }
 
@@ -62,12 +62,12 @@ public class registrarMedicamento extends javax.swing.JFrame {
                 boton_Volver_RegistroMedActionPerformed(evt);
             }
         });
-        jPanel1.add(boton_Volver_RegistroMed, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 80, 27));
+        jPanel1.add(boton_Volver_RegistroMed, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, 80, 27));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        label_imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/flo 1.png"))); // NOI18N
+        label_imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flo 1.png"))); // NOI18N
         jPanel2.add(label_imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, 154, 110));
 
         label_Concentracion.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
@@ -94,7 +94,7 @@ public class registrarMedicamento extends javax.swing.JFrame {
         field_Concentracion.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         jPanel2.add(field_Concentracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 180, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 470, 200));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 470, 170));
 
         title_medicamento.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
         title_medicamento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -110,7 +110,7 @@ public class registrarMedicamento extends javax.swing.JFrame {
                 boton_Siguiente_RegistroMedActionPerformed(evt);
             }
         });
-        jPanel1.add(boton_Siguiente_RegistroMed, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, 80, 27));
+        jPanel1.add(boton_Siguiente_RegistroMed, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 80, 27));
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 

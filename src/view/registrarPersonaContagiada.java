@@ -16,7 +16,7 @@ public class registrarPersonaContagiada extends javax.swing.JFrame {
      */
     public registrarPersonaContagiada() {
         initComponents();
-        this.setSize(543,377);
+        this.setSize(542, 432);
         this.setResizable(false);
     }
 
@@ -34,12 +34,18 @@ public class registrarPersonaContagiada extends javax.swing.JFrame {
         boton_Volver_RegistroDPC = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         label_imagen = new javax.swing.JLabel();
-        label_Numero_Variante = new javax.swing.JLabel();
-        label_Fecha_Contagio = new javax.swing.JLabel();
+        label_TiempoReposo = new javax.swing.JLabel();
+        label_Doc = new javax.swing.JLabel();
         desplegable_calendar = new com.toedter.calendar.JDateChooser();
-        desplegable_Variantes = new javax.swing.JComboBox<>();
+        desplegable_Doc = new javax.swing.JComboBox<>();
         boton_Registrar_Contagio = new javax.swing.JButton();
         boton_Ver_Todos = new javax.swing.JButton();
+        label_TipoReposo = new javax.swing.JLabel();
+        label_Numero_Variante2 = new javax.swing.JLabel();
+        desplegable_Variantes1 = new javax.swing.JComboBox<>();
+        field_TiempoReposo = new java.awt.TextField();
+        label_Fecha_Contagio1 = new javax.swing.JLabel();
+        desplegable_Tipo1 = new javax.swing.JComboBox<>();
         title_personacontagio = new javax.swing.JLabel();
         boton_Siguiente_RegistroDPC = new javax.swing.JButton();
 
@@ -62,30 +68,30 @@ public class registrarPersonaContagiada extends javax.swing.JFrame {
                 boton_Volver_RegistroDPCActionPerformed(evt);
             }
         });
-        jPanel1.add(boton_Volver_RegistroDPC, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, 80, 27));
+        jPanel1.add(boton_Volver_RegistroDPC, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 350, 80, 27));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        label_imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/flo 1.png"))); // NOI18N
+        label_imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flo 1.png"))); // NOI18N
         jPanel2.add(label_imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 154, 110));
 
-        label_Numero_Variante.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
-        label_Numero_Variante.setText("Nombre de la variante:");
-        jPanel2.add(label_Numero_Variante, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+        label_TiempoReposo.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        label_TiempoReposo.setText("Tiempo de reposo: ");
+        jPanel2.add(label_TiempoReposo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
-        label_Fecha_Contagio.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
-        label_Fecha_Contagio.setText("Fecha de contagio: ");
-        jPanel2.add(label_Fecha_Contagio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        label_Doc.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        label_Doc.setText("Documento de identidad: ");
+        jPanel2.add(label_Doc, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         desplegable_calendar.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         desplegable_calendar.setPreferredSize(new java.awt.Dimension(87, 24));
-        jPanel2.add(desplegable_calendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 180, 20));
+        jPanel2.add(desplegable_calendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 180, 20));
 
-        desplegable_Variantes.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Variantes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        desplegable_Variantes.setPreferredSize(new java.awt.Dimension(56, 24));
-        jPanel2.add(desplegable_Variantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 180, -1));
+        desplegable_Doc.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        desplegable_Doc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Casa", "Hospitalizado" }));
+        desplegable_Doc.setPreferredSize(new java.awt.Dimension(56, 24));
+        jPanel2.add(desplegable_Doc, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 180, -1));
 
         boton_Registrar_Contagio.setBackground(new java.awt.Color(235, 235, 235));
         boton_Registrar_Contagio.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
@@ -96,7 +102,7 @@ public class registrarPersonaContagiada extends javax.swing.JFrame {
                 boton_Registrar_ContagioActionPerformed(evt);
             }
         });
-        jPanel2.add(boton_Registrar_Contagio, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 140, 27));
+        jPanel2.add(boton_Registrar_Contagio, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 140, 27));
 
         boton_Ver_Todos.setBackground(new java.awt.Color(235, 235, 235));
         boton_Ver_Todos.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
@@ -107,13 +113,39 @@ public class registrarPersonaContagiada extends javax.swing.JFrame {
                 boton_Ver_TodosActionPerformed(evt);
             }
         });
-        jPanel2.add(boton_Ver_Todos, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, 70, 20));
+        jPanel2.add(boton_Ver_Todos, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 70, 20));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 470, 230));
+        label_TipoReposo.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        label_TipoReposo.setText("Tipo de reposo:");
+        jPanel2.add(label_TipoReposo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
+
+        label_Numero_Variante2.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        label_Numero_Variante2.setText("Nombre de la variante:");
+        jPanel2.add(label_Numero_Variante2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
+
+        desplegable_Variantes1.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        desplegable_Variantes1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        desplegable_Variantes1.setPreferredSize(new java.awt.Dimension(56, 24));
+        jPanel2.add(desplegable_Variantes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 180, -1));
+
+        field_TiempoReposo.setBackground(new java.awt.Color(235, 235, 235));
+        field_TiempoReposo.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
+        jPanel2.add(field_TiempoReposo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 180, -1));
+
+        label_Fecha_Contagio1.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        label_Fecha_Contagio1.setText("Fecha de contagio: ");
+        jPanel2.add(label_Fecha_Contagio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+
+        desplegable_Tipo1.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        desplegable_Tipo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Casa", "Hospitalizado" }));
+        desplegable_Tipo1.setPreferredSize(new java.awt.Dimension(56, 24));
+        jPanel2.add(desplegable_Tipo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 180, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 470, 280));
 
         title_personacontagio.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
         title_personacontagio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        title_personacontagio.setText("Registro de datos personales");
+        title_personacontagio.setText("Registro de contagios");
         jPanel1.add(title_personacontagio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 470, 40));
 
         boton_Siguiente_RegistroDPC.setBackground(new java.awt.Color(235, 235, 235));
@@ -125,7 +157,7 @@ public class registrarPersonaContagiada extends javax.swing.JFrame {
                 boton_Siguiente_RegistroDPCActionPerformed(evt);
             }
         });
-        jPanel1.add(boton_Siguiente_RegistroDPC, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 80, 27));
+        jPanel1.add(boton_Siguiente_RegistroDPC, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, 80, 27));
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -195,13 +227,19 @@ public class registrarPersonaContagiada extends javax.swing.JFrame {
     private javax.swing.JButton boton_Siguiente_RegistroDPC;
     private javax.swing.JButton boton_Ver_Todos;
     private javax.swing.JButton boton_Volver_RegistroDPC;
-    private javax.swing.JComboBox<String> desplegable_Variantes;
+    private javax.swing.JComboBox<String> desplegable_Doc;
+    private javax.swing.JComboBox<String> desplegable_Tipo1;
+    private javax.swing.JComboBox<String> desplegable_Variantes1;
     private com.toedter.calendar.JDateChooser desplegable_calendar;
+    private java.awt.TextField field_TiempoReposo;
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel label_Fecha_Contagio;
-    private javax.swing.JLabel label_Numero_Variante;
+    private javax.swing.JLabel label_Doc;
+    private javax.swing.JLabel label_Fecha_Contagio1;
+    private javax.swing.JLabel label_Numero_Variante2;
+    private javax.swing.JLabel label_TiempoReposo;
+    private javax.swing.JLabel label_TipoReposo;
     private javax.swing.JLabel label_imagen;
     private javax.swing.JLabel title_personacontagio;
     // End of variables declaration//GEN-END:variables
