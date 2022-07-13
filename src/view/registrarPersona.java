@@ -5,19 +5,47 @@
  */
 package view;
 
+import tools.Buscador;
+import Clases.Estado;
+import SQL.Extraer;
+import SQL.Guardar;
+import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import static javax.swing.JOptionPane.WARNING_MESSAGE;
+import javax.swing.table.DefaultTableColumnModel;
+import javax.swing.table.DefaultTableModel;
+import tools.Creador;
+import tools.Verificador;
+
 /**
  *
  * @author Ricardo Fanghella
  */
 public class registrarPersona extends javax.swing.JFrame {
-
-    /**
-     * Creates new form registrarMedicamento
-     */
+    DefaultTableModel model = new DefaultTableModel();
+    Extraer dataSQL = new Extraer();
+    DefaultTableModel modelEnfer;
+    
     public registrarPersona() {
         initComponents();
+        Creador crea = new Creador();
+        crea.addTableHeaderEnfer(modelEnfer,TableEnfer);
         this.setSize(594, 580);
         this.setResizable(false);
+        ArrayList<String> listas = dataSQL.nombPais(dataSQL.Pais());
+        for (int i=0;i<listas.size();i++)
+        desplegable_Pais1.addItem(listas.get(i));
+        listas = dataSQL.nombEnfermedad(dataSQL.Enfermedad());
+        for (int i=0;i<listas.size();i++)
+        desplegable_Enfermedad.addItem(listas.get(i));
+        jDateChooser1.getDateEditor().setEnabled(false);
+        jDateChooser1.getJCalendar().setMaxSelectableDate(new Date());
+        jDateChooser1.setDate(new Date(System.currentTimeMillis()));
+        jDateChooser2.getDateEditor().setEnabled(false);
+        jDateChooser2.getJCalendar().setMaxSelectableDate(new Date());
+        jDateChooser2.setDate(new Date(System.currentTimeMillis()));
     }
 
     /**
@@ -30,6 +58,18 @@ public class registrarPersona extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton2 = new javax.swing.JButton();
+        regisEnfermedad = new javax.swing.JFrame();
+        jPanel3 = new javax.swing.JPanel();
+        boton_Volver_Variante = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        label_Denominacion = new javax.swing.JLabel();
+        desplegable_Enfermedad = new javax.swing.JComboBox<String>();
+        boton_VerSintomas = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TableEnfer = new javax.swing.JTable();
+        boton_VerSintomas1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        title_RegistroVariante = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         boton_Siguiente_RegistroDP1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -44,24 +84,23 @@ public class registrarPersona extends javax.swing.JFrame {
         label_Ntelefono = new javax.swing.JLabel();
         label_AltoRiesgo = new javax.swing.JLabel();
         label_Estado = new javax.swing.JLabel();
-        desplegable_Enfermedad = new javax.swing.JComboBox<>();
-        desplegable_Nacionalidad = new javax.swing.JComboBox<>();
-        desplegable_AltoRiesgo = new javax.swing.JComboBox<>();
-        desplegable_Sexo = new javax.swing.JComboBox<>();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        desplegable_Nacionalidad = new javax.swing.JComboBox<String>();
+        desplegable_AltoRiesgo = new javax.swing.JComboBox<String>();
+        desplegable_Sexo = new javax.swing.JComboBox<String>();
         field_Numero_Doc1 = new java.awt.TextField();
-        label_Nacionalidad = new javax.swing.JLabel();
-        field_Nacionalidad = new java.awt.TextField();
         label_Enfermedad = new javax.swing.JLabel();
         field_Direccion = new java.awt.TextField();
         label_Sexo = new javax.swing.JLabel();
-        desplegable_Pais1 = new javax.swing.JComboBox<>();
+        desplegable_Pais1 = new javax.swing.JComboBox<String>();
         label_Ocupacion3 = new javax.swing.JLabel();
         field_Ocupacion = new java.awt.TextField();
         label_Direccion = new javax.swing.JLabel();
         field_NTelefono = new java.awt.TextField();
-        desplegable_Estado1 = new javax.swing.JComboBox<>();
+        desplegable_Estado1 = new javax.swing.JComboBox<String>();
         boton_Enfermedad = new javax.swing.JButton();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        label_Fecha_Nac1 = new javax.swing.JLabel();
         title_persona = new javax.swing.JLabel();
         boton_Volver_RegistroDP2 = new javax.swing.JButton();
 
@@ -70,7 +109,102 @@ public class registrarPersona extends javax.swing.JFrame {
         jButton2.setText("Volver");
         jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        jPanel3.setBackground(new java.awt.Color(159, 211, 241));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        boton_Volver_Variante.setBackground(new java.awt.Color(235, 235, 235));
+        boton_Volver_Variante.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
+        boton_Volver_Variante.setText("Volver");
+        boton_Volver_Variante.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_Volver_Variante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_Volver_VarianteActionPerformed(evt);
+            }
+        });
+        jPanel3.add(boton_Volver_Variante, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 80, 27));
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        label_Denominacion.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        label_Denominacion.setText("Enfermedades:");
+        jPanel4.add(label_Denominacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        desplegable_Enfermedad.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        desplegable_Enfermedad.setPreferredSize(new java.awt.Dimension(56, 24));
+        desplegable_Enfermedad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                desplegable_EnfermedadActionPerformed(evt);
+            }
+        });
+        jPanel4.add(desplegable_Enfermedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 240, -1));
+
+        boton_VerSintomas.setBackground(new java.awt.Color(235, 235, 235));
+        boton_VerSintomas.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
+        boton_VerSintomas.setText("Eliminar");
+        boton_VerSintomas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_VerSintomas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_VerSintomasActionPerformed(evt);
+            }
+        });
+        jPanel4.add(boton_VerSintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 90, 27));
+
+        TableEnfer.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Enfermedades"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(TableEnfer);
+        if (TableEnfer.getColumnModel().getColumnCount() > 0) {
+            TableEnfer.getColumnModel().getColumn(0).setResizable(false);
+        }
+
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 270, 110));
+
+        boton_VerSintomas1.setBackground(new java.awt.Color(235, 235, 235));
+        boton_VerSintomas1.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
+        boton_VerSintomas1.setText("Agregar");
+        boton_VerSintomas1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_VerSintomas1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_VerSintomas1ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(boton_VerSintomas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 90, 27));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flo 1.png"))); // NOI18N
+        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 100, 110));
+
+        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 410, 250));
+
+        title_RegistroVariante.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
+        title_RegistroVariante.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title_RegistroVariante.setText("Registro de enfermedades");
+        jPanel3.add(title_RegistroVariante, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 470, 40));
+
+        regisEnfermedad.getContentPane().add(jPanel3, java.awt.BorderLayout.LINE_START);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("rgistroPersona");
 
         jPanel1.setBackground(new java.awt.Color(159, 211, 241));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -89,7 +223,7 @@ public class registrarPersona extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/flo 1.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flo 1.png"))); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, 154, 110));
 
         label_Pais.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
@@ -114,11 +248,16 @@ public class registrarPersona extends javax.swing.JFrame {
 
         field_Apellido_Persona.setBackground(new java.awt.Color(235, 235, 235));
         field_Apellido_Persona.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jPanel2.add(field_Apellido_Persona, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 130, -1));
+        field_Apellido_Persona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field_Apellido_PersonaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(field_Apellido_Persona, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 130, -1));
 
         label_Fecha_Nac.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
-        label_Fecha_Nac.setText("Fecha de Nacimiento: ");
-        jPanel2.add(label_Fecha_Nac, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+        label_Fecha_Nac.setText("Fecha de residencia: ");
+        jPanel2.add(label_Fecha_Nac, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
         label_Ntelefono.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         label_Ntelefono.setText("Número de teléfono:");
@@ -132,18 +271,13 @@ public class registrarPersona extends javax.swing.JFrame {
         label_Estado.setText("Estado: ");
         jPanel2.add(label_Estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, -1, -1));
 
-        desplegable_Enfermedad.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Enfermedad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        desplegable_Enfermedad.setPreferredSize(new java.awt.Dimension(56, 24));
-        jPanel2.add(desplegable_Enfermedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 370, 160, -1));
-
         desplegable_Nacionalidad.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Nacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "V", "E" }));
+        desplegable_Nacionalidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "V", "E" }));
         desplegable_Nacionalidad.setPreferredSize(new java.awt.Dimension(56, 24));
-        jPanel2.add(desplegable_Nacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 40, -1));
+        jPanel2.add(desplegable_Nacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 50, -1));
 
         desplegable_AltoRiesgo.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_AltoRiesgo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Si", "No" }));
+        desplegable_AltoRiesgo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Si", "No" }));
         desplegable_AltoRiesgo.setPreferredSize(new java.awt.Dimension(56, 24));
         desplegable_AltoRiesgo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,22 +287,13 @@ public class registrarPersona extends javax.swing.JFrame {
         jPanel2.add(desplegable_AltoRiesgo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 160, -1));
 
         desplegable_Sexo.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "F", "M", "N/A" }));
+        desplegable_Sexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "F", "M", "N/A" }));
         desplegable_Sexo.setPreferredSize(new java.awt.Dimension(56, 24));
         jPanel2.add(desplegable_Sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 70, -1));
-        jPanel2.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 180, -1));
 
         field_Numero_Doc1.setBackground(new java.awt.Color(235, 235, 235));
         field_Numero_Doc1.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         jPanel2.add(field_Numero_Doc1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, 180, -1));
-
-        label_Nacionalidad.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
-        label_Nacionalidad.setText("Nacionalidad:");
-        jPanel2.add(label_Nacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
-
-        field_Nacionalidad.setBackground(new java.awt.Color(235, 235, 235));
-        field_Nacionalidad.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jPanel2.add(field_Nacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 180, -1));
 
         label_Enfermedad.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         label_Enfermedad.setText("Enfermedades:");
@@ -183,7 +308,6 @@ public class registrarPersona extends javax.swing.JFrame {
         jPanel2.add(label_Sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
 
         desplegable_Pais1.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Pais1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         desplegable_Pais1.setPreferredSize(new java.awt.Dimension(56, 24));
         desplegable_Pais1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -209,7 +333,6 @@ public class registrarPersona extends javax.swing.JFrame {
         jPanel2.add(field_NTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, 180, -1));
 
         desplegable_Estado1.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Estado1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         desplegable_Estado1.setPreferredSize(new java.awt.Dimension(56, 24));
         jPanel2.add(desplegable_Estado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, 160, -1));
 
@@ -222,7 +345,13 @@ public class registrarPersona extends javax.swing.JFrame {
                 boton_EnfermedadActionPerformed(evt);
             }
         });
-        jPanel2.add(boton_Enfermedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, 140, 27));
+        jPanel2.add(boton_Enfermedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, 140, 27));
+        jPanel2.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 180, -1));
+        jPanel2.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 180, -1));
+
+        label_Fecha_Nac1.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        label_Fecha_Nac1.setText("Fecha de Nacimiento: ");
+        jPanel2.add(label_Fecha_Nac1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 520, 430));
 
@@ -248,11 +377,23 @@ public class registrarPersona extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_EnfermedadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_EnfermedadActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        regisEnfermedad.setResizable(false); 
+        regisEnfermedad.setSize(467, 385);  
+        regisEnfermedad.setVisible(true);   
+        regisEnfermedad.setLocationRelativeTo(null);      
     }//GEN-LAST:event_boton_EnfermedadActionPerformed
 
     private void boton_Siguiente_RegistroDP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Siguiente_RegistroDP1ActionPerformed
-        // TODO add your handling code here:
+        Verificador veri = new Verificador();
+        if((veri.dataNB(field_Nombre_Persona))&&(veri.dataNB(field_Apellido_Persona))&&(veri.dataNB(field_Numero_Doc1))&&(veri.dataNB(field_Ocupacion))&&(veri.dataNB(field_NTelefono))&&(veri.dataNB(field_Direccion))){
+            if((field_NTelefono.getText().toString().matches("-?\\d+"))&&(field_Numero_Doc1.getText().toString().matches("-?\\d+"))){
+                Guardar insertSQL = new Guardar();
+                insertSQL.guardadoPersona(desplegable_Nacionalidad.getSelectedItem().toString()+field_Numero_Doc1.getText().toString(),field_Nombre_Persona, field_Apellido_Persona, jDateChooser1, desplegable_Sexo.getSelectedItem().toString(), field_Direccion, field_NTelefono,desplegable_AltoRiesgo.getSelectedItem().toString(), field_Ocupacion, desplegable_Estado1.getSelectedItem().toString(), desplegable_Pais1.getSelectedItem().toString(),jDateChooser2);
+            }else
+                JOptionPane.showMessageDialog(null,"La informacion en los campos numericos no es valida","Error",ERROR_MESSAGE);
+        }else
+            JOptionPane.showMessageDialog(null, "Se encuentran casillas sin rellenar","Error",ERROR_MESSAGE);
     }//GEN-LAST:event_boton_Siguiente_RegistroDP1ActionPerformed
 
     private void desplegable_AltoRiesgoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desplegable_AltoRiesgoActionPerformed
@@ -260,12 +401,47 @@ public class registrarPersona extends javax.swing.JFrame {
     }//GEN-LAST:event_desplegable_AltoRiesgoActionPerformed
 
     private void desplegable_Pais1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desplegable_Pais1ActionPerformed
-        // TODO add your handling code here:
+        desplegable_Estado1.removeAllItems();
+        String codpais = desplegable_Pais1.getSelectedItem().toString();
+        Buscador busc = new Buscador();
+        ArrayList<String> listas = dataSQL.nombEstado(dataSQL.Estado(busc.codPais(codpais)));
+        for (int i=0;i<listas.size();i++)
+        desplegable_Estado1.addItem(listas.get(i));
     }//GEN-LAST:event_desplegable_Pais1ActionPerformed
 
     private void boton_Volver_RegistroDP2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_RegistroDP2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_boton_Volver_RegistroDP2ActionPerformed
+
+    private void field_Apellido_PersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_Apellido_PersonaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field_Apellido_PersonaActionPerformed
+
+    private void boton_Volver_VarianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_VarianteActionPerformed
+        regisEnfermedad.setVisible(false);
+        this.setResizable(false);
+        regisEnfermedad.setSize(550, 527); 
+        this.setVisible(true);   
+        this.setLocationRelativeTo(null); 
+    }//GEN-LAST:event_boton_Volver_VarianteActionPerformed
+
+    private void desplegable_EnfermedadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desplegable_EnfermedadActionPerformed
+        
+    }//GEN-LAST:event_desplegable_EnfermedadActionPerformed
+
+    private void boton_VerSintomasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_VerSintomasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_VerSintomasActionPerformed
+
+    private void boton_VerSintomas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_VerSintomas1ActionPerformed
+        Verificador veri = new Verificador();
+        modelEnfer = (DefaultTableModel) TableEnfer.getModel();
+        String dato;
+        dato = desplegable_Enfermedad.getSelectedItem().toString();
+        if(!veri.existenciaTable(modelEnfer, dato)){
+            modelEnfer.addRow(new Object[]{dato});
+        }
+    }//GEN-LAST:event_boton_VerSintomas1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -306,9 +482,13 @@ public class registrarPersona extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TableEnfer;
     private javax.swing.JButton boton_Enfermedad;
     private javax.swing.JButton boton_Siguiente_RegistroDP1;
+    private javax.swing.JButton boton_VerSintomas;
+    private javax.swing.JButton boton_VerSintomas1;
     private javax.swing.JButton boton_Volver_RegistroDP2;
+    private javax.swing.JButton boton_Volver_Variante;
     private javax.swing.JComboBox<String> desplegable_AltoRiesgo;
     private javax.swing.JComboBox<String> desplegable_Enfermedad;
     private javax.swing.JComboBox<String> desplegable_Estado1;
@@ -318,28 +498,35 @@ public class registrarPersona extends javax.swing.JFrame {
     private java.awt.TextField field_Apellido_Persona;
     private java.awt.TextField field_Direccion;
     private java.awt.TextField field_NTelefono;
-    private java.awt.TextField field_Nacionalidad;
     private java.awt.TextField field_Nombre_Persona;
     private java.awt.TextField field_Numero_Doc1;
     private java.awt.TextField field_Ocupacion;
     private javax.swing.JButton jButton2;
     private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label_AltoRiesgo;
     private javax.swing.JLabel label_Apellido_Per;
+    private javax.swing.JLabel label_Denominacion;
     private javax.swing.JLabel label_Direccion;
     private javax.swing.JLabel label_Enfermedad;
     private javax.swing.JLabel label_Estado;
     private javax.swing.JLabel label_Fecha_Nac;
-    private javax.swing.JLabel label_Nacionalidad;
+    private javax.swing.JLabel label_Fecha_Nac1;
     private javax.swing.JLabel label_Ntelefono;
     private javax.swing.JLabel label_Numero_Doc;
     private javax.swing.JLabel label_Ocupacion3;
     private javax.swing.JLabel label_Pais;
     private javax.swing.JLabel label_Sexo;
     private javax.swing.JLabel label_nombre_Per;
+    private javax.swing.JFrame regisEnfermedad;
+    private javax.swing.JLabel title_RegistroVariante;
     private javax.swing.JLabel title_persona;
     // End of variables declaration//GEN-END:variables
 }
