@@ -36,10 +36,10 @@ public class registrarMedicamento extends javax.swing.JFrame {
         label_imagen = new javax.swing.JLabel();
         label_Concentracion = new javax.swing.JLabel();
         label_NombreMed = new javax.swing.JLabel();
-        field_Compuesto = new java.awt.TextField();
-        field_NombreMed = new java.awt.TextField();
         label_Compuesto = new javax.swing.JLabel();
-        field_Concentracion = new java.awt.TextField();
+        field_NombreMed = new javax.swing.JTextField();
+        field_Concentracion = new javax.swing.JTextField();
+        field_Compuesto = new javax.swing.JTextField();
         title_medicamento = new javax.swing.JLabel();
         boton_Siguiente_RegistroMed = new javax.swing.JButton();
 
@@ -78,21 +78,36 @@ public class registrarMedicamento extends javax.swing.JFrame {
         label_NombreMed.setText("Nombre del medicamento: ");
         jPanel2.add(label_NombreMed, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        field_Compuesto.setBackground(new java.awt.Color(235, 235, 235));
-        field_Compuesto.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jPanel2.add(field_Compuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 180, -1));
-
-        field_NombreMed.setBackground(new java.awt.Color(235, 235, 235));
-        field_NombreMed.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jPanel2.add(field_NombreMed, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 180, -1));
-
         label_Compuesto.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         label_Compuesto.setText("Compuesto:");
         jPanel2.add(label_Compuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
+        field_NombreMed.setBackground(new java.awt.Color(235, 235, 235));
+        field_NombreMed.setForeground(new java.awt.Color(0, 0, 0));
+        field_NombreMed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field_NombreMedActionPerformed(evt);
+            }
+        });
+        jPanel2.add(field_NombreMed, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 140, -1));
+
         field_Concentracion.setBackground(new java.awt.Color(235, 235, 235));
-        field_Concentracion.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jPanel2.add(field_Concentracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 180, -1));
+        field_Concentracion.setForeground(new java.awt.Color(0, 0, 0));
+        field_Concentracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field_ConcentracionActionPerformed(evt);
+            }
+        });
+        jPanel2.add(field_Concentracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 140, -1));
+
+        field_Compuesto.setBackground(new java.awt.Color(235, 235, 235));
+        field_Compuesto.setForeground(new java.awt.Color(0, 0, 0));
+        field_Compuesto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field_CompuestoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(field_Compuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 140, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 470, 170));
 
@@ -124,6 +139,18 @@ public class registrarMedicamento extends javax.swing.JFrame {
     private void boton_Siguiente_RegistroMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Siguiente_RegistroMedActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_boton_Siguiente_RegistroMedActionPerformed
+
+    private void field_NombreMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_NombreMedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field_NombreMedActionPerformed
+
+    private void field_ConcentracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_ConcentracionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field_ConcentracionActionPerformed
+
+    private void field_CompuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_CompuestoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field_CompuestoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,9 +190,9 @@ public class registrarMedicamento extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boton_Siguiente_RegistroMed;
     private javax.swing.JButton boton_Volver_RegistroMed;
-    private java.awt.TextField field_Compuesto;
-    private java.awt.TextField field_Concentracion;
-    private java.awt.TextField field_NombreMed;
+    private javax.swing.JTextField field_Compuesto;
+    private javax.swing.JTextField field_Concentracion;
+    private javax.swing.JTextField field_NombreMed;
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
