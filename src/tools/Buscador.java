@@ -41,4 +41,20 @@ public class Buscador {
             return null;
         }
     }
+    
+    public ArrayList<String> CodEnfermedad(String EnfNom){
+        ArrayList<String> codigos = new ArrayList<String>();
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from enfermedad where nombenfermedad='"+EnfNom+"'");
+            while(rs.next()){
+                codigos.add(rs.getString(1));
+            }
+        } catch (Exception e) {
+            System.out.println("codEnfermedad murio");
+        }   
+        return codigos;
+    }
 }

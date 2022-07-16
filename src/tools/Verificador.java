@@ -40,7 +40,6 @@ public class Verificador {
         int i = 0;
         if (filas != 0){
             while((!existe)&&(i<filas)){
-                System.out.println(model.getValueAt(i,0));
                 if (dato.equals((String)model.getValueAt(i,0)))
                     existe = true;
                 i++;

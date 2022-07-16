@@ -24,14 +24,13 @@ import tools.Verificador;
  * @author Ricardo Fanghella
  */
 public class registrarPersona extends javax.swing.JFrame {
-    DefaultTableModel model = new DefaultTableModel();
     Extraer dataSQL = new Extraer();
-    DefaultTableModel modelEnfer;
+    DefaultTableModel model;
     
     public registrarPersona() {
         initComponents();
         Creador crea = new Creador();
-        crea.addTableHeaderEnfer(modelEnfer,TableEnfer);
+        crea.addTableHeaderEnfer(model,TableEnfer);
         crea.Interfaz(this, 594, 580);
         ArrayList<String> listas = dataSQL.nombPais(dataSQL.Pais());
         for (int i=0;i<listas.size();i++)
@@ -410,13 +409,8 @@ public class registrarPersona extends javax.swing.JFrame {
         if((veri.dataNB(field_Nombre_Persona))&&(veri.dataNB(field_Apellido_Persona))&&(veri.dataNB(field_Numero_Doc1))&&(veri.dataNB(field_Ocupacion))&&(veri.dataNB(field_NTelefono))&&(veri.dataNB(field_Direccion))){
             if((field_NTelefono.getText().toString().matches("-?\\d+"))&&(field_Numero_Doc1.getText().toString().matches("-?\\d+"))){
                 Guardar insertSQL = new Guardar();
-                System.out.println(field_Numero_Doc1.getText().toString());
-                System.out.println(field_Nombre_Persona.getText().toString());
-                System.out.println(field_Apellido_Persona.getText().toString());
-                System.out.println(field_Direccion.getText().toString());
-                System.out.println(field_NTelefono.getText().toString());
-                System.out.println(field_Ocupacion.getText().toString());
                 insertSQL.guardadoPersona(desplegable_Nacionalidad.getSelectedItem().toString()+field_Numero_Doc1.getText().toString(),field_Nombre_Persona, field_Apellido_Persona, jDateChooser1, desplegable_Sexo.getSelectedItem().toString(), field_Direccion, field_NTelefono,veri.altoRiesgo(desplegable_AltoRiesgo.getSelectedItem().toString()), field_Ocupacion.getText().toString(), desplegable_Estado1.getSelectedItem().toString(), desplegable_Pais1.getSelectedItem().toString(),jDateChooser2);
+                insertSQL.iteGuardarEnfePer(TableEnfer, desplegable_Nacionalidad.getSelectedItem().toString()+field_Numero_Doc1.getText().toString());
             }else
                 JOptionPane.showMessageDialog(null,"La informacion en los campos numericos no es valida","Error",ERROR_MESSAGE);
         }else
@@ -450,16 +444,21 @@ public class registrarPersona extends javax.swing.JFrame {
     }//GEN-LAST:event_desplegable_EnfermedadActionPerformed
 
     private void boton_VerSintomasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_VerSintomasActionPerformed
-        // TODO add your handling code here:
+        model = (DefaultTableModel) TableEnfer.getModel();
+        System.out.println(TableEnfer.getSelectedRow());
+        if (TableEnfer.getSelectedRow() != -1)
+            model.removeRow(TableEnfer.getSelectedRow());
+        else
+            JOptionPane.showMessageDialog(null, "No ha seleccionado una enfermedad a eliminar","Warning",WARNING_MESSAGE);
     }//GEN-LAST:event_boton_VerSintomasActionPerformed
 
     private void boton_VerSintomas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_VerSintomas1ActionPerformed
         Verificador veri = new Verificador();
-        modelEnfer = (DefaultTableModel) TableEnfer.getModel();
+        model = (DefaultTableModel) TableEnfer.getModel();
         String dato;
         dato = desplegable_Enfermedad.getSelectedItem().toString();
-        if(!veri.existenciaTable(modelEnfer, dato)){
-            modelEnfer.addRow(new Object[]{dato});
+        if(!veri.existenciaTable(model, dato)){
+            model.addRow(new Object[]{dato});
         }
     }//GEN-LAST:event_boton_VerSintomas1ActionPerformed
 
