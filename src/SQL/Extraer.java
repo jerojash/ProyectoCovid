@@ -1,5 +1,6 @@
 package SQL;
 
+import Clases.CentroSalud;
 import Clases.Enfermedad;
 import Clases.Estado;
 import Clases.Pais;
@@ -20,6 +21,7 @@ public class Extraer {
             while (rs.next()) {
                 enfermedades.add(new Enfermedad(rs.getInt(1), rs.getString(2)));
             }
+            st.close();
             con.disconnect();
             return enfermedades;
         } catch (Exception e) {
@@ -44,10 +46,11 @@ public class Extraer {
 
         try {
             st = con.connected().createStatement();
-            ResultSet rs = st.executeQuery("select * from Pais");
+            ResultSet rs = st.executeQuery("select * from pais");
             while (rs.next()) {
                 Paises.add(new Pais(rs.getInt(1), rs.getString(2)));
             }
+            st.close();
             con.disconnect();
             return Paises;
         } catch (Exception e) {
@@ -75,6 +78,7 @@ public class Extraer {
             while (rs.next()) {
                 Estados.add(new Estado(rs.getInt(1), rs.getString(2)));
             }
+            st.close();
             con.disconnect();
             return Estados;
         } catch (Exception e) {
@@ -89,5 +93,32 @@ public class Extraer {
             nombEstado.add(listEstados.get(i).getNombestado());
         }
         return nombEstado;
+    }
+    
+    public ArrayList<CentroSalud> CentroSalud() {
+        Statement st;
+        ArrayList<CentroSalud> Centro = new ArrayList<CentroSalud>();
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from centro_salud");
+            while (rs.next()) {
+                Centro.add(new CentroSalud(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4), rs.getDate(5).toString(), rs.getInt(6)));
+            }
+            st.close();
+            con.disconnect();
+            return Centro;
+        } catch (Exception e) {
+            con.disconnect();
+            return null;
+        }
+    }
+    
+    public ArrayList<String> codCentro(ArrayList<CentroSalud> listCentro) {
+        ArrayList<String> codCentro = new ArrayList<String>();
+        for (int i = 0; i < listCentro.size(); i++) {
+            codCentro.add(listCentro.get(i).getCodCentro().toString());
+        }
+        return codCentro;
     }
 }

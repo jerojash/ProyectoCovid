@@ -49,7 +49,7 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         boton_Volver_Sintomas = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         label_Sintomas = new javax.swing.JLabel();
-        desplegable_Nacionalidad = new javax.swing.JComboBox<String>();
+        desplegable_Nacionalidad = new javax.swing.JComboBox<>();
         boton_ModificarPersona = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_personas = new javax.swing.JTable();
@@ -64,7 +64,6 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable_enfermedades = new javax.swing.JTable();
         title_RegistroSintomas = new javax.swing.JLabel();
-        boton_Siguiente_Sintomas = new javax.swing.JButton();
 
         jButton2.setBackground(new java.awt.Color(235, 235, 235));
         jButton2.setFont(new java.awt.Font("David Libre", 0, 11)); // NOI18N
@@ -76,7 +75,6 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTextArea1);
 
         field_TiempoReposo.setBackground(new java.awt.Color(235, 235, 235));
-        field_TiempoReposo.setForeground(new java.awt.Color(0, 0, 0));
         field_TiempoReposo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 field_TiempoReposoActionPerformed(evt);
@@ -97,7 +95,7 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
                 boton_Volver_SintomasActionPerformed(evt);
             }
         });
-        jPanel1.add(boton_Volver_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 460, 80, 27));
+        jPanel1.add(boton_Volver_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 460, 80, 27));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -107,7 +105,7 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         jPanel2.add(label_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, -1, -1));
 
         desplegable_Nacionalidad.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Nacionalidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "V", "E" }));
+        desplegable_Nacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "V", "E" }));
         desplegable_Nacionalidad.setPreferredSize(new java.awt.Dimension(56, 24));
         desplegable_Nacionalidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,7 +190,6 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 0, 130, 100));
 
         field_Numero_Doc1.setBackground(new java.awt.Color(235, 235, 235));
-        field_Numero_Doc1.setForeground(new java.awt.Color(0, 0, 0));
         field_Numero_Doc1.addContainerListener(new java.awt.event.ContainerAdapter() {
             public void componentAdded(java.awt.event.ContainerEvent evt) {
                 field_Numero_Doc1ComponentAdded(evt);
@@ -270,17 +267,6 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         title_RegistroSintomas.setText("Personas");
         jPanel1.add(title_RegistroSintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 890, 40));
 
-        boton_Siguiente_Sintomas.setBackground(new java.awt.Color(235, 235, 235));
-        boton_Siguiente_Sintomas.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
-        boton_Siguiente_Sintomas.setText("Siguiente");
-        boton_Siguiente_Sintomas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        boton_Siguiente_Sintomas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_Siguiente_SintomasActionPerformed(evt);
-            }
-        });
-        jPanel1.add(boton_Siguiente_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, 80, 27));
-
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
@@ -314,10 +300,6 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
             bus.tableAllpersonas(jTable_personas);
         }
     }//GEN-LAST:event_boton_BusPersonaActionPerformed
-
-    private void boton_Siguiente_SintomasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Siguiente_SintomasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boton_Siguiente_SintomasActionPerformed
 
     private void boton_EliminarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_EliminarPersonaActionPerformed
         bus.limpiarTabla(jTable_recide);
@@ -460,7 +442,6 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
     private javax.swing.JButton boton_BusPersona;
     private javax.swing.JButton boton_EliminarPersona;
     private javax.swing.JButton boton_ModificarPersona;
-    private javax.swing.JButton boton_Siguiente_Sintomas;
     private javax.swing.JButton boton_Volver_Sintomas;
     private javax.swing.JComboBox<String> desplegable_Nacionalidad;
     private javax.swing.JTextField field_Numero_Doc1;

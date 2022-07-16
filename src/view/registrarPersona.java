@@ -39,10 +39,10 @@ public class registrarPersona extends javax.swing.JFrame {
         listas = dataSQL.nombEnfermedad(dataSQL.Enfermedad());
         for (int i=0;i<listas.size();i++)
         desplegable_Enfermedad.addItem(listas.get(i));
-        jDateChooser1.getDateEditor().setEnabled(true);
+        jDateChooser1.getDateEditor().setEnabled(false);
         jDateChooser1.getJCalendar().setMaxSelectableDate(new Date());
         jDateChooser1.setDate(new Date(System.currentTimeMillis()));
-        jDateChooser2.getDateEditor().setEnabled(true);
+        jDateChooser2.getDateEditor().setEnabled(false);
         jDateChooser2.getJCalendar().setMaxSelectableDate(new Date());
         jDateChooser2.setDate(new Date(System.currentTimeMillis()));
     }
@@ -68,6 +68,7 @@ public class registrarPersona extends javax.swing.JFrame {
         TableEnfer = new javax.swing.JTable();
         boton_VerSintomas1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        boton_AggEnferNueva = new javax.swing.JButton();
         title_RegistroVariante = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         boton_Siguiente_RegistroDP1 = new javax.swing.JButton();
@@ -147,7 +148,7 @@ public class registrarPersona extends javax.swing.JFrame {
                 boton_VerSintomasActionPerformed(evt);
             }
         });
-        jPanel4.add(boton_VerSintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 90, 27));
+        jPanel4.add(boton_VerSintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 90, 27));
 
         TableEnfer.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -188,10 +189,21 @@ public class registrarPersona extends javax.swing.JFrame {
                 boton_VerSintomas1ActionPerformed(evt);
             }
         });
-        jPanel4.add(boton_VerSintomas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 90, 27));
+        jPanel4.add(boton_VerSintomas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 90, 27));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flo 1.png"))); // NOI18N
         jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 100, 110));
+
+        boton_AggEnferNueva.setBackground(new java.awt.Color(235, 235, 235));
+        boton_AggEnferNueva.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
+        boton_AggEnferNueva.setText("Agregar nueva");
+        boton_AggEnferNueva.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_AggEnferNueva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_AggEnferNuevaActionPerformed(evt);
+            }
+        });
+        jPanel4.add(boton_AggEnferNueva, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 100, 27));
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 410, 250));
 
@@ -324,7 +336,6 @@ public class registrarPersona extends javax.swing.JFrame {
         jPanel2.add(label_Fecha_Nac1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
         field_Apellido_Persona.setBackground(new java.awt.Color(235, 235, 235));
-        field_Apellido_Persona.setForeground(new java.awt.Color(0, 0, 0));
         field_Apellido_Persona.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 field_Apellido_PersonaActionPerformed(evt);
@@ -333,16 +344,19 @@ public class registrarPersona extends javax.swing.JFrame {
         jPanel2.add(field_Apellido_Persona, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 140, -1));
 
         field_Nombre_Persona.setBackground(new java.awt.Color(235, 235, 235));
-        field_Nombre_Persona.setForeground(new java.awt.Color(0, 0, 0));
         field_Nombre_Persona.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 field_Nombre_PersonaActionPerformed(evt);
             }
         });
+        field_Nombre_Persona.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                field_Nombre_PersonaKeyTyped(evt);
+            }
+        });
         jPanel2.add(field_Nombre_Persona, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 140, -1));
 
         field_Numero_Doc1.setBackground(new java.awt.Color(235, 235, 235));
-        field_Numero_Doc1.setForeground(new java.awt.Color(0, 0, 0));
         field_Numero_Doc1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 field_Numero_Doc1ActionPerformed(evt);
@@ -351,7 +365,6 @@ public class registrarPersona extends javax.swing.JFrame {
         jPanel2.add(field_Numero_Doc1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, 200, -1));
 
         field_Ocupacion.setBackground(new java.awt.Color(235, 235, 235));
-        field_Ocupacion.setForeground(new java.awt.Color(0, 0, 0));
         field_Ocupacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 field_OcupacionActionPerformed(evt);
@@ -360,7 +373,6 @@ public class registrarPersona extends javax.swing.JFrame {
         jPanel2.add(field_Ocupacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 220, -1));
 
         field_NTelefono.setBackground(new java.awt.Color(235, 235, 235));
-        field_NTelefono.setForeground(new java.awt.Color(0, 0, 0));
         field_NTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 field_NTelefonoActionPerformed(evt);
@@ -369,7 +381,6 @@ public class registrarPersona extends javax.swing.JFrame {
         jPanel2.add(field_NTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 200, -1));
 
         field_Direccion.setBackground(new java.awt.Color(235, 235, 235));
-        field_Direccion.setForeground(new java.awt.Color(0, 0, 0));
         field_Direccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 field_DireccionActionPerformed(evt);
@@ -407,12 +418,16 @@ public class registrarPersona extends javax.swing.JFrame {
     private void boton_Siguiente_RegistroDP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Siguiente_RegistroDP1ActionPerformed
         Verificador veri = new Verificador();
         if((veri.dataNB(field_Nombre_Persona))&&(veri.dataNB(field_Apellido_Persona))&&(veri.dataNB(field_Numero_Doc1))&&(veri.dataNB(field_Ocupacion))&&(veri.dataNB(field_NTelefono))&&(veri.dataNB(field_Direccion))){
-            if((field_NTelefono.getText().toString().matches("-?\\d+"))&&(field_Numero_Doc1.getText().toString().matches("-?\\d+"))){
-                Guardar insertSQL = new Guardar();
-                insertSQL.guardadoPersona(desplegable_Nacionalidad.getSelectedItem().toString()+field_Numero_Doc1.getText().toString(),field_Nombre_Persona, field_Apellido_Persona, jDateChooser1, desplegable_Sexo.getSelectedItem().toString(), field_Direccion, field_NTelefono,veri.altoRiesgo(desplegable_AltoRiesgo.getSelectedItem().toString()), field_Ocupacion.getText().toString(), desplegable_Estado1.getSelectedItem().toString(), desplegable_Pais1.getSelectedItem().toString(),jDateChooser2);
-                insertSQL.iteGuardarEnfePer(TableEnfer, desplegable_Nacionalidad.getSelectedItem().toString()+field_Numero_Doc1.getText().toString());
-            }else
-                JOptionPane.showMessageDialog(null,"La informacion en los campos numericos no es valida","Error",ERROR_MESSAGE);
+            if((veri.noVacio(field_Nombre_Persona.getText().toString()))&&(veri.noVacio(field_Apellido_Persona.getText().toString()))&&(veri.noVacio(field_Numero_Doc1.getText().toString()))&&(veri.noVacio(field_Ocupacion.getText().toString()))&&(veri.noVacio(field_NTelefono.getText().toString()))&&(veri.noVacio(field_Direccion.getText().toString()))){
+                if((field_NTelefono.getText().toString().matches("-?\\d+"))&&(field_Numero_Doc1.getText().toString().matches("-?\\d+"))){
+                    Guardar insertSQL = new Guardar();
+                    if (insertSQL.guardadoPersona(desplegable_Nacionalidad.getSelectedItem().toString()+field_Numero_Doc1.getText().toString(),field_Nombre_Persona, field_Apellido_Persona, jDateChooser1, desplegable_Sexo.getSelectedItem().toString(), field_Direccion, field_NTelefono,veri.altoRiesgo(desplegable_AltoRiesgo.getSelectedItem().toString()), field_Ocupacion.getText().toString(), desplegable_Estado1.getSelectedItem().toString(), desplegable_Pais1.getSelectedItem().toString(),jDateChooser2))
+                        insertSQL.iteGuardarEnfePer(TableEnfer, desplegable_Nacionalidad.getSelectedItem().toString()+field_Numero_Doc1.getText().toString());
+                }else
+                    JOptionPane.showMessageDialog(null,"La informacion en los campos numericos no es valida","Error",ERROR_MESSAGE);    
+            }else{
+                JOptionPane.showMessageDialog(null, "No se admiten casillas con unicamente espacios en blanco","Error",ERROR_MESSAGE);
+            }
         }else
             JOptionPane.showMessageDialog(null, "Se encuentran casillas sin rellenar","Error",ERROR_MESSAGE);
     }//GEN-LAST:event_boton_Siguiente_RegistroDP1ActionPerformed
@@ -485,6 +500,29 @@ public class registrarPersona extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_field_DireccionActionPerformed
 
+    private void boton_AggEnferNuevaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_AggEnferNuevaActionPerformed
+        String nuevaEnfermedad = JOptionPane.showInputDialog("Ingrese enfermedad");
+        if(nuevaEnfermedad != null){
+            Verificador veri = new Verificador();
+            if (veri.dataNBS(nuevaEnfermedad)){
+                Guardar insertSQL = new Guardar();
+                if(insertSQL.guardarEnfermedad(nuevaEnfermedad)){
+                    ArrayList<String> listas = dataSQL.nombEnfermedad(dataSQL.Enfermedad());
+                    desplegable_Enfermedad.removeAllItems();
+                    for (int i = 0; i < listas.size(); i++) {
+                        desplegable_Enfermedad.addItem(listas.get(i));
+                    }
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "La información ingresada es incorrecta", "Error", ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_boton_AggEnferNuevaActionPerformed
+
+    private void field_Nombre_PersonaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_field_Nombre_PersonaKeyTyped
+       
+    }//GEN-LAST:event_field_Nombre_PersonaKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -525,6 +563,7 @@ public class registrarPersona extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TableEnfer;
+    private javax.swing.JButton boton_AggEnferNueva;
     private javax.swing.JButton boton_Enfermedad;
     private javax.swing.JButton boton_Siguiente_RegistroDP1;
     private javax.swing.JButton boton_VerSintomas;

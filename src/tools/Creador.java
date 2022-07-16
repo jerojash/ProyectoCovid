@@ -19,6 +19,18 @@ public class Creador {
         }
     }
     
+    public void addTableHeaderCentro(DefaultTableModel model,JTable Centros) {
+        model = (DefaultTableModel) Centros.getModel();
+        Object[] newIdentifiers = new Object[]{"Centros de Salud", "Fecha de asignación"};
+        model.setColumnIdentifiers(newIdentifiers);
+        Centros.setFillsViewportHeight(true);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int x = 0; x < Centros.getColumnCount(); x++) {
+            Centros.getColumnModel().getColumn(x).setCellRenderer(centerRenderer);            
+        }
+    }
+    
     public void addTableHeaderPer(DefaultTableModel model,JTable Table){
         model = (DefaultTableModel) Table.getModel();
         Object[] newIdentifiers = new Object[]{"Documento","Nombre","Apellido","F.Nac","Sexo","Direccion","Teléfono","Alto riesgo","Ocupacion"};

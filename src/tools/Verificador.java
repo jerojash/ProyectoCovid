@@ -3,6 +3,8 @@ package tools;
 import com.toedter.calendar.JDateChooser;
 import java.awt.TextField;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -17,6 +19,16 @@ public class Verificador {
         boolean NV = true;
         
         if (entrada.getText().toString().equals("")){
+            NV = false;
+        }
+        
+        return NV;
+    }  
+        
+    public boolean dataNBS (String entrada){
+        boolean NV = true;
+        
+        if (entrada.equals("")){
             NV = false;
         }
         
@@ -61,4 +73,25 @@ public class Verificador {
         else
             return "No";
     }
+    
+    public boolean noVacio (String validar){
+        int x= validar.length();
+        if (!validar.isEmpty()) {
+            for (int i = 0; i < x; i++) {
+                if ((' '!=(validar.charAt(i)))) {
+                    return true;
+                }
+            }
+        } 
+           return false;      
+    }
+    
+    public boolean validarCE(String Correo){
+        Pattern pat = Pattern.compile ("[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.([a-zA-Z]{2,4})");
+        Matcher mat = pat.matcher(Correo);
+        if (!mat.matches())
+            return false;
+        else
+            return true;
+    } 
 }
