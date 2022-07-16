@@ -5,19 +5,31 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
+import static javax.swing.JOptionPane.WARNING_MESSAGE;
+import javax.swing.table.DefaultTableModel;
+import tools.Buscador;
+import tools.Creador;
+import tools.Verificador;
+
 /**
  *
  * @author Ricardo Fanghella
  */
 public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
+    Buscador bus = new Buscador();
+    Creador crea = new Creador();
+    DefaultTableModel model;
 
-    /**
-     * Creates new form registrarMedicamento
-     */
     public RegistroVisualizacionPersonas() {
         initComponents();
-        this.setSize(1008, 400);
-        this.setResizable(false);
+        crea.Interfaz(this, 1008, 550);
+        crea.addTableHeaderPer(model,jTable_personas);
+        crea.addTableHeaderEnfer(model, jTable_enfermedades);
+        crea.addTableHeaderPerRes(model, jTable_recide);
+        bus.tableAllpersonas(jTable_personas);
     }
 
     /**
@@ -37,15 +49,20 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         boton_Volver_Sintomas = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         label_Sintomas = new javax.swing.JLabel();
-        desplegable_Sintomas = new javax.swing.JComboBox<String>();
+        desplegable_Nacionalidad = new javax.swing.JComboBox<String>();
         boton_ModificarPersona = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1_Sintomas = new javax.swing.JTable();
-        boton_AggPersona = new javax.swing.JButton();
+        jTable_personas = new javax.swing.JTable();
+        boton_BusPersona = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         boton_EliminarPersona = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        textField2 = new javax.swing.JTextField();
+        field_Numero_Doc1 = new javax.swing.JTextField();
+        boton_AggPersona = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable_recide = new javax.swing.JTable();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable_enfermedades = new javax.swing.JTable();
         title_RegistroSintomas = new javax.swing.JLabel();
         boton_Siguiente_Sintomas = new javax.swing.JButton();
 
@@ -80,7 +97,7 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
                 boton_Volver_SintomasActionPerformed(evt);
             }
         });
-        jPanel1.add(boton_Volver_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 320, 80, 27));
+        jPanel1.add(boton_Volver_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 460, 80, 27));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -89,15 +106,15 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         label_Sintomas.setText("Personas registradas: ");
         jPanel2.add(label_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, -1, -1));
 
-        desplegable_Sintomas.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Sintomas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "V", "E" }));
-        desplegable_Sintomas.setPreferredSize(new java.awt.Dimension(56, 24));
-        desplegable_Sintomas.addActionListener(new java.awt.event.ActionListener() {
+        desplegable_Nacionalidad.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        desplegable_Nacionalidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "V", "E" }));
+        desplegable_Nacionalidad.setPreferredSize(new java.awt.Dimension(56, 24));
+        desplegable_Nacionalidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                desplegable_SintomasActionPerformed(evt);
+                desplegable_NacionalidadActionPerformed(evt);
             }
         });
-        jPanel2.add(desplegable_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, 40, -1));
+        jPanel2.add(desplegable_Nacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, 50, -1));
 
         boton_ModificarPersona.setBackground(new java.awt.Color(235, 235, 235));
         boton_ModificarPersona.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
@@ -108,30 +125,54 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
                 boton_ModificarPersonaActionPerformed(evt);
             }
         });
-        jPanel2.add(boton_ModificarPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 50, 90, 27));
+        jPanel2.add(boton_ModificarPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 50, 90, 27));
 
-        jTable1_Sintomas.setModel(new javax.swing.table.DefaultTableModel(
+        jTable_personas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "Documento ", "Nombre", "Apellido", "F. Nac.", "Estado", "F. Res.", "Ocupación", "Teléfono", "Sexo", "Alto riesgo", "Dirección", "Enfermedad"
+                "Documento ", "Nombre", "Apellido", "F. Nac.", "Sexo", "Dirección", "Teléfono", "Alto riesgo", "Ocupación"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1_Sintomas);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable_personas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable_personasMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable_personas);
+        if (jTable_personas.getColumnModel().getColumnCount() > 0) {
+            jTable_personas.getColumnModel().getColumn(0).setResizable(false);
+            jTable_personas.getColumnModel().getColumn(1).setResizable(false);
+            jTable_personas.getColumnModel().getColumn(2).setResizable(false);
+            jTable_personas.getColumnModel().getColumn(3).setResizable(false);
+            jTable_personas.getColumnModel().getColumn(4).setResizable(false);
+            jTable_personas.getColumnModel().getColumn(5).setResizable(false);
+            jTable_personas.getColumnModel().getColumn(6).setResizable(false);
+            jTable_personas.getColumnModel().getColumn(7).setResizable(false);
+            jTable_personas.getColumnModel().getColumn(8).setResizable(false);
+        }
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 920, 140));
 
-        boton_AggPersona.setBackground(new java.awt.Color(235, 235, 235));
-        boton_AggPersona.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
-        boton_AggPersona.setText("Agregar");
-        boton_AggPersona.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        boton_AggPersona.addActionListener(new java.awt.event.ActionListener() {
+        boton_BusPersona.setBackground(new java.awt.Color(235, 235, 235));
+        boton_BusPersona.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
+        boton_BusPersona.setText("Buscar");
+        boton_BusPersona.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_BusPersona.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_AggPersonaActionPerformed(evt);
+                boton_BusPersonaActionPerformed(evt);
             }
         });
-        jPanel2.add(boton_AggPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 50, 90, 27));
+        jPanel2.add(boton_BusPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 90, 27));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flo 1.png"))); // NOI18N
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, 130, 100));
@@ -145,21 +186,84 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
                 boton_EliminarPersonaActionPerformed(evt);
             }
         });
-        jPanel2.add(boton_EliminarPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 50, 90, 27));
+        jPanel2.add(boton_EliminarPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 50, 90, 27));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flo 1.png"))); // NOI18N
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 0, 130, 100));
 
-        textField2.setBackground(new java.awt.Color(235, 235, 235));
-        textField2.setForeground(new java.awt.Color(0, 0, 0));
-        textField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textField2ActionPerformed(evt);
+        field_Numero_Doc1.setBackground(new java.awt.Color(235, 235, 235));
+        field_Numero_Doc1.setForeground(new java.awt.Color(0, 0, 0));
+        field_Numero_Doc1.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                field_Numero_Doc1ComponentAdded(evt);
             }
         });
-        jPanel2.add(textField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 10, 300, -1));
+        field_Numero_Doc1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field_Numero_Doc1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(field_Numero_Doc1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 10, 300, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 940, 250));
+        boton_AggPersona.setBackground(new java.awt.Color(235, 235, 235));
+        boton_AggPersona.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
+        boton_AggPersona.setText("Agregar");
+        boton_AggPersona.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_AggPersona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_AggPersonaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(boton_AggPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 90, 27));
+
+        jTable_recide.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Estado", "Fecha Reside"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(jTable_recide);
+        if (jTable_recide.getColumnModel().getColumnCount() > 0) {
+            jTable_recide.getColumnModel().getColumn(0).setResizable(false);
+            jTable_recide.getColumnModel().getColumn(1).setResizable(false);
+        }
+
+        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 250, 270, 120));
+
+        jTable_enfermedades.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Enfermedades"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(jTable_enfermedades);
+        if (jTable_enfermedades.getColumnModel().getColumnCount() > 0) {
+            jTable_enfermedades.getColumnModel().getColumn(0).setResizable(false);
+        }
+
+        jPanel2.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 270, 120));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 940, 390));
 
         title_RegistroSintomas.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
         title_RegistroSintomas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -175,7 +279,7 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
                 boton_Siguiente_SintomasActionPerformed(evt);
             }
         });
-        jPanel1.add(boton_Siguiente_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 320, 80, 27));
+        jPanel1.add(boton_Siguiente_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, 80, 27));
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -187,32 +291,71 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_Volver_SintomasActionPerformed
 
     private void boton_ModificarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_ModificarPersonaActionPerformed
-        // TODO add your handling code here:
+        if (jTable_personas.getSelectedRow()!= -1){
+            
+        }else
+            JOptionPane.showMessageDialog(null, "Debe seleccionar en la tabla la persona a modificar","Aviso",INFORMATION_MESSAGE);
     }//GEN-LAST:event_boton_ModificarPersonaActionPerformed
 
-    private void boton_AggPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_AggPersonaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boton_AggPersonaActionPerformed
+    private void boton_BusPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_BusPersonaActionPerformed
+        Verificador veri = new Verificador();
+        if (veri.dataNB(field_Numero_Doc1)){
+            if (field_Numero_Doc1.getText().toString().matches("-?\\d+")){
+                bus.limpiarTabla(jTable_recide);
+                bus.limpiarTabla(jTable_enfermedades);
+                bus.limpiarTabla(jTable_personas);
+                bus.tablePersonas(jTable_personas, desplegable_Nacionalidad.getSelectedItem().toString()+field_Numero_Doc1.getText().toString());
+            }else
+                JOptionPane.showMessageDialog(null, "La cedula debe ser numeros enteros","Error",ERROR_MESSAGE);
+        }else{
+            bus.limpiarTabla(jTable_recide);
+            bus.limpiarTabla(jTable_enfermedades);
+            bus.limpiarTabla(jTable_personas);
+            bus.tableAllpersonas(jTable_personas);
+        }
+    }//GEN-LAST:event_boton_BusPersonaActionPerformed
 
     private void boton_Siguiente_SintomasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Siguiente_SintomasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_boton_Siguiente_SintomasActionPerformed
 
     private void boton_EliminarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_EliminarPersonaActionPerformed
-        // TODO add your handling code here:
+        bus.limpiarTabla(jTable_recide);
+        bus.limpiarTabla(jTable_enfermedades);
+        System.out.println(model.getValueAt(jTable_personas.getSelectedRow(),0).toString());
+        bus.tablePersonasEli(model.getValueAt(jTable_personas.getSelectedRow(),0).toString());
+        bus.limpiarTabla(jTable_personas);
+        bus.tableAllpersonas(jTable_personas);  
     }//GEN-LAST:event_boton_EliminarPersonaActionPerformed
 
-    private void desplegable_SintomasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desplegable_SintomasActionPerformed
+    private void desplegable_NacionalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desplegable_NacionalidadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_desplegable_SintomasActionPerformed
+    }//GEN-LAST:event_desplegable_NacionalidadActionPerformed
 
     private void field_TiempoReposoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_TiempoReposoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_field_TiempoReposoActionPerformed
 
-    private void textField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField2ActionPerformed
+    private void field_Numero_Doc1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_Numero_Doc1ActionPerformed
+        
+    }//GEN-LAST:event_field_Numero_Doc1ActionPerformed
+
+    private void field_Numero_Doc1ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_field_Numero_Doc1ComponentAdded
         // TODO add your handling code here:
-    }//GEN-LAST:event_textField2ActionPerformed
+    }//GEN-LAST:event_field_Numero_Doc1ComponentAdded
+
+    private void boton_AggPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_AggPersonaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_AggPersonaActionPerformed
+
+    private void jTable_personasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_personasMouseClicked
+        model = (DefaultTableModel) jTable_personas.getModel();
+        String CI = model.getValueAt(jTable_personas.getSelectedRow(), 0).toString();
+        bus.limpiarTabla(jTable_recide);
+        bus.limpiarTabla(jTable_enfermedades);
+        bus.tablePerEnf(jTable_enfermedades,CI);
+        bus.tablePerRes(jTable_recide,CI);
+    }//GEN-LAST:event_jTable_personasMouseClicked
 
     /**
      * @param args the command line arguments
@@ -314,11 +457,13 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boton_AggPersona;
+    private javax.swing.JButton boton_BusPersona;
     private javax.swing.JButton boton_EliminarPersona;
     private javax.swing.JButton boton_ModificarPersona;
     private javax.swing.JButton boton_Siguiente_Sintomas;
     private javax.swing.JButton boton_Volver_Sintomas;
-    private javax.swing.JComboBox<String> desplegable_Sintomas;
+    private javax.swing.JComboBox<String> desplegable_Nacionalidad;
+    private javax.swing.JTextField field_Numero_Doc1;
     private javax.swing.JTextField field_TiempoReposo;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
@@ -327,10 +472,13 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1_Sintomas;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTable jTable_enfermedades;
+    private javax.swing.JTable jTable_personas;
+    private javax.swing.JTable jTable_recide;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel label_Sintomas;
-    private javax.swing.JTextField textField2;
     private javax.swing.JLabel title_RegistroSintomas;
     // End of variables declaration//GEN-END:variables
 }

@@ -49,9 +49,16 @@ public class Verificador {
     }
     
     public boolean altoRiesgo(String dato){
-        if (dato == "Si")
+        if (dato.equals("Si"))
             return true;
         else
             return false;
+    }
+    
+    public String altoRiesgoI(String dato){
+        if (dato.equals("t"))
+            return "Si";
+        else
+            return "No";
     }
 }

@@ -7,15 +7,39 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public class Creador {
-    public void addTableHeaderEnfer(DefaultTableModel model,JTable Enfermedades) {
-        model = (DefaultTableModel) Enfermedades.getModel();
+    public void addTableHeaderEnfer(DefaultTableModel model,JTable Table) {
+        model = (DefaultTableModel) Table.getModel();
         Object[] newIdentifiers = new Object[]{"Enfermedades"};
         model.setColumnIdentifiers(newIdentifiers);
-        Enfermedades.setFillsViewportHeight(true);
+        Table.setFillsViewportHeight(true);
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
-        for (int x = 0; x < Enfermedades.getColumnCount(); x++) {
-            Enfermedades.getColumnModel().getColumn(x).setCellRenderer(centerRenderer);            
+        for (int x = 0; x < Table.getColumnCount(); x++) {
+            Table.getColumnModel().getColumn(x).setCellRenderer(centerRenderer);            
+        }
+    }
+    
+    public void addTableHeaderPer(DefaultTableModel model,JTable Table){
+        model = (DefaultTableModel) Table.getModel();
+        Object[] newIdentifiers = new Object[]{"Documento","Nombre","Apellido","F.Nac","Sexo","Direccion","Teléfono","Alto riesgo","Ocupacion"};
+        model.setColumnIdentifiers(newIdentifiers);
+        Table.setFillsViewportHeight(true);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int x = 0; x < Table.getColumnCount(); x++) {
+            Table.getColumnModel().getColumn(x).setCellRenderer(centerRenderer);            
+        }
+    }
+    
+    public void addTableHeaderPerRes(DefaultTableModel model,JTable Table){
+        model = (DefaultTableModel) Table.getModel();
+        Object[] newIdentifiers = new Object[]{"Estado","Fecha reside"};
+        model.setColumnIdentifiers(newIdentifiers);
+        Table.setFillsViewportHeight(true);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int x = 0; x < Table.getColumnCount(); x++) {
+            Table.getColumnModel().getColumn(x).setCellRenderer(centerRenderer);            
         }
     }
     
