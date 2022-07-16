@@ -322,7 +322,6 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
     private void boton_EliminarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_EliminarPersonaActionPerformed
         bus.limpiarTabla(jTable_recide);
         bus.limpiarTabla(jTable_enfermedades);
-        System.out.println(model.getValueAt(jTable_personas.getSelectedRow(),0).toString());
         bus.tablePersonasEli(model.getValueAt(jTable_personas.getSelectedRow(),0).toString());
         bus.limpiarTabla(jTable_personas);
         bus.tableAllpersonas(jTable_personas);  
