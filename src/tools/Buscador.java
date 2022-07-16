@@ -132,27 +132,52 @@ public class Buscador {
     public void tablePersonasEli(String cedula){
         Statement st;
         ConexionSQL con = new ConexionSQL();
-        try {
+        try {//borrar personal de salud en asignado
+            st = con.connected().createStatement();
+            st.executeQuery("delete from asignado where docidentidad_ps='"+cedula+"'");
+        } catch (Exception e) {
+        }
+        try {//borrar personal de salud en vacunada
+            st = con.connected().createStatement();
+            st.executeQuery("delete from vacunada where docidentidad_ps='"+cedula+"'");
+        } catch (Exception e) {
+        }
+        try {//borrar paciente en vacunada
+            st = con.connected().createStatement();
+            st.executeQuery("delete from vacunada where docidentidad='"+cedula+"'");
+        } catch (Exception e) {
+        }
+        try {//borrar paciente en hospitalizado
+            st = con.connected().createStatement();
+            st.executeQuery("delete from hospitalizado where docidentidad_pac='"+cedula+"'");
+        } catch (Exception e) {
+        }
+        try {//borrar paciente en requiere
             st = con.connected().createStatement();
             st.executeQuery("delete from requiere where docidentidad_pac='"+cedula+"'");
         } catch (Exception e) {
         }
-        try {
+        try {//borrar personas en personal de salud
+            st = con.connected().createStatement();
+            st.executeQuery("delete from personal_salud where docidentidad_ps='"+cedula+"'");
+        } catch (Exception e) {
+        }
+        try {//borrar personas en paciente
             st = con.connected().createStatement();
             st.executeQuery("delete from paciente where docidentidad_pac='"+cedula+"'");
         } catch (Exception e) {
         }
-        try {
+        try {//borrar persona en padece
             st = con.connected().createStatement();
             st.executeQuery("delete from padece where docidentidad='"+cedula+"'");
         } catch (Exception e) {
         }
-        try {
+        try {//borrar persona en reside
             st = con.connected().createStatement();
             st.executeQuery("delete from reside where docidentidad='"+cedula+"'");
         } catch (Exception e) {
         }
-        try {
+        try {//borrar personas
             st = con.connected().createStatement();
             st.executeQuery("delete from persona where doc_identidad='"+cedula+"'");    
         } catch (Exception e) {
