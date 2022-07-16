@@ -26,6 +26,7 @@ import tools.Verificador;
 public class registrarPersona extends javax.swing.JFrame {
     Extraer dataSQL = new Extraer();
     DefaultTableModel model;
+    Creador crea = new Creador();
     
     public registrarPersona() {
         initComponents();
@@ -400,7 +401,6 @@ public class registrarPersona extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_EnfermedadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_EnfermedadActionPerformed
-        Creador crea = new Creador();
         crea.InterfazIguales(this, regisEnfermedad, 467, 385);    
     }//GEN-LAST:event_boton_EnfermedadActionPerformed
 
@@ -435,7 +435,6 @@ public class registrarPersona extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_Volver_RegistroDP2ActionPerformed
 
     private void boton_Volver_VarianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_VarianteActionPerformed
-        Creador crea = new Creador();
         crea.InterfazIguales(regisEnfermedad, this, 594, 580); 
     }//GEN-LAST:event_boton_Volver_VarianteActionPerformed
 
