@@ -142,7 +142,7 @@ public class RegistroSintomas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_Volver_SintomasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_SintomasActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_boton_Volver_SintomasActionPerformed
 
     private void boton_EliminarSintomasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_EliminarSintomasActionPerformed

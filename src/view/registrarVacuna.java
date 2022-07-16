@@ -36,24 +36,24 @@ public class registrarVacuna extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         label_Pais = new javax.swing.JLabel();
         label_nombre_Vacuna = new javax.swing.JLabel();
-        field_Nombre_Vacuna = new java.awt.TextField();
         label_Laboratorio = new javax.swing.JLabel();
         label_CantDosis = new javax.swing.JLabel();
-        field_Laboratorio = new java.awt.TextField();
         label_Tipovac = new javax.swing.JLabel();
         label_Eficaz = new javax.swing.JLabel();
-        desplegable_TipoVac = new javax.swing.JComboBox<>();
-        desplegable_Pais = new javax.swing.JComboBox<>();
-        desplegable_Variantes = new javax.swing.JComboBox<>();
+        desplegable_TipoVac = new javax.swing.JComboBox<String>();
+        desplegable_Pais = new javax.swing.JComboBox<String>();
+        desplegable_Variantes = new javax.swing.JComboBox<String>();
         label_Efectos = new javax.swing.JLabel();
         label_PorcentajeEficaz = new javax.swing.JLabel();
         label_Lote = new javax.swing.JLabel();
-        field_Lote = new java.awt.TextField();
-        field_PorcentajeEficaz = new java.awt.TextField();
-        field_CantDosis = new java.awt.TextField();
         jLabel2 = new javax.swing.JLabel();
         boton_AnadirVariante = new javax.swing.JButton();
         boton_Siguiente_RegistroVacuna = new javax.swing.JButton();
+        field_Nombre_Vacuna = new javax.swing.JTextField();
+        fied_origen = new javax.swing.JTextField();
+        field_Lote = new javax.swing.JTextField();
+        field_CantDosis = new javax.swing.JTextField();
+        field_PorcentajeEficaz = new javax.swing.JTextField();
         title_Vacuna = new javax.swing.JLabel();
         boton_Siguiente_RegistroVacuna1 = new javax.swing.JButton();
 
@@ -92,10 +92,6 @@ public class registrarVacuna extends javax.swing.JFrame {
         label_nombre_Vacuna.setText("Nombre:");
         jPanel2.add(label_nombre_Vacuna, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        field_Nombre_Vacuna.setBackground(new java.awt.Color(235, 235, 235));
-        field_Nombre_Vacuna.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jPanel2.add(field_Nombre_Vacuna, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 180, -1));
-
         label_Laboratorio.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         label_Laboratorio.setText("Laboratorio de origen:");
         jPanel2.add(label_Laboratorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
@@ -103,10 +99,6 @@ public class registrarVacuna extends javax.swing.JFrame {
         label_CantDosis.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         label_CantDosis.setText("Cantidad de dosis: ");
         jPanel2.add(label_CantDosis, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, -1, -1));
-
-        field_Laboratorio.setBackground(new java.awt.Color(235, 235, 235));
-        field_Laboratorio.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jPanel2.add(field_Laboratorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 180, -1));
 
         label_Tipovac.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         label_Tipovac.setText("Tipo: ");
@@ -117,12 +109,12 @@ public class registrarVacuna extends javax.swing.JFrame {
         jPanel2.add(label_Eficaz, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
 
         desplegable_TipoVac.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_TipoVac.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ARNm", "Vector Viral", "De tipo Subunidades proteicas" }));
+        desplegable_TipoVac.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ARNm", "Vector Viral", "De tipo Subunidades proteicas" }));
         desplegable_TipoVac.setPreferredSize(new java.awt.Dimension(56, 24));
         jPanel2.add(desplegable_TipoVac, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, 210, -1));
 
         desplegable_Pais.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Pais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        desplegable_Pais.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         desplegable_Pais.setPreferredSize(new java.awt.Dimension(56, 24));
         desplegable_Pais.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,7 +124,7 @@ public class registrarVacuna extends javax.swing.JFrame {
         jPanel2.add(desplegable_Pais, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 180, -1));
 
         desplegable_Variantes.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Variantes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        desplegable_Variantes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         desplegable_Variantes.setPreferredSize(new java.awt.Dimension(56, 24));
         jPanel2.add(desplegable_Variantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 180, -1));
 
@@ -147,19 +139,6 @@ public class registrarVacuna extends javax.swing.JFrame {
         label_Lote.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         label_Lote.setText("Lote:");
         jPanel2.add(label_Lote, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
-
-        field_Lote.setBackground(new java.awt.Color(235, 235, 235));
-        field_Lote.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jPanel2.add(field_Lote, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 130, -1));
-
-        field_PorcentajeEficaz.setBackground(new java.awt.Color(235, 235, 235));
-        field_PorcentajeEficaz.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        field_PorcentajeEficaz.setPreferredSize(new java.awt.Dimension(8, 25));
-        jPanel2.add(field_PorcentajeEficaz, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, 60, -1));
-
-        field_CantDosis.setBackground(new java.awt.Color(235, 235, 235));
-        field_CantDosis.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jPanel2.add(field_CantDosis, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, 60, -1));
 
         jLabel2.setText("%");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, -1, 20));
@@ -186,6 +165,51 @@ public class registrarVacuna extends javax.swing.JFrame {
             }
         });
         jPanel2.add(boton_Siguiente_RegistroVacuna, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 130, 25));
+
+        field_Nombre_Vacuna.setBackground(new java.awt.Color(235, 235, 235));
+        field_Nombre_Vacuna.setForeground(new java.awt.Color(0, 0, 0));
+        field_Nombre_Vacuna.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field_Nombre_VacunaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(field_Nombre_Vacuna, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 220, -1));
+
+        fied_origen.setBackground(new java.awt.Color(235, 235, 235));
+        fied_origen.setForeground(new java.awt.Color(0, 0, 0));
+        fied_origen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fied_origenActionPerformed(evt);
+            }
+        });
+        jPanel2.add(fied_origen, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 220, -1));
+
+        field_Lote.setBackground(new java.awt.Color(235, 235, 235));
+        field_Lote.setForeground(new java.awt.Color(0, 0, 0));
+        field_Lote.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field_LoteActionPerformed(evt);
+            }
+        });
+        jPanel2.add(field_Lote, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 150, -1));
+
+        field_CantDosis.setBackground(new java.awt.Color(235, 235, 235));
+        field_CantDosis.setForeground(new java.awt.Color(0, 0, 0));
+        field_CantDosis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field_CantDosisActionPerformed(evt);
+            }
+        });
+        jPanel2.add(field_CantDosis, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 80, -1));
+
+        field_PorcentajeEficaz.setBackground(new java.awt.Color(235, 235, 235));
+        field_PorcentajeEficaz.setForeground(new java.awt.Color(0, 0, 0));
+        field_PorcentajeEficaz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field_PorcentajeEficazActionPerformed(evt);
+            }
+        });
+        jPanel2.add(field_PorcentajeEficaz, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, 70, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 470, 330));
 
@@ -229,6 +253,26 @@ public class registrarVacuna extends javax.swing.JFrame {
     private void boton_Siguiente_RegistroVacuna1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Siguiente_RegistroVacuna1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_boton_Siguiente_RegistroVacuna1ActionPerformed
+
+    private void field_Nombre_VacunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_Nombre_VacunaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field_Nombre_VacunaActionPerformed
+
+    private void fied_origenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fied_origenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fied_origenActionPerformed
+
+    private void field_LoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_LoteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field_LoteActionPerformed
+
+    private void field_CantDosisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_CantDosisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field_CantDosisActionPerformed
+
+    private void field_PorcentajeEficazActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_PorcentajeEficazActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field_PorcentajeEficazActionPerformed
 
     /**
      * @param args the command line arguments
@@ -288,11 +332,11 @@ public class registrarVacuna extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> desplegable_Pais;
     private javax.swing.JComboBox<String> desplegable_TipoVac;
     private javax.swing.JComboBox<String> desplegable_Variantes;
-    private java.awt.TextField field_CantDosis;
-    private java.awt.TextField field_Laboratorio;
-    private java.awt.TextField field_Lote;
-    private java.awt.TextField field_Nombre_Vacuna;
-    private java.awt.TextField field_PorcentajeEficaz;
+    private javax.swing.JTextField fied_origen;
+    private javax.swing.JTextField field_CantDosis;
+    private javax.swing.JTextField field_Lote;
+    private javax.swing.JTextField field_Nombre_Vacuna;
+    private javax.swing.JTextField field_PorcentajeEficaz;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

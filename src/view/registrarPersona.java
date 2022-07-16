@@ -32,8 +32,7 @@ public class registrarPersona extends javax.swing.JFrame {
         initComponents();
         Creador crea = new Creador();
         crea.addTableHeaderEnfer(modelEnfer,TableEnfer);
-        this.setSize(594, 580);
-        this.setResizable(false);
+        crea.Interfaz(this, 594, 580);
         ArrayList<String> listas = dataSQL.nombPais(dataSQL.Pais());
         for (int i=0;i<listas.size();i++)
         desplegable_Pais1.addItem(listas.get(i));
@@ -402,11 +401,8 @@ public class registrarPersona extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_EnfermedadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_EnfermedadActionPerformed
-        this.setVisible(false);
-        regisEnfermedad.setResizable(false); 
-        regisEnfermedad.setSize(467, 385);  
-        regisEnfermedad.setVisible(true);   
-        regisEnfermedad.setLocationRelativeTo(null);      
+        Creador crea = new Creador();
+        crea.InterfazIguales(this, regisEnfermedad, 467, 385);    
     }//GEN-LAST:event_boton_EnfermedadActionPerformed
 
     private void boton_Siguiente_RegistroDP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Siguiente_RegistroDP1ActionPerformed
@@ -441,15 +437,12 @@ public class registrarPersona extends javax.swing.JFrame {
     }//GEN-LAST:event_desplegable_Pais1ActionPerformed
 
     private void boton_Volver_RegistroDP2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_RegistroDP2ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_boton_Volver_RegistroDP2ActionPerformed
 
     private void boton_Volver_VarianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_VarianteActionPerformed
-        regisEnfermedad.setVisible(false);
-        this.setResizable(false);
-        regisEnfermedad.setSize(550, 527); 
-        this.setVisible(true);   
-        this.setLocationRelativeTo(null); 
+        Creador crea = new Creador();
+        crea.InterfazIguales(regisEnfermedad, this, 594, 580); 
     }//GEN-LAST:event_boton_Volver_VarianteActionPerformed
 
     private void desplegable_EnfermedadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desplegable_EnfermedadActionPerformed
