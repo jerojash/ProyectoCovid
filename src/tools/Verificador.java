@@ -13,7 +13,7 @@ public class Verificador {
         
     }
   
-    public boolean dataNB (TextField entrada){
+    public boolean dataNB (JTextField entrada){
         boolean NV = true;
         
         if (entrada.getText().toString().equals("")){
@@ -47,5 +47,12 @@ public class Verificador {
             } 
         }
         return existe;
+    }
+    
+    public boolean altoRiesgo(String dato){
+        if (dato == "Si")
+            return true;
+        else
+            return false;
     }
 }

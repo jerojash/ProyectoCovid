@@ -32,18 +32,17 @@ public class registrarPersona extends javax.swing.JFrame {
         initComponents();
         Creador crea = new Creador();
         crea.addTableHeaderEnfer(modelEnfer,TableEnfer);
-        this.setSize(594, 580);
-        this.setResizable(false);
+        crea.Interfaz(this, 594, 580);
         ArrayList<String> listas = dataSQL.nombPais(dataSQL.Pais());
         for (int i=0;i<listas.size();i++)
         desplegable_Pais1.addItem(listas.get(i));
         listas = dataSQL.nombEnfermedad(dataSQL.Enfermedad());
         for (int i=0;i<listas.size();i++)
         desplegable_Enfermedad.addItem(listas.get(i));
-        jDateChooser1.getDateEditor().setEnabled(false);
+        jDateChooser1.getDateEditor().setEnabled(true);
         jDateChooser1.getJCalendar().setMaxSelectableDate(new Date());
         jDateChooser1.setDate(new Date(System.currentTimeMillis()));
-        jDateChooser2.getDateEditor().setEnabled(false);
+        jDateChooser2.getDateEditor().setEnabled(true);
         jDateChooser2.getJCalendar().setMaxSelectableDate(new Date());
         jDateChooser2.setDate(new Date(System.currentTimeMillis()));
     }
@@ -73,34 +72,34 @@ public class registrarPersona extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         boton_Siguiente_RegistroDP1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        desplegable_Pais1 = new javax.swing.JComboBox<String>();
+        desplegable_Sexo = new javax.swing.JComboBox<String>();
+        desplegable_AltoRiesgo = new javax.swing.JComboBox<String>();
+        desplegable_Nacionalidad = new javax.swing.JComboBox<String>();
+        desplegable_Estado1 = new javax.swing.JComboBox<String>();
         jLabel1 = new javax.swing.JLabel();
         label_Pais = new javax.swing.JLabel();
         label_nombre_Per = new javax.swing.JLabel();
-        field_Nombre_Persona = new java.awt.TextField();
         label_Apellido_Per = new javax.swing.JLabel();
         label_Numero_Doc = new javax.swing.JLabel();
-        field_Apellido_Persona = new java.awt.TextField();
         label_Fecha_Nac = new javax.swing.JLabel();
         label_Ntelefono = new javax.swing.JLabel();
         label_AltoRiesgo = new javax.swing.JLabel();
         label_Estado = new javax.swing.JLabel();
-        desplegable_Nacionalidad = new javax.swing.JComboBox<String>();
-        desplegable_AltoRiesgo = new javax.swing.JComboBox<String>();
-        desplegable_Sexo = new javax.swing.JComboBox<String>();
-        field_Numero_Doc1 = new java.awt.TextField();
         label_Enfermedad = new javax.swing.JLabel();
-        field_Direccion = new java.awt.TextField();
         label_Sexo = new javax.swing.JLabel();
-        desplegable_Pais1 = new javax.swing.JComboBox<String>();
         label_Ocupacion3 = new javax.swing.JLabel();
-        field_Ocupacion = new java.awt.TextField();
         label_Direccion = new javax.swing.JLabel();
-        field_NTelefono = new java.awt.TextField();
-        desplegable_Estado1 = new javax.swing.JComboBox<String>();
         boton_Enfermedad = new javax.swing.JButton();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
         label_Fecha_Nac1 = new javax.swing.JLabel();
+        field_Apellido_Persona = new javax.swing.JTextField();
+        field_Nombre_Persona = new javax.swing.JTextField();
+        field_Numero_Doc1 = new javax.swing.JTextField();
+        field_Ocupacion = new javax.swing.JTextField();
+        field_NTelefono = new javax.swing.JTextField();
+        field_Direccion = new javax.swing.JTextField();
         title_persona = new javax.swing.JLabel();
         boton_Volver_RegistroDP2 = new javax.swing.JButton();
 
@@ -223,6 +222,39 @@ public class registrarPersona extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        desplegable_Pais1.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        desplegable_Pais1.setPreferredSize(new java.awt.Dimension(56, 24));
+        desplegable_Pais1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                desplegable_Pais1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(desplegable_Pais1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 160, -1));
+
+        desplegable_Sexo.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        desplegable_Sexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "F", "M", "N/A" }));
+        desplegable_Sexo.setPreferredSize(new java.awt.Dimension(56, 24));
+        jPanel2.add(desplegable_Sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 70, -1));
+
+        desplegable_AltoRiesgo.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        desplegable_AltoRiesgo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Si", "No" }));
+        desplegable_AltoRiesgo.setPreferredSize(new java.awt.Dimension(56, 24));
+        desplegable_AltoRiesgo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                desplegable_AltoRiesgoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(desplegable_AltoRiesgo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 160, -1));
+
+        desplegable_Nacionalidad.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        desplegable_Nacionalidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "V", "E" }));
+        desplegable_Nacionalidad.setPreferredSize(new java.awt.Dimension(56, 24));
+        jPanel2.add(desplegable_Nacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 50, -1));
+
+        desplegable_Estado1.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        desplegable_Estado1.setPreferredSize(new java.awt.Dimension(56, 24));
+        jPanel2.add(desplegable_Estado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, 160, -1));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flo 1.png"))); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, 154, 110));
 
@@ -234,10 +266,6 @@ public class registrarPersona extends javax.swing.JFrame {
         label_nombre_Per.setText("Nombre:");
         jPanel2.add(label_nombre_Per, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        field_Nombre_Persona.setBackground(new java.awt.Color(235, 235, 235));
-        field_Nombre_Persona.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jPanel2.add(field_Nombre_Persona, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 130, -1));
-
         label_Apellido_Per.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         label_Apellido_Per.setText("Apellido:");
         jPanel2.add(label_Apellido_Per, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, -1, -1));
@@ -245,15 +273,6 @@ public class registrarPersona extends javax.swing.JFrame {
         label_Numero_Doc.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         label_Numero_Doc.setText("Número de documento:");
         jPanel2.add(label_Numero_Doc, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
-
-        field_Apellido_Persona.setBackground(new java.awt.Color(235, 235, 235));
-        field_Apellido_Persona.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        field_Apellido_Persona.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                field_Apellido_PersonaActionPerformed(evt);
-            }
-        });
-        jPanel2.add(field_Apellido_Persona, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 130, -1));
 
         label_Fecha_Nac.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         label_Fecha_Nac.setText("Fecha de residencia: ");
@@ -271,70 +290,21 @@ public class registrarPersona extends javax.swing.JFrame {
         label_Estado.setText("Estado: ");
         jPanel2.add(label_Estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, -1, -1));
 
-        desplegable_Nacionalidad.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Nacionalidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "V", "E" }));
-        desplegable_Nacionalidad.setPreferredSize(new java.awt.Dimension(56, 24));
-        jPanel2.add(desplegable_Nacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 50, -1));
-
-        desplegable_AltoRiesgo.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_AltoRiesgo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Si", "No" }));
-        desplegable_AltoRiesgo.setPreferredSize(new java.awt.Dimension(56, 24));
-        desplegable_AltoRiesgo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                desplegable_AltoRiesgoActionPerformed(evt);
-            }
-        });
-        jPanel2.add(desplegable_AltoRiesgo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 160, -1));
-
-        desplegable_Sexo.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Sexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "F", "M", "N/A" }));
-        desplegable_Sexo.setPreferredSize(new java.awt.Dimension(56, 24));
-        jPanel2.add(desplegable_Sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 70, -1));
-
-        field_Numero_Doc1.setBackground(new java.awt.Color(235, 235, 235));
-        field_Numero_Doc1.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jPanel2.add(field_Numero_Doc1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, 180, -1));
-
         label_Enfermedad.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         label_Enfermedad.setText("Enfermedades:");
         jPanel2.add(label_Enfermedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
-
-        field_Direccion.setBackground(new java.awt.Color(235, 235, 235));
-        field_Direccion.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jPanel2.add(field_Direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, 360, -1));
 
         label_Sexo.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         label_Sexo.setText("Sexo: ");
         jPanel2.add(label_Sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
 
-        desplegable_Pais1.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Pais1.setPreferredSize(new java.awt.Dimension(56, 24));
-        desplegable_Pais1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                desplegable_Pais1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(desplegable_Pais1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 160, -1));
-
         label_Ocupacion3.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         label_Ocupacion3.setText("Ocupación:");
         jPanel2.add(label_Ocupacion3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
 
-        field_Ocupacion.setBackground(new java.awt.Color(235, 235, 235));
-        field_Ocupacion.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jPanel2.add(field_Ocupacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 180, -1));
-
         label_Direccion.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         label_Direccion.setText("Dirección:");
         jPanel2.add(label_Direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
-
-        field_NTelefono.setBackground(new java.awt.Color(235, 235, 235));
-        field_NTelefono.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jPanel2.add(field_NTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, 180, -1));
-
-        desplegable_Estado1.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Estado1.setPreferredSize(new java.awt.Dimension(56, 24));
-        jPanel2.add(desplegable_Estado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, 160, -1));
 
         boton_Enfermedad.setBackground(new java.awt.Color(235, 235, 235));
         boton_Enfermedad.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
@@ -352,6 +322,60 @@ public class registrarPersona extends javax.swing.JFrame {
         label_Fecha_Nac1.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         label_Fecha_Nac1.setText("Fecha de Nacimiento: ");
         jPanel2.add(label_Fecha_Nac1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+
+        field_Apellido_Persona.setBackground(new java.awt.Color(235, 235, 235));
+        field_Apellido_Persona.setForeground(new java.awt.Color(0, 0, 0));
+        field_Apellido_Persona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field_Apellido_PersonaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(field_Apellido_Persona, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 140, -1));
+
+        field_Nombre_Persona.setBackground(new java.awt.Color(235, 235, 235));
+        field_Nombre_Persona.setForeground(new java.awt.Color(0, 0, 0));
+        field_Nombre_Persona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field_Nombre_PersonaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(field_Nombre_Persona, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 140, -1));
+
+        field_Numero_Doc1.setBackground(new java.awt.Color(235, 235, 235));
+        field_Numero_Doc1.setForeground(new java.awt.Color(0, 0, 0));
+        field_Numero_Doc1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field_Numero_Doc1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(field_Numero_Doc1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, 200, -1));
+
+        field_Ocupacion.setBackground(new java.awt.Color(235, 235, 235));
+        field_Ocupacion.setForeground(new java.awt.Color(0, 0, 0));
+        field_Ocupacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field_OcupacionActionPerformed(evt);
+            }
+        });
+        jPanel2.add(field_Ocupacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 220, -1));
+
+        field_NTelefono.setBackground(new java.awt.Color(235, 235, 235));
+        field_NTelefono.setForeground(new java.awt.Color(0, 0, 0));
+        field_NTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field_NTelefonoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(field_NTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 200, -1));
+
+        field_Direccion.setBackground(new java.awt.Color(235, 235, 235));
+        field_Direccion.setForeground(new java.awt.Color(0, 0, 0));
+        field_Direccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field_DireccionActionPerformed(evt);
+            }
+        });
+        jPanel2.add(field_Direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, 200, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 520, 430));
 
@@ -377,11 +401,8 @@ public class registrarPersona extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_EnfermedadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_EnfermedadActionPerformed
-        this.setVisible(false);
-        regisEnfermedad.setResizable(false); 
-        regisEnfermedad.setSize(467, 385);  
-        regisEnfermedad.setVisible(true);   
-        regisEnfermedad.setLocationRelativeTo(null);      
+        Creador crea = new Creador();
+        crea.InterfazIguales(this, regisEnfermedad, 467, 385);    
     }//GEN-LAST:event_boton_EnfermedadActionPerformed
 
     private void boton_Siguiente_RegistroDP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Siguiente_RegistroDP1ActionPerformed
@@ -389,7 +410,13 @@ public class registrarPersona extends javax.swing.JFrame {
         if((veri.dataNB(field_Nombre_Persona))&&(veri.dataNB(field_Apellido_Persona))&&(veri.dataNB(field_Numero_Doc1))&&(veri.dataNB(field_Ocupacion))&&(veri.dataNB(field_NTelefono))&&(veri.dataNB(field_Direccion))){
             if((field_NTelefono.getText().toString().matches("-?\\d+"))&&(field_Numero_Doc1.getText().toString().matches("-?\\d+"))){
                 Guardar insertSQL = new Guardar();
-                insertSQL.guardadoPersona(desplegable_Nacionalidad.getSelectedItem().toString()+field_Numero_Doc1.getText().toString(),field_Nombre_Persona, field_Apellido_Persona, jDateChooser1, desplegable_Sexo.getSelectedItem().toString(), field_Direccion, field_NTelefono,desplegable_AltoRiesgo.getSelectedItem().toString(), field_Ocupacion, desplegable_Estado1.getSelectedItem().toString(), desplegable_Pais1.getSelectedItem().toString(),jDateChooser2);
+                System.out.println(field_Numero_Doc1.getText().toString());
+                System.out.println(field_Nombre_Persona.getText().toString());
+                System.out.println(field_Apellido_Persona.getText().toString());
+                System.out.println(field_Direccion.getText().toString());
+                System.out.println(field_NTelefono.getText().toString());
+                System.out.println(field_Ocupacion.getText().toString());
+                insertSQL.guardadoPersona(desplegable_Nacionalidad.getSelectedItem().toString()+field_Numero_Doc1.getText().toString(),field_Nombre_Persona, field_Apellido_Persona, jDateChooser1, desplegable_Sexo.getSelectedItem().toString(), field_Direccion, field_NTelefono,veri.altoRiesgo(desplegable_AltoRiesgo.getSelectedItem().toString()), field_Ocupacion.getText().toString(), desplegable_Estado1.getSelectedItem().toString(), desplegable_Pais1.getSelectedItem().toString(),jDateChooser2);
             }else
                 JOptionPane.showMessageDialog(null,"La informacion en los campos numericos no es valida","Error",ERROR_MESSAGE);
         }else
@@ -410,19 +437,12 @@ public class registrarPersona extends javax.swing.JFrame {
     }//GEN-LAST:event_desplegable_Pais1ActionPerformed
 
     private void boton_Volver_RegistroDP2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_RegistroDP2ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_boton_Volver_RegistroDP2ActionPerformed
 
-    private void field_Apellido_PersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_Apellido_PersonaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_field_Apellido_PersonaActionPerformed
-
     private void boton_Volver_VarianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_VarianteActionPerformed
-        regisEnfermedad.setVisible(false);
-        this.setResizable(false);
-        regisEnfermedad.setSize(550, 527); 
-        this.setVisible(true);   
-        this.setLocationRelativeTo(null); 
+        Creador crea = new Creador();
+        crea.InterfazIguales(regisEnfermedad, this, 594, 580); 
     }//GEN-LAST:event_boton_Volver_VarianteActionPerformed
 
     private void desplegable_EnfermedadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desplegable_EnfermedadActionPerformed
@@ -442,6 +462,30 @@ public class registrarPersona extends javax.swing.JFrame {
             modelEnfer.addRow(new Object[]{dato});
         }
     }//GEN-LAST:event_boton_VerSintomas1ActionPerformed
+
+    private void field_Nombre_PersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_Nombre_PersonaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field_Nombre_PersonaActionPerformed
+
+    private void field_Apellido_PersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_Apellido_PersonaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field_Apellido_PersonaActionPerformed
+
+    private void field_Numero_Doc1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_Numero_Doc1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field_Numero_Doc1ActionPerformed
+
+    private void field_OcupacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_OcupacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field_OcupacionActionPerformed
+
+    private void field_NTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_NTelefonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field_NTelefonoActionPerformed
+
+    private void field_DireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_DireccionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field_DireccionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -495,12 +539,12 @@ public class registrarPersona extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> desplegable_Nacionalidad;
     private javax.swing.JComboBox<String> desplegable_Pais1;
     private javax.swing.JComboBox<String> desplegable_Sexo;
-    private java.awt.TextField field_Apellido_Persona;
-    private java.awt.TextField field_Direccion;
-    private java.awt.TextField field_NTelefono;
-    private java.awt.TextField field_Nombre_Persona;
-    private java.awt.TextField field_Numero_Doc1;
-    private java.awt.TextField field_Ocupacion;
+    private javax.swing.JTextField field_Apellido_Persona;
+    private javax.swing.JTextField field_Direccion;
+    private javax.swing.JTextField field_NTelefono;
+    private javax.swing.JTextField field_Nombre_Persona;
+    private javax.swing.JTextField field_Numero_Doc1;
+    private javax.swing.JTextField field_Ocupacion;
     private javax.swing.JButton jButton2;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;

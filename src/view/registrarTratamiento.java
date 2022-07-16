@@ -36,16 +36,17 @@ public class registrarTratamiento extends javax.swing.JFrame {
         label_imagen = new javax.swing.JLabel();
         label_Medicamentos = new javax.swing.JLabel();
         label_Fecha_Contagio = new javax.swing.JLabel();
-        field_Dosis = new java.awt.TextField();
-        field_Nombre_Persona1 = new java.awt.TextField();
         label_Dosis = new javax.swing.JLabel();
-        field_CantDias = new java.awt.TextField();
-        desplegable_Medicamentos = new javax.swing.JComboBox<>();
+        desplegable_Medicamentos = new javax.swing.JComboBox<String>();
         boton_AnadirMed = new javax.swing.JButton();
         label_Frecuencia = new javax.swing.JLabel();
         label_CantDias = new javax.swing.JLabel();
-        field_Frecuencia = new java.awt.TextField();
         boton_VerMed = new javax.swing.JButton();
+        field_CantDias = new javax.swing.JTextField();
+        field_Frecuencia = new javax.swing.JTextField();
+        field_Dosis = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        field_Nombre_Persona1 = new javax.swing.JTextArea();
         title_Tratamiento = new javax.swing.JLabel();
         boton_Siguiente_RegistroT = new javax.swing.JButton();
 
@@ -84,24 +85,12 @@ public class registrarTratamiento extends javax.swing.JFrame {
         label_Fecha_Contagio.setText("Descripción del tratamiento: ");
         jPanel2.add(label_Fecha_Contagio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        field_Dosis.setBackground(new java.awt.Color(235, 235, 235));
-        field_Dosis.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jPanel2.add(field_Dosis, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, 180, -1));
-
-        field_Nombre_Persona1.setBackground(new java.awt.Color(235, 235, 235));
-        field_Nombre_Persona1.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jPanel2.add(field_Nombre_Persona1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 180, 90));
-
         label_Dosis.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         label_Dosis.setText("Dosis:");
         jPanel2.add(label_Dosis, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
 
-        field_CantDias.setBackground(new java.awt.Color(235, 235, 235));
-        field_CantDias.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jPanel2.add(field_CantDias, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 180, -1));
-
         desplegable_Medicamentos.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Medicamentos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        desplegable_Medicamentos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         desplegable_Medicamentos.setPreferredSize(new java.awt.Dimension(56, 24));
         desplegable_Medicamentos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,10 +118,6 @@ public class registrarTratamiento extends javax.swing.JFrame {
         label_CantDias.setText("Cantidad de días:");
         jPanel2.add(label_CantDias, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
-        field_Frecuencia.setBackground(new java.awt.Color(235, 235, 235));
-        field_Frecuencia.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jPanel2.add(field_Frecuencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 180, -1));
-
         boton_VerMed.setBackground(new java.awt.Color(235, 235, 235));
         boton_VerMed.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
         boton_VerMed.setText("Ver medicamentos");
@@ -143,6 +128,41 @@ public class registrarTratamiento extends javax.swing.JFrame {
             }
         });
         jPanel2.add(boton_VerMed, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 130, 27));
+
+        field_CantDias.setBackground(new java.awt.Color(235, 235, 235));
+        field_CantDias.setForeground(new java.awt.Color(0, 0, 0));
+        field_CantDias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field_CantDiasActionPerformed(evt);
+            }
+        });
+        jPanel2.add(field_CantDias, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 190, -1));
+
+        field_Frecuencia.setBackground(new java.awt.Color(235, 235, 235));
+        field_Frecuencia.setForeground(new java.awt.Color(0, 0, 0));
+        field_Frecuencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field_FrecuenciaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(field_Frecuencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 190, -1));
+
+        field_Dosis.setBackground(new java.awt.Color(235, 235, 235));
+        field_Dosis.setForeground(new java.awt.Color(0, 0, 0));
+        field_Dosis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field_DosisActionPerformed(evt);
+            }
+        });
+        jPanel2.add(field_Dosis, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 190, -1));
+
+        field_Nombre_Persona1.setBackground(new java.awt.Color(235, 235, 235));
+        field_Nombre_Persona1.setColumns(17);
+        field_Nombre_Persona1.setForeground(new java.awt.Color(0, 0, 0));
+        field_Nombre_Persona1.setRows(5);
+        jScrollPane1.setViewportView(field_Nombre_Persona1);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 200, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 470, 350));
 
@@ -186,6 +206,18 @@ public class registrarTratamiento extends javax.swing.JFrame {
     private void boton_Siguiente_RegistroTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Siguiente_RegistroTActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_boton_Siguiente_RegistroTActionPerformed
+
+    private void field_CantDiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_CantDiasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field_CantDiasActionPerformed
+
+    private void field_FrecuenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_FrecuenciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field_FrecuenciaActionPerformed
+
+    private void field_DosisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_DosisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field_DosisActionPerformed
 
     /**
      * @param args the command line arguments
@@ -235,13 +267,14 @@ public class registrarTratamiento extends javax.swing.JFrame {
     private javax.swing.JButton boton_VerMed;
     private javax.swing.JButton boton_Volver_RegistroT;
     private javax.swing.JComboBox<String> desplegable_Medicamentos;
-    private java.awt.TextField field_CantDias;
-    private java.awt.TextField field_Dosis;
-    private java.awt.TextField field_Frecuencia;
-    private java.awt.TextField field_Nombre_Persona1;
+    private javax.swing.JTextField field_CantDias;
+    private javax.swing.JTextField field_Dosis;
+    private javax.swing.JTextField field_Frecuencia;
+    private javax.swing.JTextArea field_Nombre_Persona1;
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label_CantDias;
     private javax.swing.JLabel label_Dosis;
     private javax.swing.JLabel label_Fecha_Contagio;

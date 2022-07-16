@@ -30,11 +30,14 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton2 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        field_TiempoReposo = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         boton_Volver_Sintomas = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         label_Sintomas = new javax.swing.JLabel();
-        desplegable_Sintomas = new javax.swing.JComboBox<>();
+        desplegable_Sintomas = new javax.swing.JComboBox<String>();
         boton_ModificarPersona = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1_Sintomas = new javax.swing.JTable();
@@ -42,6 +45,7 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         boton_EliminarPersona = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        textField2 = new javax.swing.JTextField();
         title_RegistroSintomas = new javax.swing.JLabel();
         boton_Siguiente_Sintomas = new javax.swing.JButton();
 
@@ -49,6 +53,18 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("David Libre", 0, 11)); // NOI18N
         jButton2.setText("Volver");
         jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
+
+        field_TiempoReposo.setBackground(new java.awt.Color(235, 235, 235));
+        field_TiempoReposo.setForeground(new java.awt.Color(0, 0, 0));
+        field_TiempoReposo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field_TiempoReposoActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,9 +90,14 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         jPanel2.add(label_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, -1, -1));
 
         desplegable_Sintomas.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Sintomas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "V", "E" }));
+        desplegable_Sintomas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "V", "E" }));
         desplegable_Sintomas.setPreferredSize(new java.awt.Dimension(56, 24));
-        jPanel2.add(desplegable_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, 240, -1));
+        desplegable_Sintomas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                desplegable_SintomasActionPerformed(evt);
+            }
+        });
+        jPanel2.add(desplegable_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, 40, -1));
 
         boton_ModificarPersona.setBackground(new java.awt.Color(235, 235, 235));
         boton_ModificarPersona.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
@@ -129,6 +150,15 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flo 1.png"))); // NOI18N
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 0, 130, 100));
 
+        textField2.setBackground(new java.awt.Color(235, 235, 235));
+        textField2.setForeground(new java.awt.Color(0, 0, 0));
+        textField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textField2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(textField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 10, 300, -1));
+
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 940, 250));
 
         title_RegistroSintomas.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
@@ -171,6 +201,18 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
     private void boton_EliminarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_EliminarPersonaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_boton_EliminarPersonaActionPerformed
+
+    private void desplegable_SintomasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desplegable_SintomasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_desplegable_SintomasActionPerformed
+
+    private void field_TiempoReposoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_TiempoReposoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field_TiempoReposoActionPerformed
+
+    private void textField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textField2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -277,14 +319,18 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
     private javax.swing.JButton boton_Siguiente_Sintomas;
     private javax.swing.JButton boton_Volver_Sintomas;
     private javax.swing.JComboBox<String> desplegable_Sintomas;
+    private javax.swing.JTextField field_TiempoReposo;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1_Sintomas;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel label_Sintomas;
+    private javax.swing.JTextField textField2;
     private javax.swing.JLabel title_RegistroSintomas;
     // End of variables declaration//GEN-END:variables
 }

@@ -36,16 +36,16 @@ public class registrarVariante extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         label_Clasificacion = new javax.swing.JLabel();
         label_Denominacion = new javax.swing.JLabel();
-        field_Nombre_Persona = new java.awt.TextField();
         label_Linaje = new javax.swing.JLabel();
         label_PaisOrigen = new javax.swing.JLabel();
-        field_Linaje = new java.awt.TextField();
         label_Fecha_Origen = new javax.swing.JLabel();
         label_Sintomas = new javax.swing.JLabel();
         desplegable_calendar = new com.toedter.calendar.JDateChooser();
-        desplegable_PaisOrigen = new javax.swing.JComboBox<>();
-        desplegable_Clasificacion = new javax.swing.JComboBox<>();
+        desplegable_PaisOrigen = new javax.swing.JComboBox<String>();
+        desplegable_Clasificacion = new javax.swing.JComboBox<String>();
         boton_VerSintomas = new javax.swing.JButton();
+        field_Nombre_Persona = new javax.swing.JTextField();
+        field_Linaje = new javax.swing.JTextField();
         title_RegistroVariante = new javax.swing.JLabel();
         boton_Siguiente_Variante = new javax.swing.JButton();
 
@@ -84,10 +84,6 @@ public class registrarVariante extends javax.swing.JFrame {
         label_Denominacion.setText("Denominación OMS:");
         jPanel2.add(label_Denominacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        field_Nombre_Persona.setBackground(new java.awt.Color(235, 235, 235));
-        field_Nombre_Persona.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jPanel2.add(field_Nombre_Persona, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, 180, -1));
-
         label_Linaje.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         label_Linaje.setText("Linaje:");
         jPanel2.add(label_Linaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
@@ -95,10 +91,6 @@ public class registrarVariante extends javax.swing.JFrame {
         label_PaisOrigen.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         label_PaisOrigen.setText("País de origen:");
         jPanel2.add(label_PaisOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
-
-        field_Linaje.setBackground(new java.awt.Color(235, 235, 235));
-        field_Linaje.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jPanel2.add(field_Linaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 180, -1));
 
         label_Fecha_Origen.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         label_Fecha_Origen.setText("Fecha de origen: ");
@@ -112,12 +104,12 @@ public class registrarVariante extends javax.swing.JFrame {
         jPanel2.add(desplegable_calendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 180, 20));
 
         desplegable_PaisOrigen.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_PaisOrigen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "V", "E" }));
+        desplegable_PaisOrigen.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "V", "E" }));
         desplegable_PaisOrigen.setPreferredSize(new java.awt.Dimension(56, 24));
         jPanel2.add(desplegable_PaisOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 180, -1));
 
         desplegable_Clasificacion.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Clasificacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "VOC", "VOI", "VUM" }));
+        desplegable_Clasificacion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "VOC", "VOI", "VUM" }));
         desplegable_Clasificacion.setPreferredSize(new java.awt.Dimension(56, 24));
         desplegable_Clasificacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,6 +128,24 @@ public class registrarVariante extends javax.swing.JFrame {
             }
         });
         jPanel2.add(boton_VerSintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 130, 27));
+
+        field_Nombre_Persona.setBackground(new java.awt.Color(235, 235, 235));
+        field_Nombre_Persona.setForeground(new java.awt.Color(0, 0, 0));
+        field_Nombre_Persona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field_Nombre_PersonaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(field_Nombre_Persona, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 190, -1));
+
+        field_Linaje.setBackground(new java.awt.Color(235, 235, 235));
+        field_Linaje.setForeground(new java.awt.Color(0, 0, 0));
+        field_Linaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field_LinajeActionPerformed(evt);
+            }
+        });
+        jPanel2.add(field_Linaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 190, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 470, -1));
 
@@ -175,6 +185,14 @@ public class registrarVariante extends javax.swing.JFrame {
     private void boton_Siguiente_VarianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Siguiente_VarianteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_boton_Siguiente_VarianteActionPerformed
+
+    private void field_Nombre_PersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_Nombre_PersonaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field_Nombre_PersonaActionPerformed
+
+    private void field_LinajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_LinajeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field_LinajeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -225,8 +243,8 @@ public class registrarVariante extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> desplegable_Clasificacion;
     private javax.swing.JComboBox<String> desplegable_PaisOrigen;
     private com.toedter.calendar.JDateChooser desplegable_calendar;
-    private java.awt.TextField field_Linaje;
-    private java.awt.TextField field_Nombre_Persona;
+    private javax.swing.JTextField field_Linaje;
+    private javax.swing.JTextField field_Nombre_Persona;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

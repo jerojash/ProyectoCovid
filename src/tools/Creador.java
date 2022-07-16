@@ -1,5 +1,6 @@
 package tools;
 
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -16,5 +17,27 @@ public class Creador {
         for (int x = 0; x < Enfermedades.getColumnCount(); x++) {
             Enfermedades.getColumnModel().getColumn(x).setCellRenderer(centerRenderer);            
         }
+    }
+    
+    public void Interfaz( JFrame nueva, int ancho, int largo){
+        nueva.setResizable(false); 
+        nueva.setVisible(true);
+        nueva.setSize(ancho,largo);     
+        nueva.setLocationRelativeTo(null); 
+    }
+    public void InterfazIguales(JFrame actual, JFrame nueva, int ancho, int largo){
+        actual.setVisible(false);
+        nueva.setResizable(false); 
+        nueva.setVisible(true);
+        nueva.setSize(ancho,largo);     
+        nueva.setLocationRelativeTo(null); 
+    }
+    
+    public void InterfazDiferentes(JFrame actual, JFrame nueva, int ancho, int largo){
+        nueva.setResizable(false); 
+        nueva.setSize(ancho, largo);   
+        nueva.setVisible(true);   
+        nueva.setLocationRelativeTo(null);
+        actual.dispose();
     }
 }
