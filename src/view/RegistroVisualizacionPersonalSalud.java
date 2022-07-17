@@ -110,7 +110,7 @@ public class RegistroVisualizacionPersonalSalud extends javax.swing.JFrame {
 
         jTable_PersonalSalud.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null}
+
             },
             new String [] {
                 "Documento ", "Correo", "Ocupación"
