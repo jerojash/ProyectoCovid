@@ -5,6 +5,7 @@ import Clases.Estado;
 import Clases.Pais;
 import SQL.ConexionSQL;
 import SQL.Extraer;
+import com.sun.scenario.effect.impl.sw.java.JSWPhongLighting_DISTANTPeer;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -146,6 +147,26 @@ public class Buscador {
             }          
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No hay personas con la cedula ingresada");
+        }
+    }
+    
+    public void tablePerEnfeEliIte(String cedula, JTable tabla){
+        Buscador busc = new Buscador();
+        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+        ArrayList<String> codEnf = busc.CodEnfermedad(model.getValueAt(tabla.getSelectedRow(), 0).toString());
+        for (int i = 0; i<codEnf.size();i++){
+            this.tablePerEnfeEli(cedula, codEnf.get(i));
+        }
+    }
+    
+    public void tablePerEnfeEli(String cedula, String codEnfe){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            String sql = "delete from padece where docidentidad='"+cedula+"' and codenfermedad='"+codEnfe+"'";
+            st.execute(sql);
+        } catch (Exception e) {
         }
     }
     

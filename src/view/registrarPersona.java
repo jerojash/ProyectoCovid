@@ -35,10 +35,10 @@ public class registrarPersona extends javax.swing.JFrame {
         crea.Interfaz(this, 594, 580);
         ArrayList<String> listas = dataSQL.nombPais(dataSQL.Pais());
         for (int i=0;i<listas.size();i++)
-        desplegable_Pais1.addItem(listas.get(i));
+            desplegable_Pais1.addItem(listas.get(i));
         listas = dataSQL.nombEnfermedad(dataSQL.Enfermedad());
         for (int i=0;i<listas.size();i++)
-        desplegable_Enfermedad.addItem(listas.get(i));
+            desplegable_Enfermedad.addItem(listas.get(i));
         jDateChooser1.getDateEditor().setEnabled(false);
         jDateChooser1.getJCalendar().setMaxSelectableDate(new Date());
         jDateChooser1.setDate(new Date(System.currentTimeMillis()));
