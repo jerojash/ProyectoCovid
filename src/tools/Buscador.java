@@ -214,6 +214,7 @@ public class Buscador {
         }
     }
     
+    
     public void tablePerEnfeEli(String cedula, String codEnfe){
         Statement st;
         ConexionSQL con = new ConexionSQL();
@@ -313,6 +314,26 @@ public class Buscador {
             st = con.connected().createStatement();
             st.executeQuery("delete from virus_variante where denom_oms='"+denom_oms+"'");    
         } catch (Exception e) {
+        }
+    }
+    
+    public void tableVarSintEli(String denom_oms, String codSint){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            String sql = "delete from tiene where denom_oms='"+denom_oms+"' and codsintoma='"+codSint+"'";
+            st.execute(sql);
+        } catch (Exception e) {
+        }
+    }
+    
+    public void tableVarSintEliIte(String denom_oms, JTable tabla){
+        Buscador busc = new Buscador();
+        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+        ArrayList<String> codSint = busc.CodSintoma(model.getValueAt(tabla.getSelectedRow(), 0).toString());
+        for (int i = 0; i<codSint.size();i++){
+            this.tableVarSintEli(denom_oms, codSint.get(i));
         }
     }
 }

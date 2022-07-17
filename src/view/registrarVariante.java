@@ -312,6 +312,8 @@ public class registrarVariante extends javax.swing.JFrame {
 
     private void boton_Volver_VarianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_VarianteActionPerformed
         // TODO add your handling code here:
+        RegistroVisualizacionVariante RVV = new RegistroVisualizacionVariante();
+        crea.InterfazDiferentes(this, RVV, 1008, 550);
     }//GEN-LAST:event_boton_Volver_VarianteActionPerformed
 
     private void boton_VerSintomasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_VerSintomasActionPerformed

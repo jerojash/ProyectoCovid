@@ -35,7 +35,7 @@ public class RegistroSintomas extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         label_Sintomas = new javax.swing.JLabel();
-        desplegable_Sintomas = new javax.swing.JComboBox<>();
+        desplegable_Sintomas = new javax.swing.JComboBox<String>();
         boton_EliminarSintomas = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1_Sintomas = new javax.swing.JTable();
@@ -74,7 +74,7 @@ public class RegistroSintomas extends javax.swing.JFrame {
         jPanel2.add(label_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         desplegable_Sintomas.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Sintomas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "V", "E" }));
+        desplegable_Sintomas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "V", "E" }));
         desplegable_Sintomas.setPreferredSize(new java.awt.Dimension(56, 24));
         jPanel2.add(desplegable_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 240, -1));
 
@@ -91,10 +91,7 @@ public class RegistroSintomas extends javax.swing.JFrame {
 
         jTable1_Sintomas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+
             },
             new String [] {
                 "Sintomas"

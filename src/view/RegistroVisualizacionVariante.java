@@ -5,7 +5,9 @@
  */
 package view;
 
+import SQL.Extraer;
 import SQL.Guardar;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
@@ -24,11 +26,13 @@ public class RegistroVisualizacionVariante extends javax.swing.JFrame {
     Buscador bus = new Buscador();
     Creador crea = new Creador();
     DefaultTableModel model;
+    Extraer dataSQL = new Extraer();
     
 
     public RegistroVisualizacionVariante() {
         initComponents();
         crea.Interfaz(this, 1008, 550);
+        Creador creaInterfaz = new Creador();
        //crea.addTableHeaderPerRes(model, jTable_sintomas);
         crea.addTableHeaderVar(model,jTable_variantes);
         //crea.addTableHeaderEnfer(model, jTable_enfermedades);
@@ -72,6 +76,25 @@ public class RegistroVisualizacionVariante extends javax.swing.JFrame {
         label_Fecha_Nac3 = new javax.swing.JLabel();
         title_persona = new javax.swing.JLabel();
         boton_Volver_RegistroDP2 = new javax.swing.JButton();
+        jFrame_clasificacion = new javax.swing.JFrame();
+        jPanel15 = new javax.swing.JPanel();
+        boton_Siguiente_RegistroDP2 = new javax.swing.JButton();
+        jPanel16 = new javax.swing.JPanel();
+        label_Fecha_Nac4 = new javax.swing.JLabel();
+        desplegable_clasificacion = new javax.swing.JComboBox<>();
+        title_persona1 = new javax.swing.JLabel();
+        boton_Volver_RegistroDP3 = new javax.swing.JButton();
+        jFrame_Sintomas = new javax.swing.JFrame();
+        jPanel21 = new javax.swing.JPanel();
+        jPanel22 = new javax.swing.JPanel();
+        label_Denominacion = new javax.swing.JLabel();
+        desplegable_Sintomas = new javax.swing.JComboBox<>();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        TableSint = new javax.swing.JTable();
+        boton_VerSintomas1 = new javax.swing.JButton();
+        boton_VerSintomas = new javax.swing.JButton();
+        title_persona4 = new javax.swing.JLabel();
+        boton_Volver_RegistroDP6 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         boton_Volver = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -227,6 +250,145 @@ public class RegistroVisualizacionVariante extends javax.swing.JFrame {
 
         jFrame_fechaorigen.getContentPane().add(jPanel13, java.awt.BorderLayout.CENTER);
 
+        jPanel15.setBackground(new java.awt.Color(159, 211, 241));
+        jPanel15.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        boton_Siguiente_RegistroDP2.setBackground(new java.awt.Color(235, 235, 235));
+        boton_Siguiente_RegistroDP2.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
+        boton_Siguiente_RegistroDP2.setText("Guardar");
+        boton_Siguiente_RegistroDP2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_Siguiente_RegistroDP2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_Siguiente_RegistroDP2ActionPerformed(evt);
+            }
+        });
+        jPanel15.add(boton_Siguiente_RegistroDP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 80, 27));
+
+        jPanel16.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel16.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        label_Fecha_Nac4.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        label_Fecha_Nac4.setText("Clasificación: ");
+        jPanel16.add(label_Fecha_Nac4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        desplegable_clasificacion.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        desplegable_clasificacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "VOC", "VOI", "VUM" }));
+        desplegable_clasificacion.setPreferredSize(new java.awt.Dimension(56, 24));
+        desplegable_clasificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                desplegable_clasificacionActionPerformed(evt);
+            }
+        });
+        jPanel16.add(desplegable_clasificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 70, -1));
+
+        jPanel15.add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 190, 90));
+
+        title_persona1.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
+        title_persona1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title_persona1.setText("Cambio de clasificación");
+        jPanel15.add(title_persona1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-130, 10, 520, 40));
+
+        boton_Volver_RegistroDP3.setBackground(new java.awt.Color(235, 235, 235));
+        boton_Volver_RegistroDP3.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
+        boton_Volver_RegistroDP3.setText("Volver");
+        boton_Volver_RegistroDP3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_Volver_RegistroDP3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_Volver_RegistroDP3ActionPerformed(evt);
+            }
+        });
+        jPanel15.add(boton_Volver_RegistroDP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 80, 27));
+
+        jFrame_clasificacion.getContentPane().add(jPanel15, java.awt.BorderLayout.CENTER);
+
+        jPanel21.setBackground(new java.awt.Color(159, 211, 241));
+        jPanel21.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel22.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel22.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        label_Denominacion.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        label_Denominacion.setText("Síntomas:");
+        jPanel22.add(label_Denominacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        desplegable_Sintomas.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        desplegable_Sintomas.setPreferredSize(new java.awt.Dimension(56, 24));
+        desplegable_Sintomas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                desplegable_SintomasActionPerformed(evt);
+            }
+        });
+        jPanel22.add(desplegable_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 240, -1));
+
+        TableSint.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Síntomas"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(TableSint);
+
+        jPanel22.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 270, 110));
+
+        boton_VerSintomas1.setBackground(new java.awt.Color(235, 235, 235));
+        boton_VerSintomas1.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
+        boton_VerSintomas1.setText("Agregar");
+        boton_VerSintomas1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_VerSintomas1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_VerSintomas1ActionPerformed(evt);
+            }
+        });
+        jPanel22.add(boton_VerSintomas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 90, 27));
+
+        boton_VerSintomas.setBackground(new java.awt.Color(235, 235, 235));
+        boton_VerSintomas.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
+        boton_VerSintomas.setText("Eliminar");
+        boton_VerSintomas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_VerSintomas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_VerSintomasActionPerformed(evt);
+            }
+        });
+        jPanel22.add(boton_VerSintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, 90, 27));
+
+        jPanel21.add(jPanel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 400, 230));
+
+        title_persona4.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
+        title_persona4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title_persona4.setText("Cambio Síntomas");
+        jPanel21.add(title_persona4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-50, 10, 520, 40));
+
+        boton_Volver_RegistroDP6.setBackground(new java.awt.Color(235, 235, 235));
+        boton_Volver_RegistroDP6.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
+        boton_Volver_RegistroDP6.setText("Volver");
+        boton_Volver_RegistroDP6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_Volver_RegistroDP6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_Volver_RegistroDP6ActionPerformed(evt);
+            }
+        });
+        jPanel21.add(boton_Volver_RegistroDP6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 80, 27));
+
+        jFrame_Sintomas.getContentPane().add(jPanel21, java.awt.BorderLayout.CENTER);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(159, 211, 241));
@@ -379,6 +541,8 @@ public class RegistroVisualizacionVariante extends javax.swing.JFrame {
 
     private void boton_VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_VolverActionPerformed
         // TODO add your handling code here:
+         Proceso1 pro = new Proceso1();
+        crea.InterfazDiferentes(this, pro, 697, 391);
     }//GEN-LAST:event_boton_VolverActionPerformed
 
     private void boton_ModificarVarianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_ModificarVarianteActionPerformed
@@ -471,10 +635,17 @@ public class RegistroVisualizacionVariante extends javax.swing.JFrame {
 
     private void boton_clasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_clasificacionActionPerformed
         // TODO add your handling code here:
+        crea.InterfazIguales(Frame_modificar, jFrame_clasificacion, 258,225);
     }//GEN-LAST:event_boton_clasificacionActionPerformed
 
     private void boton_sintomasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_sintomasActionPerformed
         // TODO add your handling code here:
+        ArrayList<String> listas = dataSQL.descripsintoma(dataSQL.Sintomas());
+        desplegable_Sintomas.removeAllItems();
+        for (int i=0;i<listas.size();i++)
+            desplegable_Sintomas.addItem(listas.get(i));
+        bus.tableVarSint(TableSint, model.getValueAt(jTable_variantes.getSelectedRow(), 0).toString());
+        crea.InterfazIguales(Frame_modificar, jFrame_Sintomas, 480, 360); //462, 344
     }//GEN-LAST:event_boton_sintomasActionPerformed
 
     private void boton_volverAMainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_volverAMainActionPerformed
@@ -496,6 +667,50 @@ public class RegistroVisualizacionVariante extends javax.swing.JFrame {
         bus.limpiarTabla(jTable_variantes);
         bus.tableAllvariantes(jTable_variantes);
     }//GEN-LAST:event_boton_Volver_RegistroDP2ActionPerformed
+
+    private void boton_Siguiente_RegistroDP2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Siguiente_RegistroDP2ActionPerformed
+        Guardar insertSQL = new Guardar();
+        insertSQL.ModiVar(model.getValueAt(jTable_variantes.getSelectedRow(), 0).toString(), desplegable_clasificacion.getSelectedItem().toString(),3);
+    }//GEN-LAST:event_boton_Siguiente_RegistroDP2ActionPerformed
+
+    private void boton_Volver_RegistroDP3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_RegistroDP3ActionPerformed
+        crea.InterfazIguales(jFrame_clasificacion, Frame_modificar, 880, 390);
+    }//GEN-LAST:event_boton_Volver_RegistroDP3ActionPerformed
+
+    private void desplegable_clasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desplegable_clasificacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_desplegable_clasificacionActionPerformed
+
+    private void desplegable_SintomasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desplegable_SintomasActionPerformed
+        
+    }//GEN-LAST:event_desplegable_SintomasActionPerformed
+
+    private void boton_VerSintomas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_VerSintomas1ActionPerformed
+        Verificador veri = new Verificador();
+        DefaultTableModel modelSint = (DefaultTableModel) TableSint.getModel();
+        String dato;
+        dato = desplegable_Sintomas.getSelectedItem().toString();
+        if(!veri.existenciaTable(model, dato)){
+            modelSint.addRow(new Object[]{dato});
+            Guardar insertSQL = new Guardar();
+            insertSQL.guardarSintVar(dato, model.getValueAt(jTable_variantes.getSelectedRow(), 0).toString());
+        }
+    }//GEN-LAST:event_boton_VerSintomas1ActionPerformed
+
+    private void boton_VerSintomasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_VerSintomasActionPerformed
+        DefaultTableModel modelSint = (DefaultTableModel) TableSint.getModel();
+        if (TableSint.getSelectedRow() != -1){
+            bus.tableVarSintEliIte(model.getValueAt(jTable_variantes.getSelectedRow(), 0).toString(), TableSint);
+            modelSint.removeRow(TableSint.getSelectedRow());
+        }
+        else
+        JOptionPane.showMessageDialog(null, "No ha seleccionado una enfermedad a eliminar","Warning",WARNING_MESSAGE);
+    }//GEN-LAST:event_boton_VerSintomasActionPerformed
+
+    private void boton_Volver_RegistroDP6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_RegistroDP6ActionPerformed
+        crea.InterfazIguales(jFrame_Sintomas, Frame_modificar, 880, 390);
+        bus.limpiarTabla(TableSint);
+    }//GEN-LAST:event_boton_Volver_RegistroDP6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -790,21 +1005,31 @@ public class RegistroVisualizacionVariante extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFrame Frame_modificar;
     private javax.swing.JLabel JLabel_cedula;
+    private javax.swing.JTable TableSint;
     private javax.swing.JButton boton_AggVariante;
     private javax.swing.JButton boton_BusVariante;
     private javax.swing.JButton boton_EliminarVariante;
     private javax.swing.JButton boton_ModificarVariante;
     private javax.swing.JButton boton_Siguiente_RegistroDP1;
+    private javax.swing.JButton boton_Siguiente_RegistroDP2;
+    private javax.swing.JButton boton_VerSintomas;
+    private javax.swing.JButton boton_VerSintomas1;
     private javax.swing.JButton boton_Volver;
     private javax.swing.JButton boton_Volver_RegistroDP2;
+    private javax.swing.JButton boton_Volver_RegistroDP3;
+    private javax.swing.JButton boton_Volver_RegistroDP6;
     private javax.swing.JButton boton_clasificacion;
     private javax.swing.JButton boton_forg;
     private javax.swing.JButton boton_linaje;
     private javax.swing.JButton boton_sintomas;
     private javax.swing.JButton boton_volverAMain;
+    private javax.swing.JComboBox<String> desplegable_Sintomas;
+    private javax.swing.JComboBox<String> desplegable_clasificacion;
     private javax.swing.JTextField field_Denominacion;
     private javax.swing.JTextField field_TiempoReposo;
     private javax.swing.JButton jButton2;
+    private javax.swing.JFrame jFrame_Sintomas;
+    private javax.swing.JFrame jFrame_clasificacion;
     private javax.swing.JFrame jFrame_fechaorigen;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -814,19 +1039,28 @@ public class RegistroVisualizacionVariante extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel21;
+    private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable_sintomas;
     private javax.swing.JTable jTable_variantes;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel label_Denominacion;
     private javax.swing.JLabel label_Fecha_Nac3;
+    private javax.swing.JLabel label_Fecha_Nac4;
     private com.toedter.calendar.JDateChooser label_Fecha_Org3;
     private javax.swing.JLabel label_VariantesRegistradas;
     private javax.swing.JLabel title_RegistroSintomas;
     private javax.swing.JLabel title_persona;
+    private javax.swing.JLabel title_persona1;
+    private javax.swing.JLabel title_persona4;
     // End of variables declaration//GEN-END:variables
 }
