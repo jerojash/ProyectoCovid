@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package view;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import tools.Creador;
 /**
  *
@@ -177,7 +180,13 @@ public class Proceso1 extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_RegistrarPersonalSaludActionPerformed
 
     private void boton_RegistrarCentroSaludActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_RegistrarCentroSaludActionPerformed
-        // TODO add your handling code here:
+        CentroSalud centro;
+        try {
+            centro = new CentroSalud();
+            creaInterfaz.InterfazDiferentes(this, centro, 1008, 550);
+        } catch (SQLException ex) {
+            Logger.getLogger(Proceso1.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_boton_RegistrarCentroSaludActionPerformed
 
     private void boton_RegistrarVarianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_RegistrarVarianteActionPerformed

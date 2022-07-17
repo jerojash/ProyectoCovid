@@ -14,18 +14,21 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import tools.Creador;
 
 /**
  *
  * @author Ricardo Fanghella
  */
 public class CentroSalud extends javax.swing.JFrame {
-
+    Creador creaInterfaces = new Creador();
     /**
      * Creates new form CentroSalud
      */
     public CentroSalud() throws SQLException {
         initComponents();
+        creaInterfaces.Interfaz(this, 1008, 550);
+        
         
 ////////////////////Codigo para llenar la tabla de centros de salud
         ArrayList<String> centros = new ArrayList<>();
@@ -63,7 +66,7 @@ public class CentroSalud extends javax.swing.JFrame {
             centros = r.centrosHospitalizacion();
             model = new DefaultTableModel();
             jTable_hospitalizacion.setModel(model);
-            model.addColumn("Codigo");
+            model.addColumn("Nombre del Centro");
             for (int i=0;i<centros.size();i++){
                 datos[0]=centros.get(i);
                 model.addRow(datos);
@@ -75,7 +78,7 @@ public class CentroSalud extends javax.swing.JFrame {
         centros = r.centrosVacunacion();
             model = new DefaultTableModel();
             jTable_vacunancion.setModel(model);
-            model.addColumn("Codigo");
+            model.addColumn("Nombre del Centro");
             for (int i=0;i<centros.size();i++){
                 datos[0]=centros.get(i);
                 model.addRow(datos);
@@ -293,7 +296,8 @@ public class CentroSalud extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_Volver_SintomasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_SintomasActionPerformed
-        // TODO add your handling code here:
+        Proceso1 proceso = new Proceso1();
+        creaInterfaces.InterfazDiferentes(this, proceso,697, 391);
     }//GEN-LAST:event_boton_Volver_SintomasActionPerformed
 
     private void boton_ModificarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_ModificarPersonaActionPerformed
