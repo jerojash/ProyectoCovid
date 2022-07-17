@@ -82,6 +82,24 @@ public class Buscador {
         }  
         return null;
     }
+    
+    public ArrayList<String> denom_oms(){
+        ArrayList<String> codigos = new ArrayList<String>();
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from virus_variante");
+            while(rs.next()){
+                codigos.add(rs.getString(1));
+            }
+            con.disconnect();
+            return codigos;
+        } catch (Exception e) {
+            System.out.println("denom_oms murio");
+        }  
+        return null;
+    }
 //-----------------------------------------Manejo de tablas-------------------------------------------
     public void limpiarTabla(JTable tabla){
         DefaultTableModel model = (DefaultTableModel) tabla.getModel();

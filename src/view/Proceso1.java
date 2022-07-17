@@ -159,7 +159,7 @@ public class Proceso1 extends javax.swing.JFrame {
 
     private void boton_RegistrarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_RegistrarPersonaActionPerformed
         RegistroVisualizacionPersonas persona = new RegistroVisualizacionPersonas();
-        creaInterfaz.InterfazDiferentes(this, persona, 1008, 400);
+        creaInterfaz.InterfazDiferentes(this, persona, 1008, 550);
     }//GEN-LAST:event_boton_RegistrarPersonaActionPerformed
 
     private void field_TiempoReposoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_TiempoReposoActionPerformed
