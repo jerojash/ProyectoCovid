@@ -33,7 +33,19 @@ public class Creador {
     
     public void addTableHeaderRep2(DefaultTableModel model,JTable Centros) {
         model = (DefaultTableModel) Centros.getModel();
-        Object[] newIdentifiers = new Object[]{"Cod centro de vacunacion", "Porcentaje contagios pos vacuna"};
+        Object[] newIdentifiers = new Object[]{"Vacuna", "Porcentaje contagios pos vacuna"};
+        model.setColumnIdentifiers(newIdentifiers);
+        Centros.setFillsViewportHeight(true);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int x = 0; x < Centros.getColumnCount(); x++) {
+            Centros.getColumnModel().getColumn(x).setCellRenderer(centerRenderer);            
+        }
+    }
+    
+    public void addTableHeaderRep3(DefaultTableModel model,JTable Centros) {
+        model = (DefaultTableModel) Centros.getModel();
+        Object[] newIdentifiers = new Object[]{"Centro de vacunacion", "Porcentaje contagios pos vacuna"};
         model.setColumnIdentifiers(newIdentifiers);
         Centros.setFillsViewportHeight(true);
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
