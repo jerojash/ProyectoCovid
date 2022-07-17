@@ -5,6 +5,7 @@ import Clases.Estado;
 import Clases.Pais;
 import SQL.ConexionSQL;
 import SQL.Extraer;
+import com.sun.scenario.effect.impl.sw.java.JSWPhongLighting_DISTANTPeer;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -100,6 +101,24 @@ public class Buscador {
         }  
         return null;
     }
+    
+    public ArrayList<String> denom_oms(){
+        ArrayList<String> codigos = new ArrayList<String>();
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from virus_variante");
+            while(rs.next()){
+                codigos.add(rs.getString(1));
+            }
+            con.disconnect();
+            return codigos;
+        } catch (Exception e) {
+            System.out.println("denom_oms murio");
+        }  
+        return null;
+    }
 //-----------------------------------------Manejo de tablas-------------------------------------------
     public void limpiarTabla(JTable tabla){
         DefaultTableModel model = (DefaultTableModel) tabla.getModel();
@@ -168,6 +187,7 @@ public class Buscador {
         }
     }
     
+
     public void tableVarSint(JTable tabla, String denom_oms){
         Statement st;
         ConexionSQL con = new ConexionSQL();
@@ -183,24 +203,59 @@ public class Buscador {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No hay variantes con la denominacion ingresada");
         }
+    }       
+                
+    public void tablePerEnfeEliIte(String cedula, JTable tabla){
+        Buscador busc = new Buscador();
+        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+        ArrayList<String> codEnf = busc.CodEnfermedad(model.getValueAt(tabla.getSelectedRow(), 0).toString());
+        for (int i = 0; i<codEnf.size();i++){
+            this.tablePerEnfeEli(cedula, codEnf.get(i));
+        }
+    }
+    
+    public void tablePerEnfeEli(String cedula, String codEnfe){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            String sql = "delete from padece where docidentidad='"+cedula+"' and codenfermedad='"+codEnfe+"'";
+            st.execute(sql);
+        } catch (Exception e) {
+        }
     }
     
     public void tablePersonasEli(String cedula){
         Statement st;
         ConexionSQL con = new ConexionSQL();
+        try {//borrar persona en vacunda
+            st = con.connected().createStatement();
+            st.executeQuery("delete from vacunada where docidentidad='"+cedula+"'");
+            st.close();
+        } catch (Exception e) {
+        }
+        try {//borrar persona en contagio
+            st = con.connected().createStatement();
+            st.executeQuery("delete from contagio where docidentidad='"+cedula+"'");
+            st.close();
+        } catch (Exception e) {
+        }
         try {//borrar persona en padece
             st = con.connected().createStatement();
             st.executeQuery("delete from padece where docidentidad='"+cedula+"'");
+            st.close();
         } catch (Exception e) {
         }
         try {//borrar persona en reside
             st = con.connected().createStatement();
             st.executeQuery("delete from reside where docidentidad='"+cedula+"'");
+            st.close();
         } catch (Exception e) {
         }
         try {//borrar personas
             st = con.connected().createStatement();
             st.executeQuery("delete from persona where doc_identidad='"+cedula+"'");    
+            st.close();
         } catch (Exception e) {
         }
     }

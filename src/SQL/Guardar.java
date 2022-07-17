@@ -13,6 +13,25 @@ import tools.Buscador;
 
 public class Guardar {
     
+    public void guardadoReside(String doc, String estado, JDateChooser fechaReside,String pais){
+        try {
+            ConexionSQL conexion= new ConexionSQL();
+            Connection con = conexion.connected();  
+            java.sql.Statement st = con.createStatement();
+            Date date = fechaReside.getDate();
+            long da = date.getTime();
+            java.sql.Date fecha = new java.sql.Date(da);
+            Buscador select = new Buscador();
+            String value = "'"+doc+"','"+select.codEstado(select.codPais(pais), estado)+"','"+fecha.toString()+"'";
+            String sql = "insert into reside (docidentidad,codestado,fechareside) values("+value+")";
+            st.execute(sql);
+            st.close();
+            con.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Hubo un inconveniente con el manejo del servidor");
+        }
+    }
+    
     public boolean guardadoPersona(String doc,JTextField nombre,JTextField apellido,JDateChooser fechaNac,String sexo,JTextField direccion,JTextField numero,boolean altoRiesgo,String ocupacion,String estado,String pais,JDateChooser fechaReside){            
         boolean guardado = true;
         try {
@@ -212,7 +231,6 @@ public class Guardar {
             switch (caso){
                 case 1:
                     sql = "update persona set nombper = '"+datoModi+"' where doc_identidad = '"+cedula+"'";
-                    System.out.println("update persona set nombper = '"+datoModi+"' where doc_identidad = '"+cedula+"'");
                 break;
                 case 2:
                     sql = "update persona set apellidoper = '"+datoModi+"' where doc_identidad = '"+cedula+"'";
@@ -230,7 +248,11 @@ public class Guardar {
                     sql = "update persona set alto_riesgo = '"+datoModi+"' where doc_identidad = '"+cedula+"'";
                 break;
                 case 7:
-                    sql = "update persona set ocupacion = '"+datoModi+"' where doc_identidad = '"+cedula+"'";                    
+                    sql = "update persona set ocupacion = '"+datoModi+"' where doc_identidad = '"+cedula+"'";
+                    break;
+                case 8:
+                    sql = "update persona set direccion_p = '"+datoModi+"' where doc_identidad = '"+cedula+"'";
+                    break;
             }
             st.executeUpdate(sql);
             st.close();

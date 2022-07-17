@@ -9,6 +9,9 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import Clases.Variante;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class Extraer {
     public ArrayList<Enfermedad> Enfermedad() {
@@ -137,7 +140,7 @@ public class Extraer {
         ConexionSQL con = new ConexionSQL();
         try {
             st = con.connected().createStatement();
-            ResultSet rs = st.executeQuery("select * from centro_salud");
+            ResultSet rs = st.executeQuery("select * from virus_variante");
             while (rs.next()) {
                 Variante.add(new Variante(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4), rs.getInt(5)));
             }
@@ -150,6 +153,7 @@ public class Extraer {
         }
     }
     
+
     public ArrayList<Sintomas> Sintomas() {
         Statement st;
         ArrayList<Sintomas> sintomas = new ArrayList<Sintomas>();
@@ -179,7 +183,31 @@ public class Extraer {
         return descripsintoma;
     }
     
+
+    public ArrayList<String> denom_oms(ArrayList<Variante> listVirus) {
+        ArrayList<String> nombreVariante = new ArrayList<String>();
+        for (int i = 0; i < listVirus.size(); i++) {
+            nombreVariante.add(listVirus.get(i).getDenom_oms().toString());
+        }
+        return nombreVariante;
+    }
+
     
+    public void Reporte2(JTable tabla){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from reporte_2");
+            while(rs.next()){
+                model.addRow(new Object[]{rs.getString(1),rs.getString(2)});
+            }          
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No hay personas con la cedula ingresada");
+        }
+    }
+
 }
 
 

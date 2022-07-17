@@ -35,10 +35,10 @@ public class registrarPersona extends javax.swing.JFrame {
         crea.Interfaz(this, 594, 580);
         ArrayList<String> listas = dataSQL.nombPais(dataSQL.Pais());
         for (int i=0;i<listas.size();i++)
-        desplegable_Pais1.addItem(listas.get(i));
+            desplegable_Pais1.addItem(listas.get(i));
         listas = dataSQL.nombEnfermedad(dataSQL.Enfermedad());
         for (int i=0;i<listas.size();i++)
-        desplegable_Enfermedad.addItem(listas.get(i));
+            desplegable_Enfermedad.addItem(listas.get(i));
         jDateChooser1.getDateEditor().setEnabled(false);
         jDateChooser1.getJCalendar().setMaxSelectableDate(new Date());
         jDateChooser1.setDate(new Date(System.currentTimeMillis()));
@@ -265,6 +265,11 @@ public class registrarPersona extends javax.swing.JFrame {
 
         desplegable_Estado1.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         desplegable_Estado1.setPreferredSize(new java.awt.Dimension(56, 24));
+        desplegable_Estado1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                desplegable_Estado1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(desplegable_Estado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, 160, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flo 1.png"))); // NOI18N
@@ -523,6 +528,10 @@ public class registrarPersona extends javax.swing.JFrame {
     private void field_Nombre_PersonaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_field_Nombre_PersonaKeyTyped
        
     }//GEN-LAST:event_field_Nombre_PersonaKeyTyped
+
+    private void desplegable_Estado1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desplegable_Estado1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_desplegable_Estado1ActionPerformed
 
     /**
      * @param args the command line arguments
