@@ -7,6 +7,7 @@ import Clases.Pais;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import Clases.Variante;
 
 public class Extraer {
     public ArrayList<Enfermedad> Enfermedad() {
@@ -120,4 +121,36 @@ public class Extraer {
         }
         return codCentro;
     }
+    
+    public ArrayList<String> codVariante(ArrayList<CentroSalud> listCentro) {
+        ArrayList<String> codCentro = new ArrayList<String>();
+        for (int i = 0; i < listCentro.size(); i++) {
+            codCentro.add(listCentro.get(i).getCodCentro().toString());
+        }
+        return codCentro;
+    }
+    
+    public ArrayList<Variante> variante(){
+        Statement st;
+        ArrayList<Variante> Variante = new ArrayList<Variante>();
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from centro_salud");
+            while (rs.next()) {
+                Variante.add(new Variante(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4), rs.getInt(5)));
+            }
+            st.close();
+            con.disconnect();
+            return Variante;
+        } catch (Exception e) {
+            con.disconnect();
+            return null;
+        }
+    }
+    
+    
 }
+
+
+   
