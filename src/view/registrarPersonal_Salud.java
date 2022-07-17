@@ -36,7 +36,7 @@ public class registrarPersonal_Salud extends javax.swing.JFrame {
         Creador crea = new Creador();
         Creador crea1 = new Creador();
         crea.addTableHeaderEnfer(modelEnfer, TableEnfer);
-        crea1.addTableHeaderCentro(modelCentro, TableCentro);
+        crea1.addTableHeaderCentroAsignado(modelCentro, TableCentro);
         this.setSize(594, 612);
         this.setResizable(false);
         ArrayList<String> listas = dataSQL.nombPais(dataSQL.Pais());

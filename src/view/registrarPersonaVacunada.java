@@ -5,19 +5,39 @@
  */
 package view;
 
+import SQL.Extraer;
+import SQL.Guardar;
+import tools.Buscador;
+import java.util.ArrayList;
+import java.util.Date;
+import tools.Creador;
+import tools.Verificador;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import static javax.swing.JOptionPane.WARNING_MESSAGE;
 /**
  *
  * @author Ricardo Fanghella
  */
 public class registrarPersonaVacunada extends javax.swing.JFrame {
-
+    Extraer dataSQL = new Extraer();
+    Creador crea = new Creador();
     /**
      * Creates new form registrarMedicamento
      */
     public registrarPersonaVacunada() {
         initComponents();
-        this.setSize(545, 395);
-        this.setResizable(false);
+        ArrayList<String> listas = dataSQL.nombVacuna(dataSQL.Vacuna());
+        for (int i=0;i<listas.size();i++){
+            desplegable_VacApli1.addItem(listas.get(i));
+        }
+        listas = dataSQL.nombCentro(dataSQL.CentroSaludVac());
+        for (int i=0;i<listas.size();i++){
+            desplegable_CentroApli.addItem(listas.get(i));
+        }
+        desplegable_calendar.getDateEditor().setEnabled(false);
+        desplegable_calendar.getJCalendar().setMaxSelectableDate(new Date());
+        desplegable_calendar.setDate(new Date(System.currentTimeMillis()));
     }
 
     /**
@@ -40,13 +60,14 @@ public class registrarPersonaVacunada extends javax.swing.JFrame {
         label_Numero_Dosis = new javax.swing.JLabel();
         label_Fecha_Vacunacion = new javax.swing.JLabel();
         desplegable_calendar = new com.toedter.calendar.JDateChooser();
-        desplegable_PersonalSalud = new javax.swing.JComboBox<String>();
-        desplegable_Doc = new javax.swing.JComboBox<String>();
-        desplegable_CentroApli = new javax.swing.JComboBox<String>();
+        desplegable_PersonalSalud = new javax.swing.JComboBox<>();
+        desplegable_CentroApli = new javax.swing.JComboBox<>();
         label_Doc = new javax.swing.JLabel();
         label_PersonalSalud = new javax.swing.JLabel();
-        desplegable_VacApli1 = new javax.swing.JComboBox<String>();
+        desplegable_VacApli1 = new javax.swing.JComboBox<>();
         field_Numero_Dosis = new javax.swing.JTextField();
+        textField_NDocumento = new javax.swing.JTextField();
+        desplegable_Nacionalidad = new javax.swing.JComboBox<>();
         title_persona = new javax.swing.JLabel();
 
         jButton2.setBackground(new java.awt.Color(235, 235, 235));
@@ -107,7 +128,6 @@ public class registrarPersonaVacunada extends javax.swing.JFrame {
         jPanel2.add(desplegable_calendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 180, 20));
 
         desplegable_PersonalSalud.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_PersonalSalud.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         desplegable_PersonalSalud.setPreferredSize(new java.awt.Dimension(56, 24));
         desplegable_PersonalSalud.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,14 +136,13 @@ public class registrarPersonaVacunada extends javax.swing.JFrame {
         });
         jPanel2.add(desplegable_PersonalSalud, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 180, -1));
 
-        desplegable_Doc.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Doc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        desplegable_Doc.setPreferredSize(new java.awt.Dimension(56, 24));
-        jPanel2.add(desplegable_Doc, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 180, -1));
-
         desplegable_CentroApli.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_CentroApli.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         desplegable_CentroApli.setPreferredSize(new java.awt.Dimension(56, 24));
+        desplegable_CentroApli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                desplegable_CentroApliActionPerformed(evt);
+            }
+        });
         jPanel2.add(desplegable_CentroApli, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 180, -1));
 
         label_Doc.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
@@ -135,18 +154,34 @@ public class registrarPersonaVacunada extends javax.swing.JFrame {
         jPanel2.add(label_PersonalSalud, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
 
         desplegable_VacApli1.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_VacApli1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         desplegable_VacApli1.setPreferredSize(new java.awt.Dimension(56, 24));
         jPanel2.add(desplegable_VacApli1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, 180, -1));
 
         field_Numero_Dosis.setBackground(new java.awt.Color(235, 235, 235));
-        field_Numero_Dosis.setForeground(new java.awt.Color(0, 0, 0));
         field_Numero_Dosis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 field_Numero_DosisActionPerformed(evt);
             }
         });
         jPanel2.add(field_Numero_Dosis, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 220, -1));
+
+        textField_NDocumento.setBackground(new java.awt.Color(235, 235, 235));
+        textField_NDocumento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textField_NDocumentoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(textField_NDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 180, -1));
+
+        desplegable_Nacionalidad.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        desplegable_Nacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "V", "E" }));
+        desplegable_Nacionalidad.setPreferredSize(new java.awt.Dimension(56, 24));
+        desplegable_Nacionalidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                desplegable_NacionalidadActionPerformed(evt);
+            }
+        });
+        jPanel2.add(desplegable_Nacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 50, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 470, 250));
 
@@ -161,11 +196,25 @@ public class registrarPersonaVacunada extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_Volver_RegistroDPVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_RegistroDPVActionPerformed
-        // TODO add your handling code here:
+        RegistroVisualizacionPersonasVacunadas persona= new RegistroVisualizacionPersonasVacunadas();
+        crea.InterfazDiferentes(this, persona, 837, 427);
     }//GEN-LAST:event_boton_Volver_RegistroDPVActionPerformed
 
     private void boton_Siguiente_RegistroDPVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Siguiente_RegistroDPVActionPerformed
-        // TODO add your handling code here:
+        Verificador veri = new Verificador();
+        if((veri.dataNB(textField_NDocumento))&&(veri.dataNB(field_Numero_Dosis))){
+            if((veri.noVacio(textField_NDocumento.getText().toString()))&&(veri.noVacio(field_Numero_Dosis.getText().toString()))){
+                Guardar insertSQL = new Guardar();
+                Buscador bus = new Buscador();
+                if(insertSQL.vacunacion(desplegable_Nacionalidad.getSelectedItem().toString()+textField_NDocumento.getText().toString(),bus.codVacuna(desplegable_VacApli1.getSelectedItem().toString()),bus.codCentro(desplegable_CentroApli.getSelectedItem().toString()),desplegable_PersonalSalud.getSelectedItem().toString(),desplegable_calendar,field_Numero_Dosis.getText().toString())){
+                    RegistroVisualizacionPersonasVacunadas persona= new RegistroVisualizacionPersonasVacunadas();
+                    crea.InterfazDiferentes(this, persona, 837, 427);
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "No se admiten casillas con unicamente espacios en blanco","Error",ERROR_MESSAGE);
+            }
+        }else
+            JOptionPane.showMessageDialog(null, "Se encuentran casillas sin rellenar","Error",ERROR_MESSAGE);
     }//GEN-LAST:event_boton_Siguiente_RegistroDPVActionPerformed
 
     private void desplegable_PersonalSaludActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desplegable_PersonalSaludActionPerformed
@@ -175,6 +224,23 @@ public class registrarPersonaVacunada extends javax.swing.JFrame {
     private void field_Numero_DosisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_Numero_DosisActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_field_Numero_DosisActionPerformed
+
+    private void textField_NDocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField_NDocumentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textField_NDocumentoActionPerformed
+
+    private void desplegable_NacionalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desplegable_NacionalidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_desplegable_NacionalidadActionPerformed
+
+    private void desplegable_CentroApliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desplegable_CentroApliActionPerformed
+        desplegable_PersonalSalud.removeAllItems();
+        Buscador bus = new Buscador();
+        String codcentro = desplegable_CentroApli.getSelectedItem().toString();
+        ArrayList<String> listas = dataSQL.PersonalSalud(bus.codCentro(codcentro));
+        for (int i=0;i<listas.size();i++)
+            desplegable_PersonalSalud.addItem(listas.get(i));
+    }//GEN-LAST:event_desplegable_CentroApliActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,6 +275,14 @@ public class registrarPersonaVacunada extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -222,7 +296,7 @@ public class registrarPersonaVacunada extends javax.swing.JFrame {
     private javax.swing.JButton boton_Siguiente_RegistroDPV;
     private javax.swing.JButton boton_Volver_RegistroDPV;
     private javax.swing.JComboBox<String> desplegable_CentroApli;
-    private javax.swing.JComboBox<String> desplegable_Doc;
+    private javax.swing.JComboBox<String> desplegable_Nacionalidad;
     private javax.swing.JComboBox<String> desplegable_PersonalSalud;
     private javax.swing.JComboBox<String> desplegable_VacApli1;
     private com.toedter.calendar.JDateChooser desplegable_calendar;
@@ -237,6 +311,7 @@ public class registrarPersonaVacunada extends javax.swing.JFrame {
     private javax.swing.JLabel label_Numero_Dosis;
     private javax.swing.JLabel label_PersonalSalud;
     private javax.swing.JLabel label_nombre_VacApli;
+    private javax.swing.JTextField textField_NDocumento;
     private javax.swing.JLabel title_persona;
     // End of variables declaration//GEN-END:variables
 }
