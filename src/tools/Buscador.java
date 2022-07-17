@@ -1,8 +1,9 @@
 
 package tools;
 
-import Clases.Estado;
+import Clases.CentroSalud;
 import Clases.Pais;
+import Clases.Vacuna;
 import SQL.ConexionSQL;
 import SQL.Extraer;
 import com.sun.scenario.effect.impl.sw.java.JSWPhongLighting_DISTANTPeer;
@@ -335,5 +336,135 @@ public class Buscador {
         for (int i = 0; i<codSint.size();i++){
             this.tableVarSintEli(denom_oms, codSint.get(i));
         }
+    }
+    
+    //yerlin
+    public void tablePersonalSalud(JTable tabla, String cedula){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            Verificador validar = new Verificador();
+            DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from personal_salud where docidentidad_ps='"+cedula+"'");
+            while(rs.next()){
+                model.addRow(new Object[]{rs.getString(1),rs.getString(2),validar.validarTipoPersonal(rs.getString(3),rs.getString(4))});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No hay personal de salud con la cedula ingresada");
+        }
+    }
+    public void tableAllPersonalSalud(JTable tabla){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        Verificador veri = new Verificador();
+        try {
+            DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from personal_salud");
+            while(rs.next()){
+                model.addRow(new Object[]{rs.getString(1),rs.getString(2),veri.validarTipoPersonal(rs.getString(3),rs.getString(4))});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error con la coneccion a la base de datos");
+        }
+    }
+    
+    public void tableCentroPersonal(JTable tabla, String cedula){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select c.nombcentro, a.fechaasignado from asignado a, centro_salud c where a.codcentro = c.codcentro and a.docidentidad_ps ='"+cedula+"'");
+            while(rs.next()){
+                model.addRow(new Object[]{rs.getString(1),rs.getString(2)});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No hay personal de salud con la cedula ingresada");
+        }
+    }
+    
+    public ArrayList<String> codPersonalVacunador(){
+        ArrayList<String> codigos = new ArrayList<String>();
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from vacunada");
+            while(rs.next()){
+                codigos.add(rs.getString(4));
+            }
+            con.disconnect();
+            return codigos;
+        } catch (Exception e) {
+        }  
+        return null;
+    }
+    
+    public ArrayList<String> codPersonalEncargado(){
+        ArrayList<String> codigos = new ArrayList<String>();
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from centro_salud");
+            while(rs.next()){
+                codigos.add(rs.getString(4));
+            }
+            con.disconnect();
+            return codigos;
+        } catch (Exception e) {
+        }  
+        return null;
+    }
+    public void tablePersonalEli(String cedula){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {//borrar personal en asignado
+            st = con.connected().createStatement();
+            st.executeQuery("delete from asignado where docidentidad_ps='"+cedula+"'");
+        } catch (Exception e) {
+        }
+        try {//borrar personal salud
+            st = con.connected().createStatement();
+            st.executeQuery("delete from personal_salud where docidentidad_ps='"+cedula+"'");    
+        } catch (Exception e) {
+        }
+    }
+    public void tableMedicoEli(String cedula){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {//borrar medico
+            st = con.connected().createStatement();
+            st.executeQuery("delete from medico where docidentidad_med='"+cedula+"'");
+        } catch (Exception e) {
+        }
+    }
+    
+    public String codCentro (String nombcentro){
+        String cod = "";
+        Extraer dataSQL = new Extraer();
+        ArrayList<CentroSalud> listCentro = dataSQL.CentroSalud();
+        int i = 0;
+        while((cod.equals(""))&&(i<listCentro.size())){
+            if (nombcentro.equals(listCentro.get(i).getNombreCentro()))
+                cod = listCentro.get(i).getCodCentro().toString();
+            i++;
+        }     
+        return cod;
+    }
+    
+    public String codVacuna (String nombvacuna){
+        String cod = "";
+        Extraer dataSQL = new Extraer();
+        ArrayList<Vacuna> listVacuna = dataSQL.Vacuna();
+        int i = 0;
+        while((cod.equals(""))&&(i<listVacuna.size())){
+            if (nombvacuna.equals(listVacuna.get(i).getNombvacuna()))
+                cod = listVacuna.get(i).getIdvacuna().toString();
+            i++;
+        }     
+        return cod;
     }
 }

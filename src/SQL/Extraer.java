@@ -5,6 +5,7 @@ import Clases.Enfermedad;
 import Clases.Sintomas;
 import Clases.Estado;
 import Clases.Pais;
+import Clases.Vacuna;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -221,6 +222,100 @@ public class Extraer {
             }          
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No hay data suficiente para mostrar el reporte");
+        }
+    }
+    
+    //yerlin
+    public ArrayList<Vacuna> Vacuna() {
+        Statement st;
+        ArrayList<Vacuna> Vacunas = new ArrayList<Vacuna>();
+        ConexionSQL con = new ConexionSQL();
+
+        try {
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from vacuna");
+            while (rs.next()) {
+                Vacunas.add(new Vacuna(rs.getInt(1), rs.getInt(2),rs.getString(3), rs.getInt(4),rs.getString(5), rs.getString(6),rs.getInt(7)));
+            }
+            st.close();
+            con.disconnect();
+            return Vacunas;
+        } catch (Exception e) {
+            con.disconnect();
+            return null;
+        }
+    }
+    
+    public ArrayList<String> nombVacuna(ArrayList<Vacuna> listVacunas) {
+        ArrayList<String> nombVacunas = new ArrayList<String>();
+        for (int i = 0; i < listVacunas.size(); i++) {
+            nombVacunas.add(listVacunas.get(i).getNombvacuna());
+        }
+        return nombVacunas;
+    }
+    
+    public ArrayList<String> nombCentro(ArrayList<CentroSalud> listCentros) {
+        ArrayList<String> nombCentros = new ArrayList<String>();
+        for (int i = 0; i < listCentros.size(); i++) {
+            nombCentros.add(listCentros.get(i).getNombreCentro());
+        }
+        return nombCentros;
+    }
+    
+    public ArrayList<String> codPersonalSalud() {
+        Statement st;
+        ArrayList<String> personal = new ArrayList<String>();
+        ConexionSQL con = new ConexionSQL();
+
+        try {
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from personal_salud");
+            while (rs.next()) {
+                personal.add(rs.getString(1));
+            }
+            st.close();
+            con.disconnect();
+            return personal;
+        } catch (Exception e) {
+            con.disconnect();
+            return null;
+        }
+    }
+    
+    public ArrayList<String> PersonalSalud(String codCentro) {
+        Statement st;
+        ArrayList<String> personal = new ArrayList<String>();
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select distinct docidentidad_ps from asignado where codcentro ='"+codCentro+"'");
+            while (rs.next()) {                   
+                personal.add(rs.getString(1));
+            }
+            st.close();
+            con.disconnect();
+            return personal;
+        } catch (Exception e) {
+            con.disconnect();
+            return null;
+        }
+    }
+    public ArrayList<CentroSalud> CentroSaludVac() {
+        Statement st;
+        ArrayList<CentroSalud> Centro = new ArrayList<CentroSalud>();
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select c.* from centro_salud c, vacunacion v where c.codcentro = v.codcentro_vac");
+            while (rs.next()) {
+                Centro.add(new CentroSalud(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4), rs.getDate(5).toString(), rs.getInt(6)));
+            }
+            st.close();
+            con.disconnect();
+            return Centro;
+        } catch (Exception e) {
+            con.disconnect();
+            return null;
         }
     }
 }
