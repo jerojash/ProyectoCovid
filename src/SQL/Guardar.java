@@ -167,6 +167,7 @@ public class Guardar {
             switch (caso){
                 case 1:
                     sql = "update persona set nombper = '"+datoModi+"' where doc_identidad = '"+cedula+"'";
+                    System.out.println("update persona set nombper = '"+datoModi+"' where doc_identidad = '"+cedula+"'");
                 break;
                 case 2:
                     sql = "update persona set apellidoper = '"+datoModi+"' where doc_identidad = '"+cedula+"'";
@@ -186,7 +187,7 @@ public class Guardar {
                 case 7:
                     sql = "update persona set ocupacion = '"+datoModi+"' where doc_identidad = '"+cedula+"'";                    
             }
-            st.executeQuery(sql);
+            st.executeUpdate(sql);
             st.close();
             con.close();
         } catch (Exception e) {

@@ -233,7 +233,7 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
 
         boton_Siguiente_RegistroDP1.setBackground(new java.awt.Color(235, 235, 235));
         boton_Siguiente_RegistroDP1.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
-        boton_Siguiente_RegistroDP1.setText("Siguiente");
+        boton_Siguiente_RegistroDP1.setText("Guardar");
         boton_Siguiente_RegistroDP1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         boton_Siguiente_RegistroDP1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -468,7 +468,6 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
     private void boton_ModificarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_ModificarPersonaActionPerformed
         if (jTable_personas.getSelectedRow()!= -1){
             model = (DefaultTableModel) jTable_personas.getModel();
-            System.out.println(model.getValueAt(jTable_personas.getSelectedRow(),0).toString());
             JLabel_cedula.setText(model.getValueAt(jTable_personas.getSelectedRow(), 0).toString());
             crea.InterfazIguales(this, Frame_modificar, 880, 390);
         }else
@@ -568,7 +567,7 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_apellidoActionPerformed
 
     private void boton_fnacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_fnacActionPerformed
-        // TODO add your handling code here:
+        crea.InterfazIguales(Frame_modificar, jFrame_fechanac,590, 225);
     }//GEN-LAST:event_boton_fnacActionPerformed
 
     private void boton_sexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_sexoActionPerformed
@@ -618,12 +617,13 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         long da = date.getTime();
         java.sql.Date fecha = new java.sql.Date(da);
         Guardar insertSQL = new Guardar();
-        insertSQL.ModiPerso(model.getValueAt(jTable_personas.getSelectedRow(), 0).toString(), fecha.toString(),3);
+        insertSQL.ModiPerso(model.getValueAt(jTable_personas.getSelectedRow(), 0).toString(), fecha.toString(),3);      
     }//GEN-LAST:event_boton_Siguiente_RegistroDP1ActionPerformed
 
     private void boton_Volver_RegistroDP2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_RegistroDP2ActionPerformed
-        RegistroVisualizacionPersonas RVP = new RegistroVisualizacionPersonas();
-        crea.InterfazDiferentes(this, RVP, 1008, 550);
+        crea.InterfazIguales(jFrame_fechanac, Frame_modificar, 880, 390);
+        bus.limpiarTabla(jTable_personas);
+        bus.tableAllpersonas(jTable_personas);
     }//GEN-LAST:event_boton_Volver_RegistroDP2ActionPerformed
 
     /**
@@ -735,8 +735,6 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
     private javax.swing.JButton boton_Enfermedades;
     private javax.swing.JButton boton_ModificarPersona;
     private javax.swing.JButton boton_Ocupacion;
-    private javax.swing.JButton boton_RegistrarPersona;
-    private javax.swing.JButton boton_RegistrarPersona1;
     private javax.swing.JButton boton_Siguiente_RegistroDP1;
     private javax.swing.JButton boton_Volver_RegistroDP2;
     private javax.swing.JButton boton_Volver_Sintomas;
@@ -747,16 +745,8 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
     private javax.swing.JButton boton_telefono;
     private javax.swing.JButton boton_volverAMain;
     private javax.swing.JComboBox<String> desplegable_Nacionalidad;
-    private javax.swing.JComboBox<String> desplegable_Nacionalidad1;
-    private javax.swing.JComboBox<String> desplegable_Nacionalidad2;
-    private javax.swing.JComboBox<String> desplegable_Ocupacion;
-    private javax.swing.JComboBox<String> desplegable_Ocupacion1;
-    private javax.swing.JComboBox<String> desplegable_Pais1;
-    private javax.swing.JComboBox<String> desplegable_Pais2;
     private com.toedter.calendar.JDateChooser fechaNac;
     private javax.swing.JTextField field_Numero_Doc1;
-    private javax.swing.JFrame jFrame1;
-    private javax.swing.JFrame jFrame2;
     private javax.swing.JFrame jFrame_fechanac;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -764,47 +754,19 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable_enfermedades;
     private javax.swing.JTable jTable_personas;
     private javax.swing.JTable jTable_recide;
-    private javax.swing.JLabel label_AltoRiesgo;
-    private javax.swing.JLabel label_AltoRiesgo1;
-    private javax.swing.JLabel label_Apellido_Per;
-    private javax.swing.JLabel label_Apellido_Per1;
-    private javax.swing.JLabel label_Enfermedad;
-    private javax.swing.JLabel label_Enfermedad1;
-    private javax.swing.JLabel label_Estado;
-    private javax.swing.JLabel label_Estado1;
-    private javax.swing.JLabel label_Fecha_Nac;
-    private javax.swing.JLabel label_Fecha_Nac1;
     private javax.swing.JLabel label_Fecha_Nac3;
-    private javax.swing.JLabel label_Ntelefono;
-    private javax.swing.JLabel label_Ntelefono1;
-    private javax.swing.JLabel label_Numero_Doc;
-    private javax.swing.JLabel label_Numero_Doc1;
-    private javax.swing.JLabel label_Pais;
-    private javax.swing.JLabel label_Pais1;
-    private javax.swing.JLabel label_Sexo;
-    private javax.swing.JLabel label_Sexo1;
     private javax.swing.JLabel label_Sintomas;
-    private javax.swing.JLabel label_nombre_Per;
-    private javax.swing.JLabel label_nombre_Per1;
     private javax.swing.JLabel title_RegistroSintomas;
     private javax.swing.JLabel title_persona;
     // End of variables declaration//GEN-END:variables
