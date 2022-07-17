@@ -158,6 +158,51 @@ public class Guardar {
         return verificar;
     }
     
+    public void iteGuardarSintVar(JTable tabla, String denom_oms){
+        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+        for (int i = 0; i<tabla.getRowCount();i++){
+            this.guardarSintVar(modelo.getValueAt(i, 0).toString(), denom_oms);
+        }
+    }
+    
+    public void guardarSintVar(String descripsintoma, String denom_oms){
+        try {
+            ConexionSQL conexion= new ConexionSQL();
+            Connection con = conexion.connected();
+            java.sql.Statement st = con.createStatement();
+            Buscador busc = new Buscador();
+            ArrayList<String> codSint = busc.CodSintoma(descripsintoma);
+            for (int i = 0; i<codSint.size();i++){
+                String value = "'"+denom_oms+"','"+codSint.get(i)+"'";
+                String sql = "insert into tiene (denom_oms,codsintoma) values("+value+")";
+                st.execute(sql);
+            }
+            st.close();
+            con.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Hubo un inconveniente con el manejo del servidor");
+        }
+    }
+    
+    public Boolean guardarSintoma(String descripsintoma){
+        Boolean verificar = true;
+        try {
+            ConexionSQL conexion= new ConexionSQL();
+            Connection con = conexion.connected();
+            java.sql.Statement st = con.createStatement();
+            String value = "'"+descripsintoma+"'";
+            String sql = "insert into sintoma_efecto(descripsintoma) values("+value+")";
+            st.execute(sql);
+            st.close();
+            con.close();
+        } catch (Exception e) {
+            verificar = false;
+            JOptionPane.showMessageDialog(null, "Hubo un inconveniente con el manejo del servidor");
+        }
+        return verificar;
+    }
+    
+    
     public void ModiPerso(String cedula,String datoModi, int caso){ 
         try {
             ConexionSQL conexion= new ConexionSQL();
@@ -186,6 +231,61 @@ public class Guardar {
                 break;
                 case 7:
                     sql = "update persona set ocupacion = '"+datoModi+"' where doc_identidad = '"+cedula+"'";                    
+            }
+            st.executeUpdate(sql);
+            st.close();
+            con.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Hubo un inconveniente con el manejo del servidor");
+        }           
+    }
+    
+    public boolean guardadoVariante(JTextField denom_oms,JTextField linaje,JDateChooser fechaorigen,String clasificacion,String codpais){            
+        boolean guardado = true;
+        try {
+            ConexionSQL conexion= new ConexionSQL();
+            Connection con = conexion.connected();  
+            java.sql.Statement st = con.createStatement();
+            Date date = fechaorigen.getDate();
+            long da = date.getTime();
+            java.sql.Date fecha = new java.sql.Date(da);
+            Buscador select = new Buscador();
+            String value = "'"+denom_oms.getText().toString()+"','"+linaje.getText().toString()+"','"+fecha.toString()+"','"+clasificacion+"','"+select.codPais(codpais)+"'"; //+"','"+direccion.getText().toString()+"','"+codpais.getText().toString()+"','"+altoRiesgo+"','"+ocupacion+"'";
+            String sql = "insert into virus_variante(denom_oms,linaje,fechaorigen,clasificacion,codpais) values("+value+")";
+            System.out.println(sql);
+            st.execute(sql);
+            /*Buscador select = new Buscador();
+            date = fechaReside.getDate();
+            da = date.getTime();
+            fecha = new java.sql.Date(da);
+            value = "'"+doc+"','"+select.codEstado(select.codPais(pais), estado)+"','"+fecha.toString()+"'";
+            sql = "insert into reside (docidentidad,codestado,fechareside) values("+value+")";
+            st.execute(sql);*/
+            st.close();
+            con.close();
+        } catch (Exception e) {
+            guardado = false;
+            JOptionPane.showMessageDialog(null, "Hubo un inconveniente con el manejo del servidor");
+        }
+        return guardado;
+    }
+    
+    public void ModiVar(String denom_oms,String datoModi, int caso){ 
+        try {
+            ConexionSQL conexion= new ConexionSQL();
+            Connection con = conexion.connected();
+            java.sql.Statement st = con.createStatement();
+            String sql="";
+            switch (caso){
+                case 1:
+                    sql = "update virus_variante set linaje = '"+datoModi+"' where denom_oms = '"+denom_oms+"'";
+                    System.out.println("update persona set nombper = '"+datoModi+"' where denom_oms = '"+denom_oms+"'");
+                break;
+                case 2:
+                    sql = "update virus_variante set fechaorigen = '"+datoModi+"' where denom_oms = '"+denom_oms+"'";
+                break;
+                case 3:
+                    sql = "update virus_variante set clasificacion = '"+datoModi+"' where denom_oms = '"+denom_oms+"'";                  
             }
             st.executeUpdate(sql);
             st.close();

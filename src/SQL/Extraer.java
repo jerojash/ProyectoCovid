@@ -2,6 +2,7 @@ package SQL;
 
 import Clases.CentroSalud;
 import Clases.Enfermedad;
+import Clases.Sintomas;
 import Clases.Estado;
 import Clases.Pais;
 import java.sql.ResultSet;
@@ -147,6 +148,35 @@ public class Extraer {
             con.disconnect();
             return null;
         }
+    }
+    
+    public ArrayList<Sintomas> Sintomas() {
+        Statement st;
+        ArrayList<Sintomas> sintomas = new ArrayList<Sintomas>();
+        ConexionSQL con = new ConexionSQL();
+
+        try {
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from sintoma_efecto");
+            while (rs.next()) {
+               sintomas.add(new Sintomas(rs.getInt(1), rs.getString(2)));
+            }
+            st.close();
+            con.disconnect();
+            return sintomas;
+        } catch (Exception e) {
+            con.disconnect();
+            return null;
+        }
+    }
+    
+    public ArrayList<String> descripsintoma(ArrayList<Sintomas> listSintomas) {
+        ArrayList<String> descripsintoma = new ArrayList<String>();
+
+        for (int i = 0; i < listSintomas.size(); i++) {
+            descripsintoma.add(listSintomas.get(i).getdescripsintoma());
+        }
+        return descripsintoma;
     }
     
     

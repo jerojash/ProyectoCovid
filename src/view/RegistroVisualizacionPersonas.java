@@ -77,7 +77,7 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         boton_Volver_Sintomas = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         label_Sintomas = new javax.swing.JLabel();
-        desplegable_Nacionalidad = new javax.swing.JComboBox<String>();
+        desplegable_Nacionalidad = new javax.swing.JComboBox<>();
         boton_ModificarPersona = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_personas = new javax.swing.JTable();
@@ -200,7 +200,7 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Modificacion a la persona con cedula:");
-        jPanel8.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, -1, -1));
+        jPanel8.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 400, -1));
 
         boton_Enfermedades.setBackground(new java.awt.Color(235, 235, 235));
         boton_Enfermedades.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
@@ -294,7 +294,7 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         jPanel2.add(label_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, -1, -1));
 
         desplegable_Nacionalidad.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Nacionalidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "V", "E" }));
+        desplegable_Nacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "V", "E" }));
         desplegable_Nacionalidad.setPreferredSize(new java.awt.Dimension(56, 24));
         desplegable_Nacionalidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -466,7 +466,9 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_Volver_SintomasActionPerformed
 
     private void boton_ModificarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_ModificarPersonaActionPerformed
-        if (jTable_personas.getSelectedRow()!= -1){
+        if (jTable_personas.getSelectedRow()!= -1)
+        
+        {
             model = (DefaultTableModel) jTable_personas.getModel();
             JLabel_cedula.setText(model.getValueAt(jTable_personas.getSelectedRow(), 0).toString());
             crea.InterfazIguales(this, Frame_modificar, 880, 390);
