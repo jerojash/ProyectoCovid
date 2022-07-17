@@ -8,6 +8,8 @@ package view;
 import java.util.ArrayList;
 import tools.Buscador;
 import SQL.Extraer;
+import SQL.Reporte;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,7 +19,7 @@ public class Reporte8 extends javax.swing.JFrame {
     Extraer dataSQL = new Extraer();
     public Reporte8() {
         initComponents();
-        ArrayList<String> listas = dataSQL.nombPais(dataSQL.Pais());
+        ArrayList<String> listas = dataSQL.denom_oms(dataSQL.variante());
         for (int i=0;i<listas.size();i++)
         desplegable_Variantes.addItem(listas.get(i));
     }
@@ -36,11 +38,11 @@ public class Reporte8 extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         label_Sintomas = new javax.swing.JLabel();
         desplegable_Variantes = new javax.swing.JComboBox<>();
-        boton_AggSintomas = new javax.swing.JButton();
-        title_RegistroSintomas = new javax.swing.JLabel();
+        boton_Buscar = new javax.swing.JButton();
+        nivel_eficaz = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable_personas = new javax.swing.JTable();
-        title_RegistroSintomas2 = new javax.swing.JLabel();
+        tabla_sintomas = new javax.swing.JTable();
+        vacuna_eficaz = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,28 +76,28 @@ public class Reporte8 extends javax.swing.JFrame {
         });
         jPanel2.add(desplegable_Variantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 240, -1));
 
-        boton_AggSintomas.setBackground(new java.awt.Color(235, 235, 235));
-        boton_AggSintomas.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
-        boton_AggSintomas.setText("Buscar");
-        boton_AggSintomas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        boton_AggSintomas.addActionListener(new java.awt.event.ActionListener() {
+        boton_Buscar.setBackground(new java.awt.Color(235, 235, 235));
+        boton_Buscar.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
+        boton_Buscar.setText("Seleccionar");
+        boton_Buscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_Buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_AggSintomasActionPerformed(evt);
+                boton_BuscarActionPerformed(evt);
             }
         });
-        jPanel2.add(boton_AggSintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, 90, 27));
+        jPanel2.add(boton_Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, 90, 27));
 
-        title_RegistroSintomas.setFont(new java.awt.Font("Serif", 0, 20)); // NOI18N
-        title_RegistroSintomas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        title_RegistroSintomas.setText("Nivel de eficacia: ");
-        jPanel2.add(title_RegistroSintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 360, 40));
+        nivel_eficaz.setFont(new java.awt.Font("Serif", 0, 20)); // NOI18N
+        nivel_eficaz.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        nivel_eficaz.setText("Nivel de eficacia: ");
+        jPanel2.add(nivel_eficaz, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 360, 40));
 
-        jTable_personas.setModel(new javax.swing.table.DefaultTableModel(
+        tabla_sintomas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Documento "
+                "Sintomas "
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -106,19 +108,19 @@ public class Reporte8 extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable_personas.addMouseListener(new java.awt.event.MouseAdapter() {
+        tabla_sintomas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable_personasMouseClicked(evt);
+                tabla_sintomasMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable_personas);
+        jScrollPane1.setViewportView(tabla_sintomas);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 440, 260));
 
-        title_RegistroSintomas2.setFont(new java.awt.Font("Serif", 0, 20)); // NOI18N
-        title_RegistroSintomas2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        title_RegistroSintomas2.setText("Vacuna más eficaz: ");
-        jPanel2.add(title_RegistroSintomas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 360, 40));
+        vacuna_eficaz.setFont(new java.awt.Font("Serif", 0, 20)); // NOI18N
+        vacuna_eficaz.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        vacuna_eficaz.setText("Vacuna más eficaz: ");
+        jPanel2.add(vacuna_eficaz, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 360, 40));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 480, 520));
 
@@ -146,19 +148,38 @@ public class Reporte8 extends javax.swing.JFrame {
 
     }//GEN-LAST:event_boton_Volver_SintomasActionPerformed
 
-    private void boton_AggSintomasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_AggSintomasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boton_AggSintomasActionPerformed
-
-    private void jTable_personasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_personasMouseClicked
+    private void boton_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_BuscarActionPerformed
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Sintomas");
+        tabla_sintomas.setModel(model);
+        Reporte r = new Reporte();
+        String [] data = new String[2];
+        data = r.Reporte_8_1(desplegable_Variantes.getSelectedItem().toString());
+        if (data!=null){
+            vacuna_eficaz.setText("Vacuna más eficaz: " + data[0]);
+            nivel_eficaz.setText("Nivel de eficacia: "+ data[1]+"%");
+        }else {
+            vacuna_eficaz.setText("Vacuna más eficaz: ");
+            nivel_eficaz.setText("Nivel de eficacia: ");
+        }
+        ArrayList<String> data2 = new ArrayList<String>();
+        data2 = r.Reporte_8_2(desplegable_Variantes.getSelectedItem().toString());
+        String [] info = new String[1];
+        for (int i = 0; i < data2.size(); i++){
+            info[0] = data2.get(i).toString();
+            model.addRow(info);
+                    //addRow(data2.get(i));
+        }
         
-    }//GEN-LAST:event_jTable_personasMouseClicked
+    }//GEN-LAST:event_boton_BuscarActionPerformed
+
+    private void tabla_sintomasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_sintomasMouseClicked
+        
+    }//GEN-LAST:event_tabla_sintomasMouseClicked
 
     private void desplegable_VariantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desplegable_VariantesActionPerformed
         // TODO add your handling code here:
-        String codpais = desplegable_Variantes.getSelectedItem().toString();
-        Buscador busc = new Buscador();
-        ArrayList<String> listas = dataSQL.nombEstado(dataSQL.Estado(busc.codPais(codpais)));
+        ArrayList<String> listas = dataSQL.denom_oms(dataSQL.variante());
         for (int i=0;i<listas.size();i++);
     }//GEN-LAST:event_desplegable_VariantesActionPerformed
 
@@ -198,15 +219,15 @@ public class Reporte8 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton boton_AggSintomas;
+    private javax.swing.JButton boton_Buscar;
     private javax.swing.JButton boton_Volver_Sintomas;
     private javax.swing.JComboBox<String> desplegable_Variantes;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable_personas;
     private javax.swing.JLabel label_Sintomas;
-    private javax.swing.JLabel title_RegistroSintomas;
-    private javax.swing.JLabel title_RegistroSintomas2;
+    private javax.swing.JLabel nivel_eficaz;
+    private javax.swing.JTable tabla_sintomas;
+    private javax.swing.JLabel vacuna_eficaz;
     // End of variables declaration//GEN-END:variables
 }

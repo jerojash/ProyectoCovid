@@ -136,7 +136,7 @@ public class Extraer {
         ConexionSQL con = new ConexionSQL();
         try {
             st = con.connected().createStatement();
-            ResultSet rs = st.executeQuery("select * from centro_salud");
+            ResultSet rs = st.executeQuery("select * from virus_variante");
             while (rs.next()) {
                 Variante.add(new Variante(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4), rs.getInt(5)));
             }
@@ -147,6 +147,14 @@ public class Extraer {
             con.disconnect();
             return null;
         }
+    }
+    
+    public ArrayList<String> denom_oms(ArrayList<Variante> listVirus) {
+        ArrayList<String> nombreVariante = new ArrayList<String>();
+        for (int i = 0; i < listVirus.size(); i++) {
+            nombreVariante.add(listVirus.get(i).getDenom_oms().toString());
+        }
+        return nombreVariante;
     }
     
     

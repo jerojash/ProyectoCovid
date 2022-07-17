@@ -12,6 +12,7 @@ import view.registrarVacuna;
 import view.registrarPersonaVacunada;
 import view.registrarTratamiento;
 import view.registrarTratamientoPaciente;
+import SQL.Reporte;
 
 /**
  *
