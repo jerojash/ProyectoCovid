@@ -8,6 +8,9 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import Clases.Variante;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class Extraer {
     public ArrayList<Enfermedad> Enfermedad() {
@@ -157,7 +160,21 @@ public class Extraer {
         return nombreVariante;
     }
     
-    
+    public void Reporte2(JTable tabla){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from reporte_2");
+            while(rs.next()){
+                model.addRow(new Object[]{rs.getString(1),rs.getString(2)});
+            }          
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No hay personas con la cedula ingresada");
+        }
+    }
+
 }
 
 
