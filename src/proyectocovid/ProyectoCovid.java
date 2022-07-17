@@ -23,13 +23,7 @@ public class ProyectoCovid {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        ConexionSQL conexion = new ConexionSQL();
-        conexion.connected();
-        Scanner entrada = new Scanner(System.in);
-        String entradaS = entrada.nextLine();
-        conexion.disconnect();
-        
+    public static void main(String[] args) {      
         registrarPersonaContagiada ventana = new registrarPersonaContagiada();
         ventana.setVisible(true);
         ventana.setLocationRelativeTo(null);
