@@ -8,6 +8,7 @@ import Clases.Variante;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -57,6 +58,26 @@ public class Reporte {
             return null;
             }
      }
+    
+    public ResultSet reporte_7(){
+             Statement st;
+            ConexionSQL con = new ConexionSQL();
+            try {
+                st = con.connected().createStatement();
+                  ResultSet rs = st.executeQuery("select c.nombcentro, h.codcentro_hos, v.codcentro_vac, count(h.docidentidad_pac), count(distinct(v.docidentidad))\n" +
+                                                                        "from centro_salud c\n" +
+                                                                        "left join hospitalizado h\n" +
+                                                                        "on h.codcentro_hos = c.codcentro\n" +
+                                                                        "left join vacunada v\n" +
+                                                                        "on v.codcentro_vac = c.codcentro\n" +
+                                                                        "group by c.nombcentro,h.codcentro_hos, v.codcentro_vac");
+                
+                con.disconnect();
+                return rs;
+            } catch (Exception e) {
+            return null;
+            }
+    }
 }
 
 
