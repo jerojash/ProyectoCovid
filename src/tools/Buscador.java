@@ -173,7 +173,7 @@ public class Buscador {
     public void tablePersonasEli(String cedula){
         Statement st;
         ConexionSQL con = new ConexionSQL();
-        try {//borrar persona en vacunada
+        try {//borrar persona en vacunda
             st = con.connected().createStatement();
             st.executeQuery("delete from vacunada where docidentidad='"+cedula+"'");
             st.close();
