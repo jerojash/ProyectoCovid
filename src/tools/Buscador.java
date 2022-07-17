@@ -173,19 +173,34 @@ public class Buscador {
     public void tablePersonasEli(String cedula){
         Statement st;
         ConexionSQL con = new ConexionSQL();
+        try {//borrar persona en vacunada
+            st = con.connected().createStatement();
+            st.executeQuery("delete from vacunada where docidentidad='"+cedula+"'");
+            st.close();
+        } catch (Exception e) {
+        }
+        try {//borrar persona en contagio
+            st = con.connected().createStatement();
+            st.executeQuery("delete from contagio where docidentidad='"+cedula+"'");
+            st.close();
+        } catch (Exception e) {
+        }
         try {//borrar persona en padece
             st = con.connected().createStatement();
             st.executeQuery("delete from padece where docidentidad='"+cedula+"'");
+            st.close();
         } catch (Exception e) {
         }
         try {//borrar persona en reside
             st = con.connected().createStatement();
             st.executeQuery("delete from reside where docidentidad='"+cedula+"'");
+            st.close();
         } catch (Exception e) {
         }
         try {//borrar personas
             st = con.connected().createStatement();
             st.executeQuery("delete from persona where doc_identidad='"+cedula+"'");    
+            st.close();
         } catch (Exception e) {
         }
     }
