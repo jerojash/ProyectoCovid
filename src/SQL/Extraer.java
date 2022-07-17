@@ -163,7 +163,7 @@ public class Extraer {
                 model.addRow(new Object[]{rs.getString(1),rs.getString(2)});
             }          
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "No hay personas con la cedula ingresada");
+            JOptionPane.showMessageDialog(null, "No hay data suficiente para mostrar el reporte");
         }
     }
 }
