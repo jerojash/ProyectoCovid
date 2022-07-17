@@ -78,6 +78,71 @@ public class Reporte {
             return null;
             }
     }
+    
+    public ResultSet crudCentroSalud(){
+         Statement st;
+            ConexionSQL con = new ConexionSQL();
+            try {
+                st = con.connected().createStatement();
+                  ResultSet rs = st.executeQuery("select c.codcentro, c.nombcentro, c.direccion, c.docidentidad_encargado,\n" +
+                                                                        "c.fechaencargado, e.nombestado\n" +
+                                                                        "from centro_salud c\n" +
+                                                                        "join  (Select nombcentro, Max(fechaencargado) fecha\n" +
+                                                                        "      from centro_salud\n" +
+                                                                        "      group by nombcentro) t\n" +
+                                                                        "on t.nombcentro = c.nombcentro and t.fecha = c.fechaencargado\n" +
+                                                                        "join estado_provincia e\n" +
+                                                                        "on e.codestado = c.codestado");
+                
+                con.disconnect();
+                return rs;
+            } catch (Exception e) {
+            return null;
+            }
+    }
+    
+    public ArrayList<String> centrosVacunacion(){
+            Statement st;
+            ArrayList<String> datos = new ArrayList<String>();
+            ConexionSQL con = new ConexionSQL();
+            try {
+                st = con.connected().createStatement();
+                  ResultSet rs = st.executeQuery("select c.nombcentro\n" +
+                                                                        "from centro_salud c\n" +
+                                                                        "join vacunacion h\n" +
+                                                                        "on h.codcentro_vac = c.codcentro");
+                while (rs.next()) {
+                       datos.add(rs.getString(1));
+                }
+                st.close();
+                con.disconnect();
+                return datos;
+            } catch (Exception e) {
+            return null;
+            }
+     }
+    
+    public ArrayList<String> centrosHospitalizacion(){
+            Statement st;
+            ArrayList<String> datos = new ArrayList<String>();
+            ConexionSQL con = new ConexionSQL();
+            try {
+                st = con.connected().createStatement();
+                  ResultSet rs = st.executeQuery("select c.nombcentro\n" +
+                                                                        "from centro_salud c\n" +
+                                                                        "join hospitalizacion h\n" +
+                                                                        "on h.codcentro_hos = c.codcentro");
+                while (rs.next()) {
+                       datos.add(rs.getString(1));
+                }
+                st.close();
+                con.disconnect();
+                return datos;
+            } catch (Exception e) {
+            return null;
+            }
+     }
+    
 }
 
 
