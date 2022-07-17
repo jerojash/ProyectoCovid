@@ -2,6 +2,7 @@ package tools;
 
 import com.toedter.calendar.JDateChooser;
 import java.awt.TextField;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -17,21 +18,17 @@ public class Verificador {
   
     public boolean dataNB (JTextField entrada){
         boolean NV = true;
-        
         if (entrada.getText().toString().equals("")){
             NV = false;
         }
-        
         return NV;
     }  
         
     public boolean dataNBS (String entrada){
         boolean NV = true;
-        
         if (entrada.equals("")){
             NV = false;
         }
-        
         return NV;
     }
     
@@ -39,10 +36,8 @@ public class Verificador {
         boolean FV = true;
         Date fechaS = fecha.getDate();
         Date fechaA = new Date(System.currentTimeMillis());
-        
         if (fechaS.after(fechaA))
             FV = false;
-        
         return FV;
     }
     
@@ -94,4 +89,26 @@ public class Verificador {
         else
             return true;
     } 
+    
+    public boolean esPerSal(String dato){
+        if (dato.equals("Medico"))
+            return true;
+        else if(dato.equals("Asistente Medico"))  
+            return true;   
+        else if (dato.equals("Enfermero"))
+            return true;
+        else
+            return false;
+    }
+    
+    public boolean esPerPac(String dato){
+        boolean PerPac = false;
+        Buscador bus = new Buscador();
+        ArrayList<String> codigos = bus.CodPac();
+        for (String codigo : codigos){
+            if (dato.equals(codigo))
+                PerPac=true;
+        }    
+        return PerPac;
+    }
 }

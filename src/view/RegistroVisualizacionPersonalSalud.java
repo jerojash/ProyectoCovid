@@ -35,7 +35,7 @@ public class RegistroVisualizacionPersonalSalud extends javax.swing.JFrame {
         boton_Volver_Personal = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         label_Sintomas = new javax.swing.JLabel();
-        desplegable_Nacionalidad = new javax.swing.JComboBox<>();
+        desplegable_Nacionalidad = new javax.swing.JComboBox<String>();
         boton_VerCentros = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_PersonalSalud = new javax.swing.JTable();
@@ -88,7 +88,7 @@ public class RegistroVisualizacionPersonalSalud extends javax.swing.JFrame {
         jPanel2.add(label_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 170, -1));
 
         desplegable_Nacionalidad.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Nacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "V", "E" }));
+        desplegable_Nacionalidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "V", "E" }));
         desplegable_Nacionalidad.setPreferredSize(new java.awt.Dimension(56, 24));
         desplegable_Nacionalidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,7 +185,7 @@ public class RegistroVisualizacionPersonalSalud extends javax.swing.JFrame {
         title_RegistroSintomas.setText("Personal de salud");
         jPanel1.add(title_RegistroSintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 760, 40));
 
-        getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_START);
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

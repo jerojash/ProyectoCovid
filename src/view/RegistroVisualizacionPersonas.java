@@ -5,6 +5,9 @@
  */
 package view;
 
+import SQL.Guardar;
+import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
@@ -22,6 +25,7 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
     Buscador bus = new Buscador();
     Creador crea = new Creador();
     DefaultTableModel model;
+    Verificador veri = new Verificador();
 
     public RegistroVisualizacionPersonas() {
         initComponents();
@@ -30,6 +34,9 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         crea.addTableHeaderEnfer(model, jTable_enfermedades);
         crea.addTableHeaderPerRes(model, jTable_recide);
         bus.tableAllpersonas(jTable_personas);
+        fechaNac.getDateEditor().setEnabled(false);
+        fechaNac.getJCalendar().setMaxSelectableDate(new Date());
+        fechaNac.setDate(new Date(System.currentTimeMillis()));
     }
 
     /**
@@ -41,15 +48,36 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton2 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        field_TiempoReposo = new javax.swing.JTextField();
+        Frame_modificar = new javax.swing.JFrame();
+        jPanel7 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        boton_nombre = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        boton_apellido = new javax.swing.JButton();
+        boton_fnac = new javax.swing.JButton();
+        boton_sexo = new javax.swing.JButton();
+        boton_Direccion = new javax.swing.JButton();
+        boton_telefono = new javax.swing.JButton();
+        boton_AltoRiesgo = new javax.swing.JButton();
+        boton_Ocupacion = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        JLabel_cedula = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        boton_Enfermedades = new javax.swing.JButton();
+        boton_volverAMain = new javax.swing.JButton();
+        jFrame_fechanac = new javax.swing.JFrame();
+        jPanel13 = new javax.swing.JPanel();
+        boton_Siguiente_RegistroDP1 = new javax.swing.JButton();
+        jPanel14 = new javax.swing.JPanel();
+        fechaNac = new com.toedter.calendar.JDateChooser();
+        label_Fecha_Nac3 = new javax.swing.JLabel();
+        title_persona = new javax.swing.JLabel();
+        boton_Volver_RegistroDP2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         boton_Volver_Sintomas = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         label_Sintomas = new javax.swing.JLabel();
-        desplegable_Nacionalidad = new javax.swing.JComboBox<>();
+        desplegable_Nacionalidad = new javax.swing.JComboBox<String>();
         boton_ModificarPersona = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_personas = new javax.swing.JTable();
@@ -65,21 +93,182 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         jTable_enfermedades = new javax.swing.JTable();
         title_RegistroSintomas = new javax.swing.JLabel();
 
-        jButton2.setBackground(new java.awt.Color(235, 235, 235));
-        jButton2.setFont(new java.awt.Font("David Libre", 0, 11)); // NOI18N
-        jButton2.setText("Volver");
-        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel7.setBackground(new java.awt.Color(159, 211, 241));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        field_TiempoReposo.setBackground(new java.awt.Color(235, 235, 235));
-        field_TiempoReposo.addActionListener(new java.awt.event.ActionListener() {
+        boton_nombre.setBackground(new java.awt.Color(235, 235, 235));
+        boton_nombre.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
+        boton_nombre.setText("Nombre");
+        boton_nombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                field_TiempoReposoActionPerformed(evt);
+                boton_nombreActionPerformed(evt);
             }
         });
+        jPanel8.add(boton_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 110, 30));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flo 1.png"))); // NOI18N
+        jPanel8.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 120, 100));
+
+        boton_apellido.setBackground(new java.awt.Color(235, 235, 235));
+        boton_apellido.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
+        boton_apellido.setText("Apellido");
+        boton_apellido.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_apellido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_apellidoActionPerformed(evt);
+            }
+        });
+        jPanel8.add(boton_apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 110, 30));
+
+        boton_fnac.setBackground(new java.awt.Color(235, 235, 235));
+        boton_fnac.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
+        boton_fnac.setText("Fecha de nacimiento");
+        boton_fnac.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_fnac.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_fnacActionPerformed(evt);
+            }
+        });
+        jPanel8.add(boton_fnac, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, 150, 30));
+
+        boton_sexo.setBackground(new java.awt.Color(235, 235, 235));
+        boton_sexo.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
+        boton_sexo.setText("Sexo");
+        boton_sexo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_sexo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_sexoActionPerformed(evt);
+            }
+        });
+        jPanel8.add(boton_sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 100, 110, 30));
+
+        boton_Direccion.setBackground(new java.awt.Color(235, 235, 235));
+        boton_Direccion.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
+        boton_Direccion.setText("Direccion");
+        boton_Direccion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_Direccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_DireccionActionPerformed(evt);
+            }
+        });
+        jPanel8.add(boton_Direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 110, 30));
+
+        boton_telefono.setBackground(new java.awt.Color(235, 235, 235));
+        boton_telefono.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
+        boton_telefono.setText("Telefono");
+        boton_telefono.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_telefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_telefonoActionPerformed(evt);
+            }
+        });
+        jPanel8.add(boton_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, 110, 30));
+
+        boton_AltoRiesgo.setBackground(new java.awt.Color(235, 235, 235));
+        boton_AltoRiesgo.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
+        boton_AltoRiesgo.setText("Alto riesgo");
+        boton_AltoRiesgo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_AltoRiesgo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_AltoRiesgoActionPerformed(evt);
+            }
+        });
+        jPanel8.add(boton_AltoRiesgo, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, 110, 30));
+
+        boton_Ocupacion.setBackground(new java.awt.Color(235, 235, 235));
+        boton_Ocupacion.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
+        boton_Ocupacion.setText("Ocupacion");
+        boton_Ocupacion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_Ocupacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_OcupacionActionPerformed(evt);
+            }
+        });
+        jPanel8.add(boton_Ocupacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 110, 30));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flo 1.png"))); // NOI18N
+        jPanel8.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 160, 120, 100));
+
+        JLabel_cedula.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
+        JLabel_cedula.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel8.add(JLabel_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, 220, -1));
+
+        jLabel4.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Modificacion a la persona con cedula:");
+        jPanel8.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, -1, -1));
+
+        boton_Enfermedades.setBackground(new java.awt.Color(235, 235, 235));
+        boton_Enfermedades.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
+        boton_Enfermedades.setText("Enfermedades");
+        boton_Enfermedades.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_Enfermedades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_EnfermedadesActionPerformed(evt);
+            }
+        });
+        jPanel8.add(boton_Enfermedades, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 110, 30));
+
+        jPanel7.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 770, 260));
+
+        boton_volverAMain.setBackground(new java.awt.Color(235, 235, 235));
+        boton_volverAMain.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
+        boton_volverAMain.setText("Volver");
+        boton_volverAMain.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_volverAMain.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_volverAMainActionPerformed(evt);
+            }
+        });
+        jPanel7.add(boton_volverAMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 300, 110, 30));
+
+        Frame_modificar.getContentPane().add(jPanel7, java.awt.BorderLayout.CENTER);
+
+        jPanel13.setBackground(new java.awt.Color(159, 211, 241));
+        jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        boton_Siguiente_RegistroDP1.setBackground(new java.awt.Color(235, 235, 235));
+        boton_Siguiente_RegistroDP1.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
+        boton_Siguiente_RegistroDP1.setText("Siguiente");
+        boton_Siguiente_RegistroDP1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_Siguiente_RegistroDP1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_Siguiente_RegistroDP1ActionPerformed(evt);
+            }
+        });
+        jPanel13.add(boton_Siguiente_RegistroDP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 80, 27));
+
+        jPanel14.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel14.add(fechaNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 180, -1));
+
+        label_Fecha_Nac3.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        label_Fecha_Nac3.setText("Fecha de Nacimiento: ");
+        jPanel14.add(label_Fecha_Nac3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        jPanel13.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 520, 90));
+
+        title_persona.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
+        title_persona.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title_persona.setText("Nueva Fecha");
+        jPanel13.add(title_persona, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 520, 40));
+
+        boton_Volver_RegistroDP2.setBackground(new java.awt.Color(235, 235, 235));
+        boton_Volver_RegistroDP2.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
+        boton_Volver_RegistroDP2.setText("Volver");
+        boton_Volver_RegistroDP2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_Volver_RegistroDP2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_Volver_RegistroDP2ActionPerformed(evt);
+            }
+        });
+        jPanel13.add(boton_Volver_RegistroDP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, 80, 27));
+
+        jFrame_fechanac.getContentPane().add(jPanel13, java.awt.BorderLayout.CENTER);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -105,7 +294,7 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         jPanel2.add(label_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, -1, -1));
 
         desplegable_Nacionalidad.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Nacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "V", "E" }));
+        desplegable_Nacionalidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "V", "E" }));
         desplegable_Nacionalidad.setPreferredSize(new java.awt.Dimension(56, 24));
         desplegable_Nacionalidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -278,7 +467,10 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
 
     private void boton_ModificarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_ModificarPersonaActionPerformed
         if (jTable_personas.getSelectedRow()!= -1){
-            
+            model = (DefaultTableModel) jTable_personas.getModel();
+            System.out.println(model.getValueAt(jTable_personas.getSelectedRow(),0).toString());
+            JLabel_cedula.setText(model.getValueAt(jTable_personas.getSelectedRow(), 0).toString());
+            crea.InterfazIguales(this, Frame_modificar, 880, 390);
         }else
             JOptionPane.showMessageDialog(null, "Debe seleccionar en la tabla la persona a modificar","Aviso",INFORMATION_MESSAGE);
     }//GEN-LAST:event_boton_ModificarPersonaActionPerformed
@@ -302,20 +494,26 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_BusPersonaActionPerformed
 
     private void boton_EliminarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_EliminarPersonaActionPerformed
+        model = (DefaultTableModel) jTable_personas.getModel();
         bus.limpiarTabla(jTable_recide);
         bus.limpiarTabla(jTable_enfermedades);
-        bus.tablePersonasEli(model.getValueAt(jTable_personas.getSelectedRow(),0).toString());
-        bus.limpiarTabla(jTable_personas);
-        bus.tableAllpersonas(jTable_personas);  
+        if (jTable_personas.getSelectedRow() != -1){
+            if (!veri.esPerSal(model.getValueAt(jTable_personas.getSelectedRow(),8).toString()))
+                if (!veri.esPerPac(model.getValueAt(jTable_personas.getSelectedRow(),0).toString()))
+                    bus.tablePersonasEli(model.getValueAt(jTable_personas.getSelectedRow(),0).toString());
+                else
+                    JOptionPane.showMessageDialog(null, "Esta persona es un paciente no se puede eliminar desde esta interfaz","Aviso",INFORMATION_MESSAGE);
+            else
+                JOptionPane.showMessageDialog(null, "Esta persona es un personal de salud no se puede eliminar desde esta interfaz","Aviso",INFORMATION_MESSAGE);
+            bus.limpiarTabla(jTable_personas);
+            bus.tableAllpersonas(jTable_personas);
+        }else
+            JOptionPane.showMessageDialog(null, "Debe seleccionar una persona para ser elimianda","Aviso",INFORMATION_MESSAGE);
     }//GEN-LAST:event_boton_EliminarPersonaActionPerformed
 
     private void desplegable_NacionalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desplegable_NacionalidadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_desplegable_NacionalidadActionPerformed
-
-    private void field_TiempoReposoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_TiempoReposoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_field_TiempoReposoActionPerformed
 
     private void field_Numero_Doc1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_Numero_Doc1ActionPerformed
         
@@ -326,7 +524,8 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
     }//GEN-LAST:event_field_Numero_Doc1ComponentAdded
 
     private void boton_AggPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_AggPersonaActionPerformed
-        // TODO add your handling code here:
+        registrarPersona regisPer = new registrarPersona();
+        crea.InterfazDiferentes(this, regisPer, 594, 580);
     }//GEN-LAST:event_boton_AggPersonaActionPerformed
 
     private void jTable_personasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_personasMouseClicked
@@ -337,6 +536,95 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         bus.tablePerEnf(jTable_enfermedades,CI);
         bus.tablePerRes(jTable_recide,CI);
     }//GEN-LAST:event_jTable_personasMouseClicked
+
+    private void boton_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_nombreActionPerformed
+        String dato = JOptionPane.showInputDialog("Ingrese el nuevo nombre");
+        if(dato != null){
+            Verificador veri = new Verificador();
+            if ((veri.dataNBS(dato))||(veri.noVacio(dato))){
+                Guardar insertSQL = new Guardar();
+                insertSQL.ModiPerso(model.getValueAt(jTable_personas.getSelectedRow(), 0).toString(), dato, 1);
+            }else{
+                JOptionPane.showMessageDialog(null, "La información ingresada es incorrecta", "Error", ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_boton_nombreActionPerformed
+
+    private void boton_volverAMainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_volverAMainActionPerformed
+        crea.InterfazIguales(Frame_modificar, this, 1008, 550);
+    }//GEN-LAST:event_boton_volverAMainActionPerformed
+
+    private void boton_apellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_apellidoActionPerformed
+        String dato = JOptionPane.showInputDialog("Ingrese el nuevo apellido");
+        if(dato != null){
+            Verificador veri = new Verificador();
+            if ((veri.dataNBS(dato))||(veri.noVacio(dato))){
+                Guardar insertSQL = new Guardar();
+                insertSQL.ModiPerso(model.getValueAt(jTable_personas.getSelectedRow(), 0).toString(), dato, 2);
+            }else{
+                JOptionPane.showMessageDialog(null, "La información ingresada es incorrecta", "Error", ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_boton_apellidoActionPerformed
+
+    private void boton_fnacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_fnacActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_fnacActionPerformed
+
+    private void boton_sexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_sexoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_sexoActionPerformed
+
+    private void boton_DireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_DireccionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_DireccionActionPerformed
+
+    private void boton_telefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_telefonoActionPerformed
+        String dato = JOptionPane.showInputDialog("Ingrese el nuevo telefono");
+        if(dato != null){
+            Verificador veri = new Verificador();
+            if ((veri.dataNBS(dato))||(veri.noVacio(dato))||(dato.matches("-?\\d+"))){
+                Guardar insertSQL = new Guardar();
+                insertSQL.ModiPerso(model.getValueAt(jTable_personas.getSelectedRow(), 0).toString(), dato, 5);
+            }else{
+                JOptionPane.showMessageDialog(null, "La información ingresada es incorrecta", "Error", ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_boton_telefonoActionPerformed
+
+    private void boton_AltoRiesgoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_AltoRiesgoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_AltoRiesgoActionPerformed
+
+    private void boton_OcupacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_OcupacionActionPerformed
+        String dato = JOptionPane.showInputDialog("Ingrese la nueva ocupacion");
+        if(dato != null){
+            Verificador veri = new Verificador();
+            if ((veri.dataNBS(dato))||(veri.noVacio(dato))){
+                Guardar insertSQL = new Guardar();
+                insertSQL.ModiPerso(model.getValueAt(jTable_personas.getSelectedRow(), 0).toString(), dato, 7);
+            }else{
+                JOptionPane.showMessageDialog(null, "La información ingresada es incorrecta", "Error", ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_boton_OcupacionActionPerformed
+
+    private void boton_EnfermedadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_EnfermedadesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_EnfermedadesActionPerformed
+
+    private void boton_Siguiente_RegistroDP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Siguiente_RegistroDP1ActionPerformed
+        Date date = fechaNac.getDate();
+        long da = date.getTime();
+        java.sql.Date fecha = new java.sql.Date(da);
+        Guardar insertSQL = new Guardar();
+        insertSQL.ModiPerso(model.getValueAt(jTable_personas.getSelectedRow(), 0).toString(), fecha.toString(),3);
+    }//GEN-LAST:event_boton_Siguiente_RegistroDP1ActionPerformed
+
+    private void boton_Volver_RegistroDP2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_RegistroDP2ActionPerformed
+        RegistroVisualizacionPersonas RVP = new RegistroVisualizacionPersonas();
+        crea.InterfazDiferentes(this, RVP, 1008, 550);
+    }//GEN-LAST:event_boton_Volver_RegistroDP2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -437,28 +725,87 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFrame Frame_modificar;
+    private javax.swing.JLabel JLabel_cedula;
     private javax.swing.JButton boton_AggPersona;
+    private javax.swing.JButton boton_AltoRiesgo;
     private javax.swing.JButton boton_BusPersona;
+    private javax.swing.JButton boton_Direccion;
     private javax.swing.JButton boton_EliminarPersona;
+    private javax.swing.JButton boton_Enfermedades;
     private javax.swing.JButton boton_ModificarPersona;
+    private javax.swing.JButton boton_Ocupacion;
+    private javax.swing.JButton boton_RegistrarPersona;
+    private javax.swing.JButton boton_RegistrarPersona1;
+    private javax.swing.JButton boton_Siguiente_RegistroDP1;
+    private javax.swing.JButton boton_Volver_RegistroDP2;
     private javax.swing.JButton boton_Volver_Sintomas;
+    private javax.swing.JButton boton_apellido;
+    private javax.swing.JButton boton_fnac;
+    private javax.swing.JButton boton_nombre;
+    private javax.swing.JButton boton_sexo;
+    private javax.swing.JButton boton_telefono;
+    private javax.swing.JButton boton_volverAMain;
     private javax.swing.JComboBox<String> desplegable_Nacionalidad;
+    private javax.swing.JComboBox<String> desplegable_Nacionalidad1;
+    private javax.swing.JComboBox<String> desplegable_Nacionalidad2;
+    private javax.swing.JComboBox<String> desplegable_Ocupacion;
+    private javax.swing.JComboBox<String> desplegable_Ocupacion1;
+    private javax.swing.JComboBox<String> desplegable_Pais1;
+    private javax.swing.JComboBox<String> desplegable_Pais2;
+    private com.toedter.calendar.JDateChooser fechaNac;
     private javax.swing.JTextField field_Numero_Doc1;
-    private javax.swing.JTextField field_TiempoReposo;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JFrame jFrame1;
+    private javax.swing.JFrame jFrame2;
+    private javax.swing.JFrame jFrame_fechanac;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable_enfermedades;
     private javax.swing.JTable jTable_personas;
     private javax.swing.JTable jTable_recide;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel label_AltoRiesgo;
+    private javax.swing.JLabel label_AltoRiesgo1;
+    private javax.swing.JLabel label_Apellido_Per;
+    private javax.swing.JLabel label_Apellido_Per1;
+    private javax.swing.JLabel label_Enfermedad;
+    private javax.swing.JLabel label_Enfermedad1;
+    private javax.swing.JLabel label_Estado;
+    private javax.swing.JLabel label_Estado1;
+    private javax.swing.JLabel label_Fecha_Nac;
+    private javax.swing.JLabel label_Fecha_Nac1;
+    private javax.swing.JLabel label_Fecha_Nac3;
+    private javax.swing.JLabel label_Ntelefono;
+    private javax.swing.JLabel label_Ntelefono1;
+    private javax.swing.JLabel label_Numero_Doc;
+    private javax.swing.JLabel label_Numero_Doc1;
+    private javax.swing.JLabel label_Pais;
+    private javax.swing.JLabel label_Pais1;
+    private javax.swing.JLabel label_Sexo;
+    private javax.swing.JLabel label_Sexo1;
     private javax.swing.JLabel label_Sintomas;
+    private javax.swing.JLabel label_nombre_Per;
+    private javax.swing.JLabel label_nombre_Per1;
     private javax.swing.JLabel title_RegistroSintomas;
+    private javax.swing.JLabel title_persona;
     // End of variables declaration//GEN-END:variables
 }

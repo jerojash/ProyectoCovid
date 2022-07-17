@@ -157,4 +157,40 @@ public class Guardar {
         }
         return verificar;
     }
+    
+    public void ModiPerso(String cedula,String datoModi, int caso){ 
+        try {
+            ConexionSQL conexion= new ConexionSQL();
+            Connection con = conexion.connected();
+            java.sql.Statement st = con.createStatement();
+            String sql="";
+            switch (caso){
+                case 1:
+                    sql = "update persona set nombper = '"+datoModi+"' where doc_identidad = '"+cedula+"'";
+                break;
+                case 2:
+                    sql = "update persona set apellidoper = '"+datoModi+"' where doc_identidad = '"+cedula+"'";
+                break;
+                case 3:
+                    sql = "update persona set fecha_nac = '"+datoModi+"' where doc_identidad = '"+cedula+"'";
+                break;
+                case 4:
+                    sql = "update persona set sexo = '"+datoModi+"' where doc_identidad = '"+cedula+"'";
+                break;
+                case 5:
+                    sql = "update persona set n_contaco = '"+datoModi+"' where doc_identidad = '"+cedula+"'";
+                break;
+                case 6:
+                    sql = "update persona set alto_riesgo = '"+datoModi+"' where doc_identidad = '"+cedula+"'";
+                break;
+                case 7:
+                    sql = "update persona set ocupacion = '"+datoModi+"' where doc_identidad = '"+cedula+"'";                    
+            }
+            st.executeQuery(sql);
+            st.close();
+            con.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Hubo un inconveniente con el manejo del servidor");
+        }           
+    }
 }

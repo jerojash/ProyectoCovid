@@ -55,19 +55,39 @@ public class Buscador {
             while(rs.next()){
                 codigos.add(rs.getString(1));
             }
+            con.disconnect();
+            return codigos;
         } catch (Exception e) {
             System.out.println("codEnfermedad murio");
         }
         con.disconnect();
-        return codigos;
+        return null;
     }
-    
+
+    public ArrayList<String> CodPac(){
+        ArrayList<String> codigos = new ArrayList<String>();
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from paciente");
+            while(rs.next()){
+                codigos.add(rs.getString(1));
+            }
+            con.disconnect();
+            return codigos;
+        } catch (Exception e) {
+            System.out.println("CodPac murio");
+        }  
+        return null;
+    }
+//-----------------------------------------Manejo de tablas-------------------------------------------
     public void limpiarTabla(JTable tabla){
         DefaultTableModel model = (DefaultTableModel) tabla.getModel();
         for (int i = model.getRowCount()-1; i>=0;i--)
             model.removeRow(i);
     }
-//-----------------------------------------Manejo de tablas-------------------------------------------
+   
     public void tableAllpersonas(JTable tabla){
         Statement st;
         ConexionSQL con = new ConexionSQL();
@@ -132,41 +152,6 @@ public class Buscador {
     public void tablePersonasEli(String cedula){
         Statement st;
         ConexionSQL con = new ConexionSQL();
-        try {//borrar personal de salud en asignado
-            st = con.connected().createStatement();
-            st.executeQuery("delete from asignado where docidentidad_ps='"+cedula+"'");
-        } catch (Exception e) {
-        }
-        try {//borrar personal de salud en vacunada
-            st = con.connected().createStatement();
-            st.executeQuery("delete from vacunada where docidentidad_ps='"+cedula+"'");
-        } catch (Exception e) {
-        }
-        try {//borrar paciente en vacunada
-            st = con.connected().createStatement();
-            st.executeQuery("delete from vacunada where docidentidad='"+cedula+"'");
-        } catch (Exception e) {
-        }
-        try {//borrar paciente en hospitalizado
-            st = con.connected().createStatement();
-            st.executeQuery("delete from hospitalizado where docidentidad_pac='"+cedula+"'");
-        } catch (Exception e) {
-        }
-        try {//borrar paciente en requiere
-            st = con.connected().createStatement();
-            st.executeQuery("delete from requiere where docidentidad_pac='"+cedula+"'");
-        } catch (Exception e) {
-        }
-        try {//borrar personas en personal de salud
-            st = con.connected().createStatement();
-            st.executeQuery("delete from personal_salud where docidentidad_ps='"+cedula+"'");
-        } catch (Exception e) {
-        }
-        try {//borrar personas en paciente
-            st = con.connected().createStatement();
-            st.executeQuery("delete from paciente where docidentidad_pac='"+cedula+"'");
-        } catch (Exception e) {
-        }
         try {//borrar persona en padece
             st = con.connected().createStatement();
             st.executeQuery("delete from padece where docidentidad='"+cedula+"'");

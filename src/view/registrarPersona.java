@@ -446,7 +446,8 @@ public class registrarPersona extends javax.swing.JFrame {
     }//GEN-LAST:event_desplegable_Pais1ActionPerformed
 
     private void boton_Volver_RegistroDP2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_RegistroDP2ActionPerformed
-
+        RegistroVisualizacionPersonas RVP = new RegistroVisualizacionPersonas();
+        crea.InterfazDiferentes(this, RVP, 1008, 550);
     }//GEN-LAST:event_boton_Volver_RegistroDP2ActionPerformed
 
     private void boton_Volver_VarianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_VarianteActionPerformed

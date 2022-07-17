@@ -9,7 +9,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class Extraer {
-
     public ArrayList<Enfermedad> Enfermedad() {
         Statement st;
         ArrayList<Enfermedad> enfermedades = new ArrayList<Enfermedad>();
