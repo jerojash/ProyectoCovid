@@ -79,6 +79,31 @@ public class Creador {
         }
     }
     
+    public void addTableHeaderVarSint(DefaultTableModel model,JTable Table){
+        model = (DefaultTableModel) Table.getModel();
+        Object[] newIdentifiers = new Object[]{"Síntomas"};
+        model.setColumnIdentifiers(newIdentifiers);
+        Table.setFillsViewportHeight(true);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int x = 0; x < Table.getColumnCount(); x++) {
+            Table.getColumnModel().getColumn(x).setCellRenderer(centerRenderer);            
+        }
+    }
+    
+    
+    public void addTableHeaderVar(DefaultTableModel model,JTable Table){
+        model = (DefaultTableModel) Table.getModel();
+        Object[] newIdentifiers = new Object[]{"Denominación","Linaje","F.Org","Clasificación","País"};
+        model.setColumnIdentifiers(newIdentifiers);
+        Table.setFillsViewportHeight(true);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int x = 0; x < Table.getColumnCount(); x++) {
+            Table.getColumnModel().getColumn(x).setCellRenderer(centerRenderer);            
+        }
+    }
+    
     public void Interfaz( JFrame nueva, int ancho, int largo){
         nueva.setResizable(false); 
         nueva.setVisible(true);

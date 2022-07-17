@@ -64,6 +64,25 @@ public class Buscador {
         con.disconnect();
         return null;
     }
+    
+    public ArrayList<String> CodSintoma(String descripsintoma){
+        ArrayList<String> codigos = new ArrayList<String>();
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from sintoma_efecto where descripsintoma='"+descripsintoma+"'");
+            while(rs.next()){
+                codigos.add(rs.getString(1));
+            }
+            con.disconnect();
+            return codigos;
+        } catch (Exception e) {
+            System.out.println("codSintoma murio");
+        }
+        con.disconnect();
+        return null;
+    }
 
     public ArrayList<String> CodPac(){
         ArrayList<String> codigos = new ArrayList<String>();
@@ -168,6 +187,24 @@ public class Buscador {
         }
     }
     
+
+    public void tableVarSint(JTable tabla, String denom_oms){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+            st = con.connected().createStatement();
+           // ResultSet rs = st.executeQuery("select e.nombenfermedad from persona pe,padece pa,enfermedad e   where pe.doc_identidad=pa.docidentidad and pa.codenfermedad=e.codenfermedad and pe.doc_identidad='"+cedula+"'");
+            ResultSet rs = st.executeQuery("select s.descripsintoma from virus_variante va,tiene ti,sintoma_efecto s where va.denom_oms=ti.denom_oms and ti.codsintoma=s.codsintoma and va.denom_oms='"+denom_oms+"'");
+           
+            while(rs.next()){
+                model.addRow(new Object[]{rs.getString(1)});
+            }          
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No hay variantes con la denominacion ingresada");
+        }
+    }       
+                
     public void tablePerEnfeEliIte(String cedula, JTable tabla){
         Buscador busc = new Buscador();
         DefaultTableModel model = (DefaultTableModel) tabla.getModel();
@@ -219,6 +256,62 @@ public class Buscador {
             st = con.connected().createStatement();
             st.executeQuery("delete from persona where doc_identidad='"+cedula+"'");    
             st.close();
+        } catch (Exception e) {
+        }
+    }
+    public void tableAllvariantes(JTable tabla){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        Verificador veri;
+        veri = new Verificador();
+        try {
+            DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from virus_variante");
+            while(rs.next()){
+                model.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error con la conexion a la base de datos");
+        }
+    }
+    
+    public void tableVariantes(JTable tabla, String denom_oms){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from virus_variante where denom_oms='"+denom_oms+"'");
+            while(rs.next()){
+                model.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No hay variantes con la denominacion ingresada");
+        }
+    }
+    
+    public void tableVarianteEli(String denom_oms){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            st.executeQuery("delete from tiene where denom_oms='"+denom_oms+"'");
+        } catch (Exception e) {
+        }
+        try {
+            st = con.connected().createStatement();
+            st.executeQuery("delete from eficaz where denom_oms='"+denom_oms+"'");
+        } catch (Exception e) {
+        }
+        try {
+            st = con.connected().createStatement();
+            st.executeQuery("delete from contagio where denom_oms='"+denom_oms+"'");
+        } catch (Exception e) {
+        }
+        try {
+            st = con.connected().createStatement();
+            st.executeQuery("delete from virus_variante where denom_oms='"+denom_oms+"'");    
         } catch (Exception e) {
         }
     }
