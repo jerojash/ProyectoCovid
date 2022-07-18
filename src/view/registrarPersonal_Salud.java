@@ -547,7 +547,7 @@ public class registrarPersonal_Salud extends javax.swing.JFrame {
                             insertSQL.iteGuardarEnfePer(TableEnfer, desplegable_Nacionalidad.getSelectedItem().toString()+field_Numero_Doc1.getText().toString());
                             insertSQL.iteGuardarCentroAsignado(TableCentro, desplegable_Nacionalidad.getSelectedItem().toString()+field_Numero_Doc1.getText().toString());
                             RegistroVisualizacionPersonalSalud personal = new RegistroVisualizacionPersonalSalud();
-                            creaInterfaz.InterfazDiferentes(this, personal, 837, 395);
+                            creaInterfaz.InterfazDiferentes(this, personal, 837, 576);
                         }   
                     } else 
                         JOptionPane.showMessageDialog(null, "La informacion en los campos numericos no es valida", "Error", ERROR_MESSAGE);
@@ -572,7 +572,7 @@ public class registrarPersonal_Salud extends javax.swing.JFrame {
 
     private void boton_Volver_RegistroDPSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_RegistroDPSActionPerformed
         RegistroVisualizacionPersonalSalud personal = new RegistroVisualizacionPersonalSalud();
-        creaInterfaz.InterfazDiferentes(this, personal, 832, 400);
+        creaInterfaz.InterfazDiferentes(this, personal, 837, 576);
     }//GEN-LAST:event_boton_Volver_RegistroDPSActionPerformed
 
     private void boton_Volver_EnfermedadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_EnfermedadActionPerformed
@@ -706,6 +706,22 @@ public class registrarPersonal_Salud extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(registrarPersonal_Salud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
