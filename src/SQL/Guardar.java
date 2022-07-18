@@ -316,4 +316,26 @@ public class Guardar {
             JOptionPane.showMessageDialog(null, "Hubo un inconveniente con el manejo del servidor");
         }           
     }
+    
+    //yerlin
+    public boolean vacunacion(String persona, String vacuna, String centro, String personal, JDateChooser fecha, String dosis){
+        boolean validar = true;
+        try {
+            Date date = fecha.getDate();
+            long da = date.getTime();
+            java.sql.Date fechaV = new java.sql.Date(da);
+            ConexionSQL conexion= new ConexionSQL();
+            Connection con = conexion.connected();
+            java.sql.Statement st = con.createStatement();
+            String value = "'"+persona+"','"+vacuna+"','"+centro+"','"+personal+"','"+fechaV+"','"+dosis+"'";
+            String sql = "insert into vacunada(docidentidad,idvacuna,codcentro_vac,docidentidad_ps,fechavacuna,dosis) values("+value+")";
+            st.execute(sql);
+            st.close();
+            con.close();
+            return validar;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Hubo un inconveniente con el manejo del servidor");
+            return false;
+        }
+    }
 }

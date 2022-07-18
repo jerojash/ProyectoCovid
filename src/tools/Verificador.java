@@ -130,5 +130,38 @@ public class Verificador {
             con.disconnect();
             return "Error BD";
         }
+    }    
+     //yerlin
+    public String validarTipoPersonal(String asistente, String enfermero){
+        if(asistente.equals("f") && enfermero.equals("f")){
+            return "Medico";
+        }else if(asistente.equals("f")){
+            return "Enfermero";
+        }else if(enfermero.equals("f")){
+            return "Asistente Medico";
+        }
+        return null;
+    }
+    
+    public boolean esPersonalVacunador(String dato){
+        boolean personal = false;
+        Buscador bus = new Buscador();
+        ArrayList<String> codigos = bus.codPersonalVacunador();
+        for (String codigo : codigos){
+            if (dato.equals(codigo))
+                personal=true;
+        }    
+        return personal;
+    }
+    
+    public boolean esPersonalEncargado(String dato){
+        boolean personal = false;
+        Buscador bus = new Buscador();
+        ArrayList<String> codigos = bus.codPersonalEncargado();
+        for (String codigo : codigos){
+            if (dato.equals(codigo))
+                personal=true;
+        }    
+        return personal;
     }
 }
