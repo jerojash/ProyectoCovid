@@ -19,6 +19,7 @@ public class Proceso1 extends javax.swing.JFrame {
      */
     public Proceso1() {
         initComponents();
+        creaInterfaz.Interfaz(this, 700, 370);
     }
 
     /**
@@ -176,25 +177,21 @@ public class Proceso1 extends javax.swing.JFrame {
 
     private void boton_RegistrarPersonalSaludActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_RegistrarPersonalSaludActionPerformed
         RegistroVisualizacionPersonalSalud personal = new RegistroVisualizacionPersonalSalud();
-        creaInterfaz.InterfazDiferentes(this, personal, 837, 395);
+        creaInterfaz.InterfazDiferentes(this, personal, 837, 581);
     }//GEN-LAST:event_boton_RegistrarPersonalSaludActionPerformed
 
     private void boton_RegistrarCentroSaludActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_RegistrarCentroSaludActionPerformed
-        CentroSalud centro;
-        try {
-            centro = new CentroSalud();
-            creaInterfaz.InterfazDiferentes(this, centro, 1008, 550);
-        } catch (SQLException ex) {
-            Logger.getLogger(Proceso1.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        RegistroVisualizacionCentroSalud centro = new RegistroVisualizacionCentroSalud();
+        creaInterfaz.InterfazDiferentes(this, centro, 1008, 550);
     }//GEN-LAST:event_boton_RegistrarCentroSaludActionPerformed
 
     private void boton_RegistrarVarianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_RegistrarVarianteActionPerformed
-        // TODO add your handling code here:
+        RegistroVisualizacionVariante variante = new RegistroVisualizacionVariante();
+        creaInterfaz.InterfazDiferentes(this, variante, 1008, 550);
     }//GEN-LAST:event_boton_RegistrarVarianteActionPerformed
 
     private void boton_RegistrarVacunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_RegistrarVacunaActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_boton_RegistrarVacunaActionPerformed
 
     private void boton_VacunacionDePacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_VacunacionDePacienteActionPerformed

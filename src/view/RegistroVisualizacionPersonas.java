@@ -82,7 +82,7 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         boton_Siguiente_RegistroDP2 = new javax.swing.JButton();
         jPanel16 = new javax.swing.JPanel();
         label_Fecha_Nac4 = new javax.swing.JLabel();
-        desplegable_Sexo = new javax.swing.JComboBox<>();
+        desplegable_Sexo = new javax.swing.JComboBox<String>();
         title_persona1 = new javax.swing.JLabel();
         boton_Volver_RegistroDP3 = new javax.swing.JButton();
         jFrame_altoriesgo = new javax.swing.JFrame();
@@ -90,7 +90,7 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         boton_Siguiente_RegistroDP3 = new javax.swing.JButton();
         jPanel18 = new javax.swing.JPanel();
         label_Fecha_Nac5 = new javax.swing.JLabel();
-        desplegable_AltoRiesgo = new javax.swing.JComboBox<>();
+        desplegable_AltoRiesgo = new javax.swing.JComboBox<String>();
         title_persona2 = new javax.swing.JLabel();
         boton_Volver_RegistroDP4 = new javax.swing.JButton();
         jFrame_dirreccion = new javax.swing.JFrame();
@@ -98,9 +98,9 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         boton_Siguiente_RegistroDP4 = new javax.swing.JButton();
         jPanel20 = new javax.swing.JPanel();
         label_Pais = new javax.swing.JLabel();
-        desplegable_Pais1 = new javax.swing.JComboBox<>();
+        desplegable_Pais1 = new javax.swing.JComboBox<String>();
         label_Estado = new javax.swing.JLabel();
-        desplegable_Estado1 = new javax.swing.JComboBox<>();
+        desplegable_Estado1 = new javax.swing.JComboBox<String>();
         label_Direccion1 = new javax.swing.JLabel();
         field_Direccion = new javax.swing.JTextField();
         fecha_reside = new com.toedter.calendar.JDateChooser();
@@ -111,7 +111,7 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         jPanel21 = new javax.swing.JPanel();
         jPanel22 = new javax.swing.JPanel();
         label_Denominacion = new javax.swing.JLabel();
-        desplegable_Enfermedad = new javax.swing.JComboBox<>();
+        desplegable_Enfermedad = new javax.swing.JComboBox<String>();
         jScrollPane2 = new javax.swing.JScrollPane();
         TableEnfer = new javax.swing.JTable();
         boton_VerSintomas1 = new javax.swing.JButton();
@@ -337,7 +337,7 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         jPanel16.add(label_Fecha_Nac4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         desplegable_Sexo.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "F", "M", "N/A" }));
+        desplegable_Sexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "F", "M", "N/A" }));
         desplegable_Sexo.setPreferredSize(new java.awt.Dimension(56, 24));
         jPanel16.add(desplegable_Sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 70, -1));
 
@@ -383,7 +383,7 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         jPanel18.add(label_Fecha_Nac5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
         desplegable_AltoRiesgo.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_AltoRiesgo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Si", "No" }));
+        desplegable_AltoRiesgo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Si", "No" }));
         desplegable_AltoRiesgo.setPreferredSize(new java.awt.Dimension(56, 24));
         desplegable_AltoRiesgo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -772,7 +772,8 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_Volver_SintomasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_SintomasActionPerformed
-        // TODO add your handling code here:
+        Proceso1 pro1 = new Proceso1();
+        crea.InterfazDiferentes(this, pro1,700,370);
     }//GEN-LAST:event_boton_Volver_SintomasActionPerformed
 
     private void boton_ModificarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_ModificarPersonaActionPerformed

@@ -40,15 +40,11 @@ public class RegistroVisualizacionPersonalSalud extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton2 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        field_TiempoReposo = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         boton_Volver_Personal = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         label_Sintomas = new javax.swing.JLabel();
-        desplegable_Nacionalidad = new javax.swing.JComboBox<>();
+        desplegable_Nacionalidad = new javax.swing.JComboBox<String>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_PersonalCentros = new javax.swing.JTable();
         boton_AggPersonal = new javax.swing.JButton();
@@ -61,22 +57,6 @@ public class RegistroVisualizacionPersonalSalud extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable_PersonalSalud = new javax.swing.JTable();
         title_RegistroSintomas = new javax.swing.JLabel();
-
-        jButton2.setBackground(new java.awt.Color(235, 235, 235));
-        jButton2.setFont(new java.awt.Font("David Libre", 0, 11)); // NOI18N
-        jButton2.setText("Volver");
-        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
-
-        field_TiempoReposo.setBackground(new java.awt.Color(235, 235, 235));
-        field_TiempoReposo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                field_TiempoReposoActionPerformed(evt);
-            }
-        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,7 +72,7 @@ public class RegistroVisualizacionPersonalSalud extends javax.swing.JFrame {
                 boton_Volver_PersonalActionPerformed(evt);
             }
         });
-        jPanel1.add(boton_Volver_Personal, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 500, 80, 27));
+        jPanel1.add(boton_Volver_Personal, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 510, 80, 27));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -102,7 +82,7 @@ public class RegistroVisualizacionPersonalSalud extends javax.swing.JFrame {
         jPanel2.add(label_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 170, -1));
 
         desplegable_Nacionalidad.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Nacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "V", "E" }));
+        desplegable_Nacionalidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "V", "E" }));
         desplegable_Nacionalidad.setPreferredSize(new java.awt.Dimension(56, 24));
         desplegable_Nacionalidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -239,10 +219,6 @@ public class RegistroVisualizacionPersonalSalud extends javax.swing.JFrame {
     private void desplegable_NacionalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desplegable_NacionalidadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_desplegable_NacionalidadActionPerformed
-
-    private void field_TiempoReposoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_TiempoReposoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_field_TiempoReposoActionPerformed
 
     private void textField_NDocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField_NDocumentoActionPerformed
         // TODO add your handling code here:
@@ -2371,18 +2347,14 @@ public class RegistroVisualizacionPersonalSalud extends javax.swing.JFrame {
     private javax.swing.JButton boton_ModificarPersonal;
     private javax.swing.JButton boton_Volver_Personal;
     private javax.swing.JComboBox<String> desplegable_Nacionalidad;
-    private javax.swing.JTextField field_TiempoReposo;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable_PersonalCentros;
     private javax.swing.JTable jTable_PersonalSalud;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel label_Sintomas;
     private javax.swing.JTextField textField_NDocumento;
     private javax.swing.JLabel title_RegistroSintomas;
