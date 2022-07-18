@@ -64,13 +64,21 @@ public class Reporte {
             ConexionSQL con = new ConexionSQL();
             try {
                 st = con.connected().createStatement();
-                  ResultSet rs = st.executeQuery("select c.nombcentro, h.codcentro_hos, v.codcentro_vac, count(h.docidentidad_pac), count(distinct(v.docidentidad))\n" +
+                  ResultSet rs = st.executeQuery("select c.nombcentro, cvh.codcentro_hos, cvh.codcentro_vac, count(h.docidentidad_pac), count(distinct(v.docidentidad))\n" +
                                                                         "from centro_salud c\n" +
                                                                         "left join hospitalizado h\n" +
                                                                         "on h.codcentro_hos = c.codcentro\n" +
                                                                         "left join vacunada v\n" +
                                                                         "on v.codcentro_vac = c.codcentro\n" +
-                                                                        "group by c.nombcentro,h.codcentro_hos, v.codcentro_vac");
+                                                                        "join (select c.nombcentro, h.codcentro_hos, v.codcentro_vac\n"+
+                                                                        "from centro_salud c\n"+
+                                                                        "left join vacunacion v\n"+
+                                                        		"on v.codcentro_vac = c.codcentro\n"+
+                                                                        "left join hospitalizacion h\n"+
+                                                                        "on h.codcentro_hos = c.codcentro\n"+
+                                                                        "group by c.nombcentro,h.codcentro_hos, v.codcentro_vac) cvh\n"+
+                                                                        "on cvh.nombcentro = c.nombcentro\n"+
+                                                                        "group by c.nombcentro,cvh.codcentro_hos, cvh.codcentro_vac");
                 
                 con.disconnect();
                 return rs;
