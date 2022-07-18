@@ -22,8 +22,8 @@ public class Reporte7 extends javax.swing.JFrame {
         tabla_centros.setModel(model);
         model.addColumn("Nombre del Centro");
         model.addColumn("Tipo de Centro");
-        model.addColumn("Cantidad Vacunados");
         model.addColumn("Cantidad Hospitalizados");
+        model.addColumn("Cantidad Vacunados");
         Reporte r = new Reporte();
         ResultSet rs = r.reporte_7();
         while (rs.next()){
