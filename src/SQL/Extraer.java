@@ -237,7 +237,6 @@ public class Extraer {
             ResultSet rs = st.executeQuery("select * from reporte_3");
             while(rs.next()){
                 model.addRow(new Object[]{rs.getString(1),rs.getString(2)});
-                System.out.println(rs.getString(1)+"-"+rs.getString(2));
             }          
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No hay data suficiente para mostrar el reporte");

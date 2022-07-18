@@ -10,6 +10,7 @@ import tools.Buscador;
 import SQL.Extraer;
 import SQL.Reporte;
 import javax.swing.table.DefaultTableModel;
+import tools.Creador;
 
 /**
  *
@@ -37,12 +38,13 @@ public class Reporte8 extends javax.swing.JFrame {
         boton_Volver_Sintomas = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         label_Sintomas = new javax.swing.JLabel();
-        desplegable_Variantes = new javax.swing.JComboBox<>();
+        desplegable_Variantes = new javax.swing.JComboBox<String>();
         boton_Buscar = new javax.swing.JButton();
         nivel_eficaz = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_sintomas = new javax.swing.JTable();
         vacuna_eficaz = new javax.swing.JLabel();
+        title_RegistroSintomas1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -122,6 +124,13 @@ public class Reporte8 extends javax.swing.JFrame {
         vacuna_eficaz.setText("Vacuna más eficaz: ");
         jPanel2.add(vacuna_eficaz, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 360, 40));
 
+        title_RegistroSintomas1.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
+        title_RegistroSintomas1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title_RegistroSintomas1.setText("Informacion detallada de cada variante");
+        title_RegistroSintomas1.setAutoscrolls(true);
+        title_RegistroSintomas1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel2.add(title_RegistroSintomas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 430, 40));
+
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 480, 450));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -145,7 +154,9 @@ public class Reporte8 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_Volver_SintomasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_SintomasActionPerformed
-
+        VisualizacionReportes rep = new VisualizacionReportes();
+        Creador crea = new Creador();
+        crea.InterfazDiferentes(this, rep, 730, 350);
     }//GEN-LAST:event_boton_Volver_SintomasActionPerformed
 
     private void boton_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_BuscarActionPerformed
@@ -228,6 +239,7 @@ public class Reporte8 extends javax.swing.JFrame {
     private javax.swing.JLabel label_Sintomas;
     private javax.swing.JLabel nivel_eficaz;
     private javax.swing.JTable tabla_sintomas;
+    private javax.swing.JLabel title_RegistroSintomas1;
     private javax.swing.JLabel vacuna_eficaz;
     // End of variables declaration//GEN-END:variables
 }

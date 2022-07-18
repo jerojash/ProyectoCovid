@@ -16,6 +16,7 @@ public class SistemaOMS extends javax.swing.JFrame {
      */
     public SistemaOMS() {
         initComponents();
+        boton_P2.setEnabled(false);
         creaInterfaces.Interfaz(this, 717, 293);
     }
 
@@ -132,7 +133,8 @@ public class SistemaOMS extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_P2ActionPerformed
 
     private void boton_P3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_P3ActionPerformed
-        // TODO add your handling code here:
+        VisualizacionReportes rep = new VisualizacionReportes();
+        creaInterfaces.InterfazDiferentes(this, rep, 730, 350);
     }//GEN-LAST:event_boton_P3ActionPerformed
 
     /**

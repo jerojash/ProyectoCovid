@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import tools.Creador;
 
 public class Reporte7 extends javax.swing.JFrame {
 
@@ -37,8 +38,7 @@ public class Reporte7 extends javax.swing.JFrame {
             model.addRow(datos);
         }
         st.close();
-                con.disconnect();
-        
+        con.disconnect();     
     }
 
     /**
@@ -123,7 +123,9 @@ public class Reporte7 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_Volver_SintomasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_SintomasActionPerformed
-
+        VisualizacionReportes rep = new VisualizacionReportes();
+        Creador crea = new Creador();
+        crea.InterfazDiferentes(this, rep, 730, 350);
     }//GEN-LAST:event_boton_Volver_SintomasActionPerformed
 
     private void tabla_centrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_centrosMouseClicked

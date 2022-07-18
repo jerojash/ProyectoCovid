@@ -130,7 +130,8 @@ public class Reporte3 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_Volver_SintomasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_SintomasActionPerformed
-        // TODO add your handling code here:
+        VisualizacionReportes rep = new VisualizacionReportes();
+        crea.InterfazDiferentes(this, rep, 730, 350);
     }//GEN-LAST:event_boton_Volver_SintomasActionPerformed
 
     /**
