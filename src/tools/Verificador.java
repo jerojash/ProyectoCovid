@@ -1,7 +1,10 @@
 package tools;
 
+import SQL.ConexionSQL;
 import com.toedter.calendar.JDateChooser;
 import java.awt.TextField;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.regex.Matcher;
@@ -110,5 +113,22 @@ public class Verificador {
                 PerPac=true;
         }    
         return PerPac;
+    }
+    
+    public String TipoCentro (String codigo){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select count(codcentro_vac) from vacunacion where codcentro_vac='"+codigo+"'");
+            rs.next();
+            if (rs.getString(1).equals("0"))
+                return "Hospitalización";
+            else
+                return "Vacunación";     
+        } catch (Exception e) {
+            con.disconnect();
+            return "Error BD";
+        }
     }
 }

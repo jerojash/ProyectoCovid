@@ -122,7 +122,7 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         boton_Volver_Sintomas = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         label_Sintomas = new javax.swing.JLabel();
-        desplegable_Nacionalidad = new javax.swing.JComboBox<>();
+        desplegable_Nacionalidad = new javax.swing.JComboBox<String>();
         boton_ModificarPersona = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_personas = new javax.swing.JTable();
@@ -604,7 +604,7 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         jPanel2.add(label_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, -1, -1));
 
         desplegable_Nacionalidad.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Nacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "V", "E" }));
+        desplegable_Nacionalidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "V", "E" }));
         desplegable_Nacionalidad.setPreferredSize(new java.awt.Dimension(56, 24));
         desplegable_Nacionalidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

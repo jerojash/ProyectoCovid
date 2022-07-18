@@ -31,6 +31,18 @@ public class Creador {
         }
     }
     
+    public void addTableHeaderCentroSalud(DefaultTableModel model,JTable Centros) {
+        model = (DefaultTableModel) Centros.getModel();
+        Object[] newIdentifiers = new Object[]{"Codigo","Centro de salud","Dirección","Encargado","Fecha encargado","Estado","Tipo"};
+        model.setColumnIdentifiers(newIdentifiers);
+        Centros.setFillsViewportHeight(true);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int x = 0; x < Centros.getColumnCount(); x++) {
+            Centros.getColumnModel().getColumn(x).setCellRenderer(centerRenderer);            
+        }
+    }
+    
     public void addTableHeaderRep2(DefaultTableModel model,JTable Centros) {
         model = (DefaultTableModel) Centros.getModel();
         Object[] newIdentifiers = new Object[]{"Vacuna", "Porcentaje contagios pos vacuna"};

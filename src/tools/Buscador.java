@@ -142,6 +142,22 @@ public class Buscador {
         }
     }
     
+    public void tableAllCentrosSalud(JTable tabla){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        Verificador veri = new Verificador();
+        try {
+            DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from centro_salud");
+            while(rs.next()){
+                model.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),veri.TipoCentro(rs.getString(1))});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error con la coneccion a la base de datos");
+        }
+    }
+    
     public void tablePersonas(JTable tabla, String cedula){
         Statement st;
         ConexionSQL con = new ConexionSQL();

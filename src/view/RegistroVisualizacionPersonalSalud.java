@@ -201,7 +201,7 @@ public class RegistroVisualizacionPersonalSalud extends javax.swing.JFrame {
 
     private void boton_AggPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_AggPersonalActionPerformed
         registrarPersonal_Salud personal = new registrarPersonal_Salud();
-        creaInterfaz.InterfazDiferentes(this, personal, 594, 650);
+        creaInterfaz.InterfazDiferentes(this, personal, 615, 650);
     }//GEN-LAST:event_boton_AggPersonalActionPerformed
 
     private void boton_BuscarPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_BuscarPersonalActionPerformed
