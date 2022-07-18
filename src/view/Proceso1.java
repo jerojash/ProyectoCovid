@@ -177,7 +177,7 @@ public class Proceso1 extends javax.swing.JFrame {
 
     private void boton_RegistrarPersonalSaludActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_RegistrarPersonalSaludActionPerformed
         RegistroVisualizacionPersonalSalud personal = new RegistroVisualizacionPersonalSalud();
-        creaInterfaz.InterfazDiferentes(this, personal, 837, 581);
+        creaInterfaz.InterfazDiferentes(this, personal, 837, 576);
     }//GEN-LAST:event_boton_RegistrarPersonalSaludActionPerformed
 
     private void boton_RegistrarCentroSaludActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_RegistrarCentroSaludActionPerformed
@@ -200,7 +200,8 @@ public class Proceso1 extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_RegistrarVacunaActionPerformed
 
     private void boton_VacunacionDePacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_VacunacionDePacienteActionPerformed
-        // TODO add your handling code here:
+        RegistroVisualizacionPersonasVacunadas persona = new RegistroVisualizacionPersonasVacunadas();
+        creaInterfaz.InterfazDiferentes(this, persona, 837, 430);
     }//GEN-LAST:event_boton_VacunacionDePacienteActionPerformed
 
     /**

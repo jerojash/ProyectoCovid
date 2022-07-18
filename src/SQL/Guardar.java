@@ -377,4 +377,57 @@ public class Guardar {
             return false;
         }
     }
+    
+    //nuevo nuevo
+    public void ModiPersonal(String cedula,String datoModi){ 
+        try {
+            ConexionSQL conexion= new ConexionSQL();
+            Connection con = conexion.connected();
+            java.sql.Statement st = con.createStatement();
+            String sql="";
+            sql = "update personal_salud set correo = '"+datoModi+"' where docidentidad_ps = '"+cedula+"'";
+            st.executeUpdate(sql);
+            st.close();
+            con.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Hubo un inconveniente con el manejo del servidor");
+        } 
+    }
+    
+    public void modiOcupacionPersonal(String cedula, String anterior, String nuevo){
+        if(!anterior.equals(nuevo)){
+            try {
+                ConexionSQL conexion= new ConexionSQL();
+                Connection con = conexion.connected();
+                java.sql.Statement st = con.createStatement();
+                if(anterior.equals("Medico")){
+                    Buscador bus = new Buscador();
+                    bus.tableMedicoEli(cedula);
+                }
+                String esMedico = "F";
+                String esAsistente = "F";
+                String esEnfermero = "F";
+                if (nuevo.equals("Medico")){
+                    esMedico = "T";
+                } else if (nuevo.equals("Enfermero")){
+                    esEnfermero = "T";
+                } else if (nuevo.equals("Asistente Medico")){
+                    esAsistente = "T";
+                }
+                String sql = "";
+                sql = "update personal_salud set es_asis_medico = '"+esAsistente+"', es_enfermero = '"+esEnfermero+"' where docidentidad_ps = '"+cedula+"'";
+                st.executeUpdate(sql);
+                if(esMedico.equals("T")){
+                    String value = "'"+cedula+"'";
+                    sql = "insert into medico(docidentidad_med) values("+value+")";
+                    st.execute(sql);
+                }
+                st.close();
+                con.close();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Hubo un inconveniente con el manejo del servidor");
+            } 
+            
+        }
+    }
 }

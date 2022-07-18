@@ -483,4 +483,63 @@ public class Buscador {
         }     
         return cod;
     }
+    
+    //nuevo nuevo
+    public void tableAllPersonaVacunada(JTable tabla){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        Verificador veri = new Verificador();
+        try {
+            DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from vacunada");
+            while(rs.next()){
+                model.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6)});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error con la coneccion a la base de datos");
+        }
+    }  
+    
+    public void tablePersonaVacunada(JTable tabla, String cedula){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from vacunada where docidentidad='"+cedula+"'");
+            while(rs.next()){
+                model.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6)});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No hay persona vacunada con esa cédula");
+        }
+    }  
+    
+    public ArrayList<String> arrayDosis(String cedula, String vacuna){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        ArrayList<String> cadena = new ArrayList<String>();
+        try {
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from vacunada where docidentidad='"+cedula+"' and idvacuna = '"+vacuna+"'");
+            while(rs.next()){
+                cadena.add(rs.getString(6));
+            }
+            return cadena;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No hay persona vacunada con esa cédula");
+            return cadena;
+        }
+    }   
+    
+    public void tablePersonaVacunadaEli(String cedula){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {//borrar persona vacunada
+            st = con.connected().createStatement();
+            st.executeQuery("delete from vacunada where docidentidad='"+cedula+"'");
+        } catch (Exception e) {
+        }
+    }
 }

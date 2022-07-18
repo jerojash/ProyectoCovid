@@ -150,4 +150,17 @@ public class Creador {
             Table.getColumnModel().getColumn(x).setCellRenderer(centerRenderer);            
         }
     }
+    
+    //nuevo nuevo
+    public void addTableHeaderPersonaVacunada(DefaultTableModel model,JTable personaV) {
+        model = (DefaultTableModel) personaV.getModel();
+        Object[] newIdentifiers = new Object[]{"N° Documento", "Vacuna", "Centro Salud", "Personal de Salud", "F. Vacunación", "Dosis"};
+        model.setColumnIdentifiers(newIdentifiers);
+        personaV.setFillsViewportHeight(true);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int x = 0; x < personaV.getColumnCount(); x++) {
+            personaV.getColumnModel().getColumn(x).setCellRenderer(centerRenderer);            
+        }
+    }
 }
