@@ -48,6 +48,29 @@ public class Buscador {
         }
     }
     
+    public String nombPais(String nombEstado){
+        Statement st;
+        String nombPais = "";
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select p.nombpais\n" +
+                                                                    "from pais p\n" +
+                                                                    "join estado_provincia e\n" +
+                                                                    "on p.cod_pais = e.codpais\n" +
+                                                                    "where nombestado like '"+nombEstado+"'");
+            
+            while (rs.next())  nombPais = rs.getString(1);
+            
+            con.disconnect();
+            return nombPais;
+        } catch (Exception e) {
+            con.disconnect();
+            return null;
+        }
+    }
+    
+    
     public ArrayList<String> CodEnfermedad(String EnfNom){
         ArrayList<String> codigos = new ArrayList<String>();
         Statement st;

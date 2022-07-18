@@ -196,6 +196,48 @@ public class Guardar {
         return verificado;
     }
     
+    public Boolean modificarCentroSalud(String tipo, String cod, JTextField nombre, JTextField direccion, String estado, String medicoEncargado, JDateChooser fechaEncargo){
+        Boolean verificado=true;
+        try {
+            
+            ConexionSQL conexion= new ConexionSQL();
+            Connection con = conexion.connected();  
+            java.sql.Statement st = con.createStatement();
+            Date date = fechaEncargo.getDate();
+            ResultSet rs = st.executeQuery("select codestado from estado_provincia where nombestado like '"+estado+"'");
+            rs.next();
+            long da = date.getTime();
+            java.sql.Date fecha = new java.sql.Date(da);
+            fechaEncargo.setDateFormatString("yyyy-mm-dd");
+            String value = "nombcentro= '"+nombre.getText().toString()+"', direccion = '"+direccion.getText().toString()+"', docidentidad_encargado=  '" + medicoEncargado+"', fechaencargado  = '" +  fecha.toString() + "' ,  codestado  = '" + String.valueOf(rs.getInt(1))+"'";
+            String sql = "UPDATE centro_salud SET "+value+" where codcentro = '"+cod+"';";
+            st.execute(sql);
+            
+            if (tipo.equals("Vacunacion")){
+                    sql = "DELETE FROM hospitalizado WHERE codcentro_hos = '"+cod+"'";
+                    st.execute(sql);
+                    sql = "DELETE FROM hospitalizacion WHERE codcentro_hos = '"+cod+"'";
+                    st.execute(sql);
+                    sql = "INSERT INTO public.vacunacion(codcentro_vac) VALUES ("+cod+");";
+            }else {
+                    sql = "DELETE FROM vacunada WHERE codcentro_vac = '"+cod+"'";
+                    st.execute(sql);
+                    sql = "DELETE FROM vacunacion WHERE codcentro_vac = '"+cod+"'";
+                    st.execute(sql);
+                    sql = "INSERT INTO public.hospitalizacion(codcentro_hos) VALUES ("+cod+");";
+                }
+            st.execute(sql);
+            st.close();
+            con.close();
+            JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
+        } catch (Exception e) {
+            verificado = false;
+            JOptionPane.showMessageDialog(null, "Hubo un inconveniente con el manejo del servidor");
+        }
+        
+        return verificado;
+    }
+    
     public Boolean guardarEnfermedad(String nomEnfer){
         Boolean verificar = true;
         try {

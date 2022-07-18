@@ -308,16 +308,26 @@ public class RegistroVisualizacionCentroSalud extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_Volver_SintomasActionPerformed
 
     private void boton_ModificarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_ModificarPersonaActionPerformed
-//        if (jTable_centros.getSelectedRow()!= -1){
-//            model = (DefaultTableModel) jTable_centros.getModel();
-//            JLabel_cedula.setText(model.getValueAt(jTable_centros.getSelectedRow(), 0).toString());
-//            crea.InterfazIguales(this, Frame_modificar, 880, 390);
-//            if (veri.esPerSal(model.getValueAt(jTable_centros.getSelectedRow(),8).toString()))
-//            boton_Ocupacion.setEnabled(false);
-//            else
-//            boton_Ocupacion.setEnabled(true);
-//        }else
-//        JOptionPane.showMessageDialog(null, "Debe seleccionar en la tabla la persona a modificar","Aviso",INFORMATION_MESSAGE);
+        model = (DefaultTableModel) jTable_centros.getModel();
+        if (jTable_centros.getSelectedRow()!= -1)
+                {
+                    String cod = model.getValueAt(jTable_centros.getSelectedRow(),0).toString();
+                    String nombre = model.getValueAt(jTable_centros.getSelectedRow(),1).toString();
+                    String direccion = model.getValueAt(jTable_centros.getSelectedRow(),2).toString();
+                    String pais = bus.nombPais(model.getValueAt(jTable_centros.getSelectedRow(),5).toString());
+                    String estado = model.getValueAt(jTable_centros.getSelectedRow(),5).toString();
+                    String encargado = model.getValueAt(jTable_centros.getSelectedRow(),3).toString();
+                    String fechaencargo = model.getValueAt(jTable_centros.getSelectedRow(),4).toString();
+                    String tipocentro =null;
+                    modificarCentro modificar = new modificarCentro(cod,nombre,direccion,pais,estado,encargado,fechaencargo,tipocentro);
+                    modificar.setResizable(false); 
+                    modificar.setSize(543, 650);   
+                    modificar.setVisible(true);   
+                    modificar.setLocationRelativeTo(null);
+                    this.dispose();
+                    
+                }else
+                    JOptionPane.showMessageDialog(null, "Debe seleccionar en la tabla la persona a modificar","Aviso",INFORMATION_MESSAGE);
     }//GEN-LAST:event_boton_ModificarPersonaActionPerformed
 
     private void jTable_centrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_centrosMouseClicked
