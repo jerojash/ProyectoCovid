@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package view;
+import SQL.Extraer;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
@@ -12,15 +13,20 @@ import tools.Buscador;
 import tools.Creador;
 import tools.Verificador;
 import SQL.Guardar;
+import java.util.ArrayList;
+import java.util.Date;
+import static javax.swing.JOptionPane.WARNING_MESSAGE;
 /**
  *
  * @author Ricardo Fanghella
  */
 public class RegistroVisualizacionPersonalSalud extends javax.swing.JFrame {
     Creador creaInterfaz = new Creador();
+    Extraer dataSQL = new Extraer();
     Buscador bus = new Buscador();
     Creador crea = new Creador();
     DefaultTableModel model;
+    DefaultTableModel modelCentro;
     String cedula = "";
     String ocupacion = "";
     /**
@@ -28,8 +34,12 @@ public class RegistroVisualizacionPersonalSalud extends javax.swing.JFrame {
      */
     public RegistroVisualizacionPersonalSalud() {
         initComponents();
+        crea.Interfaz(this, 840, 565);
         crea.addTableHeaderPersonalSalud(model,jTable_PersonalSalud);
         crea.addTableHeaderCentroAsignado(model, jTable_PersonalCentros);
+        crea.addTableHeaderCentroAsignado(model, TableCentro);
+        FechaAsignacion.getDateEditor().setEnabled(false);
+        FechaAsignacion.getJCalendar().setMaxSelectableDate(new Date());
         bus.tableAllPersonalSalud(jTable_PersonalSalud);
     }
 
@@ -54,22 +64,36 @@ public class RegistroVisualizacionPersonalSalud extends javax.swing.JFrame {
         boton_ocupacion = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         JLabel_cedula = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         boton_centro = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         boton_volverAMain = new javax.swing.JButton();
         jFrame_Ocupacion = new javax.swing.JFrame();
         jPanel23 = new javax.swing.JPanel();
         jPanel24 = new javax.swing.JPanel();
-        desplegable_Ocupacion = new javax.swing.JComboBox<>();
+        desplegable_Ocupacion = new javax.swing.JComboBox<String>();
         label_Ocupacion3 = new javax.swing.JLabel();
         title_persona5 = new javax.swing.JLabel();
         boton_AceptarMiniOcupacion = new javax.swing.JButton();
         boton_Volver_MiniOcupacion = new javax.swing.JButton();
+        jFrame_CentroSalud = new javax.swing.JFrame();
+        jPanel5 = new javax.swing.JPanel();
+        boton_Volver_Centro = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        label_FechaAsignacion = new javax.swing.JLabel();
+        desplegable_Centro = new javax.swing.JComboBox<String>();
+        boton_EliminarCentro = new javax.swing.JButton();
+        boton_AggCentro = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        TableCentro = new javax.swing.JTable();
+        label_Denominacion2 = new javax.swing.JLabel();
+        FechaAsignacion = new com.toedter.calendar.JDateChooser();
+        title_RegistroVariante1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         boton_Volver_Personal = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         label_Sintomas = new javax.swing.JLabel();
-        desplegable_Nacionalidad = new javax.swing.JComboBox<>();
+        desplegable_Nacionalidad = new javax.swing.JComboBox<String>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_PersonalCentros = new javax.swing.JTable();
         boton_AggPersonal = new javax.swing.JButton();
@@ -114,7 +138,7 @@ public class RegistroVisualizacionPersonalSalud extends javax.swing.JFrame {
                 boton_correoActionPerformed(evt);
             }
         });
-        jPanel8.add(boton_correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 110, 30));
+        jPanel8.add(boton_correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 110, 30));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flo 1.png"))); // NOI18N
         jPanel8.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 120, 100));
@@ -128,19 +152,14 @@ public class RegistroVisualizacionPersonalSalud extends javax.swing.JFrame {
                 boton_ocupacionActionPerformed(evt);
             }
         });
-        jPanel8.add(boton_ocupacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, 110, 30));
+        jPanel8.add(boton_ocupacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 110, 30));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flo 1.png"))); // NOI18N
-        jPanel8.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 160, 120, 100));
+        jPanel8.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 70, 120, 100));
 
         JLabel_cedula.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
         JLabel_cedula.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel8.add(JLabel_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, 220, -1));
-
-        jLabel4.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Modificacion al personal con cédula:");
-        jPanel8.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 400, -1));
 
         boton_centro.setBackground(new java.awt.Color(235, 235, 235));
         boton_centro.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
@@ -151,9 +170,18 @@ public class RegistroVisualizacionPersonalSalud extends javax.swing.JFrame {
                 boton_centroActionPerformed(evt);
             }
         });
-        jPanel8.add(boton_centro, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, 110, 30));
+        jPanel8.add(boton_centro, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, 110, 30));
 
-        jPanel7.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 770, 260));
+        jLabel4.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Modificacion al personal de salud con cédula:");
+        jPanel8.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 510, -1));
+
+        jLabel7.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel8.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 510, -1));
+
+        jPanel7.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 770, 180));
 
         boton_volverAMain.setBackground(new java.awt.Color(235, 235, 235));
         boton_volverAMain.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
@@ -164,7 +192,7 @@ public class RegistroVisualizacionPersonalSalud extends javax.swing.JFrame {
                 boton_volverAMainActionPerformed(evt);
             }
         });
-        jPanel7.add(boton_volverAMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 300, 110, 30));
+        jPanel7.add(boton_volverAMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 210, 110, 30));
 
         Frame_modificar.getContentPane().add(jPanel7, java.awt.BorderLayout.CENTER);
 
@@ -175,7 +203,7 @@ public class RegistroVisualizacionPersonalSalud extends javax.swing.JFrame {
         jPanel24.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         desplegable_Ocupacion.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Ocupacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medico", "Enfermero", "Asistente Medico" }));
+        desplegable_Ocupacion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Medico", "Enfermero", "Asistente Medico" }));
         desplegable_Ocupacion.setPreferredSize(new java.awt.Dimension(56, 24));
         jPanel24.add(desplegable_Ocupacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 160, -1));
 
@@ -183,7 +211,7 @@ public class RegistroVisualizacionPersonalSalud extends javax.swing.JFrame {
         label_Ocupacion3.setText("Ocupación:");
         jPanel24.add(label_Ocupacion3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, -1));
 
-        jPanel23.add(jPanel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 400, 120));
+        jPanel23.add(jPanel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 400, 70));
 
         title_persona5.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
         title_persona5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -192,14 +220,14 @@ public class RegistroVisualizacionPersonalSalud extends javax.swing.JFrame {
 
         boton_AceptarMiniOcupacion.setBackground(new java.awt.Color(235, 235, 235));
         boton_AceptarMiniOcupacion.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
-        boton_AceptarMiniOcupacion.setText("Aceptar");
+        boton_AceptarMiniOcupacion.setText("Guardar");
         boton_AceptarMiniOcupacion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         boton_AceptarMiniOcupacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_AceptarMiniOcupacionActionPerformed(evt);
             }
         });
-        jPanel23.add(boton_AceptarMiniOcupacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 80, 27));
+        jPanel23.add(boton_AceptarMiniOcupacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 80, 27));
 
         boton_Volver_MiniOcupacion.setBackground(new java.awt.Color(235, 235, 235));
         boton_Volver_MiniOcupacion.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
@@ -210,9 +238,102 @@ public class RegistroVisualizacionPersonalSalud extends javax.swing.JFrame {
                 boton_Volver_MiniOcupacionActionPerformed(evt);
             }
         });
-        jPanel23.add(boton_Volver_MiniOcupacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 190, 80, 27));
+        jPanel23.add(boton_Volver_MiniOcupacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 80, 27));
 
         jFrame_Ocupacion.getContentPane().add(jPanel23, java.awt.BorderLayout.CENTER);
+
+        jPanel5.setBackground(new java.awt.Color(159, 211, 241));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        boton_Volver_Centro.setBackground(new java.awt.Color(235, 235, 235));
+        boton_Volver_Centro.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
+        boton_Volver_Centro.setText("Volver");
+        boton_Volver_Centro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_Volver_Centro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_Volver_CentroActionPerformed(evt);
+            }
+        });
+        jPanel5.add(boton_Volver_Centro, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 80, 27));
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        label_FechaAsignacion.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        label_FechaAsignacion.setText("Fecha de asignación:");
+        jPanel6.add(label_FechaAsignacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
+
+        desplegable_Centro.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        desplegable_Centro.setPreferredSize(new java.awt.Dimension(56, 24));
+        desplegable_Centro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                desplegable_CentroActionPerformed(evt);
+            }
+        });
+        jPanel6.add(desplegable_Centro, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 240, -1));
+
+        boton_EliminarCentro.setBackground(new java.awt.Color(235, 235, 235));
+        boton_EliminarCentro.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
+        boton_EliminarCentro.setText("Eliminar");
+        boton_EliminarCentro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_EliminarCentro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_EliminarCentroActionPerformed(evt);
+            }
+        });
+        jPanel6.add(boton_EliminarCentro, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 90, 27));
+
+        boton_AggCentro.setBackground(new java.awt.Color(235, 235, 235));
+        boton_AggCentro.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
+        boton_AggCentro.setText("Agregar");
+        boton_AggCentro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_AggCentro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_AggCentroActionPerformed(evt);
+            }
+        });
+        jPanel6.add(boton_AggCentro, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 90, 27));
+
+        TableCentro.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Centro de salud", "Fecha de Asignación"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(TableCentro);
+
+        jPanel6.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 270, 110));
+
+        label_Denominacion2.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        label_Denominacion2.setText("Centro salud:");
+        jPanel6.add(label_Denominacion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        jPanel6.add(FechaAsignacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 180, -1));
+
+        jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 410, 260));
+
+        title_RegistroVariante1.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
+        title_RegistroVariante1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title_RegistroVariante1.setText("modificacion de asignación de centro");
+        jPanel5.add(title_RegistroVariante1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 470, 40));
+
+        jFrame_CentroSalud.getContentPane().add(jPanel5, java.awt.BorderLayout.LINE_START);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -238,7 +359,7 @@ public class RegistroVisualizacionPersonalSalud extends javax.swing.JFrame {
         jPanel2.add(label_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 170, -1));
 
         desplegable_Nacionalidad.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Nacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "V", "E" }));
+        desplegable_Nacionalidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "V", "E" }));
         desplegable_Nacionalidad.setPreferredSize(new java.awt.Dimension(56, 24));
         desplegable_Nacionalidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -254,7 +375,15 @@ public class RegistroVisualizacionPersonalSalud extends javax.swing.JFrame {
             new String [] {
                 "Centros de salud", "F. asignacion"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable_PersonalCentros);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 340, 140));
@@ -324,7 +453,15 @@ public class RegistroVisualizacionPersonalSalud extends javax.swing.JFrame {
             new String [] {
                 "Documento ", "Correo", "Ocupación"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTable_PersonalSalud.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable_PersonalSaludMouseClicked(evt);
@@ -391,7 +528,7 @@ public class RegistroVisualizacionPersonalSalud extends javax.swing.JFrame {
             model = (DefaultTableModel) jTable_PersonalSalud.getModel();
             cedula = model.getValueAt(jTable_PersonalSalud.getSelectedRow(), 0).toString();
             JLabel_cedula.setText(model.getValueAt(jTable_PersonalSalud.getSelectedRow(), 0).toString());
-            crea.InterfazIguales(this, Frame_modificar, 880, 390);
+            crea.InterfazIguales(this, Frame_modificar, 850, 270);
             if (!model.getValueAt(jTable_PersonalSalud.getSelectedRow(),2).toString().equals("Medico") || (model.getValueAt(jTable_PersonalSalud.getSelectedRow(),2).toString().equals("Medico") && !veri.esPersonalEncargado(model.getValueAt(jTable_PersonalSalud.getSelectedRow(),0).toString())))
                 boton_ocupacion.setEnabled(true);
             else
@@ -450,18 +587,21 @@ public class RegistroVisualizacionPersonalSalud extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_ocupacionActionPerformed
 
     private void boton_centroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_centroActionPerformed
-        /*ArrayList<String> listas = dataSQL.nombEnfermedad(dataSQL.Enfermedad());
-        desplegable_mini.removeAllItems();
+        ArrayList<String> listas = dataSQL.codCentro(dataSQL.CentroSalud());
+        desplegable_Centro.removeAllItems();
         for (int i=0;i<listas.size();i++)
-        desplegable_mini.addItem(listas.get(i));
-        bus.tablePerEnf(TableCen, model.getValueAt(jTable_personas.getSelectedRow(), 0).toString());
-        crea.InterfazIguales(Frame_modificar, jFrame_Centro, 480, 360); //462, 344*/
+            desplegable_Centro.addItem(listas.get(i));
+        bus.limpiarTabla(TableCentro);
+        bus.tableCodCentroPersonal(TableCentro,model.getValueAt(jTable_PersonalSalud.getSelectedRow(), 0).toString());
+        crea.InterfazIguales(Frame_modificar, jFrame_CentroSalud, 485, 390); //462, 344
+        FechaAsignacion.setDate(new Date(System.currentTimeMillis()));
     }//GEN-LAST:event_boton_centroActionPerformed
 
     private void boton_volverAMainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_volverAMainActionPerformed
-        crea.InterfazIguales(Frame_modificar, this, 837, 581);
+        crea.InterfazIguales(Frame_modificar, this, 840, 565);
         bus.limpiarTabla(jTable_PersonalSalud);
         bus.tableAllPersonalSalud(jTable_PersonalSalud);
+        bus.limpiarTabla(jTable_PersonalCentros);
     }//GEN-LAST:event_boton_volverAMainActionPerformed
 
     private void boton_AceptarMiniOcupacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_AceptarMiniOcupacionActionPerformed
@@ -476,6 +616,41 @@ public class RegistroVisualizacionPersonalSalud extends javax.swing.JFrame {
     private void boton_Volver_MiniOcupacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_MiniOcupacionActionPerformed
         crea.InterfazIguales(jFrame_Ocupacion,Frame_modificar,841, 378);
     }//GEN-LAST:event_boton_Volver_MiniOcupacionActionPerformed
+
+    private void boton_Volver_CentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_CentroActionPerformed
+        creaInterfaz.InterfazIguales(jFrame_CentroSalud, Frame_modificar, 850, 270);
+    }//GEN-LAST:event_boton_Volver_CentroActionPerformed
+
+    private void desplegable_CentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desplegable_CentroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_desplegable_CentroActionPerformed
+
+    private void boton_EliminarCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_EliminarCentroActionPerformed
+        modelCentro = (DefaultTableModel) TableCentro.getModel();
+        model = (DefaultTableModel) jTable_PersonalSalud.getModel();
+        if (TableCentro.getSelectedRow() != -1){
+            bus.tablePSCenEli(model.getValueAt(jTable_PersonalSalud.getSelectedRow(), 0).toString(), TableCentro);
+            modelCentro.removeRow(TableCentro.getSelectedRow());
+        }    
+        else
+            JOptionPane.showMessageDialog(null, "No ha seleccionado una enfermedad a eliminar","Warning",WARNING_MESSAGE);
+    }//GEN-LAST:event_boton_EliminarCentroActionPerformed
+
+    private void boton_AggCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_AggCentroActionPerformed
+        Verificador veri = new Verificador();
+        modelCentro = (DefaultTableModel) TableCentro.getModel();
+        model = (DefaultTableModel) jTable_PersonalSalud.getModel();
+        String dato;
+        dato = desplegable_Centro.getSelectedItem().toString();
+        Date date = FechaAsignacion.getDate();
+        long da = date.getTime();
+        java.sql.Date fecha = new java.sql.Date(da);
+        if (!veri.existenciaTable(modelCentro, dato)) {
+            modelCentro.addRow(new Object[]{dato,fecha.toString()});
+            Guardar insertSQL = new Guardar();
+            insertSQL.guardarCentroAsignado(dato,fecha.toString(),model.getValueAt(jTable_PersonalSalud.getSelectedRow(), 0).toString());
+        } 
+    }//GEN-LAST:event_boton_AggCentroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -4608,45 +4783,59 @@ public class RegistroVisualizacionPersonalSalud extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser FechaAsignacion;
     private javax.swing.JFrame Frame_modificar;
     private javax.swing.JLabel JLabel_cedula;
+    private javax.swing.JTable TableCentro;
     private javax.swing.JButton boton_AceptarMiniOcupacion;
+    private javax.swing.JButton boton_AggCentro;
     private javax.swing.JButton boton_AggPersonal;
     private javax.swing.JButton boton_BuscarPersonal;
+    private javax.swing.JButton boton_EliminarCentro;
     private javax.swing.JButton boton_EliminarPersonal;
     private javax.swing.JButton boton_ModificarPersonal;
+    private javax.swing.JButton boton_Volver_Centro;
     private javax.swing.JButton boton_Volver_MiniOcupacion;
     private javax.swing.JButton boton_Volver_Personal;
     private javax.swing.JButton boton_centro;
     private javax.swing.JButton boton_correo;
     private javax.swing.JButton boton_ocupacion;
     private javax.swing.JButton boton_volverAMain;
+    private javax.swing.JComboBox<String> desplegable_Centro;
     private javax.swing.JComboBox<String> desplegable_Nacionalidad;
     private javax.swing.JComboBox<String> desplegable_Ocupacion;
     private javax.swing.JTextField field_TiempoReposo;
     private javax.swing.JButton jButton2;
+    private javax.swing.JFrame jFrame_CentroSalud;
     private javax.swing.JFrame jFrame_Ocupacion;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel24;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable_PersonalCentros;
     private javax.swing.JTable jTable_PersonalSalud;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel label_Denominacion2;
+    private javax.swing.JLabel label_FechaAsignacion;
     private javax.swing.JLabel label_Ocupacion3;
     private javax.swing.JLabel label_Sintomas;
     private javax.swing.JTextField textField_NDocumento;
     private javax.swing.JLabel title_RegistroSintomas;
+    private javax.swing.JLabel title_RegistroVariante1;
     private javax.swing.JLabel title_persona5;
     // End of variables declaration//GEN-END:variables
 }

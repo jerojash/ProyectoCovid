@@ -231,7 +231,6 @@ public class Buscador {
         }
     }
     
-    
     public void tablePerEnfeEli(String cedula, String codEnfe){
         Statement st;
         ConexionSQL con = new ConexionSQL();
@@ -240,6 +239,19 @@ public class Buscador {
             String sql = "delete from padece where docidentidad='"+cedula+"' and codenfermedad='"+codEnfe+"'";
             st.execute(sql);
         } catch (Exception e) {
+        }
+    }
+    
+    public void tablePSCenEli(String cedula, JTable tabla){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+        try {
+            st = con.connected().createStatement();
+            String sql = "delete from asignado where docidentidad_ps='"+cedula+"' and codcentro='"+model.getValueAt(tabla.getSelectedRow(), 0).toString()+"' and fechaasignado = '"+model.getValueAt(tabla.getSelectedRow(), 1).toString()+"'";
+            st.execute(sql);
+        }catch (Exception e) {
+            
         }
     }
     
@@ -393,6 +405,21 @@ public class Buscador {
             DefaultTableModel model = (DefaultTableModel) tabla.getModel();
             st = con.connected().createStatement();
             ResultSet rs = st.executeQuery("select c.nombcentro, a.fechaasignado from asignado a, centro_salud c where a.codcentro = c.codcentro and a.docidentidad_ps ='"+cedula+"'");
+            while(rs.next()){
+                model.addRow(new Object[]{rs.getString(1),rs.getString(2)});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No hay personal de salud con la cedula ingresada");
+        }
+    }
+    
+    public void tableCodCentroPersonal(JTable tabla, String cedula){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select c.codcentro, a.fechaasignado from asignado a, centro_salud c where a.codcentro = c.codcentro and a.docidentidad_ps ='"+cedula+"'");
             while(rs.next()){
                 model.addRow(new Object[]{rs.getString(1),rs.getString(2)});
             }

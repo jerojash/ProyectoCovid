@@ -48,8 +48,10 @@ public class Verificador {
         boolean existe = false;
         int filas = model.getRowCount();
         int i = 0;
+        System.out.println(dato);
         if (filas != 0){
             while((!existe)&&(i<filas)){
+                System.out.println(model.getValueAt(i,0));
                 if (dato.equals((String)model.getValueAt(i,0)))
                     existe = true;
                 i++;

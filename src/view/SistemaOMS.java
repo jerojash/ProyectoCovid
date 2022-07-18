@@ -36,6 +36,7 @@ public class SistemaOMS extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         boton_Salir = new javax.swing.JButton();
         boton_P2 = new javax.swing.JButton();
+        boton_P3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,7 +52,7 @@ public class SistemaOMS extends javax.swing.JFrame {
                 boton_Volver_SintomasActionPerformed(evt);
             }
         });
-        jPanel1.add(boton_Volver_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 320, 80, 27));
+        jPanel1.add(boton_Volver_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 270, 80, 27));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -82,7 +83,7 @@ public class SistemaOMS extends javax.swing.JFrame {
                 boton_SalirActionPerformed(evt);
             }
         });
-        jPanel2.add(boton_Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 370, 40));
+        jPanel2.add(boton_Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 370, 40));
 
         boton_P2.setBackground(new java.awt.Color(235, 235, 235));
         boton_P2.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
@@ -95,7 +96,18 @@ public class SistemaOMS extends javax.swing.JFrame {
         });
         jPanel2.add(boton_P2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 370, 40));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 640, -1));
+        boton_P3.setBackground(new java.awt.Color(235, 235, 235));
+        boton_P3.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
+        boton_P3.setText("Reportes");
+        boton_P3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_P3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_P3ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(boton_P3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 370, 40));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 640, 230));
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -118,6 +130,10 @@ public class SistemaOMS extends javax.swing.JFrame {
     private void boton_P2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_P2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_boton_P2ActionPerformed
+
+    private void boton_P3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_P3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_P3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -668,6 +684,7 @@ public class SistemaOMS extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boton_P1;
     private javax.swing.JButton boton_P2;
+    private javax.swing.JButton boton_P3;
     private javax.swing.JButton boton_Salir;
     private javax.swing.JButton boton_Volver_Sintomas;
     private javax.swing.JLabel jLabel2;

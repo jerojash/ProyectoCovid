@@ -77,7 +77,7 @@ public class registrarPersonal_Salud extends javax.swing.JFrame {
         boton_Volver_Enfermedad = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         label_Denominacion = new javax.swing.JLabel();
-        desplegable_Enfermedad = new javax.swing.JComboBox<>();
+        desplegable_Enfermedad = new javax.swing.JComboBox<String>();
         boton_EliminarEnfer = new javax.swing.JButton();
         boton_AggEnfer = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -89,7 +89,7 @@ public class registrarPersonal_Salud extends javax.swing.JFrame {
         boton_Volver_Centro = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         label_FechaAsignacion = new javax.swing.JLabel();
-        desplegable_Centro = new javax.swing.JComboBox<>();
+        desplegable_Centro = new javax.swing.JComboBox<String>();
         boton_EliminarCentro = new javax.swing.JButton();
         boton_AggCentro = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -107,14 +107,14 @@ public class registrarPersonal_Salud extends javax.swing.JFrame {
         label_Ntelefono = new javax.swing.JLabel();
         label_AltoRiesgo = new javax.swing.JLabel();
         label_Estado = new javax.swing.JLabel();
-        desplegable_Nacionalidad = new javax.swing.JComboBox<>();
-        desplegable_Ocupacion = new javax.swing.JComboBox<>();
+        desplegable_Nacionalidad = new javax.swing.JComboBox<String>();
+        desplegable_Ocupacion = new javax.swing.JComboBox<String>();
         label_Enfermedad = new javax.swing.JLabel();
         label_Sexo = new javax.swing.JLabel();
-        desplegable_Pais1 = new javax.swing.JComboBox<>();
+        desplegable_Pais1 = new javax.swing.JComboBox<String>();
         label_Ocupacion3 = new javax.swing.JLabel();
         label_Direccion = new javax.swing.JLabel();
-        desplegable_Estado1 = new javax.swing.JComboBox<>();
+        desplegable_Estado1 = new javax.swing.JComboBox<String>();
         boton_Centro = new javax.swing.JButton();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
@@ -122,8 +122,8 @@ public class registrarPersonal_Salud extends javax.swing.JFrame {
         label_Direccion1 = new javax.swing.JLabel();
         label_Enfermedad1 = new javax.swing.JLabel();
         boton_Enfermedad = new javax.swing.JButton();
-        desplegable_AltoRiesgo2 = new javax.swing.JComboBox<>();
-        desplegable_Sexo = new javax.swing.JComboBox<>();
+        desplegable_AltoRiesgo2 = new javax.swing.JComboBox<String>();
+        desplegable_Sexo = new javax.swing.JComboBox<String>();
         field_Numero_Doc1 = new javax.swing.JTextField();
         field_Nombre_Persona1 = new javax.swing.JTextField();
         field_Apellido_Persona1 = new javax.swing.JTextField();
@@ -361,12 +361,12 @@ public class registrarPersonal_Salud extends javax.swing.JFrame {
         jPanel2.add(label_Estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, -1, -1));
 
         desplegable_Nacionalidad.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Nacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "V", "E" }));
+        desplegable_Nacionalidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "V", "E" }));
         desplegable_Nacionalidad.setPreferredSize(new java.awt.Dimension(56, 24));
         jPanel2.add(desplegable_Nacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 50, -1));
 
         desplegable_Ocupacion.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Ocupacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medico", "Enfermero", "Asistente Medico" }));
+        desplegable_Ocupacion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Medico", "Enfermero", "Asistente Medico" }));
         desplegable_Ocupacion.setPreferredSize(new java.awt.Dimension(56, 24));
         jPanel2.add(desplegable_Ocupacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 160, -1));
 
@@ -436,7 +436,7 @@ public class registrarPersonal_Salud extends javax.swing.JFrame {
         jPanel2.add(boton_Enfermedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, 140, 27));
 
         desplegable_AltoRiesgo2.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_AltoRiesgo2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Si", "No" }));
+        desplegable_AltoRiesgo2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Si", "No" }));
         desplegable_AltoRiesgo2.setPreferredSize(new java.awt.Dimension(56, 24));
         desplegable_AltoRiesgo2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -446,7 +446,7 @@ public class registrarPersonal_Salud extends javax.swing.JFrame {
         jPanel2.add(desplegable_AltoRiesgo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 160, -1));
 
         desplegable_Sexo.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "F", "M", "N/A" }));
+        desplegable_Sexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "F", "M", "N/A" }));
         desplegable_Sexo.setPreferredSize(new java.awt.Dimension(56, 24));
         jPanel2.add(desplegable_Sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 70, -1));
 
