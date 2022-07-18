@@ -197,7 +197,7 @@ public class VisualizacionReportes extends javax.swing.JFrame {
         Reporte7 rep;
         try {
             rep = new Reporte7();
-            crea.InterfazDiferentes(this, rep, 650, 560);
+            crea.InterfazDiferentes(this, rep, 650, 405);
         } catch (SQLException ex) {
         }
     }//GEN-LAST:event_buttom_reporte7ActionPerformed

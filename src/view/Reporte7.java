@@ -55,6 +55,8 @@ public class Reporte7 extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_centros = new javax.swing.JTable();
+        title_RegistroSintomas1 = new javax.swing.JLabel();
+        title_RegistroSintomas2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,7 +72,7 @@ public class Reporte7 extends javax.swing.JFrame {
                 boton_Volver_SintomasActionPerformed(evt);
             }
         });
-        jPanel1.add(boton_Volver_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 490, 80, 27));
+        jPanel1.add(boton_Volver_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 340, 80, 27));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -98,9 +100,23 @@ public class Reporte7 extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabla_centros);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 500, 190));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 500, 190));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 560, 450));
+        title_RegistroSintomas1.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
+        title_RegistroSintomas1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title_RegistroSintomas1.setText("Cantidad de personas vacunadas o hospitalizadas");
+        title_RegistroSintomas1.setAutoscrolls(true);
+        title_RegistroSintomas1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel2.add(title_RegistroSintomas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 530, 40));
+
+        title_RegistroSintomas2.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
+        title_RegistroSintomas2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title_RegistroSintomas2.setText("por centro de salud");
+        title_RegistroSintomas2.setAutoscrolls(true);
+        title_RegistroSintomas2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel2.add(title_RegistroSintomas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 530, 40));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 560, 320));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,9 +130,9 @@ public class Reporte7 extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 540, Short.MAX_VALUE)
+            .addGap(0, 385, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE))
         );
 
         pack();
@@ -177,5 +193,7 @@ public class Reporte7 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabla_centros;
+    private javax.swing.JLabel title_RegistroSintomas1;
+    private javax.swing.JLabel title_RegistroSintomas2;
     // End of variables declaration//GEN-END:variables
 }
