@@ -171,14 +171,11 @@ public class Guardar {
             Date date = fechaEncargo.getDate();
             ResultSet rs = st.executeQuery("select codestado from estado_provincia where nombestado like '"+estado+"'");
             rs.next();
-//            long da = date.getTime();
-//            java.sql.Date fecha = new java.sql.Date(da);
-            //JOptionPane.showMessageDialog(null, estado);
+            long da = date.getTime();
+            java.sql.Date fecha = new java.sql.Date(da);
             fechaEncargo.setDateFormatString("yyyy-mm-dd");
-            String fecha =((JTextField)fechaEncargo.getDateEditor().getUiComponent()).getText();
-            //JOptionPane.showMessageDialog(null, fecha);
-            String value = "'"+nombre.getText().toString()+"','"+direccion.getText().toString()+"','"+medicoEncargado+"','"+fecha+"','"+String.valueOf(rs.getInt(1))+"'";
-            //JOptionPane.showMessageDialog(null, value);
+//            String fecha =((JTextField)fechaEncargo.getDateEditor().getUiComponent()).getText();
+            String value = "'"+nombre.getText().toString()+"','"+direccion.getText().toString()+"','"+medicoEncargado+"','"+fecha.toString()+"','"+String.valueOf(rs.getInt(1))+"'";
             String sql = "insert into centro_salud(nombcentro, direccion, docidentidad_encargado, fechaencargado, codestado) VALUES ("+value+");";
             st.execute(sql);
             rs = st.executeQuery("select codcentro from centro_salud order by codcentro desc limit 1");
@@ -190,11 +187,12 @@ public class Guardar {
             st.execute(sql);
             st.close();
             con.close();
+            JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
         } catch (Exception e) {
             verificado = false;
             JOptionPane.showMessageDialog(null, "Hubo un inconveniente con el manejo del servidor");
         }
-        JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
+        
         return verificado;
     }
     

@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -277,6 +278,50 @@ public class Buscador {
         } catch (Exception e) {
         }
     }
+    
+    public void eliminarCentro(String codcentro){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {//borrar persona en asignado
+            st = con.connected().createStatement();
+            st.executeQuery("DELETE FROM asignado WHERE codcentro = '"+codcentro+"'");
+            st.close();
+        } catch (Exception e) {
+        }
+        try {//borrar persona en vacunada
+            st = con.connected().createStatement();
+            st.executeQuery("DELETE FROM vacunada WHERE codcentro_vac = '"+codcentro+"'");
+            st.close();
+        } catch (Exception e) {
+        }
+        try {//borrar persona en vacunacion
+            st = con.connected().createStatement();
+            st.executeQuery("DELETE FROM vacunacion WHERE codcentro_vac = '"+codcentro+"'");
+            st.close();
+        } catch (Exception e) {
+        }
+        try {//borrar persona en hospitalizado
+            st = con.connected().createStatement();
+            st.executeQuery("DELETE FROM hospitalizado WHERE codcentro_hos = '"+codcentro+"'");
+            st.close();
+        } catch (Exception e) {
+        }
+        try {//borrar hospitalizacion
+            st = con.connected().createStatement();
+            st.executeQuery("DELETE FROM hospitalizacion WHERE codcentro_hos = '"+codcentro+"'");    
+            st.close();
+        } catch (Exception e) {
+        }
+         try {//borrar persona en centro_salud
+            st = con.connected().createStatement();
+            st.executeQuery("DELETE FROM centro_salud where codcentro = '"+codcentro+"'");
+            st.close();
+        } catch (Exception e) {
+            //JOptionPane.showMessageDialog(null, "Ocurrio un ERROR","Aviso",INFORMATION_MESSAGE);
+  
+        }
+    }
+    
     public void tableAllvariantes(JTable tabla){
         Statement st;
         ConexionSQL con = new ConexionSQL();

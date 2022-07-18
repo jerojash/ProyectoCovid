@@ -13,8 +13,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import javax.swing.table.DefaultTableModel;
+import tools.Buscador;
 import tools.Creador;
+import tools.Verificador;
 
 /**
  *
@@ -22,6 +26,9 @@ import tools.Creador;
  */
 public class RegistroVisualizacionCentroSalud extends javax.swing.JFrame {
     Creador creaInterfaces = new Creador();
+    Buscador bus = new Buscador();
+    DefaultTableModel model;
+    Verificador veri = new Verificador();
     /**
      * Creates new form CentroSalud
      */
@@ -341,21 +348,26 @@ public class RegistroVisualizacionCentroSalud extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_BusPersonaActionPerformed
 
     private void boton_EliminarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_EliminarPersonaActionPerformed
-//        model = (DefaultTableModel) jTable_centros.getModel();
-//        bus.limpiarTabla(jTable_vacunancion);
-//        bus.limpiarTabla(jTable_hospitalizacion);
-//        if (jTable_centros.getSelectedRow() != -1){
-//            if (!veri.esPerSal(model.getValueAt(jTable_centros.getSelectedRow(),8).toString()))
-//            if (!veri.esPerPac(model.getValueAt(jTable_centros.getSelectedRow(),0).toString()))
-//            bus.tablePersonasEli(model.getValueAt(jTable_centros.getSelectedRow(),0).toString());
-//            else
-//            JOptionPane.showMessageDialog(null, "Esta persona es un paciente no se puede eliminar desde esta interfaz","Aviso",INFORMATION_MESSAGE);
-//            else
-//            JOptionPane.showMessageDialog(null, "Esta persona es un personal de salud no se puede eliminar desde esta interfaz","Aviso",INFORMATION_MESSAGE);
-//            bus.limpiarTabla(jTable_centros);
-//            bus.tableAllpersonas(jTable_centros);
-//        }else
-//        JOptionPane.showMessageDialog(null, "Debe seleccionar una persona para ser elimianda","Aviso",INFORMATION_MESSAGE);
+      model = (DefaultTableModel) jTable_centros.getModel();
+        bus.limpiarTabla(jTable_hospitalizacion);
+        bus.limpiarTabla(jTable_vacunancion);
+        if (jTable_centros.getSelectedRow() != -1){
+                    bus.eliminarCentro(model.getValueAt(jTable_centros.getSelectedRow(),0).toString());
+                    bus.limpiarTabla(jTable_centros);
+                    bus.tableAllCentrosSalud(jTable_centros);
+
+                    RegistroVisualizacionCentroSalud centro = null;
+                try {
+                    centro = new RegistroVisualizacionCentroSalud();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Proceso1.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                creaInterfaces.InterfazDiferentes(this, centro, 1008, 550);
+        }else
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un centro para ser elimianda","Aviso",INFORMATION_MESSAGE);
+        
+        
+        
     }//GEN-LAST:event_boton_EliminarPersonaActionPerformed
 
     private void field_Numero_Doc1ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_field_Numero_Doc1ComponentAdded
