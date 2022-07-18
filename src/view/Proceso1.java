@@ -181,7 +181,12 @@ public class Proceso1 extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_RegistrarPersonalSaludActionPerformed
 
     private void boton_RegistrarCentroSaludActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_RegistrarCentroSaludActionPerformed
-        RegistroVisualizacionCentroSalud centro = new RegistroVisualizacionCentroSalud();
+        RegistroVisualizacionCentroSalud centro = null;
+        try {
+            centro = new RegistroVisualizacionCentroSalud();
+        } catch (SQLException ex) {
+            Logger.getLogger(Proceso1.class.getName()).log(Level.SEVERE, null, ex);
+        }
         creaInterfaz.InterfazDiferentes(this, centro, 1008, 550);
     }//GEN-LAST:event_boton_RegistrarCentroSaludActionPerformed
 

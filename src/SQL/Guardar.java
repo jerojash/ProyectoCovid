@@ -3,6 +3,8 @@ package SQL;
 import com.toedter.calendar.JDateChooser;
 import java.awt.TextField;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -157,6 +159,43 @@ public class Guardar {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Hubo un inconveniente con el manejo del servidor");
         }
+    }
+    
+    public Boolean guardarCentroSalud(String tipo, JTextField nombre, JTextField direccion, String estado, String medicoEncargado, JDateChooser fechaEncargo){
+        Boolean verificado=true;
+        try {
+            
+            ConexionSQL conexion= new ConexionSQL();
+            Connection con = conexion.connected();  
+            java.sql.Statement st = con.createStatement();
+            Date date = fechaEncargo.getDate();
+            ResultSet rs = st.executeQuery("select codestado from estado_provincia where nombestado like '"+estado+"'");
+            rs.next();
+//            long da = date.getTime();
+//            java.sql.Date fecha = new java.sql.Date(da);
+            //JOptionPane.showMessageDialog(null, estado);
+            fechaEncargo.setDateFormatString("yyyy-mm-dd");
+            String fecha =((JTextField)fechaEncargo.getDateEditor().getUiComponent()).getText();
+            //JOptionPane.showMessageDialog(null, fecha);
+            String value = "'"+nombre.getText().toString()+"','"+direccion.getText().toString()+"','"+medicoEncargado+"','"+fecha+"','"+String.valueOf(rs.getInt(1))+"'";
+            //JOptionPane.showMessageDialog(null, value);
+            String sql = "insert into centro_salud(nombcentro, direccion, docidentidad_encargado, fechaencargado, codestado) VALUES ("+value+");";
+            st.execute(sql);
+            rs = st.executeQuery("select codcentro from centro_salud order by codcentro desc limit 1");
+            rs.next();
+            value = "'"+rs.getString(1)+"'";
+            if (tipo.equals("Vacunacion")){
+                     sql = "INSERT INTO public.vacunacion(codcentro_vac) VALUES ("+value+");"; 
+        }else sql = "INSERT INTO public.hospitalizacion(codcentro_hos) VALUES ("+value+");";
+            st.execute(sql);
+            st.close();
+            con.close();
+        } catch (Exception e) {
+            verificado = false;
+            JOptionPane.showMessageDialog(null, "Hubo un inconveniente con el manejo del servidor");
+        }
+        JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
+        return verificado;
     }
     
     public Boolean guardarEnfermedad(String nomEnfer){

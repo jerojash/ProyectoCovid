@@ -73,6 +73,25 @@ public class Extraer {
         return nombPaises;
     }
     
+    public ArrayList<String> medicoEncargado() {
+        Statement st;
+        ArrayList<String> medico = new ArrayList<String>();
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from medico");
+            while (rs.next()) {
+                medico.add(rs.getString(1));
+            }
+            st.close();
+            con.disconnect();
+            return medico;
+        } catch (Exception e) {
+            con.disconnect();
+            return null;
+        }
+    }
+    
     public ArrayList<Estado> Estado(String codPais) {
         Statement st;
         ArrayList<Estado> Estados = new ArrayList<Estado>();
