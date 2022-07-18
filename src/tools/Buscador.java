@@ -578,7 +578,24 @@ public class Buscador {
         }     
         return cod;
     }
-    
+    public ArrayList<String> CodVacunas(String NombreVacuna){
+        ArrayList<String> codigos = new ArrayList<String>();
+        Statement st; System.out.println(NombreVacuna);
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from vacuna where nombvacuna='"+NombreVacuna+"'");
+            while(rs.next()){
+                codigos.add(rs.getString(1));
+            }
+            con.disconnect();
+            return codigos;
+        } catch (Exception e) {
+            System.out.println("codSintoma murio");
+        }
+        con.disconnect();
+        return null;
+    }
     //nuevo nuevo
     public void tableAllPersonaVacunada(JTable tabla){
         Statement st;
@@ -637,4 +654,138 @@ public class Buscador {
         } catch (Exception e) {
         }
     }
+    public void tableAllvacunas(JTable tabla){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        Verificador veri;
+        veri = new Verificador();
+        try {
+            DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from vacuna");
+            while(rs.next()){
+                model.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5), rs.getString(6), rs.getString(7)});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error con la conexion a la base de datos");
+        }
+    }
+     public void tableVacunas(JTable tabla, String idvacuna){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from vacuna where idvacuna='"+idvacuna+"'");
+            
+            while(rs.next()){
+                model.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No hay vacunas con el id ingresado");
+        }
+    }
+    
+    public void tableVacunaEli(String idvacuna){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            st.executeQuery("delete from presenta where idvacuna='"+idvacuna+"'");
+        } catch (Exception e) {
+        }
+        try {
+            st = con.connected().createStatement();
+            st.executeQuery("delete from eficaz where idvacuna='"+idvacuna+"'");
+        } catch (Exception e) {
+        }
+        try {
+            st = con.connected().createStatement();
+            st.executeQuery("delete from vacunada where idvacuna='"+idvacuna+"'");
+        } catch (Exception e) {
+        }
+        try {
+            st = con.connected().createStatement();
+            st.executeQuery("delete from vacuna where idvacuna='"+idvacuna+"'");    
+        } catch (Exception e) {
+        }
+    }
+    
+    public void tableVacSintEli(String idvacuna, String codSint){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            String sql = "delete from presenta where idvacuna='"+idvacuna+"' and codsintoma='"+codSint+"'";
+           System.out.println("delete from presenta where idvacuna='"+idvacuna+"' and codsintoma='"+codSint+"'");
+            st.execute(sql);
+        } catch (Exception e) {
+        }
+    }
+    
+    public void tableVacEfecEliIte(String idvacuna, JTable tabla){
+        Buscador busc = new Buscador();
+        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+        ArrayList<String> codSint = busc.CodSintoma(model.getValueAt(tabla.getSelectedRow(), 0).toString());
+        for (int i = 0; i<codSint.size();i++){
+            this.tableVacSintEli(idvacuna, codSint.get(i));
+        }
+    }
+    
+    public void tableVacEfic(JTable tabla, String idvacuna){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+            st = con.connected().createStatement();
+           // ResultSet rs = st.executeQuery("select e.nombenfermedad from persona pe,padece pa,enfermedad e   where pe.doc_identidad=pa.docidentidad and pa.codenfermedad=e.codenfermedad and pe.doc_identidad='"+cedula+"'");
+           // ResultSet rs = st.executeQuery("select s.descripsintoma from virus_variante va,tiene ti,sintoma_efecto s where va.denom_oms=ti.denom_oms and ti.codsintoma=s.codsintoma and va.denom_oms='"+denom_oms+"'");
+            ResultSet rs = st.executeQuery("select e.denom_oms, e.porceficacia from vacuna va,eficaz e,virus_variante vv where va.idvacuna=e.idvacuna and e.denom_oms=vv.denom_oms and va.idvacuna='"+idvacuna+"'");
+           System.out.println("select e.denom_oms, e.porceficacia from vacuna va,eficaz e,virus_variante vv where va.idvacuna=e.idvacuna and e.denom_oms=vv.denom_oms and va.idvacuna='"+idvacuna+"'");
+            while(rs.next()){
+                model.addRow(new Object[]{rs.getString(1),rs.getString(2)});
+            }          
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No hay variantes con la denominacion ingresada");
+        }
+        
+    }
+    
+    public void tableVacEfec(JTable tabla, String idvacuna){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+            st = con.connected().createStatement();
+
+            ResultSet rs = st.executeQuery("select s.descripsintoma from vacuna va,presenta pr,sintoma_efecto s where va.idvacuna=pr.idvacuna and pr.codsintoma=s.codsintoma and va.idvacuna='"+idvacuna+"'");
+
+            while(rs.next()){
+                model.addRow(new Object[]{rs.getString(1)});
+            }          
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No hay variantes con la denominacion ingresada");
+        }
+    }
+    
+    public void tableVacEfiEliIte(String idvacuna, JTable tabla){
+        Buscador busc = new Buscador();
+        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+       // ArrayList<String> codSint = busc.CodSintoma(model.getValueAt(tabla.getSelectedRow(), 0).toString());
+        //for (int i = 0; i<codSint.size();i++){
+            this.tableVacEfiEli(idvacuna, model.getValueAt(tabla.getSelectedRow(), 0).toString());
+        //}
+    }
+    
+    public void tableVacEfiEli(String idvacuna, String denom_oms){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            String sql = "delete from eficaz where idvacuna='"+idvacuna+"' and denom_oms='"+denom_oms+"'";
+            st.execute(sql);
+        } catch (Exception e) {
+        }
+    }
+    
 }

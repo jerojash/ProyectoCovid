@@ -421,7 +421,7 @@ public class RegistroVisualizacionVariante extends javax.swing.JFrame {
                 boton_ModificarVarianteActionPerformed(evt);
             }
         });
-        jPanel2.add(boton_ModificarVariante, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 50, 90, 27));
+        jPanel2.add(boton_ModificarVariante, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 50, 90, 27));
 
         jTable_variantes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

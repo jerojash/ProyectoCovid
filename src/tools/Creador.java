@@ -6,6 +6,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
+
 public class Creador {
     public void addTableHeaderEnfer(DefaultTableModel model,JTable Table) {
         model = (DefaultTableModel) Table.getModel();
@@ -163,4 +164,30 @@ public class Creador {
             personaV.getColumnModel().getColumn(x).setCellRenderer(centerRenderer);            
         }
     }
+    
+    public void addTableHeaderVac(DefaultTableModel model,JTable Table){
+        model = (DefaultTableModel) Table.getModel();
+        Object[] newIdentifiers = new Object[]{"IdVacuna","Lote","Nombre","Dosis","Laboratorio","Tipo","País"};
+        model.setColumnIdentifiers(newIdentifiers);
+        Table.setFillsViewportHeight(true);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int x = 0; x < Table.getColumnCount(); x++) {
+            Table.getColumnModel().getColumn(x).setCellRenderer(centerRenderer);            
+        }
+    }
+    
+     public void addTableHeaderVacEfec(DefaultTableModel model,JTable Table){
+        model = (DefaultTableModel) Table.getModel();
+        Object[] newIdentifiers = new Object[]{"Síntomas"};
+        model.setColumnIdentifiers(newIdentifiers);
+        Table.setFillsViewportHeight(true);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int x = 0; x < Table.getColumnCount(); x++) {
+            Table.getColumnModel().getColumn(x).setCellRenderer(centerRenderer);            
+        }
+    }
+
+  
 }

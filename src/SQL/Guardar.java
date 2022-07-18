@@ -470,4 +470,159 @@ public class Guardar {
             
         }
     }
+    public boolean guardadoVacuna(JTextField lote, JTextField nombvacuna, JTextField cantdosis, JTextField laboratorio,  String tipo, String codpais){            
+        boolean guardado = true;
+        try {
+            ConexionSQL conexion= new ConexionSQL();
+            Connection con = conexion.connected();  
+            java.sql.Statement st = con.createStatement();
+            Buscador select = new Buscador();
+            String value = "'"+lote.getText().toString()+"','"+nombvacuna.getText().toString()+"','"+cantdosis.getText().toString()+"','"+laboratorio.getText().toString()+"','"+tipo+"','"+select.codPais(codpais)+"'"; //+"','"+direccion.getText().toString()+"','"+codpais.getText().toString()+"','"+altoRiesgo+"','"+ocupacion+"'";
+            String sql = "insert into vacuna(lote,nombvacuna,cantdosis,laboratorio,tipo, codpais) values("+value+")";
+            System.out.println(sql);
+            st.execute(sql);
+            /*Buscador select = new Buscador();
+            date = fechaReside.getDate();
+            da = date.getTime();
+            fecha = new java.sql.Date(da);
+            value = "'"+doc+"','"+select.codEstado(select.codPais(pais), estado)+"','"+fecha.toString()+"'";
+            sql = "insert into reside (docidentidad,codestado,fechareside) values("+value+")";
+            st.execute(sql);*/
+            st.close();
+            con.close();
+        } catch (Exception e) {
+            guardado = false;
+            JOptionPane.showMessageDialog(null, "Hubo un inconveniente con el manejo del servidor");
+        }
+        return guardado;
+    }
+    
+    public ArrayList<String> CodVacunas(String NombreVacuna){
+        ArrayList<String> codigos = new ArrayList<String>();
+        Statement st; System.out.println(NombreVacuna);
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from vacuna where nombvacuna='"+NombreVacuna+"'");
+            while(rs.next()){
+                codigos.add(rs.getString(1));
+            }
+            con.disconnect();
+            return codigos;
+        } catch (Exception e) {
+            System.out.println("codSintoma murio");
+        }
+        con.disconnect();
+        return null;
+    }
+    public void guardarSintVac(String descripsintoma, String nombvacuna){
+        try {
+            ConexionSQL conexion= new ConexionSQL();
+            Connection con = conexion.connected();
+            java.sql.Statement st = con.createStatement();
+            Buscador busc = new Buscador();
+            System.out.println(descripsintoma);
+            ArrayList<String> codSint = busc.CodSintoma(descripsintoma);
+            ArrayList<String> codvacuna = busc.CodVacunas(nombvacuna);
+            for (int i = 0; i<codSint.size();i++){
+                String value = "'"+codvacuna.get(i)+"','"+codSint.get(i)+"'";
+                String sql = "insert into presenta (idvacuna,codsintoma) values("+value+")";
+                System.out.println(sql);
+                st.execute(sql);
+            }
+            st.close();
+            con.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Hubo un inconveniente con el manejo del servidor");
+        }
+    }
+    
+    public void iteGuardarSintVac(JTable tabla, String nombrevacuna){
+        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+         System.out.println(nombrevacuna);
+        for (int i = 0; i<tabla.getRowCount();i++){
+            this.guardarSintVac(modelo.getValueAt(i, 0).toString(), nombrevacuna);
+        }
+    }
+      public void iteGuardarEficacia(JTable tabla, String nombrevacuna){
+        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+        for (int i = 0; i<tabla.getRowCount();i++){
+            this.guardarEficacia1(modelo.getValueAt(i, 0).toString(),modelo.getValueAt(i, 1).toString(), nombrevacuna );
+        }
+    }  
+      
+    public void guardarEficacia(String denom_oms, String porceficacia, String idvacuna){
+        try {
+            ConexionSQL conexion= new ConexionSQL();
+            Connection con = conexion.connected();
+            java.sql.Statement st = con.createStatement();
+            Buscador busc = new Buscador();
+           // ArrayList<String> codVacuna = busc.CodVacunas(nombrevacuna);
+          //  System.out.println(codVacuna.size());
+          //  for (int i = 0; i<codVacuna.size();i++){
+               // String value = "'"+codVacuna.get(i)+"','"+denom_oms+"','"+porceficacia+"'";
+                 String value = "'"+idvacuna+"','"+denom_oms+"','"+porceficacia+"'";
+                String sql = "insert into eficaz (idvacuna, denom_oms, porceficacia) values("+value+")";
+                System.out.println(sql);
+                st.execute(sql);
+          //  }
+            st.close();
+            con.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Hubo un inconveniente con el manejo del servidor");
+        }
+    }
+        public void guardarEficacia1(String denom_oms, String porceficacia, String nombvacuna){
+        try {
+            ConexionSQL conexion= new ConexionSQL();
+            Connection con = conexion.connected();
+            java.sql.Statement st = con.createStatement();
+            Buscador busc = new Buscador();
+            ArrayList<String> codVacuna = busc.CodVacunas(nombvacuna);
+           System.out.println(codVacuna.size());
+            for (int i = 0; i<codVacuna.size();i++){
+                String value = "'"+codVacuna.get(i)+"','"+denom_oms+"','"+porceficacia+"'";
+               //  String value = "'"+idvacuna+"','"+denom_oms+"','"+porceficacia+"'";
+                String sql = "insert into eficaz (idvacuna, denom_oms, porceficacia) values("+value+")";
+                System.out.println(sql);
+                st.execute(sql);
+           }
+            st.close();
+            con.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Hubo un inconveniente con el manejo del servidor");
+        }
+    }  
+    public void ModiVac(String idvacuna,String datoModi, int caso){ 
+        try {
+            ConexionSQL conexion= new ConexionSQL();
+            Connection con = conexion.connected();
+            java.sql.Statement st = con.createStatement();
+            String sql="";
+            switch (caso){
+                case 1:
+                    sql = "update vacuna set lote = '"+datoModi+"' where idvacuna = '"+idvacuna+"'";
+                break;
+                case 2:
+                    sql = "update vacuna set nombvacuna = '"+datoModi+"' where idvacuna = '"+idvacuna+"'";
+                break;
+                case 3:
+                    sql = "update vacuna set cantdosis = '"+datoModi+"' where idvacuna = '"+idvacuna+"'";
+                break; 
+                case 4:
+                    sql = "update vacuna set laboratorio = '"+datoModi+"' where idvacuna = '"+idvacuna+"'";
+                break;
+                case 5:
+                    sql = "update vacuna set tipo = '"+datoModi+"' where idvacuna = '"+idvacuna+"'";   
+               // break;    
+               // case 6:
+                //sql = "update eficaz set porceficacia = '"+datoModi+"' where idvacuna = '"+idvacuna+"'";   
+            }
+            st.executeUpdate(sql);
+            st.close();
+            con.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Hubo un inconveniente con el manejo del servidor");
+        }           
+    }    
 }
