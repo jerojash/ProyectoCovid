@@ -173,12 +173,12 @@ public class VisualizacionReportes extends javax.swing.JFrame {
 
     private void buttom_reporte2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttom_reporte2ActionPerformed
         Reporte2 rep = new Reporte2();
-        crea.InterfazDiferentes(this, rep, 890, 310);
+        crea.InterfazDiferentes(this, rep, 890, 330);
     }//GEN-LAST:event_buttom_reporte2ActionPerformed
 
     private void buttom_reporte3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttom_reporte3ActionPerformed
         Reporte3 rep = new Reporte3();
-        crea.InterfazDiferentes(this, rep, 890, 360);
+        crea.InterfazDiferentes(this, rep, 890, 370);
     }//GEN-LAST:event_buttom_reporte3ActionPerformed
 
     private void buttom_reporte4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttom_reporte4ActionPerformed
@@ -197,7 +197,7 @@ public class VisualizacionReportes extends javax.swing.JFrame {
         Reporte7 rep;
         try {
             rep = new Reporte7();
-            crea.InterfazDiferentes(this, rep, 650, 405);
+            crea.InterfazDiferentes(this, rep, 650, 415);
         } catch (SQLException ex) {
         }
     }//GEN-LAST:event_buttom_reporte7ActionPerformed

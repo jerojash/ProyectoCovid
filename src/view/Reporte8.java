@@ -38,7 +38,7 @@ public class Reporte8 extends javax.swing.JFrame {
         boton_Volver_Sintomas = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         label_Sintomas = new javax.swing.JLabel();
-        desplegable_Variantes = new javax.swing.JComboBox<String>();
+        desplegable_Variantes = new javax.swing.JComboBox<>();
         boton_Buscar = new javax.swing.JButton();
         nivel_eficaz = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -60,7 +60,7 @@ public class Reporte8 extends javax.swing.JFrame {
                 boton_Volver_SintomasActionPerformed(evt);
             }
         });
-        jPanel1.add(boton_Volver_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 490, 80, 27));
+        jPanel1.add(boton_Volver_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 470, 80, 27));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

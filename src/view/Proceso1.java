@@ -192,11 +192,12 @@ public class Proceso1 extends javax.swing.JFrame {
 
     private void boton_RegistrarVarianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_RegistrarVarianteActionPerformed
         RegistroVisualizacionVariante variante = new RegistroVisualizacionVariante();
-        creaInterfaz.InterfazDiferentes(this, variante, 1008, 550);
+        creaInterfaz.InterfazDiferentes(this, variante, 1008, 538);
     }//GEN-LAST:event_boton_RegistrarVarianteActionPerformed
 
     private void boton_RegistrarVacunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_RegistrarVacunaActionPerformed
-        
+        RegistroVisualizacionVacuna vacuna = new RegistroVisualizacionVacuna();
+        creaInterfaz.InterfazDiferentes(this, vacuna, 1008, 420);
     }//GEN-LAST:event_boton_RegistrarVacunaActionPerformed
 
     private void boton_VacunacionDePacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_VacunacionDePacienteActionPerformed

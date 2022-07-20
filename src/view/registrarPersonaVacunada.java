@@ -183,7 +183,7 @@ public class registrarPersonaVacunada extends javax.swing.JFrame {
 
     private void boton_Volver_RegistroDPVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_RegistroDPVActionPerformed
         RegistroVisualizacionPersonasVacunadas persona= new RegistroVisualizacionPersonasVacunadas();
-        crea.InterfazDiferentes(this, persona, 837, 581);
+        crea.InterfazDiferentes(this, persona,  837, 430);
     }//GEN-LAST:event_boton_Volver_RegistroDPVActionPerformed
 
     private void boton_Siguiente_RegistroDPVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Siguiente_RegistroDPVActionPerformed
@@ -200,7 +200,7 @@ public class registrarPersonaVacunada extends javax.swing.JFrame {
                     if(insertSQL.vacunacion(cedula,vacuna,bus.codCentro(desplegable_CentroApli.getSelectedItem().toString()),desplegable_PersonalSalud.getSelectedItem().toString(),desplegable_calendar,String.valueOf(cadena.size()+1))){
                         JOptionPane.showMessageDialog(null, "La dosis aplicada fue la: "+String.valueOf(cadena.size()+1));
                         RegistroVisualizacionPersonasVacunadas persona= new RegistroVisualizacionPersonasVacunadas();
-                        crea.InterfazDiferentes(this, persona, 837, 581);
+                        crea.InterfazDiferentes(this, persona,  837, 430);
                     }
                 }else{
                     JOptionPane.showMessageDialog(null, "La persona a vacunar no debe coincidir con el personal a vacunar","Error",ERROR_MESSAGE);

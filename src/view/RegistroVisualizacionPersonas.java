@@ -82,7 +82,7 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         boton_Siguiente_RegistroDP2 = new javax.swing.JButton();
         jPanel16 = new javax.swing.JPanel();
         label_Fecha_Nac4 = new javax.swing.JLabel();
-        desplegable_Sexo = new javax.swing.JComboBox<String>();
+        desplegable_Sexo = new javax.swing.JComboBox<>();
         title_persona1 = new javax.swing.JLabel();
         boton_Volver_RegistroDP3 = new javax.swing.JButton();
         jFrame_altoriesgo = new javax.swing.JFrame();
@@ -90,7 +90,7 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         boton_Siguiente_RegistroDP3 = new javax.swing.JButton();
         jPanel18 = new javax.swing.JPanel();
         label_Fecha_Nac5 = new javax.swing.JLabel();
-        desplegable_AltoRiesgo = new javax.swing.JComboBox<String>();
+        desplegable_AltoRiesgo = new javax.swing.JComboBox<>();
         title_persona2 = new javax.swing.JLabel();
         boton_Volver_RegistroDP4 = new javax.swing.JButton();
         jFrame_dirreccion = new javax.swing.JFrame();
@@ -98,9 +98,9 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         boton_Siguiente_RegistroDP4 = new javax.swing.JButton();
         jPanel20 = new javax.swing.JPanel();
         label_Pais = new javax.swing.JLabel();
-        desplegable_Pais1 = new javax.swing.JComboBox<String>();
+        desplegable_Pais1 = new javax.swing.JComboBox<>();
         label_Estado = new javax.swing.JLabel();
-        desplegable_Estado1 = new javax.swing.JComboBox<String>();
+        desplegable_Estado1 = new javax.swing.JComboBox<>();
         label_Direccion1 = new javax.swing.JLabel();
         field_Direccion = new javax.swing.JTextField();
         fecha_reside = new com.toedter.calendar.JDateChooser();
@@ -111,7 +111,7 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         jPanel21 = new javax.swing.JPanel();
         jPanel22 = new javax.swing.JPanel();
         label_Denominacion = new javax.swing.JLabel();
-        desplegable_Enfermedad = new javax.swing.JComboBox<String>();
+        desplegable_Enfermedad = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         TableEnfer = new javax.swing.JTable();
         boton_VerSintomas1 = new javax.swing.JButton();
@@ -122,7 +122,7 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         boton_Volver_Sintomas = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         label_Sintomas = new javax.swing.JLabel();
-        desplegable_Nacionalidad = new javax.swing.JComboBox<String>();
+        desplegable_Nacionalidad = new javax.swing.JComboBox<>();
         boton_ModificarPersona = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_personas = new javax.swing.JTable();
@@ -240,12 +240,12 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
 
         JLabel_cedula.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
         JLabel_cedula.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel8.add(JLabel_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, 220, -1));
+        jPanel8.add(JLabel_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, 220, 40));
 
         jLabel4.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Modificacion a la persona con cedula:");
-        jPanel8.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 400, -1));
+        jPanel8.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 420, -1));
 
         boton_Enfermedades.setBackground(new java.awt.Color(235, 235, 235));
         boton_Enfermedades.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
@@ -337,7 +337,7 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         jPanel16.add(label_Fecha_Nac4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         desplegable_Sexo.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Sexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "F", "M", "N/A" }));
+        desplegable_Sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "F", "M", "N/A" }));
         desplegable_Sexo.setPreferredSize(new java.awt.Dimension(56, 24));
         jPanel16.add(desplegable_Sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 70, -1));
 
@@ -383,7 +383,7 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         jPanel18.add(label_Fecha_Nac5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
         desplegable_AltoRiesgo.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_AltoRiesgo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Si", "No" }));
+        desplegable_AltoRiesgo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Si", "No" }));
         desplegable_AltoRiesgo.setPreferredSize(new java.awt.Dimension(56, 24));
         desplegable_AltoRiesgo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -604,7 +604,7 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         jPanel2.add(label_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, -1, -1));
 
         desplegable_Nacionalidad.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Nacionalidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "V", "E" }));
+        desplegable_Nacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "V", "E" }));
         desplegable_Nacionalidad.setPreferredSize(new java.awt.Dimension(56, 24));
         desplegable_Nacionalidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -782,7 +782,7 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         {
             model = (DefaultTableModel) jTable_personas.getModel();
             JLabel_cedula.setText(model.getValueAt(jTable_personas.getSelectedRow(), 0).toString());
-            crea.InterfazIguales(this, Frame_modificar, 880, 390);
+            crea.InterfazIguales(this, Frame_modificar, 860, 390);
             if (veri.esPerSal(model.getValueAt(jTable_personas.getSelectedRow(),8).toString()))
                 boton_Ocupacion.setEnabled(false);
             else
@@ -887,13 +887,13 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
 
     private void boton_fnacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_fnacActionPerformed
         fechaNac.setDate(new Date(System.currentTimeMillis()));
-        crea.InterfazIguales(Frame_modificar, jFrame_fechanac,590, 225);
+        crea.InterfazIguales(Frame_modificar, jFrame_fechanac,590, 235);
         bus.limpiarTabla(jTable_recide);
         bus.limpiarTabla(jTable_enfermedades);
     }//GEN-LAST:event_boton_fnacActionPerformed
 
     private void boton_sexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_sexoActionPerformed
-        crea.InterfazIguales(Frame_modificar, jFrame_sexo, 258,225);
+        crea.InterfazIguales(Frame_modificar, jFrame_sexo, 258,235);
     }//GEN-LAST:event_boton_sexoActionPerformed
 
     private void boton_DireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_DireccionActionPerformed
@@ -903,7 +903,7 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         desplegable_Pais1.removeAllItems();
         for (int i=0;i<listas.size();i++)
             desplegable_Pais1.addItem(listas.get(i));
-        crea.InterfazIguales(Frame_modificar, jFrame_dirreccion, 570, 270);
+        crea.InterfazIguales(Frame_modificar, jFrame_dirreccion, 570, 280);
     }//GEN-LAST:event_boton_DireccionActionPerformed
 
     private void boton_telefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_telefonoActionPerformed
@@ -920,7 +920,7 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_telefonoActionPerformed
 
     private void boton_AltoRiesgoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_AltoRiesgoActionPerformed
-        crea.InterfazIguales(Frame_modificar, jFrame_altoriesgo, 258,225);
+        crea.InterfazIguales(Frame_modificar, jFrame_altoriesgo, 258,235);
     }//GEN-LAST:event_boton_AltoRiesgoActionPerformed
 
     private void boton_OcupacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_OcupacionActionPerformed
@@ -942,7 +942,7 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
         for (int i=0;i<listas.size();i++)
             desplegable_Enfermedad.addItem(listas.get(i));
         bus.tablePerEnf(TableEnfer, model.getValueAt(jTable_personas.getSelectedRow(), 0).toString());
-        crea.InterfazIguales(Frame_modificar, jFrame_Enfermedades, 480, 360); //462, 344
+        crea.InterfazIguales(Frame_modificar, jFrame_Enfermedades, 480, 370); //462, 344
     }//GEN-LAST:event_boton_EnfermedadesActionPerformed
 
     private void boton_Siguiente_RegistroDP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Siguiente_RegistroDP1ActionPerformed

@@ -17,7 +17,7 @@ public class SistemaOMS extends javax.swing.JFrame {
     public SistemaOMS() {
         initComponents();
         boton_P2.setEnabled(false);
-        creaInterfaces.Interfaz(this, 717, 293);
+        creaInterfaces.Interfaz(this, 717, 331);
     }
 
     /**
@@ -30,7 +30,6 @@ public class SistemaOMS extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        boton_Volver_Sintomas = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         boton_P1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -43,17 +42,6 @@ public class SistemaOMS extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(159, 211, 241));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        boton_Volver_Sintomas.setBackground(new java.awt.Color(235, 235, 235));
-        boton_Volver_Sintomas.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
-        boton_Volver_Sintomas.setText("Volver");
-        boton_Volver_Sintomas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        boton_Volver_Sintomas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_Volver_SintomasActionPerformed(evt);
-            }
-        });
-        jPanel1.add(boton_Volver_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 270, 80, 27));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -73,7 +61,7 @@ public class SistemaOMS extends javax.swing.JFrame {
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, 130, 100));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flo 1.png"))); // NOI18N
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 90, 120, 100));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 130, 120, 100));
 
         boton_Salir.setBackground(new java.awt.Color(235, 235, 235));
         boton_Salir.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
@@ -114,10 +102,6 @@ public class SistemaOMS extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void boton_Volver_SintomasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_SintomasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boton_Volver_SintomasActionPerformed
 
     private void boton_P1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_P1ActionPerformed
         Proceso1 proc = new Proceso1();
@@ -688,7 +672,6 @@ public class SistemaOMS extends javax.swing.JFrame {
     private javax.swing.JButton boton_P2;
     private javax.swing.JButton boton_P3;
     private javax.swing.JButton boton_Salir;
-    private javax.swing.JButton boton_Volver_Sintomas;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;

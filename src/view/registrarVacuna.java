@@ -458,7 +458,7 @@ public class registrarVacuna extends javax.swing.JFrame {
     private void boton_Volver_VacunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_VacunaActionPerformed
         // TODO add your handling code here:
         RegistroVisualizacionVacuna RVV = new RegistroVisualizacionVacuna();
-        crea.InterfazDiferentes(this, RVV, 1008, 550);
+        crea.InterfazDiferentes(this, RVV,  1008, 420);
     }//GEN-LAST:event_boton_Volver_VacunaActionPerformed
 
     private void desplegable_PaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desplegable_PaisActionPerformed

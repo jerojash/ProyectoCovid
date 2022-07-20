@@ -22,10 +22,12 @@ public class Reporte {
             ConexionSQL con = new ConexionSQL();
             try {
                 st = con.connected().createStatement();
-                  ResultSet rs = st.executeQuery("select v.nombvacuna,max(e.porceficacia),e.denom_oms \n" +
+                  ResultSet rs = st.executeQuery("select v.nombvacuna,max(e.porceficacia) eficacia,e.denom_oms \n" +
                                                                         "    from eficaz e, vacuna v\n" +
                                                                         "    where e.denom_oms like '"+variante+"' and e.idvacuna = v.idvacuna\n" +
-                                                                        "    group by e.denom_oms,v.nombvacuna");
+                                                                        "    group by e.denom_oms,v.nombvacuna\n" +
+                                                                        "order by eficacia desc\n" +
+                                                                        "limit 1");
                 while (rs.next()) {
                        datos[0]=rs.getString(1);
                        datos[1]=String.valueOf(rs.getString(2));

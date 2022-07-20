@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -35,6 +37,10 @@ public class RegistroVisualizacionCentroSalud extends javax.swing.JFrame {
     public RegistroVisualizacionCentroSalud() throws SQLException {
         initComponents();
         creaInterfaces.Interfaz(this, 1008, 550);
+        boton_BusPersona.setVisible(false);
+        field_Numero_Doc1.setVisible(false);
+        label_Sintomas.setVisible(false);
+
         
         
 ////////////////////Codigo para llenar la tabla de centros de salud
@@ -152,7 +158,7 @@ public class RegistroVisualizacionCentroSalud extends javax.swing.JFrame {
                 boton_ModificarPersonaActionPerformed(evt);
             }
         });
-        jPanel2.add(boton_ModificarPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 50, 90, 27));
+        jPanel2.add(boton_ModificarPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, 90, 27));
 
         jTable_centros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -188,7 +194,7 @@ public class RegistroVisualizacionCentroSalud extends javax.swing.JFrame {
                 boton_BusPersonaActionPerformed(evt);
             }
         });
-        jPanel2.add(boton_BusPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 90, 27));
+        jPanel2.add(boton_BusPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 90, 27));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flo 1.png"))); // NOI18N
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, 130, 100));
@@ -202,7 +208,7 @@ public class RegistroVisualizacionCentroSalud extends javax.swing.JFrame {
                 boton_EliminarPersonaActionPerformed(evt);
             }
         });
-        jPanel2.add(boton_EliminarPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 50, 90, 27));
+        jPanel2.add(boton_EliminarPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 50, 90, 27));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flo 1.png"))); // NOI18N
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 0, 130, 100));
@@ -229,7 +235,7 @@ public class RegistroVisualizacionCentroSalud extends javax.swing.JFrame {
                 boton_AggPersonaActionPerformed(evt);
             }
         });
-        jPanel2.add(boton_AggPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 90, 27));
+        jPanel2.add(boton_AggPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 90, 27));
 
         jTable_vacunancion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

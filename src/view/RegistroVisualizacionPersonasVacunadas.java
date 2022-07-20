@@ -47,13 +47,12 @@ public class RegistroVisualizacionPersonasVacunadas extends javax.swing.JFrame {
         boton_Volver_PersonaVacunada = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         label_Sintomas = new javax.swing.JLabel();
-        desplegable_Nacionalidad = new javax.swing.JComboBox<String>();
+        desplegable_Nacionalidad = new javax.swing.JComboBox<>();
         boton_AggPersonaVacunada = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         boton_BuscarPersonaVacunada = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         textField_NDocumento = new javax.swing.JTextField();
-        boton_ModificarPersonaVacunada = new javax.swing.JButton();
         boton_EliminarPersonaVacunada = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable_PersonaVacunada = new javax.swing.JTable();
@@ -99,7 +98,7 @@ public class RegistroVisualizacionPersonasVacunadas extends javax.swing.JFrame {
         jPanel2.add(label_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 170, -1));
 
         desplegable_Nacionalidad.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        desplegable_Nacionalidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "V", "E" }));
+        desplegable_Nacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "V", "E" }));
         desplegable_Nacionalidad.setPreferredSize(new java.awt.Dimension(56, 24));
         desplegable_Nacionalidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,7 +116,7 @@ public class RegistroVisualizacionPersonasVacunadas extends javax.swing.JFrame {
                 boton_AggPersonaVacunadaActionPerformed(evt);
             }
         });
-        jPanel2.add(boton_AggPersonaVacunada, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 90, 27));
+        jPanel2.add(boton_AggPersonaVacunada, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 90, 27));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flo 1.png"))); // NOI18N
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, 130, 100));
@@ -144,17 +143,6 @@ public class RegistroVisualizacionPersonasVacunadas extends javax.swing.JFrame {
         });
         jPanel2.add(textField_NDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 180, -1));
 
-        boton_ModificarPersonaVacunada.setBackground(new java.awt.Color(235, 235, 235));
-        boton_ModificarPersonaVacunada.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
-        boton_ModificarPersonaVacunada.setText("Modificar");
-        boton_ModificarPersonaVacunada.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        boton_ModificarPersonaVacunada.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_ModificarPersonaVacunadaActionPerformed(evt);
-            }
-        });
-        jPanel2.add(boton_ModificarPersonaVacunada, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, 90, 27));
-
         boton_EliminarPersonaVacunada.setBackground(new java.awt.Color(235, 235, 235));
         boton_EliminarPersonaVacunada.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
         boton_EliminarPersonaVacunada.setText("Eliminar");
@@ -164,7 +152,7 @@ public class RegistroVisualizacionPersonasVacunadas extends javax.swing.JFrame {
                 boton_EliminarPersonaVacunadaActionPerformed(evt);
             }
         });
-        jPanel2.add(boton_EliminarPersonaVacunada, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 50, 90, 27));
+        jPanel2.add(boton_EliminarPersonaVacunada, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, 90, 27));
 
         jTable_PersonaVacunada.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -230,10 +218,6 @@ public class RegistroVisualizacionPersonasVacunadas extends javax.swing.JFrame {
     private void textField_NDocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField_NDocumentoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textField_NDocumentoActionPerformed
-
-    private void boton_ModificarPersonaVacunadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_ModificarPersonaVacunadaActionPerformed
-        
-    }//GEN-LAST:event_boton_ModificarPersonaVacunadaActionPerformed
 
     private void boton_EliminarPersonaVacunadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_EliminarPersonaVacunadaActionPerformed
         model = (DefaultTableModel) jTable_PersonaVacunada.getModel();
@@ -8482,7 +8466,6 @@ public class RegistroVisualizacionPersonasVacunadas extends javax.swing.JFrame {
     private javax.swing.JButton boton_AggPersonaVacunada;
     private javax.swing.JButton boton_BuscarPersonaVacunada;
     private javax.swing.JButton boton_EliminarPersonaVacunada;
-    private javax.swing.JButton boton_ModificarPersonaVacunada;
     private javax.swing.JButton boton_Volver_PersonaVacunada;
     private javax.swing.JComboBox<String> desplegable_Nacionalidad;
     private javax.swing.JTextField field_TiempoReposo;

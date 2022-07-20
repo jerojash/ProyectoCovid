@@ -451,7 +451,7 @@ public class RegistroVisualizacionVacuna extends javax.swing.JFrame {
                 boton_Siguiente_RegistroDP3ActionPerformed(evt);
             }
         });
-        jPanel17.add(boton_Siguiente_RegistroDP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 80, 27));
+        jPanel17.add(boton_Siguiente_RegistroDP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 80, 27));
 
         jPanel18.setBackground(new java.awt.Color(255, 255, 255));
         jPanel18.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -481,7 +481,7 @@ public class RegistroVisualizacionVacuna extends javax.swing.JFrame {
                 boton_Volver_RegistroDP4ActionPerformed(evt);
             }
         });
-        jPanel17.add(boton_Volver_RegistroDP4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 80, 27));
+        jPanel17.add(boton_Volver_RegistroDP4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 80, 27));
 
         jFrame_tipo.getContentPane().add(jPanel17, java.awt.BorderLayout.CENTER);
 
@@ -592,7 +592,7 @@ public class RegistroVisualizacionVacuna extends javax.swing.JFrame {
                 boton_VolverActionPerformed(evt);
             }
         });
-        jPanel1.add(boton_Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 460, 80, 27));
+        jPanel1.add(boton_Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 350, 80, 27));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -696,7 +696,7 @@ public class RegistroVisualizacionVacuna extends javax.swing.JFrame {
         });
         jPanel2.add(boton_AggVacuna, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 90, 27));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 940, 390));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 940, 270));
 
         title_RegistroSintomas.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
         title_RegistroSintomas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -768,7 +768,7 @@ public class RegistroVisualizacionVacuna extends javax.swing.JFrame {
     private void boton_AggVacunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_AggVacunaActionPerformed
         // TODO add your handling code here:
         registrarVacuna vacuna = new registrarVacuna();
-        crea.InterfazDiferentes(this, vacuna, 600, 505);
+        crea.InterfazDiferentes(this, vacuna, 555, 485);
     }//GEN-LAST:event_boton_AggVacunaActionPerformed
 
     private void jTable_vacunasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_vacunasMouseClicked
@@ -796,7 +796,7 @@ public class RegistroVisualizacionVacuna extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_laboratorioActionPerformed
 
     private void boton_volverAMainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_volverAMainActionPerformed
-        crea.InterfazIguales(Frame_modificar, this, 1008, 550);
+        crea.InterfazIguales(Frame_modificar, this,  1008, 420);
         bus.limpiarTabla(jTable_vacunas);
         bus.tableAllvacunas(jTable_vacunas);
     }//GEN-LAST:event_boton_volverAMainActionPerformed
@@ -939,12 +939,12 @@ public class RegistroVisualizacionVacuna extends javax.swing.JFrame {
         for (int i=0;i<listas.size();i++)
             desplegable_Efectos.addItem(listas.get(i));
         bus.tableVacEfec(TableEfectos, model.getValueAt(jTable_vacunas.getSelectedRow(), 0).toString());
-        crea.InterfazIguales(Frame_modificar, jFrame_Efectos, 480, 360); //462, 344
+        crea.InterfazIguales(Frame_modificar, jFrame_Efectos, 480, 380); //462, 344
     }//GEN-LAST:event_boton_sintomas2ActionPerformed
 
     private void boton_tipo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_tipo1ActionPerformed
         // TODO add your handling code here:
-        crea.InterfazIguales(Frame_modificar, jFrame_tipo, 350,280);
+        crea.InterfazIguales(Frame_modificar, jFrame_tipo, 330,260);
     }//GEN-LAST:event_boton_tipo1ActionPerformed
 
     private void boton_Volver_CentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_CentroActionPerformed

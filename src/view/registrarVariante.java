@@ -5,9 +5,9 @@
  */
 package view;
 
-import tools.Buscador;
 import Clases.Estado;
 import SQL.Extraer;
+import tools.Buscador;
 import SQL.Guardar;
 import java.util.ArrayList;
 import java.util.Date;
@@ -313,12 +313,12 @@ public class registrarVariante extends javax.swing.JFrame {
     private void boton_Volver_VarianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_VarianteActionPerformed
         // TODO add your handling code here:
         RegistroVisualizacionVariante RVV = new RegistroVisualizacionVariante();
-        crea.InterfazDiferentes(this, RVV, 1008, 550);
+        crea.InterfazDiferentes(this, RVV, 1008, 538);
     }//GEN-LAST:event_boton_Volver_VarianteActionPerformed
 
     private void boton_VerSintomasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_VerSintomasActionPerformed
         // TODO add your handling code here:
-        crea.InterfazIguales(this, regisSintoma, 467, 385);
+        crea.InterfazIguales(this, regisSintoma, 467, 394);
     }//GEN-LAST:event_boton_VerSintomasActionPerformed
 
     private void desplegable_ClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desplegable_ClasificacionActionPerformed
@@ -405,7 +405,7 @@ public class registrarVariante extends javax.swing.JFrame {
 
     private void boton_Volver_Variante1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_Variante1ActionPerformed
         // TODO add your handling code here:
-        crea.InterfazIguales(regisSintoma, this, 594, 580); 
+        crea.InterfazIguales(regisSintoma, this,542, 425); 
     }//GEN-LAST:event_boton_Volver_Variante1ActionPerformed
 
     /**

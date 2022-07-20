@@ -281,7 +281,7 @@ public class RegistroVisualizacionVariante extends javax.swing.JFrame {
         });
         jPanel16.add(desplegable_clasificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 70, -1));
 
-        jPanel15.add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 190, 90));
+        jPanel15.add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 200, 90));
 
         title_persona1.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
         title_persona1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -550,7 +550,7 @@ public class RegistroVisualizacionVariante extends javax.swing.JFrame {
             model = (DefaultTableModel) jTable_variantes.getModel();
             jLabel4.setText("Modificación a la variante con la denominación: "+model.getValueAt(jTable_variantes.getSelectedRow(), 0).toString());//verificar jlabel
             
-            crea.InterfazIguales(this, Frame_modificar, 880, 390);
+            crea.InterfazIguales(this, Frame_modificar,  844, 379);
         }else
             JOptionPane.showMessageDialog(null, "Debe seleccionar en la tabla la variante a modificar","Aviso",INFORMATION_MESSAGE);
     }//GEN-LAST:event_boton_ModificarVarianteActionPerformed
@@ -630,12 +630,12 @@ public class RegistroVisualizacionVariante extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_linajeActionPerformed
 
     private void boton_forgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_forgActionPerformed
-        crea.InterfazIguales(Frame_modificar, jFrame_fechaorigen,590, 225);
+        crea.InterfazIguales(Frame_modificar, jFrame_fechaorigen,590, 245);
     }//GEN-LAST:event_boton_forgActionPerformed
 
     private void boton_clasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_clasificacionActionPerformed
         // TODO add your handling code here:
-        crea.InterfazIguales(Frame_modificar, jFrame_clasificacion, 258,225);
+        crea.InterfazIguales(Frame_modificar, jFrame_clasificacion, 280, 240);
     }//GEN-LAST:event_boton_clasificacionActionPerformed
 
     private void boton_sintomasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_sintomasActionPerformed
@@ -645,11 +645,11 @@ public class RegistroVisualizacionVariante extends javax.swing.JFrame {
         for (int i=0;i<listas.size();i++)
             desplegable_Sintomas.addItem(listas.get(i));
         bus.tableVarSint(TableSint, model.getValueAt(jTable_variantes.getSelectedRow(), 0).toString());
-        crea.InterfazIguales(Frame_modificar, jFrame_Sintomas, 480, 360); //462, 344
+        crea.InterfazIguales(Frame_modificar, jFrame_Sintomas, 475, 385); //462, 344
     }//GEN-LAST:event_boton_sintomasActionPerformed
 
     private void boton_volverAMainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_volverAMainActionPerformed
-        crea.InterfazIguales(Frame_modificar, this, 1008, 550);
+        crea.InterfazIguales(Frame_modificar, this, 1008, 538);
         bus.limpiarTabla(jTable_variantes);
         bus.tableAllvariantes(jTable_variantes);
     }//GEN-LAST:event_boton_volverAMainActionPerformed
@@ -663,7 +663,7 @@ public class RegistroVisualizacionVariante extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_Siguiente_RegistroDP1ActionPerformed
 
     private void boton_Volver_RegistroDP2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_RegistroDP2ActionPerformed
-        crea.InterfazIguales(jFrame_fechaorigen, Frame_modificar, 880, 390);
+        crea.InterfazIguales(jFrame_fechaorigen, Frame_modificar, 844, 379);
         bus.limpiarTabla(jTable_variantes);
         bus.tableAllvariantes(jTable_variantes);
     }//GEN-LAST:event_boton_Volver_RegistroDP2ActionPerformed
@@ -674,7 +674,7 @@ public class RegistroVisualizacionVariante extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_Siguiente_RegistroDP2ActionPerformed
 
     private void boton_Volver_RegistroDP3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_RegistroDP3ActionPerformed
-        crea.InterfazIguales(jFrame_clasificacion, Frame_modificar, 880, 390);
+        crea.InterfazIguales(jFrame_clasificacion, Frame_modificar,  844, 379);
     }//GEN-LAST:event_boton_Volver_RegistroDP3ActionPerformed
 
     private void desplegable_clasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desplegable_clasificacionActionPerformed
@@ -708,7 +708,7 @@ public class RegistroVisualizacionVariante extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_VerSintomasActionPerformed
 
     private void boton_Volver_RegistroDP6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_RegistroDP6ActionPerformed
-        crea.InterfazIguales(jFrame_Sintomas, Frame_modificar, 880, 390);
+        crea.InterfazIguales(jFrame_Sintomas, Frame_modificar,  844, 379);
         bus.limpiarTabla(TableSint);
     }//GEN-LAST:event_boton_Volver_RegistroDP6ActionPerformed
 
