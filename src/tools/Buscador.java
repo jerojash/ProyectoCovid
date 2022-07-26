@@ -670,6 +670,24 @@ public class Buscador {
             JOptionPane.showMessageDialog(null, "Error con la conexion a la base de datos");
         }
     }
+    
+    public void tableAllMedicamentos(JTable tabla){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        Verificador veri;
+        veri = new Verificador();
+        try {
+            DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from medicamento");
+            while(rs.next()){
+                model.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error con la conexion a la base de datos");
+        }
+    }
+    
      public void tableVacunas(JTable tabla, String idvacuna){
         Statement st;
         ConexionSQL con = new ConexionSQL();
