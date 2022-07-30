@@ -2,7 +2,9 @@
 package tools;
 
 import Clases.CentroSalud;
+import Clases.Medicamento;
 import Clases.Pais;
+import Clases.Tratamiento;
 import Clases.Vacuna;
 import SQL.ConexionSQL;
 import SQL.Extraer;
@@ -10,9 +12,11 @@ import com.sun.scenario.effect.impl.sw.java.JSWPhongLighting_DISTANTPeer;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javafx.scene.text.Text;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 
 public class Buscador {
@@ -804,6 +808,32 @@ public class Buscador {
             st.execute(sql);
         } catch (Exception e) {
         }
+    }
+    
+    public String codMedicamento (String nombmedicamento){
+        String cod = "";
+        Extraer dataSQL = new Extraer();
+        ArrayList<Medicamento> listMedicamento = dataSQL.Medicamento();
+        int i = 0;
+        while((cod.equals(""))&&(i<listMedicamento.size())){
+            if (nombmedicamento.equals(listMedicamento.get(i).getnombremedicamento()))
+                cod = listMedicamento.get(i).getcod_medicamento().toString();
+            i++;
+        }     
+        return cod;
+    }
+    
+    public String codTratamiento(String nombtratamiento){
+        String cod = "";
+        Extraer dataSQL = new Extraer();
+        ArrayList<Tratamiento> listTratamiento = dataSQL.Tratamiento();
+        int i = 0;
+        while((cod.equals(""))&&(i<listTratamiento.size())){
+           if (nombtratamiento.equals(listTratamiento.get(i).getnombretratamiento()))
+                cod = listTratamiento.get(i).getcod_tratamiento().toString();
+            i++;
+        }     
+        return cod;
     }
     
 }

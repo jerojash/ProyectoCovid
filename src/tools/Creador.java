@@ -200,6 +200,18 @@ public class Creador {
             Table.getColumnModel().getColumn(x).setCellRenderer(centerRenderer);            
         }
     }
+     
+    public void addTableHeaderMed(DefaultTableModel model,JTable Table){
+        model = (DefaultTableModel) Table.getModel();
+        Object[] newIdentifiers = new Object[]{"nombremedicamento","dosis","cantdias","frecuencia"};
+        model.setColumnIdentifiers(newIdentifiers);
+        Table.setFillsViewportHeight(true);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int x = 0; x < Table.getColumnCount(); x++) {
+            Table.getColumnModel().getColumn(x).setCellRenderer(centerRenderer);            
+        }
+    } 
 
   
 }

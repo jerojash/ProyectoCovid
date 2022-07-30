@@ -6,6 +6,8 @@ import Clases.Sintomas;
 import Clases.Estado;
 import Clases.Pais;
 import Clases.Vacuna;
+import Clases.Medicamento;
+import Clases.Tratamiento;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -336,6 +338,55 @@ public class Extraer {
             return null;
         }
     }
+    public ArrayList<Medicamento> Medicamento() {
+        Statement st;
+        ArrayList<Medicamento> Medicamentos = new ArrayList<Medicamento>();
+        ConexionSQL con = new ConexionSQL();
+
+        try {
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from medicamento");
+            while (rs.next()) {
+                Medicamentos.add(new Medicamento(rs.getInt(1), rs.getString(2),rs.getString(3),rs.getDouble(4)));
+            }
+            st.close();
+            con.disconnect();
+            return Medicamentos;
+        } catch (Exception e) {
+            con.disconnect();
+            return null;
+        }
+    }
+    
+    public ArrayList<String> nombMedicamento(ArrayList<Medicamento> listMedicamentos) {
+        ArrayList<String> nombMedicamentos = new ArrayList<String>();
+
+        for (int i = 0; i < listMedicamentos.size(); i++) {
+            nombMedicamentos.add(listMedicamentos.get(i).getnombremedicamento());
+        }
+        return nombMedicamentos;
+    }
+
+    public ArrayList<Tratamiento> Tratamiento() {
+        Statement st;
+        ArrayList<Tratamiento> Tratamientos = new ArrayList<Tratamiento>();
+        ConexionSQL con = new ConexionSQL();
+
+        try {
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from tratamiento");
+            while (rs.next()) {
+                Tratamientos.add(new Tratamiento(rs.getInt(1), rs.getString(2)));
+            }
+            st.close();
+            con.disconnect();
+            return Tratamientos;
+        } catch (Exception e) {
+            con.disconnect();
+            return null;
+        }
+    }
+       
 }
 
 

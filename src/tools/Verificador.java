@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
@@ -166,4 +167,11 @@ public class Verificador {
         }    
         return personal;
     }
+    public boolean dataTA (JTextArea entrada){
+        boolean NV = true;
+        if (entrada.getText().toString().equals("")){
+            NV = false;
+        }
+        return NV;
+    }  
 }

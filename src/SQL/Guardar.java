@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import tools.Buscador;
@@ -624,5 +625,57 @@ public class Guardar {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Hubo un inconveniente con el manejo del servidor");
         }           
-    }    
+    }   
+    public boolean guardadoTratamiento(JTextArea descriptratamiento){            
+        boolean guardado = true;
+        try {
+            ConexionSQL conexion= new ConexionSQL();
+            Connection con = conexion.connected();  
+            java.sql.Statement st = con.createStatement();
+
+            Buscador select = new Buscador();
+            String value = "'"+descriptratamiento.getText().toString()+"'";
+            String sql = "insert into tratamiento(descriptratamiento) values("+value+")";
+            System.out.println(sql);
+            st.execute(sql);
+
+            st.close();
+            con.close();
+        } catch (Exception e) {
+            guardado = false;
+            JOptionPane.showMessageDialog(null, "Hubo un inconveniente con el manejo del servidor");
+        }
+        return guardado;
+    }
+    
+    public void iteGuardarTratMed(JTable tabla, JTextArea descriptratamiento ){
+        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+        Buscador busc = new Buscador(); 
+        String codTrat;
+        codTrat = busc.codTratamiento(descriptratamiento.getText().toString());
+        for (int i = 0; i<tabla.getRowCount();i++){
+            this.guardarTratMed(codTrat, modelo.getValueAt(i, 0).toString(),modelo.getValueAt(i, 1).toString(), modelo.getValueAt(i, 2).toString(), modelo.getValueAt(i, 3).toString());
+        }
+    
+    }
+        
+    public void guardarTratMed(String codtrat, String nombmedicamento, String dosis, String cantdosis, String frecuencia){
+        try {
+            ConexionSQL conexion= new ConexionSQL();
+            Connection con = conexion.connected();
+            java.sql.Statement st = con.createStatement();
+            Buscador busc = new Buscador();
+            String codMed = busc.codMedicamento(nombmedicamento);
+            String value = "'"+codtrat+"','"+codMed+"','"+dosis+"','"+cantdosis+"','"+frecuencia+"'";
+            String sql = "insert into consiste (codtrat,codmedicamento, dosis, cantdias, frecuencia) values("+value+")";
+            System.out.println(sql);
+            st.execute(sql);
+            st.close();
+            con.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Hubo un inconveniente con el manejo del servidor");
+        }
+    }
+    
+    
 }

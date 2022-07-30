@@ -14,6 +14,7 @@ public class registrarTratamientoPaciente extends javax.swing.JFrame {
     /**
      * Creates new form registrarMedicamento
      */
+    
     public registrarTratamientoPaciente() {
         initComponents();
         this.setSize(542, 449);
@@ -111,6 +112,11 @@ public class registrarTratamientoPaciente extends javax.swing.JFrame {
         desplegable_EstadoReposo.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         desplegable_EstadoReposo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Casa", "Hospital" }));
         desplegable_EstadoReposo.setPreferredSize(new java.awt.Dimension(56, 24));
+        desplegable_EstadoReposo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                desplegable_EstadoReposoActionPerformed(evt);
+            }
+        });
         jPanel2.add(desplegable_EstadoReposo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 180, -1));
 
         desplegable_NacionalidadTratamientoPaciente.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
@@ -151,11 +157,16 @@ public class registrarTratamientoPaciente extends javax.swing.JFrame {
 
     private void boton_Siguiente_RegistroPTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Siguiente_RegistroPTActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_boton_Siguiente_RegistroPTActionPerformed
 
     private void desplegable_TratamientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desplegable_TratamientosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_desplegable_TratamientosActionPerformed
+
+    private void desplegable_EstadoReposoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desplegable_EstadoReposoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_desplegable_EstadoReposoActionPerformed
 
     /**
      * @param args the command line arguments
