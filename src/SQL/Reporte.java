@@ -61,6 +61,70 @@ public class Reporte {
             }
      }
     
+    public int Reporte_1_1(String estado){
+            Statement st;
+            int cantidad = 0;
+            ConexionSQL con = new ConexionSQL();
+            try {
+                st = con.connected().createStatement();
+                  ResultSet rs = st.executeQuery("select e.nombestado, count(r.docidentidad) contagiados\n" +
+                                                                        "from reside r\n" +
+                                                                        "join (\n" +
+                                                                        "    select docidentidad \n" +
+                                                                        "    from contagio\n" +
+                                                                        "    group by docidentidad\n" +
+                                                                        "    having count(docidentidad)>1 )c\n" +
+                                                                        "on c.docidentidad = r.docidentidad\n" +
+                                                                        "join estado_provincia e\n" +
+                                                                        "on e.codestado = r.codestado\n" +
+                                                                        "where e.nombestado like '"+estado+"'\n" +
+                                                                        "group by e.nombestado");
+                while (rs.next()) {
+                       cantidad=Integer.parseInt(rs.getString(2));
+                       
+                }
+                st.close();
+                con.disconnect();
+                return cantidad;
+            } catch (Exception e) {
+            return cantidad;
+        }
+    }
+    
+    public ArrayList<String> Reporte_1_2(String estado){
+            Statement st;
+            ArrayList<String> datos = new ArrayList<String>();
+            ConexionSQL con = new ConexionSQL();
+            try {
+                st = con.connected().createStatement();
+                 ResultSet rs = st.executeQuery("select distinct(p.doc_identidad), CONCAT (p.nombper,' ', p.apellidoper) nombre, c.casahospitalizado hospitalizado\n" +
+                                                                        "from persona p\n" +
+                                                                        "join contagio c\n" +
+                                                                        "on p.doc_identidad = c.docidentidad\n" +
+                                                                        "join reside r\n" +
+                                                                        "on r.docidentidad = p.doc_identidad\n" +
+                                                                        "join estado_provincia e\n" +
+                                                                        "on e.codestado = r.codestado\n" +
+                                                                        "join (\n" +
+                                                                        "    select docidentidad \n" +
+                                                                        "    from contagio\n" +
+                                                                        "    group by docidentidad\n" +
+                                                                        "    having count(docidentidad)>1 )d\n" +
+                                                                        "on d.docidentidad = r.docidentidad\n" +
+                                                                        "where e.nombestado like '"+estado+"' order by nombre desc");
+                while (rs.next()) {
+                       datos.add(rs.getString(1));
+                       datos.add(rs.getString(2));
+                       datos.add(rs.getString(3));
+                }
+                st.close();
+                con.disconnect();
+                return datos;
+            } catch (Exception e) {
+            return null;
+            }
+    }
+    
     public ResultSet reporte_7(){
              Statement st;
             ConexionSQL con = new ConexionSQL();
