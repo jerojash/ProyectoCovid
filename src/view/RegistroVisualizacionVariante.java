@@ -95,6 +95,8 @@ public class RegistroVisualizacionVariante extends javax.swing.JFrame {
         boton_VerSintomas = new javax.swing.JButton();
         title_persona4 = new javax.swing.JLabel();
         boton_Volver_RegistroDP6 = new javax.swing.JButton();
+        field_idvariante = new javax.swing.JTextField();
+        title_persona5 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         boton_Volver = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -369,12 +371,12 @@ public class RegistroVisualizacionVariante extends javax.swing.JFrame {
         });
         jPanel22.add(boton_VerSintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, 90, 27));
 
-        jPanel21.add(jPanel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 400, 230));
+        jPanel21.add(jPanel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 400, 230));
 
         title_persona4.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
         title_persona4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        title_persona4.setText("Cambio Síntomas");
-        jPanel21.add(title_persona4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-50, 10, 520, 40));
+        title_persona4.setText("para la variante");
+        jPanel21.add(title_persona4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 260, 40));
 
         boton_Volver_RegistroDP6.setBackground(new java.awt.Color(235, 235, 235));
         boton_Volver_RegistroDP6.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
@@ -385,7 +387,21 @@ public class RegistroVisualizacionVariante extends javax.swing.JFrame {
                 boton_Volver_RegistroDP6ActionPerformed(evt);
             }
         });
-        jPanel21.add(boton_Volver_RegistroDP6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 80, 27));
+        jPanel21.add(boton_Volver_RegistroDP6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, 80, 27));
+
+        field_idvariante.setEditable(false);
+        field_idvariante.setBackground(new java.awt.Color(159, 211, 241));
+        field_idvariante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field_idvarianteActionPerformed(evt);
+            }
+        });
+        jPanel21.add(field_idvariante, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, 80, 30));
+
+        title_persona5.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
+        title_persona5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title_persona5.setText("Cambio Síntomas ");
+        jPanel21.add(title_persona5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 260, 40));
 
         jFrame_Sintomas.getContentPane().add(jPanel21, java.awt.BorderLayout.CENTER);
 
@@ -642,6 +658,7 @@ public class RegistroVisualizacionVariante extends javax.swing.JFrame {
         // TODO add your handling code here:
         ArrayList<String> listas = dataSQL.descripsintoma(dataSQL.Sintomas());
         desplegable_Sintomas.removeAllItems();
+        field_idvariante.setText(model.getValueAt(jTable_variantes.getSelectedRow(), 0).toString());
         for (int i=0;i<listas.size();i++)
             desplegable_Sintomas.addItem(listas.get(i));
         bus.tableVarSint(TableSint, model.getValueAt(jTable_variantes.getSelectedRow(), 0).toString());
@@ -651,6 +668,7 @@ public class RegistroVisualizacionVariante extends javax.swing.JFrame {
     private void boton_volverAMainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_volverAMainActionPerformed
         crea.InterfazIguales(Frame_modificar, this, 1008, 538);
         bus.limpiarTabla(jTable_variantes);
+        bus.limpiarTabla(jTable_sintomas);
         bus.tableAllvariantes(jTable_variantes);
     }//GEN-LAST:event_boton_volverAMainActionPerformed
 
@@ -658,7 +676,7 @@ public class RegistroVisualizacionVariante extends javax.swing.JFrame {
         Date date = label_Fecha_Org3.getDate();
         long da = date.getTime();
         java.sql.Date fecha = new java.sql.Date(da);
-        Guardar insertSQL = new Guardar();
+        Guardar insertSQL = new Guardar();               
         insertSQL.ModiVar(model.getValueAt(jTable_variantes.getSelectedRow(), 0).toString(), fecha.toString(),2);
     }//GEN-LAST:event_boton_Siguiente_RegistroDP1ActionPerformed
 
@@ -687,13 +705,13 @@ public class RegistroVisualizacionVariante extends javax.swing.JFrame {
 
     private void boton_VerSintomas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_VerSintomas1ActionPerformed
         Verificador veri = new Verificador();
-        DefaultTableModel modelSint = (DefaultTableModel) TableSint.getModel();
-        String dato;
-        dato = desplegable_Sintomas.getSelectedItem().toString();
+        DefaultTableModel model = (DefaultTableModel) TableSint.getModel();
+        String dato = desplegable_Sintomas.getSelectedItem().toString();
+        String denom_oms=field_idvariante.getText();
         if(!veri.existenciaTable(model, dato)){
-            modelSint.addRow(new Object[]{dato});
+            model.addRow(new Object[]{dato});
             Guardar insertSQL = new Guardar();
-            insertSQL.guardarSintVar(dato, model.getValueAt(jTable_variantes.getSelectedRow(), 0).toString());
+            insertSQL.guardarSintVar(dato, denom_oms);
         }
     }//GEN-LAST:event_boton_VerSintomas1ActionPerformed
 
@@ -711,6 +729,10 @@ public class RegistroVisualizacionVariante extends javax.swing.JFrame {
         crea.InterfazIguales(jFrame_Sintomas, Frame_modificar,  844, 379);
         bus.limpiarTabla(TableSint);
     }//GEN-LAST:event_boton_Volver_RegistroDP6ActionPerformed
+
+    private void field_idvarianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_idvarianteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field_idvarianteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1027,6 +1049,7 @@ public class RegistroVisualizacionVariante extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> desplegable_clasificacion;
     private javax.swing.JTextField field_Denominacion;
     private javax.swing.JTextField field_TiempoReposo;
+    private javax.swing.JTextField field_idvariante;
     private javax.swing.JButton jButton2;
     private javax.swing.JFrame jFrame_Sintomas;
     private javax.swing.JFrame jFrame_clasificacion;
@@ -1062,5 +1085,6 @@ public class RegistroVisualizacionVariante extends javax.swing.JFrame {
     private javax.swing.JLabel title_persona;
     private javax.swing.JLabel title_persona1;
     private javax.swing.JLabel title_persona4;
+    private javax.swing.JLabel title_persona5;
     // End of variables declaration//GEN-END:variables
 }

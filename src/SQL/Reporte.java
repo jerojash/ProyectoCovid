@@ -152,7 +152,27 @@ public class Reporte {
             return null;
             }
      }
+     public ResultSet reporte_6(){
+            Statement st;
+            ConexionSQL con = new ConexionSQL();
+            try {
+                st = con.connected().createStatement();
     
+                System.out.println("En generar el reporte");
+                String sql="select vv.denom_oms, vv.linaje, count(distinct(co.docidentidad)) as  contpercont\n" +
+                                                                        "from virus_variante vv, contagio co\n" +
+                                                                        "where vv.denom_oms=co.denom_oms\n" +
+                                                                        "group by vv.denom_oms\n"+
+                                                                        "order by contpercont desc limit 3";
+                
+                ResultSet rs = st.executeQuery(sql);
+                System.out.println("Se genero el resultset");
+                con.disconnect();
+                return rs;
+            } catch (Exception e) {
+            return null;
+            }
+    }
 }
 
 

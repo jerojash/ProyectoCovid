@@ -205,7 +205,7 @@ public class registrarTratamiento extends javax.swing.JFrame {
         });
         jPanel4.add(field_Dosis, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 80, 30));
 
-        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 600, 340));
+        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 600, 340));
 
         title_RegistroVariante1.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
         title_RegistroVariante1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -287,9 +287,8 @@ public class registrarTratamiento extends javax.swing.JFrame {
 
     private void boton_Volver_RegistroTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_RegistroTActionPerformed
         // TODO add your handling code here:
-       // RegistroVisualizacionVariante RVV = new RegistroVisualizacionVariante();
-       // crea.InterfazDiferentes(this, RVV, 1008, 538);
-        crea.InterfazIguales(regisMedicamento, this,542, 425); 
+         RegistroVisualizacionTratamiento RVT = new RegistroVisualizacionTratamiento();
+         crea.InterfazDiferentes(this, RVT, 1008, 550); 
     }//GEN-LAST:event_boton_Volver_RegistroTActionPerformed
 
     private void boton_VerMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_VerMedActionPerformed

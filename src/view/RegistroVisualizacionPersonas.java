@@ -564,7 +564,7 @@ public class RegistroVisualizacionPersonas extends javax.swing.JFrame {
 
         title_persona4.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
         title_persona4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        title_persona4.setText("Cambio Dirección");
+        title_persona4.setText("Cambio Enfermedades");
         jPanel21.add(title_persona4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-50, 10, 520, 40));
 
         boton_Volver_RegistroDP6.setBackground(new java.awt.Color(235, 235, 235));

@@ -173,14 +173,6 @@ public class Reporte8 extends javax.swing.JFrame {
             vacuna_eficaz.setText("Vacuna más eficaz: ");
             nivel_eficaz.setText("Nivel de eficacia: ");
         }
-        ArrayList<String> data2 = new ArrayList<String>();
-        data2 = r.Reporte_8_2(desplegable_Variantes.getSelectedItem().toString());
-        String [] info = new String[1];
-        for (int i = 0; i < data2.size(); i++){
-            info[0] = data2.get(i).toString();
-            model.addRow(info);
-                    //addRow(data2.get(i));
-        }
         
     }//GEN-LAST:event_boton_BuscarActionPerformed
 

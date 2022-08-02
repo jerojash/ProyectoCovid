@@ -213,5 +213,27 @@ public class Creador {
         }
     } 
 
-  
+      public void addTableHeaderTrat(DefaultTableModel model, JTable Table){
+        model = (DefaultTableModel) Table.getModel();
+        Object[] newIdentifiers = new Object[]{"Codigo","Tratamiento"};
+        model.setColumnIdentifiers(newIdentifiers);
+        Table.setFillsViewportHeight(true);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int x = 0; x < Table.getColumnCount(); x++) {
+            Table.getColumnModel().getColumn(x).setCellRenderer(centerRenderer);            
+        }
+    }
+      
+        public void addTableHeaderMedic(DefaultTableModel model,JTable Table) {
+        model = (DefaultTableModel) Table.getModel();
+        Object[] newIdentifiers = new Object[]{"Medicamentos","Dosis","Cantidad dias","Frecuencia" };
+        model.setColumnIdentifiers(newIdentifiers);
+        Table.setFillsViewportHeight(true);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int x = 0; x < Table.getColumnCount(); x++) {
+            Table.getColumnModel().getColumn(x).setCellRenderer(centerRenderer);            
+        }
+    }
 }

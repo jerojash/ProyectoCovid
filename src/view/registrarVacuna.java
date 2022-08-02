@@ -68,7 +68,7 @@ public class registrarVacuna extends javax.swing.JFrame {
         boton_VerSintomas1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableSint = new javax.swing.JTable();
-        boton_VerSintomas2 = new javax.swing.JButton();
+        boton_AgregarEfectoS = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         boton_AggSintNueva = new javax.swing.JButton();
         title_RegistroVariante1 = new javax.swing.JLabel();
@@ -182,16 +182,16 @@ public class registrarVacuna extends javax.swing.JFrame {
 
         jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 270, 110));
 
-        boton_VerSintomas2.setBackground(new java.awt.Color(235, 235, 235));
-        boton_VerSintomas2.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
-        boton_VerSintomas2.setText("Agregar");
-        boton_VerSintomas2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        boton_VerSintomas2.addActionListener(new java.awt.event.ActionListener() {
+        boton_AgregarEfectoS.setBackground(new java.awt.Color(235, 235, 235));
+        boton_AgregarEfectoS.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
+        boton_AgregarEfectoS.setText("Agregar");
+        boton_AgregarEfectoS.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_AgregarEfectoS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_VerSintomas2ActionPerformed(evt);
+                boton_AgregarEfectoSActionPerformed(evt);
             }
         });
-        jPanel4.add(boton_VerSintomas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 90, 27));
+        jPanel4.add(boton_AgregarEfectoS, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 90, 27));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flo 1.png"))); // NOI18N
         jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 100, 110));
@@ -469,17 +469,18 @@ public class registrarVacuna extends javax.swing.JFrame {
         // TODO add your handling code here:
          Verificador veri = new Verificador();
         if((veri.dataNB(field_Nombre_Vacuna))&&(veri.dataNB(field_origen))){
-            if((veri.noVacio(field_Nombre_Vacuna.getText().toString()))&&(veri.noVacio(field_Nombre_Vacuna.getText().toString()))){
-                //if((field_NTelefono.getText().toString().matches("-?\\d+"))&&(field_Numero_Doc1.getText().toString().matches("-?\\d+"))){
+            if((veri.noVacio(field_Nombre_Vacuna.getText().toString()))&&(veri.noVacio(field_Nombre_Vacuna.getText().toString()))&&(veri.noVacio(field_Lote.getText().toString()))&&(veri.noVacio(field_CantDosis.getText().toString()))){
+                if((field_Lote.getText().toString().matches("-?\\d+")) && (field_CantDosis.getText().toString().matches("-?\\d+")) )  {  
                     Guardar insertSQL = new Guardar();
                     Extraer e = new Extraer();
-                    if (insertSQL.guardadoVacuna(field_Lote,field_Nombre_Vacuna, field_CantDosis, field_origen, desplegable_TipoVac.getSelectedItem().toString(), desplegable_Pais.getSelectedItem().toString()))
+                    if (insertSQL.guardadoVacuna(field_Lote,field_Nombre_Vacuna, field_CantDosis, field_origen, desplegable_TipoVac.getSelectedItem().toString(), desplegable_Pais.getSelectedItem().toString())){
                         insertSQL.iteGuardarSintVac(TableSint,field_Nombre_Vacuna.getText().toString());
                         insertSQL.iteGuardarEficacia(TableVariantes,field_Nombre_Vacuna.getText().toString());
-                    
-                //}else
-                    //JOptionPane.showMessageDialog(null,"La informacion en los campos numericos no es valida","Error",ERROR_MESSAGE);    
-            }else{
+                    }
+             }else{
+                JOptionPane.showMessageDialog(null, "Los campos Lote y Cantidad de Dosis deben tener un valor entero","Error",ERROR_MESSAGE);
+            }
+              }else{
                 JOptionPane.showMessageDialog(null, "No se admiten casillas con unicamente espacios en blanco","Error",ERROR_MESSAGE);
             }
         }else
@@ -532,7 +533,7 @@ public class registrarVacuna extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "No ha seleccionado una enfermedad a eliminar","Warning",WARNING_MESSAGE);
     }//GEN-LAST:event_boton_VerSintomas1ActionPerformed
 
-    private void boton_VerSintomas2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_VerSintomas2ActionPerformed
+    private void boton_AgregarEfectoSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_AgregarEfectoSActionPerformed
         // TODO add your handling code here:
         Verificador veri = new Verificador();
         model = (DefaultTableModel) TableSint.getModel();
@@ -541,7 +542,7 @@ public class registrarVacuna extends javax.swing.JFrame {
         if(!veri.existenciaTable(model, dato)){
             model.addRow(new Object[]{dato});
         }
-    }//GEN-LAST:event_boton_VerSintomas2ActionPerformed
+    }//GEN-LAST:event_boton_AgregarEfectoSActionPerformed
 
     private void boton_AggSintNuevaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_AggSintNuevaActionPerformed
         // TODO add your handling code here:
@@ -582,16 +583,7 @@ public class registrarVacuna extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_EliminarCentroActionPerformed
 
     private void boton_AggCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_AggCentroActionPerformed
-        /* Verificador veri = new Verificador();
-        modelCentro = (DefaultTableModel) TableCentro.getModel();
-        String dato;
-        dato = desplegable_Centro.getSelectedItem().toString();
-        Date date = jDateChooser3_FechaAsignacion.getDate();
-        long da = date.getTime();
-        java.sql.Date fecha = new java.sql.Date(da);
-        if (!veri.existenciaTable(modelCentro, dato)) {
-            modelCentro.addRow(new Object[]{dato,fecha.toString()});
-        }*/
+
         Verificador veri = new Verificador();
         model = (DefaultTableModel) TableVariantes.getModel();
         String dato;
@@ -662,12 +654,12 @@ public class registrarVacuna extends javax.swing.JFrame {
     private javax.swing.JTable TableVariantes;
     private javax.swing.JButton boton_AggCentro;
     private javax.swing.JButton boton_AggSintNueva;
+    private javax.swing.JButton boton_AgregarEfectoS;
     private javax.swing.JButton boton_AnadirVariante;
     private javax.swing.JButton boton_EliminarCentro;
     private javax.swing.JButton boton_Siguiente_RegistroVacuna;
     private javax.swing.JButton boton_Siguiente_RegistroVacuna1;
     private javax.swing.JButton boton_VerSintomas1;
-    private javax.swing.JButton boton_VerSintomas2;
     private javax.swing.JButton boton_Volver_Centro;
     private javax.swing.JButton boton_Volver_Vacuna;
     private javax.swing.JButton boton_Volver_Variante1;

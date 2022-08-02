@@ -16,7 +16,7 @@ public class VisualizacionReportes extends javax.swing.JFrame {
         buttom_reporte1.setEnabled(false);
         buttom_reporte4.setEnabled(false);
         buttom_reporte5.setEnabled(false);
-        buttom_reporte6.setEnabled(false);
+       // buttom_reporte6.setEnabled(false);
     }
 
     /**
@@ -191,6 +191,12 @@ public class VisualizacionReportes extends javax.swing.JFrame {
 
     private void buttom_reporte6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttom_reporte6ActionPerformed
         // TODO add your handling code here:
+        Reporte6 rep;
+        try {
+            rep = new Reporte6();
+            crea.InterfazDiferentes(this, rep, 630, 412);
+        } catch (SQLException ex) {
+        }
     }//GEN-LAST:event_buttom_reporte6ActionPerformed
 
     private void buttom_reporte7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttom_reporte7ActionPerformed

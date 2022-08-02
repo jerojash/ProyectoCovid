@@ -48,8 +48,7 @@ public class Verificador {
     public boolean existenciaTable (DefaultTableModel model, String dato){
         boolean existe = false;
         int filas = model.getRowCount();
-        int i = 0;
-        System.out.println(dato);
+        int i = 0;       
         if (filas != 0){
             while((!existe)&&(i<filas)){
                 System.out.println(model.getValueAt(i,0));

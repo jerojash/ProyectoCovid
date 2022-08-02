@@ -93,6 +93,8 @@ public class RegistroVisualizacionVacuna extends javax.swing.JFrame {
         boton_DelSintomas = new javax.swing.JButton();
         title_persona4 = new javax.swing.JLabel();
         boton_Volver_RegistroDP6 = new javax.swing.JButton();
+        field_idvacuna1 = new javax.swing.JTextField();
+        title_persona5 = new javax.swing.JLabel();
         jFrame_tipo = new javax.swing.JFrame();
         jPanel17 = new javax.swing.JPanel();
         boton_Siguiente_RegistroDP3 = new javax.swing.JButton();
@@ -114,6 +116,7 @@ public class RegistroVisualizacionVacuna extends javax.swing.JFrame {
         label_Denominacion2 = new javax.swing.JLabel();
         field_porcentaje = new javax.swing.JTextField();
         title_RegistroVariante2 = new javax.swing.JLabel();
+        field_idvacuna = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         boton_Volver = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -419,12 +422,12 @@ public class RegistroVisualizacionVacuna extends javax.swing.JFrame {
         });
         jPanel22.add(boton_DelSintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, 90, 27));
 
-        jPanel21.add(jPanel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 400, 230));
+        jPanel21.add(jPanel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 460, 230));
 
         title_persona4.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
         title_persona4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        title_persona4.setText("Cambio Efectos Secundarios");
-        jPanel21.add(title_persona4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 10, 520, 40));
+        title_persona4.setText("para la vacuna");
+        jPanel21.add(title_persona4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 180, 30));
 
         boton_Volver_RegistroDP6.setBackground(new java.awt.Color(235, 235, 235));
         boton_Volver_RegistroDP6.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
@@ -436,6 +439,20 @@ public class RegistroVisualizacionVacuna extends javax.swing.JFrame {
             }
         });
         jPanel21.add(boton_Volver_RegistroDP6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 80, 27));
+
+        field_idvacuna1.setEditable(false);
+        field_idvacuna1.setBackground(new java.awt.Color(159, 211, 241));
+        field_idvacuna1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field_idvacuna1ActionPerformed(evt);
+            }
+        });
+        jPanel21.add(field_idvacuna1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, 80, 30));
+
+        title_persona5.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
+        title_persona5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title_persona5.setText("Cambio Efectos Secundarios");
+        jPanel21.add(title_persona5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 330, 30));
 
         jFrame_Efectos.getContentPane().add(jPanel21, java.awt.BorderLayout.CENTER);
 
@@ -569,14 +586,23 @@ public class RegistroVisualizacionVacuna extends javax.swing.JFrame {
         });
         jPanel6.add(field_porcentaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 200, -1));
 
-        jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 410, 260));
+        jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 430, 260));
 
         title_RegistroVariante2.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
         title_RegistroVariante2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        title_RegistroVariante2.setText("Registro de Variantes");
-        jPanel5.add(title_RegistroVariante2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 470, 40));
+        title_RegistroVariante2.setText("Registro de Variantes de la vacuna");
+        jPanel5.add(title_RegistroVariante2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 360, 40));
 
-        jFrame_Porcentaje.getContentPane().add(jPanel5, java.awt.BorderLayout.LINE_START);
+        field_idvacuna.setEditable(false);
+        field_idvacuna.setBackground(new java.awt.Color(159, 211, 241));
+        field_idvacuna.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field_idvacunaActionPerformed(evt);
+            }
+        });
+        jPanel5.add(field_idvacuna, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 80, 30));
+
+        jFrame_Porcentaje.getContentPane().add(jPanel5, java.awt.BorderLayout.PAGE_START);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -835,23 +861,19 @@ public class RegistroVisualizacionVacuna extends javax.swing.JFrame {
     private void boton_AddSintomas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_AddSintomas1ActionPerformed
 
         Verificador veri = new Verificador();
-        DefaultTableModel modelEfecto = (DefaultTableModel) TableEfectos.getModel();
-        String dato;
-        dato = desplegable_Efectos.getSelectedItem().toString();
+        DefaultTableModel model = (DefaultTableModel) TableEfectos.getModel();
+
+        String dato = desplegable_Efectos.getSelectedItem().toString();
+        String id_vacuna =field_idvacuna1.getText();
         if(!veri.existenciaTable(model, dato)){
-           modelEfecto.addRow(new Object[]{dato});
+           model.addRow(new Object[]{dato});
            Guardar insertSQL = new Guardar();
-           insertSQL.guardarSintVac(dato, model.getValueAt(jTable_vacunas.getSelectedRow(), 2).toString());
-    }         
-       
-     /*  DefaultTableModel modelEfecto = (DefaultTableModel) TableEfectos.getModel();
-        if (TableEfectos.getSelectedRow() != -1){
-            bus.tableVacSintEliIte(model.getValueAt(jTable_vacunas.getSelectedRow(), 0).toString(), TableEfectos);
-            modelEfecto.removeRow(TableEfectos.getSelectedRow());
-        }
-        else
-        JOptionPane.showMessageDialog(null, "No ha seleccionado una enfermedad a eliminar","Warning",WARNING_MESSAGE);
-    */
+           insertSQL.guardarSintVac1(dato, id_vacuna);
+
+        }  
+        
+        
+        
     }//GEN-LAST:event_boton_AddSintomas1ActionPerformed
 
     private void boton_DelSintomasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_DelSintomasActionPerformed
@@ -925,7 +947,8 @@ public class RegistroVisualizacionVacuna extends javax.swing.JFrame {
         ArrayList<String> listas = dataSQL.denom_oms(dataSQL.variante());
         desplegable_Variantes.removeAllItems();
         for (int i=0;i<listas.size();i++)
-            desplegable_Variantes.addItem(listas.get(i));
+        desplegable_Variantes.addItem(listas.get(i));
+        field_idvacuna.setText(model.getValueAt(jTable_vacunas.getSelectedRow(), 0).toString());
         bus.tableVacEfic(TableVariantes, model.getValueAt(jTable_vacunas.getSelectedRow(), 0).toString());
         crea.InterfazIguales(Frame_modificar, jFrame_Porcentaje, 484, 406); //462, 344
         
@@ -936,6 +959,7 @@ public class RegistroVisualizacionVacuna extends javax.swing.JFrame {
                 // TODO add your handling code here:
         ArrayList<String> listas = dataSQL.descripsintoma(dataSQL.Sintomas());
         desplegable_Efectos.removeAllItems();
+        field_idvacuna1.setText(model.getValueAt(jTable_vacunas.getSelectedRow(), 0).toString());
         for (int i=0;i<listas.size();i++)
             desplegable_Efectos.addItem(listas.get(i));
         bus.tableVacEfec(TableEfectos, model.getValueAt(jTable_vacunas.getSelectedRow(), 0).toString());
@@ -975,20 +999,17 @@ public class RegistroVisualizacionVacuna extends javax.swing.JFrame {
     private void boton_AggCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_AggCentroActionPerformed
         /* Verificador veri = new Verificador();
         }*/
-       
-       Verificador veri = new Verificador();
-        DefaultTableModel modelEfecto = (DefaultTableModel) TableVariantes.getModel();
-        String dato1;
-        String dato2;
-        dato1 = desplegable_Variantes.getSelectedItem().toString();
-        dato2 = field_porcentaje.getText(); 
-        dato2 = field_porcentaje.getText(); 
-        System.out.println(dato1);  System.out.println(dato2);
-        //if(!veri.existenciaTable(model, dato1)){
-            modelEfecto.addRow(new Object[]{dato1,dato2});
+        Verificador veri = new Verificador();
+        DefaultTableModel model = (DefaultTableModel) TableVariantes.getModel();
+
+        String dato1 = desplegable_Variantes.getSelectedItem().toString();
+        String dato2 = field_porcentaje.getText();  
+        String dato3 = field_idvacuna.getText();
+        if(!veri.existenciaTable(model, dato1)){
+            model.addRow(new Object[]{dato1,dato2});
             Guardar insertSQL = new Guardar();
-            insertSQL.guardarEficacia(dato1, dato2, model.getValueAt(jTable_vacunas.getSelectedRow(), 0).toString());
-      //  }
+            insertSQL.guardarEficacia(dato1, dato2, dato3);
+        }
        
        
     }//GEN-LAST:event_boton_AggCentroActionPerformed
@@ -996,6 +1017,14 @@ public class RegistroVisualizacionVacuna extends javax.swing.JFrame {
     private void field_porcentajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_porcentajeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_field_porcentajeActionPerformed
+
+    private void field_idvacunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_idvacunaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field_idvacunaActionPerformed
+
+    private void field_idvacuna1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_idvacuna1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field_idvacuna1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2091,6 +2120,8 @@ public class RegistroVisualizacionVacuna extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> desplegable_tipo;
     private javax.swing.JTextField field_IdVacuna;
     private javax.swing.JTextField field_TiempoReposo;
+    private javax.swing.JTextField field_idvacuna;
+    private javax.swing.JTextField field_idvacuna1;
     private javax.swing.JTextField field_porcentaje;
     private javax.swing.JButton jButton2;
     private javax.swing.JFrame jFrame_Efectos;
@@ -2136,6 +2167,7 @@ public class RegistroVisualizacionVacuna extends javax.swing.JFrame {
     private javax.swing.JLabel title_persona;
     private javax.swing.JLabel title_persona1;
     private javax.swing.JLabel title_persona4;
+    private javax.swing.JLabel title_persona5;
     private javax.swing.JLabel title_tipo2;
     // End of variables declaration//GEN-END:variables
 }

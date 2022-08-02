@@ -836,4 +836,105 @@ public class Buscador {
         return cod;
     }
     
-}
+    public void tableTratamientos(JTable tabla, String codtratamiento){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from tratamiento where codtrat='"+codtratamiento+"'");
+            while(rs.next()){
+                model.addRow(new Object[]{rs.getString(1),rs.getString(2)});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No hay tratamientos con el codigo ingresado");
+        }
+    }
+    
+    public void tableAlltratamientos(JTable tabla){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        Verificador veri = new Verificador();
+        try {
+            DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from tratamiento");
+            while(rs.next()){
+                model.addRow(new Object[]{rs.getString(1),rs.getString(2)});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error con la coneccion a la base de datos");
+        }
+    }
+    public void tableTratMedic(JTable tabla, String codtratamiento){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select medic.nombremedicamento, co.dosis, co.cantdias,co.frecuencia from tratamiento tr,consiste co,medicamento medic where tr.codtrat=co.codtrat and co.codmedicamento=medic.codmedicamento and tr.codtrat='"+codtratamiento+"'");
+            while(rs.next()){
+                model.addRow(new Object[]{rs.getString(1), rs.getInt(2), rs.getInt(3), rs.getInt(4)});
+            }          
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No hay personas con la cedula ingresada");
+        }
+    }
+    
+    public void tableTratamientoEli(String codtrat){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {//borrar tratameinto de consiste
+            st = con.connected().createStatement();
+            st.executeQuery("delete from consiste where codtrat='"+codtrat+"'");
+            st.close();
+        } catch (Exception e) {
+        }
+        try {//borrar tratamiento
+            st = con.connected().createStatement();
+            st.executeQuery("delete from tratamiento where codtrat='"+codtrat+"'");
+            st.close();
+        } catch (Exception e) {
+        }
+    }
+    
+    public void tableTratMedicEliIte(String codtrat, JTable tabla){
+        Buscador busc = new Buscador();
+        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+        ArrayList<String> codMed = busc.CodMedicamento(model.getValueAt(tabla.getSelectedRow(), 0).toString());
+        for (int i = 0; i<codMed.size();i++){
+            this.tableTratMedicEli(codtrat, codMed.get(i));
+        }
+    }
+    
+        public ArrayList<String> CodMedicamento(String nombremedicamento){
+        ArrayList<String> codigos = new ArrayList<String>();
+        Statement st; System.out.println(nombremedicamento);
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from medicamento where nombremedicamento='"+nombremedicamento+"'");
+            while(rs.next()){
+                codigos.add(rs.getString(1));
+            }
+            con.disconnect();
+            return codigos;
+        } catch (Exception e) {
+            System.out.println("codMedicamento murio");
+        }
+        con.disconnect();
+        return null;
+    }
+    public void tableTratMedicEli(String codtrat, String codmedicamento){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            String sql = "delete from consiste where codtrat='"+codtrat+"' and codmedicamento='"+codmedicamento+"'";
+            st.execute(sql);
+        } catch (Exception e) {
+        }
+    }
+
+  }
+ 

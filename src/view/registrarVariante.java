@@ -236,10 +236,10 @@ public class registrarVariante extends javax.swing.JFrame {
 
         label_Sintomas.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         label_Sintomas.setText("Síntomas:");
-        jPanel2.add(label_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
+        jPanel2.add(label_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
 
         desplegable_calendar.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jPanel2.add(desplegable_calendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 180, 20));
+        jPanel2.add(desplegable_calendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 180, 30));
 
         desplegable_PaisOrigen.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         desplegable_PaisOrigen.setPreferredSize(new java.awt.Dimension(56, 24));
@@ -248,7 +248,7 @@ public class registrarVariante extends javax.swing.JFrame {
                 desplegable_PaisOrigenActionPerformed(evt);
             }
         });
-        jPanel2.add(desplegable_PaisOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 180, -1));
+        jPanel2.add(desplegable_PaisOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 180, 30));
 
         desplegable_Clasificacion.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         desplegable_Clasificacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "VOC", "VOI", "VUM" }));
@@ -258,7 +258,7 @@ public class registrarVariante extends javax.swing.JFrame {
                 desplegable_ClasificacionActionPerformed(evt);
             }
         });
-        jPanel2.add(desplegable_Clasificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 180, -1));
+        jPanel2.add(desplegable_Clasificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 180, 30));
 
         boton_VerSintomas.setBackground(new java.awt.Color(235, 235, 235));
         boton_VerSintomas.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
@@ -269,7 +269,7 @@ public class registrarVariante extends javax.swing.JFrame {
                 boton_VerSintomasActionPerformed(evt);
             }
         });
-        jPanel2.add(boton_VerSintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 130, 27));
+        jPanel2.add(boton_VerSintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 130, 27));
 
         field_Denominacion.setBackground(new java.awt.Color(235, 235, 235));
         field_Denominacion.addActionListener(new java.awt.event.ActionListener() {
@@ -277,7 +277,7 @@ public class registrarVariante extends javax.swing.JFrame {
                 field_DenominacionActionPerformed(evt);
             }
         });
-        jPanel2.add(field_Denominacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 190, -1));
+        jPanel2.add(field_Denominacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 190, 30));
 
         field_Linaje.setBackground(new java.awt.Color(235, 235, 235));
         field_Linaje.addActionListener(new java.awt.event.ActionListener() {
@@ -285,7 +285,7 @@ public class registrarVariante extends javax.swing.JFrame {
                 field_LinajeActionPerformed(evt);
             }
         });
-        jPanel2.add(field_Linaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 190, -1));
+        jPanel2.add(field_Linaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 190, 30));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 470, -1));
 
