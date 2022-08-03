@@ -13,10 +13,6 @@ public class VisualizacionReportes extends javax.swing.JFrame {
     public VisualizacionReportes() {
         initComponents();
         crea.Interfaz(this, 730, 350);
-        buttom_reporte1.setEnabled(false);
-        buttom_reporte4.setEnabled(false);
-        buttom_reporte5.setEnabled(false);
-       // buttom_reporte6.setEnabled(false);
     }
 
     /**
@@ -56,7 +52,7 @@ public class VisualizacionReportes extends javax.swing.JFrame {
                 boton_Volver_SintomasActionPerformed(evt);
             }
         });
-        jPanel1.add(boton_Volver_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 280, 80, 27));
+        jPanel1.add(boton_Volver_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 300, 80, 27));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -65,97 +61,97 @@ public class VisualizacionReportes extends javax.swing.JFrame {
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, 130, 100));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flo 1.png"))); // NOI18N
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 120, 120, 100));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 160, 120, 100));
 
         buttom_reporte1.setBackground(new java.awt.Color(235, 235, 235));
         buttom_reporte1.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
-        buttom_reporte1.setText("Reporte 1");
+        buttom_reporte1.setText("1. Cantidad de pacientes contagiados más de una vez, y tipo de reposo");
         buttom_reporte1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         buttom_reporte1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttom_reporte1ActionPerformed(evt);
             }
         });
-        jPanel2.add(buttom_reporte1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 100, 40));
+        jPanel2.add(buttom_reporte1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 490, 30));
 
         buttom_reporte2.setBackground(new java.awt.Color(235, 235, 235));
         buttom_reporte2.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
-        buttom_reporte2.setText("Reporte 2");
+        buttom_reporte2.setText("2. Porcentaje de personas vacunadas por centro, contagiados luego de la vacuna");
         buttom_reporte2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         buttom_reporte2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttom_reporte2ActionPerformed(evt);
             }
         });
-        jPanel2.add(buttom_reporte2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 100, 40));
+        jPanel2.add(buttom_reporte2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 490, 30));
 
         buttom_reporte3.setBackground(new java.awt.Color(235, 235, 235));
         buttom_reporte3.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
-        buttom_reporte3.setText("Reporte 3");
+        buttom_reporte3.setText("3. Valor de la eficacia de cada vacuna con respecto al nivel de contagio");
         buttom_reporte3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         buttom_reporte3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttom_reporte3ActionPerformed(evt);
             }
         });
-        jPanel2.add(buttom_reporte3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, 100, 40));
+        jPanel2.add(buttom_reporte3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 490, 30));
 
         buttom_reporte4.setBackground(new java.awt.Color(235, 235, 235));
         buttom_reporte4.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
-        buttom_reporte4.setText("Reporte 4");
+        buttom_reporte4.setText("4. Tratamientos aplicados a pacientes, virus y sus características.");
         buttom_reporte4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         buttom_reporte4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttom_reporte4ActionPerformed(evt);
             }
         });
-        jPanel2.add(buttom_reporte4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 100, 40));
+        jPanel2.add(buttom_reporte4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 490, 30));
 
         buttom_reporte5.setBackground(new java.awt.Color(235, 235, 235));
         buttom_reporte5.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
-        buttom_reporte5.setText("Reporte 5");
+        buttom_reporte5.setText("5. Países donde viven más personas contagiadas por cada variante.");
         buttom_reporte5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         buttom_reporte5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttom_reporte5ActionPerformed(evt);
             }
         });
-        jPanel2.add(buttom_reporte5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 100, 40));
+        jPanel2.add(buttom_reporte5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 490, 30));
 
         buttom_reporte6.setBackground(new java.awt.Color(235, 235, 235));
         buttom_reporte6.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
-        buttom_reporte6.setText("Reporte 6");
+        buttom_reporte6.setText("6. Top 3 de variantes con más personas contagiadas.");
         buttom_reporte6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         buttom_reporte6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttom_reporte6ActionPerformed(evt);
             }
         });
-        jPanel2.add(buttom_reporte6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 100, 40));
+        jPanel2.add(buttom_reporte6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 490, 30));
 
         buttom_reporte7.setBackground(new java.awt.Color(235, 235, 235));
         buttom_reporte7.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
-        buttom_reporte7.setText("Reporte 7");
+        buttom_reporte7.setText("7. Por centro, indicar tipo y por cada uno, cantidad de vacunados o pacientes.");
         buttom_reporte7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         buttom_reporte7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttom_reporte7ActionPerformed(evt);
             }
         });
-        jPanel2.add(buttom_reporte7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 100, 40));
+        jPanel2.add(buttom_reporte7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 490, 30));
 
         buttom_reporte8.setBackground(new java.awt.Color(235, 235, 235));
         buttom_reporte8.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
-        buttom_reporte8.setText("Reporte 8");
+        buttom_reporte8.setText("8. Reporte detallado de todos los síntomas de cada virus, y vacuna más eficaz");
         buttom_reporte8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         buttom_reporte8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttom_reporte8ActionPerformed(evt);
             }
         });
-        jPanel2.add(buttom_reporte8, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 100, 40));
+        jPanel2.add(buttom_reporte8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 490, 30));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 640, 230));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 640, 260));
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -182,7 +178,8 @@ public class VisualizacionReportes extends javax.swing.JFrame {
     }//GEN-LAST:event_buttom_reporte3ActionPerformed
 
     private void buttom_reporte4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttom_reporte4ActionPerformed
-        // TODO add your handling code here:
+        Reporte4 rep = new Reporte4();
+        crea.InterfazDiferentes(this, rep, 865, 414);
     }//GEN-LAST:event_buttom_reporte4ActionPerformed
 
     private void buttom_reporte5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttom_reporte5ActionPerformed
@@ -190,7 +187,6 @@ public class VisualizacionReportes extends javax.swing.JFrame {
     }//GEN-LAST:event_buttom_reporte5ActionPerformed
 
     private void buttom_reporte6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttom_reporte6ActionPerformed
-        // TODO add your handling code here:
         Reporte6 rep;
         try {
             rep = new Reporte6();
@@ -238,6 +234,7 @@ public class VisualizacionReportes extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(VisualizacionReportes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

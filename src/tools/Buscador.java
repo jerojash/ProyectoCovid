@@ -935,6 +935,221 @@ public class Buscador {
         } catch (Exception e) {
         }
     }
-
+    //newwwww
+    public void tableAllPersonaContagiada(JTable tabla){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+            st = con.connected().createStatement();
+            String tipo = "";
+            ResultSet rs = st.executeQuery("select * from contagio");
+            while(rs.next()){
+                if(rs.getString(5).equals("t"))
+                    tipo = "Hospitalizado"; 
+                else
+                    tipo = "En casa"; 
+                model.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)+" días",tipo});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error con la coneccion a la base de datos");
+        }
+    }  
+    
+    public void tableTratamientoPersonaC(JTable tabla, String cedula, String fecha){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select r.codtrat, t.descriptratamiento, r.estado_tratamiento from tratamiento t, requiere r where r.codtrat = t.codtrat and r.docidentidad_pac = '"+cedula+"' and fecha = '"+fecha+"'");
+            while(rs.next()){
+                model.addRow(new Object[]{rs.getString(1), rs.getString(2), rs.getString(3)});
+            }          
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No hay personas con la cedula ingresada");
+        }
+    }
+    
+    public void tableHospitalPersonaC(String cedula, JTable tabla, String fecha){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select h.codcentro_hos, c.nombcentro from centro_salud as c, hospitalizado as h where  h.codcentro_hos = c.codcentro and h.docidentidad_pac = '"+cedula+"' and h.fechahospitalizado = '"+fecha+"'");
+            while(rs.next()){
+                model.addRow(new Object[]{rs.getString(1), rs.getString(2)});
+            }          
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No hay personas con la cedula ingresada");
+        }
+    }
+    
+    public ArrayList<String> DescripTrataPac(String codigo){
+        ArrayList<String> codigos = new ArrayList<String>();
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select descriptratamiento from tratamiento where codtrat='"+codigo+"'");
+            while(rs.next()){
+                codigos.add(rs.getString(1));
+            }
+            con.disconnect();
+            return codigos;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error con la coneccion a la base de datos");
+        }
+        con.disconnect();
+        return null;
+    }
+    
+    public void EliminarPacienteContagio(String cedula, String fecha){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            st.executeQuery("delete from requiere where docidentidad_pac='"+cedula+"' and fecha='"+fecha+"'");
+            st.close();
+        } catch (Exception e) {
+        }
+        try {
+            st = con.connected().createStatement();
+            st.executeQuery("delete from hospitalizado where docidentidad_pac='"+cedula+"' and fechahospitalizado='"+fecha+"'");
+            st.close();
+        } catch (Exception e) {
+        }
+        try {
+            st = con.connected().createStatement();
+            st.executeQuery("delete from contagio where docidentidad='"+cedula+"' and fechacontagio='"+fecha+"'");
+            st.close();
+        } catch (Exception e) {
+        }
+    }
+    
+    public void EliminarPaciente(String cedula){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {//borrar persona vacunada
+            st = con.connected().createStatement();
+            st.executeQuery("delete from paciente where docidentidad_pac = '"+cedula+"' and not exists (select docidentidad from contagio where docidentidad = '"+cedula+"')");
+        } catch (Exception e) {
+        }
+    }
+    
+    public void tablePersonaContagiadaxCedula(JTable tabla, String cedula){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+            st = con.connected().createStatement();
+            String tipo = "";
+            ResultSet rs = st.executeQuery("select * from contagio where docidentidad='"+cedula+"'");
+            while(rs.next()){
+                if(rs.getString(5).equals("t"))
+                    tipo = "Hospitalizado"; 
+                else
+                    tipo = "En casa"; 
+                model.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)+" días",tipo});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No hay personas con la cedula ingresada");
+        }
+    }
+    
+    public String personaCodHospital(String cedula, String fecha){
+        ArrayList<String> nuevo = new ArrayList<String>();
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select c.nombcentro from centro_salud as c, hospitalizado as h where  h.codcentro_hos = c.codcentro and h.docidentidad_pac = '"+cedula+"' and h.fechahospitalizado = '"+fecha+"'");
+            while(rs.next()){
+                nuevo.add(rs.getString(1));
+            }  
+            return nuevo.get(0);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No hay personas con la cedula ingresada");
+        }
+        return "";
+    }
+    
+    public String tipoPersonaFecha(String cedula, String fecha){
+        ArrayList<String> nuevo = new ArrayList<String>();
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select casahospitalizado from contagio where  docidentidad = '"+cedula+"' and fechacontagio = '"+fecha+"'");
+            while(rs.next()){
+                nuevo.add(rs.getString(1));
+            }  
+            con.disconnect();
+            return nuevo.get(0);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No hay personas con la cedula ingresada");
+            return "";
+        }
+    }
+    
+    public void EliminarHospitales(String cedula, String fecha){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            st.executeQuery("delete from hospitalizado where docidentidad_pac='"+cedula+"' and fechahospitalizado='"+fecha+"'");
+            st.close();
+        } catch (Exception e) {
+        }
+    }
+    
+    public void trataPacEli(String cedula, String fecha, String cod){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            st.executeQuery("delete from requiere where docidentidad_pac='"+cedula+"' and fecha='"+fecha+"' and codtrat='"+cod+"'");
+            st.close();
+            con.disconnect();
+        } catch (Exception e) {
+        }
+    }
+    
+    public String variantePacCedula(String cedula, String fecha){
+        ArrayList<String> nuevo = new ArrayList<String>();
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select denom_oms from contagio where  docidentidad = '"+cedula+"' and fechacontagio = '"+fecha+"'");
+            while(rs.next()){
+                nuevo.add(rs.getString(1));
+            }  
+            con.disconnect();
+            return nuevo.get(0);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No hay personas con la cedula ingresada");
+            return "";
+        }
+    }
+    
+    public String tiempoPacCedula(String cedula, String fecha){
+        ArrayList<String> nuevo = new ArrayList<String>();
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select tiemporeposo from contagio where  docidentidad = '"+cedula+"' and fechacontagio = '"+fecha+"'");
+            while(rs.next()){
+                nuevo.add(rs.getString(1));
+            }  
+            con.disconnect();
+            return nuevo.get(0);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No hay personas con la cedula ingresada");
+            return "";
+        }
+    }
   }
  

@@ -386,7 +386,55 @@ public class Extraer {
             return null;
         }
     }
-       
+    
+    //newwwww
+    public ArrayList<String> codigoTratamientos(ArrayList<Tratamiento> listTratamiento) {
+        ArrayList<String> codTratamiento = new ArrayList<String>();
+
+        for (int i = 0; i < listTratamiento.size(); i++) {
+            codTratamiento.add(listTratamiento.get(i).getcod_tratamiento().toString());
+        }
+        return codTratamiento;
+    }
+    
+    public ArrayList<Tratamiento> TratamientoPaciente() {
+        Statement st;
+        ArrayList<Tratamiento> tratamientos = new ArrayList<Tratamiento>();
+        ConexionSQL con = new ConexionSQL();
+
+        try {
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from tratamiento");
+            while (rs.next()) {
+                tratamientos.add(new Tratamiento(rs.getInt(1), rs.getString(2)));
+            }
+            st.close();
+            con.disconnect();
+            return tratamientos;
+        } catch (Exception e) {
+            con.disconnect();
+            return null;
+        }
+    }
+    
+    public ArrayList<CentroSalud> CentroSaludHos() {
+        Statement st;
+        ArrayList<CentroSalud> Centro = new ArrayList<CentroSalud>();
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select c.* from centro_salud c, hospitalizacion v where c.codcentro = v.codcentro_hos");
+            while (rs.next()) {
+                Centro.add(new CentroSalud(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4), rs.getDate(5).toString(), rs.getInt(6)));
+            }
+            st.close();
+            con.disconnect();
+            return Centro;
+        } catch (Exception e) {
+            con.disconnect();
+            return null;
+        }
+    }
 }
 
 

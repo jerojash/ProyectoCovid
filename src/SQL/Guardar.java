@@ -749,5 +749,157 @@ public class Guardar {
             JOptionPane.showMessageDialog(null, "Hubo un inconveniente con el manejo del servidor");
         }
     }
-        
+    
+    //newwww
+    public boolean contagio(String denom_oms, String docidentidad, JDateChooser fechacontagio, String tiemporeposo, String casahospitalizado){
+        boolean validar = true;
+        try {
+            Date date = fechacontagio.getDate();
+            long da = date.getTime();
+            java.sql.Date fechaV = new java.sql.Date(da);
+            String ch = "F";
+            if (!casahospitalizado.equals("Casa"))
+                ch = "T";
+            ConexionSQL conexion= new ConexionSQL();
+            Connection con = conexion.connected();
+            java.sql.Statement st = con.createStatement();
+            String value = "'"+denom_oms+"','"+docidentidad+"','"+fechaV+"','"+tiemporeposo+"','"+ch+"'";
+            String sql = "insert into contagio(denom_oms, docidentidad, fechacontagio, tiemporeposo, casahospitalizado) values("+value+")";
+            st.execute(sql);
+            st.close();
+            con.close();
+            return validar;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Hubo un inconveniente con el manejo del servidor");
+            return false;
+        }
+    }
+    
+    public Boolean guardarPaciente(String cedula){
+        Boolean verificar = true;
+        try {
+            ConexionSQL conexion= new ConexionSQL();
+            Connection con = conexion.connected();
+            java.sql.Statement st = con.createStatement();
+            String value = "'"+cedula+"'";
+            String sql = "insert into paciente(docidentidad_pac) select ('"+cedula+"') where not exists (select '"+cedula+"' from paciente where docidentidad_pac = '"+cedula+"')";
+            st.execute(sql);
+            st.close();
+            con.close();
+        } catch (Exception e) {
+            verificar = false;
+            JOptionPane.showMessageDialog(null, "Hubo un inconveniente con el manejo del servidor");
+        }
+        return verificar;
+    }
+    
+    public void iteGuardarTrataPac(JTable tabla, String cedula, String fecha, String estado){
+        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+        for (int i = 0; i<tabla.getRowCount();i++){
+            this.requiere(cedula, modelo.getValueAt(i, 0).toString(), fecha, estado);
+        }
+    }
+    
+    public Boolean requiere(String cedula, String codigoT, String fecha, String estado){
+        Boolean verificar = true;
+        try {
+            ConexionSQL conexion= new ConexionSQL();
+            Connection con = conexion.connected();
+            java.sql.Statement st = con.createStatement();
+            String value = "'"+cedula+"','"+codigoT+"','"+fecha+"','"+estado+"'";
+            String sql = "insert into requiere(docidentidad_pac, codtrat, fecha, estado_tratamiento) values("+value+")";
+            st.execute(sql);
+            st.close();
+            con.close();
+        } catch (Exception e) {
+            verificar = false;
+            JOptionPane.showMessageDialog(null, "Hubo un inconveniente con el manejo del servidor");
+        }
+        return verificar;
+    }
+    
+    public Boolean hospitalizado(String cedula, String codCentro, String fecha){
+        Boolean verificar = true;
+        try {
+            ConexionSQL conexion= new ConexionSQL();
+            Connection con = conexion.connected();
+            java.sql.Statement st = con.createStatement();
+            String value = "'"+cedula+"','"+codCentro+"','"+fecha+"'";
+            String sql = "insert into hospitalizado(docidentidad_pac, codcentro_hos, fechahospitalizado) values("+value+")";
+            st.execute(sql);
+            st.close();
+            con.close();
+        } catch (Exception e) {
+            verificar = false;
+            JOptionPane.showMessageDialog(null, "Hubo un inconveniente con el manejo del servidor");
+        }
+        return verificar;
+    }
+    
+    public Boolean ModiPacienteC(String cedula,String fecha, String datoModi, int caso){ 
+        Boolean veri = true;
+        try {
+            ConexionSQL conexion= new ConexionSQL();
+            Connection con = conexion.connected();
+            java.sql.Statement st = con.createStatement();
+            String sql="";
+            switch (caso){
+                case 1:
+                    sql = "insert into paciente(docidentidad_pac) select ('"+datoModi+"') where not exists (select '"+datoModi+"' from paciente where docidentidad_pac = '"+datoModi+"')";
+                    st.executeUpdate(sql);
+                    sql = "update requiere set docidentidad_pac = '"+datoModi+"' where docidentidad_pac = '"+cedula+"' and fecha = '"+fecha+"'";
+                    st.executeUpdate(sql);
+                    sql = "update hospitalizado set docidentidad_pac = '"+datoModi+"' where docidentidad_pac = '"+cedula+"' and fechahospitalizado = '"+fecha+"'";
+                    st.executeUpdate(sql);
+                    sql = "update contagio set docidentidad = '"+datoModi+"' where docidentidad = '"+cedula+"' and fechacontagio = '"+fecha+"'";
+                    st.executeUpdate(sql);
+                break;
+                case 2:
+                    sql = "update contagio set denom_oms = '"+datoModi+"' where docidentidad = '"+cedula+"' and fechacontagio = '"+fecha+"'";
+                    st.executeUpdate(sql);
+                break;
+                case 3:
+                    sql = "update contagio set tiemporeposo = '"+datoModi+"' where docidentidad = '"+cedula+"' and fechacontagio = '"+fecha+"'";
+                    st.executeUpdate(sql);
+                break;
+                case 4:
+                    sql = "update requiere set fecha = '"+datoModi+"' where docidentidad_pac = '"+cedula+"' and fecha = '"+fecha+"'";
+                    st.executeUpdate(sql);
+                    sql = "update hospitalizado set fechahospitalizado = '"+datoModi+"' where docidentidad_pac = '"+cedula+"' and fechahospitalizado = '"+fecha+"'";
+                    st.executeUpdate(sql);
+                    sql = "update contagio set fechacontagio = '"+datoModi+"' where docidentidad = '"+cedula+"' and fechacontagio = '"+fecha+"'";
+                    st.executeUpdate(sql);
+                break;
+                case 5:
+                    sql = "update hospitalizado set codcentro_hos = '"+datoModi+"' where docidentidad_pac = '"+cedula+"' and fechahospitalizado = '"+fecha+"'";
+                    st.executeUpdate(sql);
+                break;
+                case 6:
+                    sql = "update contagio set casahospitalizado = '"+datoModi+"' where docidentidad = '"+cedula+"' and fechacontagio = '"+fecha+"'";
+                    st.executeUpdate(sql);
+                break;
+            }
+            st.close();
+            con.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Hubo un inconveniente con el manejo del servidor");
+             return false;
+        }     
+        return veri;
+    }
+    
+    public void cambiarEstado(String cedula, String fecha, String codtrat, String datoModi){ 
+        try {
+            ConexionSQL conexion= new ConexionSQL();
+            Connection con = conexion.connected();
+            java.sql.Statement st = con.createStatement();
+            String sql="";
+            sql = "update requiere set estado_tratamiento = '"+datoModi+"' where docidentidad_pac = '"+cedula+"' and fecha = '"+fecha+"' and codtrat = '"+codtrat+"'";;
+            st.executeUpdate(sql);
+            st.close();
+            con.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Hubo un inconveniente con el manejo del servidor");
+        } 
+    }
 }

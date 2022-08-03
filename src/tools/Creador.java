@@ -236,4 +236,54 @@ public class Creador {
             Table.getColumnModel().getColumn(x).setCellRenderer(centerRenderer);            
         }
     }
+        
+     
+    //newwww
+     public void addTableHeaderPersonaContagiada(DefaultTableModel model,JTable personaC) {
+        model = (DefaultTableModel) personaC.getModel();
+        Object[] newIdentifiers = new Object[]{"Denominación", "N° documento", "F. Contagio", "Tiempo de reposo", "Tipo de reposo"};
+        model.setColumnIdentifiers(newIdentifiers);
+        personaC.setFillsViewportHeight(true);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int x = 0; x < personaC.getColumnCount(); x++) {
+            personaC.getColumnModel().getColumn(x).setCellRenderer(centerRenderer);            
+        }
+    }
+     
+    public void addTableHeaderTratamientoPersonaC(DefaultTableModel model,JTable trata) {
+        model = (DefaultTableModel) trata.getModel();
+        Object[] newIdentifiers = new Object[]{"Codigo", "Tratamiento", "Estado"};
+        model.setColumnIdentifiers(newIdentifiers);
+        trata.setFillsViewportHeight(true);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int x = 0; x < trata.getColumnCount(); x++) {
+            trata.getColumnModel().getColumn(x).setCellRenderer(centerRenderer);            
+        }
+    }
+    
+    public void addTableHeaderHospitalPersonaC(DefaultTableModel model,JTable hos) {
+        model = (DefaultTableModel) hos.getModel();
+        Object[] newIdentifiers = new Object[]{"Codigo", "Centro Salud"};
+        model.setColumnIdentifiers(newIdentifiers);
+        hos.setFillsViewportHeight(true);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int x = 0; x < hos.getColumnCount(); x++) {
+            hos.getColumnModel().getColumn(x).setCellRenderer(centerRenderer);            
+        }
+    }
+    
+    public void addTableHeaderTrataPaciente(DefaultTableModel model,JTable Table) {
+        model = (DefaultTableModel) Table.getModel();
+        Object[] newIdentifiers = new Object[]{"Codigo", "Descripcion"};
+        model.setColumnIdentifiers(newIdentifiers);
+        Table.setFillsViewportHeight(true);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int x = 0; x < Table.getColumnCount(); x++) {
+            Table.getColumnModel().getColumn(x).setCellRenderer(centerRenderer);            
+        }
+    }
 }
