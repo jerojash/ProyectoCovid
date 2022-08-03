@@ -160,7 +160,7 @@ public class VisualizacionReportes extends javax.swing.JFrame {
 
     private void boton_Volver_SintomasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_SintomasActionPerformed
         SistemaOMS Sis = new SistemaOMS();
-        crea.InterfazDiferentes(this, Sis, 697, 391);
+        crea.InterfazDiferentes(this, Sis, 717, 325);
     }//GEN-LAST:event_boton_Volver_SintomasActionPerformed
 
     private void buttom_reporte1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttom_reporte1ActionPerformed
@@ -183,7 +183,9 @@ public class VisualizacionReportes extends javax.swing.JFrame {
     }//GEN-LAST:event_buttom_reporte4ActionPerformed
 
     private void buttom_reporte5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttom_reporte5ActionPerformed
-        // TODO add your handling code here:
+        Reporte5 rep;
+        rep = new Reporte5();
+        crea.InterfazDiferentes(this, rep, 890, 320);
     }//GEN-LAST:event_buttom_reporte5ActionPerformed
 
     private void buttom_reporte6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttom_reporte6ActionPerformed

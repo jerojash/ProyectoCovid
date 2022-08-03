@@ -245,6 +245,21 @@ public class Extraer {
         }
     }
     
+    public void Reporte5(JTable tabla){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+            st = con.connected().createStatement();
+            ResultSet rs = st.executeQuery("select * from reporte_5");
+            while(rs.next()){
+                model.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3)});
+            }          
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No hay data suficiente para mostrar el reporte");
+        }
+    }
+    
     //yerlin
     public ArrayList<Vacuna> Vacuna() {
         Statement st;

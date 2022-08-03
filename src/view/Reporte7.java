@@ -141,7 +141,7 @@ public class Reporte7 extends javax.swing.JFrame {
     private void boton_Volver_SintomasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_SintomasActionPerformed
         VisualizacionReportes rep = new VisualizacionReportes();
         Creador crea = new Creador();
-        crea.InterfazDiferentes(this, rep, 730, 350);
+        crea.InterfazDiferentes(this, rep, 720, 375);
     }//GEN-LAST:event_boton_Volver_SintomasActionPerformed
 
     private void tabla_centrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_centrosMouseClicked

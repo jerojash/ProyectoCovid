@@ -131,7 +131,7 @@ public class Reporte3 extends javax.swing.JFrame {
 
     private void boton_Volver_SintomasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_SintomasActionPerformed
         VisualizacionReportes rep = new VisualizacionReportes();
-        crea.InterfazDiferentes(this, rep, 730, 350);
+        crea.InterfazDiferentes(this, rep, 720, 375);
     }//GEN-LAST:event_boton_Volver_SintomasActionPerformed
 
     /**

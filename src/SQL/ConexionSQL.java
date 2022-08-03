@@ -7,9 +7,9 @@ import javax.swing.JOptionPane;
 
 public class ConexionSQL {
     Connection con = null;
-    String url = "jdbc:postgresql://localhost:5432/ProyectoCovid";
+    String url = "jdbc:postgresql://localhost:5432/proyecto";
     String user = "postgres";
-    String pass = "Ei101068y..";
+    String pass = "1234";
     
     public Connection connected (){
         try{
@@ -18,7 +18,7 @@ public class ConexionSQL {
             //JOptionPane.showMessageDialog(null, "Conexion exitosa", "conexion",JOptionPane.INFORMATION_MESSAGE);
             return con;
         }catch (Exception e){
-            //JOptionPane.showMessageDialog(null, "Conexion fallida", "conexion",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Conexion fallida", "conexion",JOptionPane.INFORMATION_MESSAGE);
         }
         return con;
     }
@@ -28,7 +28,7 @@ public class ConexionSQL {
             con.close();
             //JOptionPane.showMessageDialog(null, "Desconexion exitosa", "conexion",JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
-            //JOptionPane.showMessageDialog(null, "Desconexion fallida", "conexion",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Desconexion fallida", "conexion",JOptionPane.INFORMATION_MESSAGE);
         }
     }  
 }

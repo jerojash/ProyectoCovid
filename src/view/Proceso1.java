@@ -172,7 +172,7 @@ public class Proceso1 extends javax.swing.JFrame {
 
     private void boton_RegresarPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_RegresarPPActionPerformed
         SistemaOMS OMS = new SistemaOMS();
-        creaInterfaz.InterfazDiferentes(this, OMS, 717, 293);
+        creaInterfaz.InterfazDiferentes(this, OMS, 717, 325);
     }//GEN-LAST:event_boton_RegresarPPActionPerformed
 
     private void boton_RegistrarPersonalSaludActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_RegistrarPersonalSaludActionPerformed

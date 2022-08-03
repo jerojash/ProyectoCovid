@@ -1,41 +1,30 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package view;
 
-import SQL.ConexionSQL;
-import SQL.Reporte;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import SQL.Extraer;
 import javax.swing.table.DefaultTableModel;
 import tools.Creador;
 
-public class Reporte6 extends javax.swing.JFrame {
+/**
+ *
+ * @author manuel
+ */
+public class Reporte5 extends javax.swing.JFrame {
+    Creador crea = new Creador();
+    DefaultTableModel model;
+    Extraer viewSQL = new Extraer();
+    
+    public Reporte5() {
+        initComponents();
+        crea.Interfaz(this, 867, 350);
+        crea.addTableHeaderRep5(model,jTable_reporte);
+        viewSQL.Reporte5(jTable_reporte);
+    }
 
-    public Reporte6() throws SQLException {
-           initComponents();
-        Statement st;
-        ConexionSQL con = new ConexionSQL();
-        st = con.connected().createStatement();
-        String [] datos = new String[4];
-        DefaultTableModel model = new DefaultTableModel();
-        tabla_virusvariante.setModel(model);
-        model.addColumn("Descipcion OMS");
-        model.addColumn("Linaje");
-        model.addColumn("Cantidad Contagiados");
-
-        Reporte r = new Reporte();
-        ResultSet rs = r.reporte_6();
-        
-        while (rs.next()){
-            datos[0] = rs.getString(1);
-            datos[1] = rs.getString(2);
-            datos[2] = rs.getString(3);
-            model.addRow(datos);
-        }
-        st.close();
-        con.disconnect(); 
-}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,8 +37,10 @@ public class Reporte6 extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         boton_Volver_Sintomas = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabla_virusvariante = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable_reporte = new javax.swing.JTable();
         title_RegistroSintomas1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -66,17 +57,23 @@ public class Reporte6 extends javax.swing.JFrame {
                 boton_Volver_SintomasActionPerformed(evt);
             }
         });
-        jPanel1.add(boton_Volver_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 340, 80, 27));
+        jPanel1.add(boton_Volver_Sintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 80, 27));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tabla_virusvariante.setModel(new javax.swing.table.DefaultTableModel(
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flo 1.png"))); // NOI18N
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 130, 100));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flo 1.png"))); // NOI18N
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, 130, 100));
+
+        jTable_reporte.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Denom OMS ", "Linaje", "Cantidad de Contagiados"
+                "Variante", "País", "Cantidad Contagiados"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -87,42 +84,38 @@ public class Reporte6 extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tabla_virusvariante.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabla_virusvarianteMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tabla_virusvariante);
-        if (tabla_virusvariante.getColumnModel().getColumnCount() > 0) {
-            tabla_virusvariante.getColumnModel().getColumn(1).setResizable(false);
-        }
+        jScrollPane3.setViewportView(jTable_reporte);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 500, 220));
+        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 390, 130));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 800, 180));
 
         title_RegistroSintomas1.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
         title_RegistroSintomas1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        title_RegistroSintomas1.setText("Top 3 de Variantes con mas personas contagiadas ");
+        title_RegistroSintomas1.setText("Paises donde viven más personas contagiadas por variante ");
         title_RegistroSintomas1.setAutoscrolls(true);
         title_RegistroSintomas1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel2.add(title_RegistroSintomas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 530, 40));
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 560, 320));
+        jPanel1.add(title_RegistroSintomas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 800, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 624, Short.MAX_VALUE)
+            .addGap(0, 867, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 867, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 385, Short.MAX_VALUE)
+            .addGap(0, 337, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE))
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
@@ -130,13 +123,8 @@ public class Reporte6 extends javax.swing.JFrame {
 
     private void boton_Volver_SintomasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_SintomasActionPerformed
         VisualizacionReportes rep = new VisualizacionReportes();
-        Creador crea = new Creador();
         crea.InterfazDiferentes(this, rep, 720, 375);
     }//GEN-LAST:event_boton_Volver_SintomasActionPerformed
-
-    private void tabla_virusvarianteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_virusvarianteMouseClicked
-
-    }//GEN-LAST:event_tabla_virusvarianteMouseClicked
 
     /**
      * @param args the command line arguments
@@ -155,37 +143,33 @@ public class Reporte6 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Reporte6.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reporte5.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Reporte6.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reporte5.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Reporte6.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reporte5.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Reporte6.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reporte5.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new Reporte6().setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(Reporte6.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                new Reporte5().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boton_Volver_Sintomas;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabla_virusvariante;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTable_reporte;
     private javax.swing.JLabel title_RegistroSintomas1;
     // End of variables declaration//GEN-END:variables
 }
