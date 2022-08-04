@@ -32,8 +32,6 @@ public class RegistroVisualizacionMedicamento extends javax.swing.JFrame {
     public RegistroVisualizacionMedicamento() {
         initComponents();
         crea.Interfaz(this, 1008, 550);
-        
-        Creador creaInterfaz = new Creador();
         crea.addTableHeaderMedicamento(model,jTable_medicamentos);
         bus.tableAllMedicamentos(jTable_medicamentos);
     }
@@ -123,7 +121,7 @@ public class RegistroVisualizacionMedicamento extends javax.swing.JFrame {
         jTable_medicamentos = new javax.swing.JTable();
         boton_BusVacuna = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        boton_EliminarVacuna = new javax.swing.JButton();
+        boton_EliminarMedicamento = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         field_IdVacuna = new javax.swing.JTextField();
         boton_AggVacuna = new javax.swing.JButton();
@@ -643,16 +641,16 @@ public class RegistroVisualizacionMedicamento extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flo 1.png"))); // NOI18N
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, 130, 100));
 
-        boton_EliminarVacuna.setBackground(new java.awt.Color(235, 235, 235));
-        boton_EliminarVacuna.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
-        boton_EliminarVacuna.setText("Eliminar");
-        boton_EliminarVacuna.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        boton_EliminarVacuna.addActionListener(new java.awt.event.ActionListener() {
+        boton_EliminarMedicamento.setBackground(new java.awt.Color(235, 235, 235));
+        boton_EliminarMedicamento.setFont(new java.awt.Font("Cooper Black", 0, 12)); // NOI18N
+        boton_EliminarMedicamento.setText("Eliminar");
+        boton_EliminarMedicamento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_EliminarMedicamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_EliminarVacunaActionPerformed(evt);
+                boton_EliminarMedicamentoActionPerformed(evt);
             }
         });
-        jPanel2.add(boton_EliminarVacuna, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 50, 90, 27));
+        jPanel2.add(boton_EliminarMedicamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 50, 90, 27));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flo 1.png"))); // NOI18N
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 0, 130, 100));
@@ -695,8 +693,8 @@ public class RegistroVisualizacionMedicamento extends javax.swing.JFrame {
 
     private void boton_VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_VolverActionPerformed
         // TODO add your handling code here:
-         Proceso1 pro = new Proceso1();
-        crea.InterfazDiferentes(this, pro, 697, 391);
+        Proceso2 pro = new Proceso2();
+        crea.InterfazDiferentes(this, pro, 695, 430);
     }//GEN-LAST:event_boton_VolverActionPerformed
 
     private void boton_ModificarVacunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_ModificarVacunaActionPerformed
@@ -726,17 +724,18 @@ public class RegistroVisualizacionMedicamento extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_boton_BusVacunaActionPerformed
 
-    private void boton_EliminarVacunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_EliminarVacunaActionPerformed
+    private void boton_EliminarMedicamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_EliminarMedicamentoActionPerformed
        model = (DefaultTableModel) jTable_medicamentos.getModel();
         //bus.limpiarTabla(jTable_sintomas);
         if (jTable_medicamentos.getSelectedRow() != -1){
-            bus.tableVacunaEli(model.getValueAt(jTable_medicamentos.getSelectedRow(),0).toString());
-        
+            //JOptionPane.showMessageDialog(null, model.getValueAt(jTable_medicamentos.getSelectedRow(),0).toString());
+            bus.tableMedicamentoEli(model.getValueAt(jTable_medicamentos.getSelectedRow(),0).toString());
+            JOptionPane.showMessageDialog(null, "Medicamento eliminada con éxito");
             bus.limpiarTabla(jTable_medicamentos);
-            bus.tableAllvacunas(jTable_medicamentos);
+            bus.tableAllMedicamentos(jTable_medicamentos);
         }else
             JOptionPane.showMessageDialog(null, "Debe seleccionar una vacuna para ser elimianda","Aviso",INFORMATION_MESSAGE); 
-    }//GEN-LAST:event_boton_EliminarVacunaActionPerformed
+    }//GEN-LAST:event_boton_EliminarMedicamentoActionPerformed
 
     private void field_TiempoReposoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_TiempoReposoActionPerformed
         // TODO add your handling code here:
@@ -3075,7 +3074,7 @@ public class RegistroVisualizacionMedicamento extends javax.swing.JFrame {
     private javax.swing.JButton boton_BusVacuna;
     private javax.swing.JButton boton_DelSintomas;
     private javax.swing.JButton boton_EliminarCentro;
-    private javax.swing.JButton boton_EliminarVacuna;
+    private javax.swing.JButton boton_EliminarMedicamento;
     private javax.swing.JButton boton_ModificarVacuna;
     private javax.swing.JButton boton_Siguiente_RegistroDP1;
     private javax.swing.JButton boton_Siguiente_RegistroDP2;

@@ -733,6 +733,23 @@ public class Buscador {
         }
     }
     
+    public void tableMedicamentoEli(String codmedicamento){
+        Statement st;
+        ConexionSQL con = new ConexionSQL();
+        try {
+            st = con.connected().createStatement();
+            st.executeQuery("delete from consiste where codmedicamento='"+codmedicamento+"'");
+        } catch (Exception e) {
+            
+        }
+        try {
+            st = con.connected().createStatement();
+            st.executeQuery("delete from medicamento where codmedicamento='"+codmedicamento+"'");
+        } catch (Exception e) {
+            
+        }
+    }
+    
     public void tableVacSintEli(String idvacuna, String codSint){
         Statement st;
         ConexionSQL con = new ConexionSQL();
