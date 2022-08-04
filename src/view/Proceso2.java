@@ -208,7 +208,8 @@ public class Proceso2 extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_RegistrarVarianteActionPerformed
 
     private void boton_RegistrarMedicamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_RegistrarMedicamentoActionPerformed
-        
+        RegistroVisualizacionMedicamento medicamento = new RegistroVisualizacionMedicamento();
+        creaInterfaz.InterfazDiferentes(this, medicamento, 1008, 420);
     }//GEN-LAST:event_boton_RegistrarMedicamentoActionPerformed
 
     private void boton_RegistrarContagioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_RegistrarContagioActionPerformed

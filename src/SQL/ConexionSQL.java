@@ -7,9 +7,13 @@ import javax.swing.JOptionPane;
 
 public class ConexionSQL {
     Connection con = null;
+<<<<<<< HEAD
     String url = "jdbc:postgresql://localhost:5432/ProyectoFinal";
+=======
+    String url = "jdbc:postgresql://localhost:5432/proyectoCovid1.1";
+>>>>>>> 810f19ce1d545cbecb50dfd21f298b8bc972400c
     String user = "postgres";
-    String pass = "1234";
+    String pass = "admin";
     
     public Connection connected (){
         try{

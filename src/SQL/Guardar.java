@@ -498,6 +498,28 @@ public class Guardar {
         return guardado;
     }
     
+    public boolean guardadoMedicamento(JTextField nombre, JTextField concentracion, JTextField compuesto){            
+        boolean guardado = false;
+        try {
+            ConexionSQL conexion= new ConexionSQL();
+            Connection con = conexion.connected();  
+            java.sql.Statement st = con.createStatement();
+            Buscador select = new Buscador();
+            String value = "'"+nombre.getText().toString()+"','"+concentracion.getText().toString()+"', '"+compuesto.getText().toString()+"' "; 
+            String sql = "INSERT INTO public.medicamento(nombremedicamento, compuesto, concentracion) values("+value+")";
+            System.out.println(sql);
+            st.execute(sql);
+            st.close();
+            con.close();
+            guardado = true;
+        } catch (Exception e) {
+            guardado = false;
+            JOptionPane.showMessageDialog(null, "Hubo un inconveniente con el manejo del servidor");
+        }
+        return guardado;
+    }
+    
+    
     public ArrayList<String> CodVacunas(String NombreVacuna){
         ArrayList<String> codigos = new ArrayList<String>();
         Statement st; System.out.println(NombreVacuna);

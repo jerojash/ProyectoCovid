@@ -5,18 +5,26 @@
  */
 package view;
 
+import SQL.Extraer;
+import SQL.Guardar;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import tools.Creador;
+import tools.Verificador;
+
 /**
  *
  * @author Ricardo Fanghella
  */
 public class registrarMedicamento extends javax.swing.JFrame {
+    Creador creaInterfaz = new Creador();
 
     /**
      * Creates new form registrarMedicamento
      */
     public registrarMedicamento() {
         initComponents();
-        this.setSize(571, 319);
+        this.setSize(545, 319);
         this.setResizable(false);
     }
 
@@ -133,11 +141,28 @@ public class registrarMedicamento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_Volver_RegistroMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_RegistroMedActionPerformed
-        // TODO add your handling code here:
+        RegistroVisualizacionMedicamento medicamento = new RegistroVisualizacionMedicamento();
+        creaInterfaz.InterfazDiferentes(this, medicamento, 1008, 420);
     }//GEN-LAST:event_boton_Volver_RegistroMedActionPerformed
 
     private void boton_Siguiente_RegistroMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Siguiente_RegistroMedActionPerformed
-        // TODO add your handling code here:
+        Verificador veri = new Verificador();
+        if((veri.dataNB(field_NombreMed))&&(veri.dataNB(field_Concentracion))&&(veri.dataNB(field_Compuesto))){
+            if((veri.noVacio(field_NombreMed.getText().toString()))&&(veri.noVacio(field_Concentracion.getText().toString()))&&(veri.noVacio(field_Compuesto.getText().toString()))){
+                Guardar insertSQL = new Guardar();
+                
+                if (insertSQL.guardadoMedicamento(field_NombreMed, field_Compuesto,field_Concentracion)){
+                    JOptionPane.showMessageDialog(null, "Medicamento registrado con exito");
+                    RegistroVisualizacionMedicamento medicamento = new RegistroVisualizacionMedicamento();
+                    creaInterfaz.InterfazDiferentes(this, medicamento, 1008, 420);
+                }
+
+              }else{
+                JOptionPane.showMessageDialog(null, "No se admiten casillas con unicamente espacios en blanco","Error",ERROR_MESSAGE);
+            }
+        }else
+            JOptionPane.showMessageDialog(null, "Se encuentran casillas sin rellenar","Error",ERROR_MESSAGE);
+    
     }//GEN-LAST:event_boton_Siguiente_RegistroMedActionPerformed
 
     private void field_NombreMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_NombreMedActionPerformed
