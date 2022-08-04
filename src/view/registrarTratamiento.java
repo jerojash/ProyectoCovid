@@ -37,7 +37,7 @@ public class registrarTratamiento extends javax.swing.JFrame {
         for (int i=0;i<listas.size();i++)
         desplegable_Medicamento.addItem(listas.get(i));
         
-        this.setSize(545, 499);
+        this.setSize(561, 390);
         this.setResizable(false);
     }
 
@@ -217,6 +217,8 @@ public class registrarTratamiento extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(159, 211, 241));
+        jPanel1.setMinimumSize(new java.awt.Dimension(561, 359));
+        jPanel1.setPreferredSize(new java.awt.Dimension(561, 359));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         boton_Volver_RegistroT.setBackground(new java.awt.Color(235, 235, 235));
@@ -336,7 +338,7 @@ public class registrarTratamiento extends javax.swing.JFrame {
 
     private void boton_Volver_Variante1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_Variante1ActionPerformed
         // TODO add your handling code here:
-        crea.InterfazIguales(regisMedicamento, this,542, 425);
+        crea.InterfazIguales(regisMedicamento, this,561, 390);
     }//GEN-LAST:event_boton_Volver_Variante1ActionPerformed
 
     private void desplegable_MedicamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desplegable_MedicamentoActionPerformed

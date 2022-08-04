@@ -218,6 +218,8 @@ public class Proceso2 extends javax.swing.JFrame {
 
     private void boton_TratamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_TratamientoActionPerformed
         // TODO add your handling code here:
+       RegistroVisualizacionTratamiento tratamiento = new RegistroVisualizacionTratamiento();
+       creaInterfaz.InterfazDiferentes(this, tratamiento, 993, 619); 
     }//GEN-LAST:event_boton_TratamientoActionPerformed
 
     /**

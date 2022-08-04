@@ -459,8 +459,8 @@ public class RegistroVisualizacionTratamiento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_Volver_SintomasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_SintomasActionPerformed
-        Proceso1 pro1 = new Proceso1();
-        crea.InterfazDiferentes(this, pro1,700,370);
+        Proceso2 pro2= new Proceso2();
+        crea.InterfazDiferentes(this, pro2,680, 390);
     }//GEN-LAST:event_boton_Volver_SintomasActionPerformed
 
     private void boton_ModificarTratamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_ModificarTratamientoActionPerformed
@@ -468,7 +468,7 @@ public class RegistroVisualizacionTratamiento extends javax.swing.JFrame {
         {
            model = (DefaultTableModel) jTable_tratamientos.getModel();
            JLabel_codtrat.setText(model.getValueAt(jTable_tratamientos.getSelectedRow(), 0).toString());
-           crea.InterfazIguales(this, Frame_modificar, 860, 390);
+           crea.InterfazIguales(this, Frame_modificar, 679, 280);
        }else
             JOptionPane.showMessageDialog(null, "Debe seleccionar en la tabla el tratamiento a modificar","Aviso",INFORMATION_MESSAGE);
     }//GEN-LAST:event_boton_ModificarTratamientoActionPerformed
@@ -515,7 +515,7 @@ public class RegistroVisualizacionTratamiento extends javax.swing.JFrame {
 
     private void boton_AggTratamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_AggTratamientoActionPerformed
         registrarTratamiento regisTrat = new registrarTratamiento();
-        crea.InterfazDiferentes(this, regisTrat, 564, 580);
+        crea.InterfazDiferentes(this, regisTrat, 561, 380);
     }//GEN-LAST:event_boton_AggTratamientoActionPerformed
 
     private void jTable_tratamientosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_tratamientosMouseClicked
@@ -552,13 +552,16 @@ public class RegistroVisualizacionTratamiento extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_volverAMainActionPerformed
 
     private void boton_MedicamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_MedicamentosActionPerformed
+        
+        Verificador veri = new Verificador();
         ArrayList<String> listas = dataSQL.nombMedicamento(dataSQL.Medicamento());
         desplegable_Medicamentos.removeAllItems();
         for (int i=0;i<listas.size();i++)
           desplegable_Medicamentos.addItem(listas.get(i));
-          field_codtrat.setText(model.getValueAt(jTable_tratamientos.getSelectedRow(), 0).toString());
-          bus.tableTratMedic(TableMedicamentos, model.getValueAt(jTable_tratamientos.getSelectedRow(), 0).toString());
-          crea.InterfazIguales(Frame_modificar, jFrame_medicamentos, 690, 487); //462, 344
+        String codtrat=JLabel_codtrat.getText();
+        field_codtrat.setText(codtrat);
+        bus.tableTratMedic(TableMedicamentos, codtrat);
+        crea.InterfazIguales(Frame_modificar, jFrame_medicamentos, 690, 487); //462, 344
     }//GEN-LAST:event_boton_MedicamentosActionPerformed
 
     private void desplegable_MedicamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desplegable_MedicamentosActionPerformed
@@ -589,10 +592,12 @@ public class RegistroVisualizacionTratamiento extends javax.swing.JFrame {
                                     Guardar insertSQL = new Guardar();
                                     
                                     insertSQL.guardarTratMed(codtrat, nombmedicamento, Dosis, CantDias, Frecuencia);
+                                    JOptionPane.showMessageDialog(null, "Operación realizada exitosamente");
                                     System.out.println("voy por la persistencia");
                                     field_Dosis.setText("");
                                     field_CantDias1.setText("");
                                     field_Frecuencia.setText(""); 
+                                    
 
                                 }
                             }else
@@ -611,13 +616,15 @@ public class RegistroVisualizacionTratamiento extends javax.swing.JFrame {
         if (TableMedicamentos.getSelectedRow() != -1){
             bus.tableTratMedicEliIte(model.getValueAt(jTable_tratamientos.getSelectedRow(), 0).toString(), TableMedicamentos);
             modelMedic.removeRow(TableMedicamentos.getSelectedRow());
+            
+            JOptionPane.showMessageDialog(null, "Operación realizada exitosamente");
         }
         else
         JOptionPane.showMessageDialog(null, "No ha seleccionado un Medicamento a eliminar","Warning",WARNING_MESSAGE);
     }//GEN-LAST:event_boton_EliminarActionPerformed
 
     private void boton_Volver_RegistroDP6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Volver_RegistroDP6ActionPerformed
-        crea.InterfazIguales(jFrame_medicamentos, Frame_modificar,  690, 487);
+        crea.InterfazIguales(jFrame_medicamentos, Frame_modificar,  679, 280);
         bus.limpiarTabla(TableMedicamentos);       
     }//GEN-LAST:event_boton_Volver_RegistroDP6ActionPerformed
 
@@ -645,7 +652,7 @@ public class RegistroVisualizacionTratamiento extends javax.swing.JFrame {
         if (TableMedicamentos.getSelectedRow() != -1){
         String codtrat = field_codtrat.getText().toString();
         insertSQL.ModiTratMedic(codtrat, model.getValueAt(TableMedicamentos.getSelectedRow(), 0).toString(),model.getValueAt(TableMedicamentos.getSelectedRow(), 1).toString(),model.getValueAt(TableMedicamentos.getSelectedRow(), 2).toString(),model.getValueAt(TableMedicamentos.getSelectedRow(), 3).toString());
-            //modelMedic.removeRow(TableMedicamentos.getSelectedRow());
+        JOptionPane.showMessageDialog(null, "Operación realizada exitosamente");
         }
         else
         JOptionPane.showMessageDialog(null, "No ha modificado Medicamento alguno","Warning",WARNING_MESSAGE);
