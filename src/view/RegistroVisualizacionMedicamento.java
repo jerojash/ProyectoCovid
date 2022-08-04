@@ -617,30 +617,15 @@ public class RegistroVisualizacionMedicamento extends javax.swing.JFrame {
 
             },
             new String [] {
-                "IdVacuna ", "Lote", "Nombre", "Dosis", "Laboratorio", "Tipo", "País"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true, true
-            };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
-        });
+        ));
         jTable_medicamentos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable_medicamentosMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jTable_medicamentos);
-        if (jTable_medicamentos.getColumnModel().getColumnCount() > 0) {
-            jTable_medicamentos.getColumnModel().getColumn(0).setResizable(false);
-            jTable_medicamentos.getColumnModel().getColumn(1).setResizable(false);
-            jTable_medicamentos.getColumnModel().getColumn(2).setResizable(false);
-            jTable_medicamentos.getColumnModel().getColumn(3).setResizable(false);
-            jTable_medicamentos.getColumnModel().getColumn(4).setResizable(false);
-        }
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 920, 140));
 
@@ -767,8 +752,8 @@ public class RegistroVisualizacionMedicamento extends javax.swing.JFrame {
 
     private void boton_AggVacunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_AggVacunaActionPerformed
         // TODO add your handling code here:
-        registrarVacuna vacuna = new registrarVacuna();
-        crea.InterfazDiferentes(this, vacuna, 555, 485);
+        registrarMedicamento medicamento = new registrarMedicamento();
+        crea.InterfazDiferentes(this, medicamento, 545, 319);
     }//GEN-LAST:event_boton_AggVacunaActionPerformed
 
     private void jTable_medicamentosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_medicamentosMouseClicked
