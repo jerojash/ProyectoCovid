@@ -164,7 +164,8 @@ public class VisualizacionReportes extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_Volver_SintomasActionPerformed
 
     private void buttom_reporte1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttom_reporte1ActionPerformed
-        // TODO add your handling code here:
+        Reporte1 r = new Reporte1();
+        crea.InterfazDiferentes(this, r, 560, 560);
     }//GEN-LAST:event_buttom_reporte1ActionPerformed
 
     private void buttom_reporte2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttom_reporte2ActionPerformed
