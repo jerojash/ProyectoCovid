@@ -698,11 +698,18 @@ public class RegistroVisualizacionMedicamento extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_VolverActionPerformed
 
     private void boton_ModificarVacunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_ModificarVacunaActionPerformed
+        model = (DefaultTableModel) jTable_medicamentos.getModel();
         if (jTable_medicamentos.getSelectedRow()!= -1){
-            model = (DefaultTableModel) jTable_medicamentos.getModel();
-            jLabel4.setText("Modificación a la vacuna con el idvacuna: "+model.getValueAt(jTable_medicamentos.getSelectedRow(), 0).toString());//verificar jlabel
-            
-            crea.InterfazIguales(this, Frame_modificar, 880, 390);
+           String codmedicamento =model.getValueAt(jTable_medicamentos.getSelectedRow(),0).toString();
+           String nombre=model.getValueAt(jTable_medicamentos.getSelectedRow(),1).toString();
+           String compuesto=model.getValueAt(jTable_medicamentos.getSelectedRow(),2).toString();
+           String concentracion=model.getValueAt(jTable_medicamentos.getSelectedRow(),3).toString();
+           modificarMedicamento modificar = new modificarMedicamento(codmedicamento,nombre,compuesto,concentracion);
+            modificar.setResizable(false); 
+            modificar.setSize(545, 319);   
+            modificar.setVisible(true);   
+            modificar.setLocationRelativeTo(null);
+            this.dispose();
         }else
             JOptionPane.showMessageDialog(null, "Debe seleccionar en la tabla la vacuna a modificar","Aviso",INFORMATION_MESSAGE);
     }//GEN-LAST:event_boton_ModificarVacunaActionPerformed

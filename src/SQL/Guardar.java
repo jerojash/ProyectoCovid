@@ -239,6 +239,27 @@ public class Guardar {
         return verificado;
     }
     
+    public Boolean modificarMedicamento(String codigomedicamento, JTextField nombre, JTextField compuesto, JTextField concentracion){
+        Boolean verificado=true;
+        try {
+            
+            ConexionSQL conexion= new ConexionSQL();
+            Connection con = conexion.connected();  
+            java.sql.Statement st = con.createStatement();
+            
+            String value = "nombremedicamento= '"+nombre.getText().toString()+"', compuesto = '"+compuesto.getText().toString()+"', concentracion=  '" + concentracion.getText().toString()+"'";
+            String sql = "UPDATE medicamento SET "+value+" where codmedicamento = '"+codigomedicamento+"';";
+            st.execute(sql);
+            st.close();
+            con.close();
+        } catch (Exception e) {
+            verificado = false;
+            JOptionPane.showMessageDialog(null, "Hubo un inconveniente con el manejo del servidor");
+        }
+        
+        return verificado;
+    }
+    
     public Boolean guardarEnfermedad(String nomEnfer){
         Boolean verificar = true;
         try {
